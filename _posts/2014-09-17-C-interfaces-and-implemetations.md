@@ -1,3 +1,9 @@
+---
+layout: post
+title:  "C Interface and Implementation"
+date:   2014-09-16 20:39:39
+categories: jekyll update
+---
 **C Interfaces and Implementations**
 -----
 
@@ -27,11 +33,13 @@ An *abstract data type* is an interfaces that defines a data type and operations
 
 ##2.4 Client Responsibilities
 
+{% highlight cpp %}
     typedef struct T *T;
     int Stack_empty(const T stk){
         assert(stk);
         return stk->count == 0;
     }
+{% endhighlight %}
 
 The use of *const* is wrong. The intent here is to declare *stk* to be a **"pointer to a constant struct T"**. But the declaration *const T stk* declares *stk* to be a **"constant pointer to a struct T"**. The typedef for T wraps the *struct T\** in a single type, and this entire type is the operand of const **const (struct T\*)**, which is meaningless since all scalars are passed by value in C.
 
