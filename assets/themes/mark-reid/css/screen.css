@@ -308,6 +308,7 @@ p.excerpt { margin: 0; }
 .signature { 
 	margin-top: 3em; 
 	position: relative;
+  padding-top: 5px;
 }
 .signature .author { 
 	font-variant: small-caps; 

@@ -6,6 +6,7 @@ categories: Booknotes
 tags: Mathematics
 ---
 #Chapter 1 Propositions
+
 ##1.1 Fully Parenthesized Propositions
 
 ![](http://i.imgur.com/C8OZa24.png)
@@ -56,6 +57,7 @@ Proposition b is _weaker_ than c if $$c \Rightarrow b$$. Correspondingly, c is s
 ##1.7 Transforming English to Proposition Form
 
 #Chapter 2 Reasoning using Equivalence Transformations
+
 ##2.1 The Laws of Equivalence
 Definition 2.1.1: Propositions E1 and E2 are _equivalent_ iff E1=E2 is a tautology. In this case, E1=E2 is an equivalence.
 
@@ -97,6 +99,7 @@ The laws of Equality and Implication deserve special mention. Together, they def
 2. __Rule of Transitivity__: $$\frac{e1=e2,e2=e3}{e1=e3}$$
 
 #Chapter 3 A Natural Deduction System
+
 ##3.1 Introduction to Deductive Proofs
 
 ##3.2 Inference Rules
@@ -170,6 +173,7 @@ $$\frac{e_1=e_2, E(e_1)}{E(e_2)}$$
 11. Laws of and-implication
 
 ##3.5 Developing Natural Deduction System Proofs
+
 ###Some general hints on developing proofs
 
 ###The Development of a proof
@@ -181,9 +185,13 @@ $$\frac{e_1=e_2, E(e_1)}{E(e_2)}$$
 ###The Tardy Bus Problem
 
 #Chapter 4 Predicates
+
 ##4.1 Extending the Range of s State
+
 ###Evaluating Predicates
+
 ###Reasoning about Atomic Expressions
+
 ###The operators _cand_ and _cor_
 short-circuit __and__ and __or__
 ![](http://i.imgur.com/EggfRKO.png)
@@ -216,6 +224,7 @@ $$(E\ i:m\leqslant i < n:E_i) = (N\ i:m\leqslant i < n: E_i)\geqslant 1$$
 $$(A\ i: m\leqslant i < n:E_i) = (N\ i:m\leqslant i < n:E_i)=n-m$$
 Now it is easy to assert than k is the third smallest integer such that $$E_k$$ holds: 
 $$((N\ i: 0\leqslant i < k:E_i)=2)\wedge E_k$$
+
 ###A Note on Ranges
 ![](http://i.imgur.com/lYTjCXX.png)
 
@@ -232,9 +241,13 @@ __Restriction on identifiers__: In an expression, an identifier may not be both 
 ###Simultaneous Substitution
 
 ##4.5 Quantification Over Other Ranges
+
 ###The Type of a Quantified Identifier
+
 ###Tautologies and Implicit Quantification
+
 ###Inference Rules for A and E
+
 $$A-I:\frac{R\Rightarrow E}{(A\ i:R:E)}$$ where _i_ is a fresh identifier.
 
 $$A-E:\frac{(A\ i:R:E)}{R^i_e\Rightarrow E^i_e}$$ for any predicate _e_
@@ -244,6 +257,7 @@ $$E-I:\frac{(A\ i:R:E)}{\neg(E\ i:R:\neg E)}$$
 $$E-E:\frac{(E\ i:R:E)}{\neg(A\ i:R:\neg E)}$$
 
 **bound-variable substitution:**$$\frac{E\ i:R:E}{E\ k:R^i_k:E^i_k}$$(provided _k_ does not appear free in R and E)
+
 ##4.6 Some Theorems about Textual Substitution and States
 $$s(E^x_e) = s(E^x_{s(e)})$$
 Substituting an expression _e_ for _x_ in E and then evaluating in _s_ yields the same result as substituting the _value_ of _e_ in _s_ for _x_ and then evaluating.
@@ -254,10 +268,12 @@ For a list of distinct identifiers $$\bar{x}$$, expression E and a list $$\bar{u
 $$(E_{\bar{u}}^{\bar{x}})_{\bar{x}}^{\bar{u}} = E \square$$
 
 #Chapter 5 Notations and Conventions for Arrays
+
 ##5.1 One-dimensional Arrays as Functions
 ![](http://i.imgur.com/BayG44W.png)
 
 ##5.2 Array Sections and Pictures
+
 ###(!)Array Pictures
 ![](http://i.imgur.com/YbKjwnT.png)
 
@@ -269,16 +285,21 @@ $$(E_{\bar{u}}^{\bar{x}})_{\bar{x}}^{\bar{u}} = E \square$$
 ![](http://i.imgur.com/58VfVhz.png)
 
 #Chapter 6 Using Assertions To Document Programs
+
 ##6.1 Program Specifications
+
 > If execution of S in begun in a state satisfying Q, then it is guaranteed to terminate in a finite amount of time in a state satisfying R.
 
 Q is called the _precondition_ or _input assertion_ of S; R is the _postcondition, output assertion or result assertion_.
+
 ##6.2 Representing Initial and Final Values of Variables
+
 ##6.3 Proof Outlines
 ![](http://i.imgur.com/LMDApkJ.png)
 ![](http://i.imgur.com/Oakyc3S.png)
 
 #Part II The Semantics of a Small Language
+
 #Chapter 7 The Predicate Transformer wp
 > For any command S and predicate R, which describes the desired result of executing S, we will define another predicate, denoted by _wp(S,R)_, that represents: the set of __all__ states such that execution of S begun in any one of them is guaranteed to terminate in a finite amount of time in a state satisfying R.
 
@@ -298,6 +319,7 @@ Q is called the _precondition_ or _input assertion_ of S; R is the _postconditio
 3. $$wp("S1;S2", R) = wp(S1,wp(S2,R))$$(sequential composition)
 
 #Chapter 9 The Assignment Command
+
 ##9.1 Assignment to Simple Variables
 **(!)Definition** $$wp("x:= e", R) = domain(e)$$ **cand** $$R_e^x$$
 Since x will contain the value of e after execution, then R will be true after execution *iff* R, with the value of x replaced by e, is true before execution. 
@@ -309,6 +331,7 @@ Since x will contain the value of e after execution, then R will be true after e
 **Caution**: $$x,y:=e1,e2$$ is semantically equivalent to "$$x:=e1;y:=e2$$" and also to "$$y:=e2;x:=e1$$", **provided that x does not occur in e2 and y does not occur in e1**.
 
 ![](http://i.imgur.com/1nKsxyl.png)
+
 ##9.3 Assignment to an Array Element
 **Definition** $$wp("b[i]:=e", R) = inrange(b,i)$$ **cand** $$domain(e)$$ **cand** $$R_{(r, i:e)}^{b}$$ or simply $$wp("b[i]:= e", R) = R_{(b,i:e)}^{b}$$
 ![](http://i.imgur.com/hDManYT.png)
@@ -320,17 +343,20 @@ Since x will contain the value of e after execution, then R will be true after e
 **Definition.** $$wp("\bar{x\circ s}:=\bar{e}", R) = R_{\bar{e}}^{\bar{x\circ s}}$$
 ![](http://i.imgur.com/4YOmHHX.png)
 ![](http://i.imgur.com/KkCp6fe.png)
+
 #Chapter 10 The Alternative Command
 **Definition** $$wp(IF,R) = domain(BB)\wedge BB \wedge B_1\Rightarrow wp(S_1,R)\wedge \cdots \wedge B_n\Rightarrow wp(S_n, R) \square$$
 
 **Definition** $$wp(IF,R) = (E\ i:1\leqslant i \leqslant n: B_i)\wedge (A\ i:1\leqslant i \leqslant n:B_i\Rightarrow wp(S_i,R))\square$$
 ![](http://i.imgur.com/ipSSgaM.png)
+
 ###Some Comments about the Alternative Command
 
 ###A Theorem about the Alternative Command
 ![](http://i.imgur.com/pjsjVSF.png)
 
 #Chapter 11 The Iterative Command
+
 ###11.1The conventional while-loop and the iterative command
 ![](http://i.imgur.com/beTKuwJ.png)
 
@@ -360,6 +386,7 @@ $$H_k(R) = H_0(R)\vee wp(IF, H_{k-1}(R)), for\ k>0$$
 ![](http://i.imgur.com/YQnIJJH.png)
 
 #Part III The Development of Programs
+
 #Chapter 13 Introduction
 > A program and its proof should be developed hand-in-hand, with the proof usually leading the way. 
 
@@ -414,6 +441,7 @@ $$t:(N\ i,j:0\leqslant i<j<4;qi>qj)$$
 ![](http://i.imgur.com/v3pi46C.png)
 
 #Chapter 16 Developing Invariants
+
 ##16.1 The Balloon Theory
 
 ![](http://i.imgur.com/nvWChRB.png)
