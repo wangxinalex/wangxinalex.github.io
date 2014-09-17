@@ -15,10 +15,12 @@ _Traveling Salesman Problem_
 
 ##1.2 Selecting the Right Jobs
 
+{%highlight c%}
 	OptimalScheduling(I)
 		While (I != ∅) do
 			Accept the job j from I with the earliest completion date.
 			Delete j, and any interval which intersects j from I.
+{%endhighlight%}
 
 ##1.3 Reasoning about Correctness
 ###1.3.2 Problems and Properties
@@ -108,6 +110,8 @@ $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
 
 ###2.5.3 String Pattern Matching###
 
+{%highlight c%}
+
     int findmatch(char *p, char *t){
         int i,j; /* counters */
         int m, n; /* string lengths */
@@ -121,6 +125,7 @@ $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
         }
         return(-1);
     }
+{%endhighlight%}
 
 $$O((n-m)(m+2)) \rightarrow O(n+m+(n-m)(m+2)) \rightarrow O(n+m+(n-m)m) \rightarrow O(n+m+nm-m^2) \rightarrow O(n+nm-m^2) \rightarrow O(nm)$$
 
@@ -320,6 +325,8 @@ _Pointers_ are the connections that hold the pieces of linked structures togethe
 
 * searching a list 
 
+{%highlight c%}
+
 		list *search_list(list *l, item_type x){
 			if(l == NULL) return NULL;
 			if(l->item == x)
@@ -327,19 +334,25 @@ _Pointers_ are the connections that hold the pieces of linked structures togethe
 			else
 				return search_list(l->next, x);
 		}
+{%endhighlight%}
 
 * insertion into a list (at the beginning)
 	
-		void insert_list(list **l, item_type x){
+{%highlight c%}
+
+        void insert_list(list **l, item_type x){
 			list *p;
 			p = malloc(sizeof(list));
 			p->item = x;
 			p->next = *l;
 			*l = p;
 		}
+{%endhighlight%}
 
 * Deletion from a list
 		
+{%highlight c%}
+
 		//find the predecessor in a single-linked list first
 		list *predecessor_list(list* l, item_type x){
 			if((l == NULL)||(l->next == NULL)){
@@ -367,6 +380,7 @@ _Pointers_ are the connections that hold the pieces of linked structures togethe
 				free(p);
 			}
 		}
+{%endhighlight%}
 
 ###3.1.3 Comparison
 * List: Chopping the first element off a linked list leaves a smaller linked list. This same argument works for strings, since removing characters from string leaves a string. Lists are recursive objects.
@@ -503,6 +517,8 @@ $$H(S) = \sum^{|S|-1}_{i=0}{\alpha^{|S|-(i+1)}\times char(s_i)}$$
 ##3.10 Exercises
 > 3-1. A common problem for compilers and text editors is determining whether the parentheses in a string are balanced and properly nested. For example, the string ((())())() contains properly nested pairs of parentheses, which the strings )()( and ()) do not. Give an algorithm that returns true if a string contains properly nested and balanced parentheses, and false if otherwise. For full credit, identify the position of the first offending parenthesis if the string is not properly nested and balanced.
 
+{%highlight c%}
+
 	#include <iostream>
 	#include <stack>
 	using namespace std;
@@ -532,8 +548,11 @@ $$H(S) = \sum^{|S|-1}_{i=0}{\alpha^{|S|-(i+1)}\times char(s_i)}$$
 	    cout << "RIGHT" << endl;
 	    return 0;
 	}
+{%endhighlight%}
 
 > 3-2. Write a program to reverse the direction of a given singly-linked list. In other words, after the reversal all pointers should now point backwards. Your algorithm should take linear time.
+
+{%highlight c%}
 
 	Node* reverse_list(Node * head){
 		queue<int> node_queue;
@@ -563,9 +582,11 @@ $$H(S) = \sum^{|S|-1}_{i=0}{\alpha^{|S|-(i+1)}\times char(s_i)}$$
 		*head = new_node;
 		return 0;
 	}
-
+{%endhighlight%}
 或者还有种空间复杂度更好的（参考[DreamRunner](http://dreamrunner.org/wiki/public_html/Misc/Train/TheAlgorithmDesignManual/The-Algorithm-Design-Manual3.html)）……
 	
+{%highlight c%}
+
 	void ReverseLinkedList(Node **head) {
 	  if (!head || *head == NULL) {
 	    return;
@@ -582,6 +603,7 @@ $$H(S) = \sum^{|S|-1}_{i=0}{\alpha^{|S|-(i+1)}\times char(s_i)}$$
 	  }
 	  *head = prev;
 	}
+{%endhighlight%}
 
 > 3-3. We have seen how dynamic arrays enable arrays to grow while still achieving constant-time amortized performance. This problem concerns extending dynamic arrays to let them both grow and shrink on demand.
 > 
@@ -655,6 +677,8 @@ __worst-fit heuristic__ strategy 要找到的是剩余空间最大的bin，因�
 (a)直接构造一个n*n的矩阵，其中$$a_{i,j}$$元素就是$$x_i, \cdots, x_j$$中最小的值
 
 (b)这里需要借助[Cartesian tree](http://en.wikipedia.org/wiki/Cartesian_tree)数据结构
+
+{%highlight c%}
 
 	#include <stdlib.h>
 	#include <limits.h>
@@ -841,6 +865,7 @@ __worst-fit heuristic__ strategy 要找到的是剩余空间最大的bin，因�
 	
 	    return 0;
 	}
+{%endhighlight%}
 
 #Chapter 4 Sorting and Searching #
 ##4.1 Applications of Sorting
@@ -1001,6 +1026,8 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 
 ![](http://i.imgur.com/2CTJt3V.jpg)
 
+{%highlight c%}
+
 	mergesort(item_type s[], int low, int high){
 		int i; /* counter */
 		int middle; /* index of middle element */
@@ -1030,8 +1057,11 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 		while (!empty_queue(&buffer1)) s[i++] = dequeue(&buffer1);
 		while (!empty_queue(&buffer2)) s[i++] = dequeue(&buffer2);
 	}
+{%endhighlight%}
 
 ##4.6 Quicksort
+
+{%highlight c%}
 
 	quicksort(item_type s[], int l, int h) {
 		int p; /* index of partition */
@@ -1057,6 +1087,7 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 		swap(&s[p],&s[firsthigh]);
 		return(firsthigh);
 	}
+{%endhighlight%}
 
 ![](http://i.imgur.com/JOI8wH0.png)
 
@@ -1161,6 +1192,8 @@ $$T(n) = aT(n/b)+f(n)$$
 
 以$$O(n)$$的复杂度建立最小堆，执行k次`extract_min`操作，每次的时间复杂度为$$O(logn)$$。
 
+{%highlight c%}
+
 	#include <stdlib.h>
 	#include <iostream>
 	using namespace std;
@@ -1240,3 +1273,4 @@ $$T(n) = aT(n/b)+f(n)$$
 	    }
 	    return 0;
 	}
+{%endhighlight%}

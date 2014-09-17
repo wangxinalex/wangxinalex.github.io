@@ -358,6 +358,7 @@ pre:hover {
 	overflow: visible;
 }
 code {
+  font-family: "courier new";
 	font-size: 1em;
 	background-color: #f7f7ff;
 	line-height: 1.4em;
