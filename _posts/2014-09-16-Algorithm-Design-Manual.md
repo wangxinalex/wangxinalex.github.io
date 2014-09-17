@@ -104,23 +104,23 @@ $$O(f(n)) * O(g(n)) \rightarrow O(f(n) * g(n))$$
 $$\Omega(f(n)) * \Omega(g(n)) \rightarrow \Omega(f(n) * g(n))$$
 $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
 
-##2.5 Reasoning About Efficiency
-###2.5.3 String Pattern Matching
-{% highlight c %}
-	int findmatch(char *p, char *t){
-		int i,j; /* counters */
-		int m, n; /* string lengths */
-		m = strlen(p);
-		n = strlen(t);
-		for (i=0; i<=(n-m); i=i+1) {
-			j=0;
-			while ((j<m) && (t[i+j]==p[j]))
-				j = j+1;
-			if (j == m) return(i);
-		}
-		return(-1);
-	}
-{% endhighlight %}
+##2.5 Reasoning About Efficiency##
+
+###2.5.3 String Pattern Matching###
+
+    int findmatch(char *p, char *t){
+        int i,j; /* counters */
+        int m, n; /* string lengths */
+        m = strlen(p);
+        n = strlen(t);
+        for (i=0; i<=(n-m); i=i+1) {
+            j=0;
+            while ((j<m) && (t[i+j]==p[j]))
+                j = j+1;
+            if (j == m) return(i);
+        }
+        return(-1);
+    }
 
 $$O((n-m)(m+2)) \rightarrow O(n+m+(n-m)(m+2)) \rightarrow O(n+m+(n-m)m) \rightarrow O(n+m+nm-m^2) \rightarrow O(n+nm-m^2) \rightarrow O(nm)$$
 
@@ -171,6 +171,8 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 	(2).没破碎，剩下的总楼层 r-x 用 n 个球  
 那么可以写出如下的程序解答(最后结果14次)：    
 
+{%highlight c%}
+
         int DropMarbles(int n, int r){
 		    int** marble_drop = (int**)calloc(n , sizeof(int*));  
 		    for ( int i = 0; i < n ; i++) {  
@@ -209,6 +211,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 		    return result;
 		}
 
+{%endhighlight%}
 
 > 2-47. You are given 10 bags of gold coins. Nine bags contain coins that each weigh 10 grams. One bag contains all false coins that weigh one gram less. You must identify this bag in just one weighing. You have a digital balance that reports the weight of what is placed on it.
 
@@ -228,6 +231,8 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 > 2-50. A Ramanujam number can be written two different ways as the sum of two cubes---i.e., there exist distinct a, b, c, and d such that $$a^3 + b^3 = c^3 + d^3$$. Generate all Ramanujam numbers where $$a,b,c,d < n$$.
 
 遵循“固定一边”的思路，假设a < b，当a和b确定时，c和d必然在区间(a,b)之间。则必然有$$b \geq a+3$$，否则c和d无法选择。
+
+{%highlight c%}
 
 	#include <vector>
 	using std::vector;
@@ -277,6 +282,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 	    }
 	  }
 	}
+{%endhighlight%}
 
 > 2-51 Six pirates must divide $300 dollars among themselves. The division is to proceed as follows. The senior pirate proposes a way to divide the money. Then the pirates vote. If the senior pirate gets at least half the votes he wins, and that division remains. If he doesn’t, he is killed and then the next senior-most pirate gets a chance to do the division. Now you have to tell what will happen and why (i.e., how many pirates survive and how the division is done)? All the pirates are intelligent and the first priority is to stay alive and the next priority is to get as much money as possible.
 
