@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Algorithm Design Manual"
+date:   2014-09-16 20:39:39
+categories: algorithm booknote
+tags: algorithm
+---
 #Chapter 1 Introduction to Algorithm Design
 ##1.1 Robot Tour Optimization
 
@@ -99,7 +106,7 @@ $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
 
 ##2.5 Reasoning About Efficiency
 ###2.5.3 String Pattern Matching
-
+{% highlight c %}
 	int findmatch(char *p, char *t){
 		int i,j; /* counters */
 		int m, n; /* string lengths */
@@ -113,6 +120,7 @@ $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
 		}
 		return(-1);
 	}
+{% endhighlight %}
 
 $$O((n-m)(m+2)) \rightarrow O(n+m+(n-m)(m+2)) \rightarrow O(n+m+(n-m)m) \rightarrow O(n+m+nm-m^2) \rightarrow O(n+nm-m^2) \rightarrow O(nm)$$
 

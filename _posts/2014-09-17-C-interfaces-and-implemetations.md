@@ -2,7 +2,8 @@
 layout: post
 title:  "C Interface and Implementation"
 date:   2014-09-16 20:39:39
-categories: jekyll update
+categories: C Booknotes
+tagline: booknote C
 ---
 **C Interfaces and Implementations**
 -----
