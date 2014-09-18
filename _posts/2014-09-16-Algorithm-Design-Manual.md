@@ -6,6 +6,7 @@ categories: algorithm booknote
 tags: algorithm
 ---
 #Chapter 1 Introduction to Algorithm Design
+
 ##1.1 Robot Tour Optimization
 
 _Traveling Salesman Problem_  
@@ -23,6 +24,7 @@ _Traveling Salesman Problem_
 {%endhighlight%}
 
 ##1.3 Reasoning about Correctness
+
 ###1.3.2 Problems and Properties
 Problem specifications have two parts:
  
@@ -53,6 +55,7 @@ Hunting for counter-examples:
 2. Geometric series
 
 ##1.4 Modeling the Problem
+
 ###1.4.1 Combinatorial Objects  
 1. Permutations: arrangements, or orderings, of items.
 2. Subsets: selections from a set of items.
@@ -66,6 +69,7 @@ Hunting for counter-examples:
 > Learning to think recursively is learning to look for big things that are made from smaller things of __exactly the same type as the big thing__.
 
 #Chapter 2 Algorithm Analysis
+
 ##2.1 The RAM Model of Computation
 Machine-independent algorithm design depends upon a hypothetical computer called the _Random Access Machine_ or RAM.
 
@@ -85,12 +89,14 @@ Under the RAM model, we measure run time by counting up the number of steps an a
 ![](http://i.imgur.com/XIRLaAb.png)
 
 ##2.3 Growth Rates and Dominance Relations
+
 ###2.3.1 Dominance Relations
 When f and g belong to different classes (i.e., $$f(n) \neq \Theta(g(n))$$), we say g __dominates__ f when $$f(n) = O(g(n))$$, sometimes written $$g \gg f$$.
 
 $$n! \gg 2^n \gg n^3 \gg n^2 \gg nlogn \gg n \gg logn \gg 1$$
 
 ##2.4 Working with the Big Oh
+
 ###2.4.1 Adding Functions
 
 $$O(f(n)) + O(g(n)) \rightarrow O(max(f(n), g(n)))$$
@@ -130,12 +136,14 @@ $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
 $$O((n-m)(m+2)) \rightarrow O(n+m+(n-m)(m+2)) \rightarrow O(n+m+(n-m)m) \rightarrow O(n+m+nm-m^2) \rightarrow O(n+nm-m^2) \rightarrow O(nm)$$
 
 ##2.6 Logarithms and Their Applications
+
 ###2.6.6 Logarithms and Summations
 Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 
 ##2.7 Properties of Logarithms
 
 ##2.9 Advanced Analysis
+
 ###2.9.1 Esoteric Functions
 
 ##Chapter 2 Exercise
@@ -151,7 +159,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 
 此题可以参考[RAID](http://en.wikipedia.org/wiki/Standard_RAID_levels)磁盘阵列的方法。将不同的数据位按照条带（striping）的方式备份在不同的节点上。
 
-	Node	Node1	 Node2	  Node3	... 	Node1000
+	Node	Node1	 Node2	  Node3	 	    Node1000
 	Copy1	Data1	 Data2	  Data3			Data1000	
 	Copy2	Data1000 Data1	  Data2			Data999
 	Copy3	Data999	 Data1000 Data1			Data998
@@ -413,9 +421,12 @@ The _dictionary_ data type permits access to data items by content
 ![](http://i.imgur.com/sa2YcXd.png)
 
 ##3.4 Binary Search Trees
+
 ###3.4.1 Implementing Binary Search Tree
 
 ![](http://i.imgur.com/vsqn5yf.png)
+
+* Data Structure
 
 	typedef struct tree {
 		item_type item; /* data item */

@@ -31,7 +31,7 @@ body {
 img { max-width:95%; }
 
 /* IE6 ignores this and uses default size of 16pt */
-html>body { font-size:16px; }
+html>body { font-size:18px; }
 p { margin: 0 0 1.5em 0; text-align: justify; }
 
 a { text-decoration: none; color: #339; }
@@ -47,14 +47,22 @@ h1,h2,h3,h4 {
 	clear: left; 	
 	font-family: 'lucida grande', sans-serif; 
 }
-h1 { margin-bottom: 1em; }
-h2 {
-	font-size: 100%;
-	line-height: 1.5em;
-	margin:1.5em 0 1.5em 0;
+h1 { margin-bottom: 1em; 
+    font-size:1.5em;
 	font-weight:bold;
 }
 
+h2 {
+	font-size: 1.4em;
+  margin: 0.8em 0 0.8em 0;
+}
+h3{
+  font-size:1.3em;
+  margin: 0.5em 0 0.5em 0;
+}
+h4{
+  font-size:1.1em;
+}
 hr { 
 	border-top: 1px solid silver;
 	border-bottom: none;

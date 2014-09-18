@@ -9,47 +9,65 @@ tags: C++
 
 ## 	9.2 顺序容器的初始化 ##
 
-     C<T> c; //名为c的空容器
-     C c(c2);
-     C c(b,e); //b，e为迭代器
-     C c(n,t);//n个值为t的容器
+{%highlight c++%}
+C<T> c; //名为c的空容器
+C c(c2);
+C c(b,e); //b，e为迭代器
+C c(n,t);//n个值为t的容器
+{%endhighlight%}
+
 ## 9.3 容器元素操作 ##
+
 ### 9.3.3 添加元素 ###
 
-    c.push_back(t):void
-    c.push_front(t):void//only for list and deque
-    c.insert(p,t):c::iterator //在迭代器p的前面添加新元素t，返回指向新元素的迭代器
-    c.insert(p,n,t):void
-    c.insert(p,b,e):void
+{%highlight c++%}
 
+c.push_back(t):void
+c.push_front(t):void//only for list and deque
+c.insert(p,t):c::iterator //在迭代器p的前面添加新元素t，返回指向新元素的迭代器
+c.insert(p,n,t):void
+c.insert(p,b,e):void
+{%endhighlight%}
 ### 9.3.5 获取容器大小 ###
 
-	c.size():c::size_type
-	c.empty():bool
+{%highlight c++%}
 
+c.size():c::size_type
+c.empty():bool
+{%endhighlight%}
 ### 9.3.5 访问元素 ###
 
-	c.back()
-	c.front()
-	c[n]       // only for vector and deque
-	c.at(n)  // only for vector and deque
+{%highlight c++%}
+
+c.back()
+c.front()
+c[n]       // only for vector and deque
+c.at(n)  // only for vector and deque
+{%endhighlight%}
 
 ### 9.3.7删除元素 ###
 
-	c.erase(p):c::iterator
-	c.erase(b,e):c::iterator
-	c.clear():void
-	c.pop_back():void
-	c.pop_front():void //only for list and deque
+{%highlight c++%}
+
+c.erase(p):c::iterator
+c.erase(b,e):c::iterator
+c.clear():void
+c.pop_back():void
+c.pop_front():void //only for list and deque
+{%endhighlight%}
 
 ### 9.3.8赋值 ###
 
-	c1=c2;
-	c1.swap(c2);
-	c.assign(b,e);
-	c.assign(n,t);
+{%highlight c++%}
+
+c1=c2;
+c1.swap(c2);
+c.assign(b,e);
+c.assign(n,t);
+{%endhighlight%}
 
 # Chapter 12 Class     （Anstract and Encapsulation） #
+
 ## 12.1   类的定义和声明 ##
   C++中，类可以用struct和class来声明，类的生命和定义一般都在头文件中。再累内部定义的函数默认为inline  
 
@@ -67,8 +85,10 @@ tags: C++
   const函数只能返回*this作为const引用  
 
   任意成员函数（包括const成员）都可以改变mutable对象的值  
+
 ## 12.3 类作用域 ##
   函数局部作用域(形参)->类作用域（Screen::height）->外围作用域（::height）
+
 ## 12.4 构造函数 ##
   构造函数初始化式 : 初始化阶段+普通的计算阶段  
   可以初始化const对象或者应用类型的对象，但不能对他们赋值  
@@ -89,6 +109,7 @@ tags: C++
    1. 构造函数声明为explicit，抑制隐式转换  
    2. 为了转换而显式地使用构造函数
   对于没有定义构造函数且全体成员均为public的类，可以用字面量初始化（一般只于struct）  
+
 ## 12.5 友元：允许一个类将其非公有成员的访问权授予指定的函数或者类 ##
 
     friend class Window_Mgr;//class
@@ -104,6 +125,7 @@ tags: C++
   和其他成员一样，static成员未定义直接使用会引发链接错误。
 
 # Chapter13 复制控制 #
+
 ## 13.1 复制构造函数：只有单个形参，且该形参是对本类型对象的引用 ##
   直接初始化：将初始化式放在圆括号中，调用与实参匹配的构造函数 string dots(10,'.');  
   复制初始化：使用=符号（不是赋值），总是调用复制构造函数string null_book = "123";  
@@ -112,12 +134,16 @@ tags: C++
   2. 函数的形参与返回值（类类型，不是引用或指针）
   3. 容器元素的初始化vector<Exmpl> vec(3);调用默认构造函数1次，调用复制构造函数3次.销毁时先调用1次析构函数销毁临时变量，再调用3次析构函数销毁容器中的变量
   4. 数组初始化列表
+
 ## 13.2 赋值操作符:等号的赋值表达式 ##
 
-      class Sales_item{
-       public:
-    	Sales_item& operator=(const Sales_item&);
-      }
+{%highlight c++%}
+
+class Sales_item{
+    public:
+        Sales_item& operator=(const Sales_item&);
+}
+{%endhighlight%}
 
 ## 13.3 析构函数：无论类是否定义了自己的析构函数，都会创建和运行合成析构函数 ##
   1. delete动态分配的对象时调用
@@ -129,6 +155,7 @@ tags: C++
   2. 定义值型类   （动态创建新的指针）
  
 # Chapter14 重载操作符与转换 #
+
 ## 14.1 重载操作符 ##
   重载操作符必须具有一个类类型操作数
 
@@ -137,13 +164,16 @@ tags: C++
   可以定义为成员函数，也可以定义为非成员普通函数。操作符定义为非成员函数时，必须将它们设置为操作类的友元
 
   赋值=，下标[]，调用()，成员访问箭头->必须定义为成员函数
+
 ## 14.8 调用函数符和函数对象 ##
   定义了调用操作符的类，称为函数对象（function object），它门是行为类似函数的对象
 
   标准库定义的函数对象<functional>
 
-	greater_equal<int> gtr;//greater_equal<int>是类名，operator()是成员函数，只能对于对象调用，必须创建对象
-	if(gtr(iter->size(),10)){...}
+{%highlight c++%}
+greater_equal<int> gtr;//greater_equal<int>是类名，operator()是成员函数，只能对于对象调用，必须创建对象
+if(gtr(iter->size(),10)){...}
+{%endhighlight%}
 
 函数适配器：
 绑定器`bind2nd(less_equal<int>(), 10);`
@@ -157,10 +187,12 @@ tags: C++
   不能有连续的类类型转换，即A->B, B->C, 不能有A->C
 
 # Chapter 15 面向对象编程 #
+
 ## 15.1 概述 ##
   1. **继承**（inheritance）：派生类（derived class）能够继承基类（base class）定义的成员，可以不改变与派生类具体特性不相关的操作，可以重新定义那些与派生类型相关的成员函数，将函数特化。还可以定义更多的成员。
   2. **动态绑定**（dynamic binding）：使用继承层次中任意类型 的对象，无需关心对象的具体类型，无需区分函数是在基类还是在派生类中。
   3. 通过基类的**引用（或指针）**调用虚函数时将发生动态绑定。用引用或指针调用的虚函数在运行时确定，被调用的函数是引用或指针所指对象的实际类型所定义的。
+
 ## 15.2 定义基类和派生类 ##
   virtual启用动态绑定。对于非虚函数的调用在编译时确定。
 
@@ -175,6 +207,7 @@ tags: C++
   派生类一般会重定义所继承的虚函数，否则使用基类中定义的版本
 
   每个派生类对象都有其基类部分，类可以访问其基类 的public和protected成员，就好像是自己的成员一样
+
 ###15.2.4 virtual与其他成员函数 ###
   要触发动态绑定，必须满足两个条件 
 
@@ -205,29 +238,38 @@ tags: C++
   1. 接口继承与实现继承：public派生类继承基类的接口 private和protected派生的类不继承基类的接口，这些派生通常被称为实现继承
   2. 去除个别成员 using Base::size; 派生类可以恢复继承成员的访问级别，但不能改变基类中指定的访问级别
   3. 默认继承保护级别：使用class定义的派生类默认具有private继承，用struct定义的类默认具有public继承
+
 ###15.2.6 友元关系不继承：
 1. 基类的友元对派生类没有特殊访问权限 
 2. 如果基类被授予友元关系，基类的派生类也不能访问授予友元关系的类
+
 ## 15.3 转换与继承 ##
+
 ###15.3.1 派生类到基类的转换 ###
   1.  void method(A& a); void method(A a);
    一个是将派生类对象转换为基类类型引用，一个是用派生类对象对基类对象进行初始化或赋值（需要复制构造函数）
   2. 用派生类对象对基类对象进行初始化或赋值
   派生类的派生部分在对基类初始化或赋值时被“切掉”了（slide down）
   3. 派生类到基类转换的可访问性
+
 ### 15.3.2 基类到派生类的自动转换不存在 ###
 
-      Bulk_item bulk;
-      Item_base *itemP = &bulk;
-      Bulk_item *bulkP =  itemP; //ERROR
+{%highlight c++%}
+Bulk_item bulk;
+Item_base *itemP = &bulk;
+Bulk_item *bulkP =  itemP; //ERROR
+{%endhighlight%}
 
 ##15.4 构造函数和复制控制：当构造、复制、赋值、撤销派生类对象时，也会构造、复制、赋值、撤销这些基类子对象##
+
 ###15.4.2 派生类构造函数：每个派生类构造函数除了初始化自己的数据成员之外，还要初始化基类
+
 ####   1. 合成的派生类默认构造函数 ####
    对于Bulk_item类，合成默认构造函数会这样执行:
 
 > 调用Item_base的默认构造函数，将isbn成员初始化为空串，将price成员初始化为0,用常规变量初始化规则初始化Bulk_item的成员。
-> 
+ 
+
 ####   2. 默认构造函数 ####
    首先使用基类默认构造函数 ，载初始化派生类的部分
 
@@ -235,29 +277,40 @@ tags: C++
 派生类构造函数的初始化卡列表只能初始化派生类的成员，不能直接初始化继承成员
 派生类构造函数通过将基类包含在构造函数初始化列表中来间接初始化继承成员
    
-	Bulk_item(const std::string& book, double sales_price, std::size_t qty = 0, double disc_rate = 0.0):
-	Item_base(book, sales_price), min_qty(qty), discount(disc_rate){ }
+{%highlight c++%}
+Bulk_item(const std::string& book, double sales_price, std::size_t qty = 0, double disc_rate = 0.0):
+Item_base(book, sales_price), min_qty(qty), discount(disc_rate){ }
+{%endhighlight%}
 
 构造函数初始化列表为类的基类和成员提供初始值，并不指定初始化的顺序。首先初始化基类，然后根据声明次序初始化派生类的成员
+
 ####   4. 只能初始化直接基类 ####
 
 ### 15.4.3 复制控制和继承 ###
+
 ####1. 如果派生类定义了自己的复制构造函数，该复制构造函数一般应显式使用基类复制构造函数初始化对象的基类部分。 ####
 如果省略基类初始化代码,下面的构造函数将使Base部分保存默认值，Derived成员是另一对象的副本
 
+{%highlight c++%}
+
 	Derived(const Derived& d){ } 
+{%endhighlight%}
 
 ####   2. 派生类赋值操作符 ####
 
-    Derived &Derived::operator=(const Base& rhs){
-		if(this != &rhs){
- 			Base::operator=(rhs);
-		}
-		return *this;
-    }
+{%highlight c++%}
+
+Derived &Derived::operator=(const Base& rhs){
+	if(this != &rhs){
+ 		Base::operator=(rhs);
+	}
+	return *this;
+}
+{%endhighlight%}
 
 ####  3. 派生类析构函数： 派生类析构函数不负责撤销积累对象的成员。编译器总是显示调用派生类对象基类部分的析构函数。 ####
 首先运行派生类析构函数，然后按照继承层次依次向上调用各基类析构函数
+
 ###      15.4.4 虚析构函数 ###
    作为基类使用的类都应该提供虚析构函数
 
@@ -267,6 +320,7 @@ tags: C++
    如果在构造函数和析构函数中调用虚函数，则运行的是为构造函数和析构函数自身类型定义的版本（动态绑定）
 
 ## 15.5 继承情况下的类作用域 ##
+
 ###      15.5.1 名字查找在编译时发生（静态查找） ###
    基类类型的指针、引用或对象只能访问对象的基类部分，与实际的类型无关。
 
@@ -287,15 +341,21 @@ tags: C++
    2. 在该类(静态类型)中查找函数，如果找不到，就在其基类中查找，如此循着继承链往上找
    3. 一旦找到了改名字，就进行常规类型检查，查看该函数调用是否合法
    4. 假定函数调用合法，编译器就生成代码。如果函数是虚函数或通过引用或指针调用，编译器生成代码以确定根据对象的动态类型运行哪个函数版本。否则，编译器生成代码直接调用函数
+
 ## 15.6 纯虚函数 ##
 含有（或继承）一个或多个纯虚函数的类是抽象基类（Abstract base class）。不能创建抽象类型的对象。相当于Java中的抽象类(Abstract Class)
+
 ## 15.7 容器与继承 ##
 
-    multiset<Item_base> basket;
-    Bulk_item bulk;
-    basket.insert(bulk); // ok but bulk is sliced down to its base part
+{%highlight c++%}
+
+multiset<Item_base> basket;
+Bulk_item bulk;
+basket.insert(bulk); // ok but bulk is sliced down to its base part
+{%endhighlight%}
                          
 # Chapter16 模板与泛型编程 #
+
 ## 16.1 模板定义 ##
   模板定义以template开始，后接模板形参表
 
@@ -308,12 +368,14 @@ tags: C++
   3. **模板形参**：每一个模板形参的前面都必须带上关键字class或typename
 
   4. **非类型模板形参**：调用函数时非类型形参将用值代替，值的类型在模板形参表中指定。在需要常量表达式的时候，可使用非类型形参
+
 ## 16.2 实例化 ##
   编译器用模板产生指定的类或者函数的特定类型版本。产生模板的特定类型实例的过程称为实例化。
 
   使用类模板时，必须显示指定模板实参。 Queue不是类型，Queue<string>, Queue<int>才是类型
 
   使用函数模板时，通常会为推断模板实参
+
 ### 16.2.1 模板实参推断 
   从函数实参确定模板实参的类型和值的过程叫做模板实参推断（template argument deduction）
          
@@ -325,16 +387,18 @@ tags: C++
   类型转换的限制只适用于类型为模板形参的那些实参
   
   可以使用函数模板对函数指针进行初始化或赋值
+{%highlight c++%}
 
-      template <typename T> int compare(const T&, const T&);
-      int (&pf1) (const int&, const int&) = compare; //OK
-
+template <typename T> int compare(const T&, const T&);
+int (&pf1) (const int&, const int&) = compare; //OK
+{%endhighlight%}
   获取函数模板实例化的地址的时候，上下文必须是：它允许为每个模板形参确定唯一的类型或值
 
 ### 16.2.2 函数模板的显式实参
   在返回类型中使用类型形参。指定返回类型的一种方式是引入第三个模板形参，他必须由调用者显式指定
 
   显式模板实参从左至右与对应模板形参相匹配。加入可以从函数形参推断，则只有结尾的形参的显式模板实参可以省略。
+
 ##  16.3 模板编译模型 ##
    要进行实例化，编译器必须能够访问定义模板的源代码
 
