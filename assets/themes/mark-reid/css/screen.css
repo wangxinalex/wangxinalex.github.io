@@ -47,8 +47,9 @@ h1,h2,h3,h4 {
 	clear: left; 	
 	font-family: 'lucida grande', sans-serif; 
 }
-h1 { margin-bottom: 1em; 
-    font-size:1.5em;
+h1 { 
+  margin-bottom: 1em 0 1em 0; 
+  font-size:1.5em;
 	font-weight:bold;
 }
 
@@ -71,6 +72,13 @@ hr {
 }
 
 sup { line-height: 1ex; }
+
+table{
+    border: 2px solid silver;
+}
+table td{
+    border: 1px solid silver;
+}
 
 #site {
 	max-width: 66em;
@@ -367,9 +375,9 @@ pre:hover {
 }
 code {
   font-family: "courier new";
-	font-size: 1em;
+	font-size: 1.2em;
 	background-color: #f7f7ff;
-	line-height: 1.4em;
+	line-height: 1.2em;
 }
 pre > code {
 	background-color: transparent;
