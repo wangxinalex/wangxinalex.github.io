@@ -49,6 +49,7 @@ $$b \Rightarrow c \Rightarrow d \vee e \equiv (b \Rightarrow c)\Rightarrow (d \w
 ##1.5 Tautologies
 
 The basic way to show that proposition is a tautology is to show that its evaluation yields T in every possible state.
+
 > To prove a conjecture, it is necessary to prove that it is true in all cases; to disprove a conjecture, it is sufficient to find a single case where it is false.
 
 ##1.6 Propositions as Sets of States
@@ -118,7 +119,7 @@ $$\vee-E:\frac{E_1\vee \cdots \vee E_n, E_1\Rightarrow E, \cdots , E_n\Rightarro
 
 $$\Rightarrow-E: \frac{E_1\Rightarrow E_2, E_1}{E_2}$$
 
-Rule $$\Rightarrow-E$$ is called _modus ponens_(演绎推理).
+Rule $\Rightarrow-E$ is called _modus ponens_(演绎推理).
 
 $$=-I: \frac{E_1\Rightarrow E_2, E_2\Rightarrow E_1}{E_1=E_2}$$
 
@@ -137,6 +138,7 @@ A theorem of the form "From $$e_1,\cdots, e_n$$ infer $$e$$" is interpreted as: 
 ![](http://i.imgur.com/AnUdxFw.png)
 
 ###Proof by Contradiction
+
 $$\neg-I: \frac{From\  E\ infer\ E_1\wedge \neg E_1}{\neg E}$$
 
 $$\neg-E: \frac{From\ \neg E\ infer\ E_1\wedge \neg E_1}{E}$$
@@ -152,6 +154,7 @@ $$\neg-E: \frac{From\ \neg E\ infer\ E_1\wedge \neg E_1}{E}$$
 $$\frac{From\ E_1(p),\cdots,E_n(p)\ infer\ E(p)}{From\ E_1(G), \cdots, E_n(G)\ infer\ E(G)}$$
 
 ###The Rule of Substitution of equals for equals
+
 > Let proposition E be thought of as a function of one of its identifiers, p, so that we write it as E(p). Then  if e1=e2 and E(e1) appear on previous lines, then we may write E(e2) on a line.
 
 $$\frac{e_1=e_2, E(e_1)}{E(e_2)}$$
@@ -194,7 +197,9 @@ $$\frac{e_1=e_2, E(e_1)}{E(e_2)}$$
 
 ###The operators _cand_ and _cor_
 short-circuit __and__ and __or__
+
 ![](http://i.imgur.com/EggfRKO.png)
+
 b __cand__ c: __if__ b __then__ c __else__ F  
 b __cor__ c: __if__ b __then__ T __else__ c
 
@@ -207,22 +212,29 @@ b __cor__ c: __if__ b __then__ T __else__ c
 8. cand-simplification: E1 cand (E1 cor E2) = E1
  
 ##4.2 Quantification
+
 ###Existential Quantification
+
 ![](http://i.imgur.com/vhaxr89.png)
 
 Definition of E:
+
 $$(E\ i: m\leqslant i<m:E_i)=F$$, and, for $$f\geqslant m$$
+
 $$(E\ i: m\leqslant i<k+1:E_i)=(E\ i:m\leqslant i < k:E_i)\vee E_k \square$$
 
 ###Universal Quantification
 Definition. $$(A\ i:m\leqslant i < n:E_i)=\neg(E\ i:m\leqslant i < n: \neg E_i).\ \square$$
+
 ###Numerical Quantification
 Definition. $$(N\ i:m\leqslant i < n: E_i)$$ denotes the number of different values i in range $$m \leqslant i < n$$ for which $$E_i$$ is true. N is called the _counting_ quantifier.
 
 $$(E\ i:m\leqslant i < n:E_i) = (N\ i:m\leqslant i < n: E_i)\geqslant 1$$
 
 $$(A\ i: m\leqslant i < n:E_i) = (N\ i:m\leqslant i < n:E_i)=n-m$$
+
 Now it is easy to assert than k is the third smallest integer such that $$E_k$$ holds: 
+
 $$((N\ i: 0\leqslant i < k:E_i)=2)\wedge E_k$$
 
 ###A Note on Ranges
@@ -259,12 +271,15 @@ $$E-E:\frac{(E\ i:R:E)}{\neg(A\ i:R:\neg E)}$$
 **bound-variable substitution:**$$\frac{E\ i:R:E}{E\ k:R^i_k:E^i_k}$$(provided _k_ does not appear free in R and E)
 
 ##4.6 Some Theorems about Textual Substitution and States
+
 $$s(E^x_e) = s(E^x_{s(e)})$$
+
 Substituting an expression _e_ for _x_ in E and then evaluating in _s_ yields the same result as substituting the _value_ of _e_ in _s_ for _x_ and then evaluating.
 
 Let $$s'=(s;x:s(e))$$. Then $$s'(E)=s(E^x_e)$$
 
 For a list of distinct identifiers $$\bar{x}$$, expression E and a list $$\bar{u}$$ (of the same length as $$\bar{x}$$) of fresh, distinct identifiers, we have 
+
 $$(E_{\bar{u}}^{\bar{x}})_{\bar{x}}^{\bar{u}} = E \square$$
 
 #Chapter 5 Notations and Conventions for Arrays
@@ -296,6 +311,7 @@ Q is called the _precondition_ or _input assertion_ of S; R is the _postconditio
 
 ##6.3 Proof Outlines
 ![](http://i.imgur.com/LMDApkJ.png)
+
 ![](http://i.imgur.com/Oakyc3S.png)
 
 #Part II The Semantics of a Small Language
@@ -342,6 +358,7 @@ Since x will contain the value of e after execution, then R will be true after e
 **Execution of a multiple assignment.** First, determine the variables specified by the $$x_i \circ s_i$$ and evaluate the expressions $$e_i$$ to yield values $$v_i$$. Then assign $$v_1$$ to $$x_1 \circ s_1$$, $$v_2$$ to $$x_2 \circ s_2, \ldots,$$ and $$v_n$$ to $$x_n \circ s_n$$. The order to assignment must be from left to right.
 **Definition.** $$wp("\bar{x\circ s}:=\bar{e}", R) = R_{\bar{e}}^{\bar{x\circ s}}$$
 ![](http://i.imgur.com/4YOmHHX.png)
+
 ![](http://i.imgur.com/KkCp6fe.png)
 
 #Chapter 10 The Alternative Command
@@ -363,6 +380,7 @@ Since x will contain the value of e after execution, then R will be true after e
 ###The Formal Definition of DO
 
 $$H_k(R) = H_0(R)\vee wp(IF, H_{k-1}(R)), for\ k>0$$
+
 **Definition**. $$wp(DO,R) = (E\ k:0\leqslant k:H_k(R))\square$$
 
 * Predicate $$H_k(R)$$, for k > 0, to represent the set of all states in which execution of DO terminates in k or *fewer* iterations, with R true.
@@ -377,12 +395,15 @@ $$H_k(R) = H_0(R)\vee wp(IF, H_{k-1}(R)), for\ k>0$$
     4. P must be true upon the termination.
 
 ###A theorem concerning a loop, an invariant and a bound function
+
 ![](http://i.imgur.com/gX90qwV.png)
 
 ###Annotation a loop and understanding the annotation
+
 ![](http://i.imgur.com/pFy5NJP.png)
 
 **Checklist for understanding a loop:**
+
 ![](http://i.imgur.com/YQnIJJH.png)
 
 #Part III The Development of Programs
@@ -417,6 +438,7 @@ $$H_k(R) = H_0(R)\vee wp(IF, H_{k-1}(R)), for\ k>0$$
 **Strategy for developing a loop:** First develop the guard B so that $$P\wedge \neg B \Rightarrow R$$; then develop the body so that it decreases the bound function while reestablishing the loop invariant.
 
 $$R:(0\leqslant i < m \wedge 0\leqslant j < n \wedge x  = b[i,j])\vee (i = m \wedge x \notin b)$$
+
 ![](http://i.imgur.com/FhRkBJu.png)
 
 $$\neg B: i = m\vee (i < m\ cand\ x=b[i,j])$$
@@ -438,6 +460,7 @@ $$R:q0\leqslant q1\leqslant q2\leqslant q3 \wedge perm((q0,q1,q2,q3),(Q0,Q1,Q2,Q
 $$P:perm((q0,q1,q2,q3),(Q0,Q1,Q2,Q3))$$
 
 $$t:(N\ i,j:0\leqslant i<j<4;qi>qj)$$
+
 ![](http://i.imgur.com/v3pi46C.png)
 
 #Chapter 16 Developing Invariants
@@ -461,8 +484,11 @@ For the guard of the loop, use the *complement* of the deleted conjunct, so that
 
 
 ##16.3 Replacing a Constant By a Variable
+
 $$R: s = (\sum j:0\leqslant i < n:b[j])$$
+
 R can be weakened by replacing n by a fresh variable i, yielding
+
 $$s = (\sum j: 0\leqslant j < i:b[j])$$
 
 $$P: 0\leqslant i < n\wedge s = (\sum j:0\leqslant j < i:b[j])$$
