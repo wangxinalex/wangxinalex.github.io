@@ -359,7 +359,7 @@ pre {
 	font-size: 0.75em; /* Hack to make code look same size as body font */  
 	line-height: 1.5em;	
 	color: #111;
-	background: #fffff0;
+	background: #eee;
 	border: 1px solid #ddc;
 	padding: 0.5em 1em;
 	overflow: hidden;

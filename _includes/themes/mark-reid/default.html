@@ -26,6 +26,8 @@
    <!-- Homepage CSS -->
    <link rel="stylesheet" href="{{ ASSET_PATH }}/css/screen.css" type="text/css" />
 
+<script type="text/javascript"src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -54,6 +56,15 @@
 
 <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<link rel="stylesheet" href="/prettify/prettify.css">
+<script src="/prettify/prettify.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $("pre").addClass("prettyprint");
+    prettyPrint();
+  });
 </script>
 
 </head>
