@@ -376,7 +376,7 @@ pre:hover {
 code {
   font-family: "courier new";
 	font-size: 1.1em;
-	background-color: #f7f7ff;
+	/*background-color: #f7f7ff;*/
 	line-height: 1.2em;
 }
 pre > code {
