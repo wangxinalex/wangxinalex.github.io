@@ -16,12 +16,10 @@ _Traveling Salesman Problem_
 
 ##1.2 Selecting the Right Jobs
 
-{%highlight c%}
-	OptimalScheduling(I)
-		While (I != ∅) do
-			Accept the job j from I with the earliest completion date.
-			Delete j, and any interval which intersects j from I.
-{%endhighlight%}
+    OptimalScheduling(I)
+        While (I != ∅) do
+            Accept the job j from I with the earliest completion date.
+            Delete j, and any interval which intersects j from I.
 
 ##1.3 Reasoning about Correctness
 
