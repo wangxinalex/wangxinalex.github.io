@@ -81,7 +81,7 @@ table td{
 }
 
 #site {
-	max-width: 66em;
+	width: 700px;
 	margin: 1.5em auto 3em auto;
 	line-height:1.5em;
 }
