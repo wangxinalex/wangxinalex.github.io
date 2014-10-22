@@ -219,7 +219,7 @@ ul.compact li a {
 	position: relative;
 	font-variant: small-caps;
   font-size:0.75em
-	line-height: 1em;
+	/*line-height: 1em;*/
 	margin-top: .5em;
 	margin-bottom: 0;
 }
