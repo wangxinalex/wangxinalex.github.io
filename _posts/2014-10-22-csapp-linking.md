@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CSAPP 链接"
+title: "重读CSAPP：关于程序的链接与运行"
 description: ""
 category: OS
 tags: OS Compiler C
