@@ -34,8 +34,8 @@ img { max-width:95%; }
 html>body { font-size:18px; }
 p { margin: 0 0 1.5em 0; text-align: justify; }
 
-a { text-decoration: none; color: #339; }
-a:hover { text-decoration: underline; color: #33f; }
+a { text-decoration: none; color: #666666; }
+a:hover {  color: #6699CC; }
 a.pdf:before { 
 	margin-right: 1em;
 	content: url(/files/css/icon_pdf.gif); }
@@ -259,7 +259,7 @@ ul.compact li a {
 	display: inline;
 }
 #header ul li a:hover {
-	color: blue;
+	color: #CCCC00;
   /*background-color:aqua;*/
 }
 #header .byline {
@@ -267,8 +267,7 @@ ul.compact li a {
 	font-size: 10pt;
 	line-height: 75%
 }
-#header:hover .byline a { color: silver; text-shadow: none; }
-#header:hover .byline a:hover { color: black; text-shadow: #aaa 1px 1px 2px;}
+#header:hover .byline a:hover { color: #CCCC00; text-shadow: #aaa 1px 1px 2px;}
 
 /* @group Twitter */
 #twitter_update_list { display: inline; margin: 0; }
