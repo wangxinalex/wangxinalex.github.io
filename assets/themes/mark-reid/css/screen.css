@@ -93,6 +93,18 @@ table td{
 	border: 1px solid #ccc;
 }
 
+@media all and (max-width: 500px) {
+  #site {
+    width:auto;
+  }
+  #page {
+    padding:0 0 0 0;
+  }
+  #header h1 a{
+    display:none;
+  }
+}
+
 /* More experimental CSS3 features */
 #page, #disqus_thread {
 	box-shadow: 2px 2px 8px #aaa;
@@ -210,18 +222,19 @@ ul.compact li a {
 /* @end */
 
 /* @group Header */
-#header, #header a { color: silver; }
+#header, #header a { color: silver; line-height:75%; }
 #header .hover { color: transparent; }
-#header:hover a { color: black; text-shadow: #aaa 2px 2px 3px;}
+#header:hover a { text-shadow: #aaa 2px 2px 3px;}
 #header:hover a:hover { text-decoration: none; }
 #header a:hover .hover { color: silver; }
 #header {
-	position: relative;
+  width:100%;
+	position: fixed;
 	font-variant: small-caps;
-  font-size:0.75em;
-	/*line-height: 1em;*/
-	margin-top: .5em;
+  font-size:100%;
 	margin-bottom: 0;
+  top:0;
+  background-color:#990033;
 }
 #header h1 {
 	font-family: Palatino, georgia, "times new roman", serif;
@@ -232,15 +245,13 @@ ul.compact li a {
 }
 
 #header ul {
-	position: absolute;
 	top: 0;
-	right: 0;
 	font-size: 100%;
 	line-height: 1.6em;
 	display: block;
-	margin: 0;
-	width: 50%;
-	text-align: right;
+	margin: auto auto;
+  text-align:center;
+  padding:0;
 }
 #header ul li { display: inline; }
 #header ul li a {
@@ -249,7 +260,7 @@ ul.compact li a {
 }
 #header ul li a:hover {
 	color: blue;
-	border-bottom: 2px solid blue;
+  /*background-color:aqua;*/
 }
 #header .byline {
 	color: silver;

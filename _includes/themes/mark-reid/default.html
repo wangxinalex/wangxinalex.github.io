@@ -4,6 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <meta name="viewpoint" content = "width=device-width, initial-scale=1"/>
+   
    <title>{{ page.title }} &larr; {{ page.top }}</title>
    <meta name="author" content="{{ site.author.name }}" />
 
@@ -69,16 +71,8 @@
 
 </head>
 <body id="{{ page.section }}">
-
-
-<div id="site">
   
-
   <div id="header">
-    <h1>
-    	<a href="{{ HOME_PATH }}" title="{{ site.title }}">{{ site.title }}</a>
-    	<span class="byline">&larr; <a href="{{ HOME_PATH }}">{{ site.author.name }}</a></span>
-    </h1>
     <ul class="nav">
       <li><a class="home" href="{{ HOME_PATH }}">Home</a></li>
       <li><a  href="/archive.html">Archive</a></li>
@@ -88,20 +82,14 @@
     </ul>
   </div>
 
+<div id="site">
   {{ content }}
   
 
   <div id="footer">
   	<address>
-  		<span class="copyright">
-  			Content by <a href="/info/site.html">{{ site.author.name }}</a>. Design by 
-  			<a href="http://mark.reid.name/">Mark Reid</a>
-  			<br/>
-  			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)			
-  		</span>
-  		<span class="engine">
+  			Content by <a href="/info/site.html">{{ site.author.name }}</a>.  
   			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
-  		</span>
   	</address>
   </div>
   
