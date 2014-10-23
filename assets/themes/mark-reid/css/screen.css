@@ -108,6 +108,20 @@ table td{
   }
 }
 
+@media only screen 
+and (min-device-width:320px)
+and (max-device-width:480px){
+  #site {
+    width:auto;
+  }
+  #page {
+    padding:0 0 0 0;
+  }
+  #header h1 a{
+    display:none;
+  }
+}
+
 /* More experimental CSS3 features */
 #page, #disqus_thread {
 	box-shadow: 2px 2px 8px #aaa;
