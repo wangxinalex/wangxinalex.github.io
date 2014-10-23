@@ -96,7 +96,7 @@ table td{
 	border: 1px solid #ccc;
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 800px) {
   #site {
     width:auto;
   }
