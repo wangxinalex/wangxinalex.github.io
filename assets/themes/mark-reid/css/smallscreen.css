@@ -107,7 +107,7 @@ table td{
 }
 
 .posts{
-  font-size:1.4em;
+  font-size:1.8em;
 }
 #disqus_thread { padding-top: 0; }
 
@@ -481,8 +481,8 @@ p.delicious-extended:before { content: ' — '; }
 #footer {
 	margin-top: 0;
 	color: grey;
-	font-size: 0.6em;
-  line-height:1.1em;
+	font-size: 0.4em;
+  line-height:1em;
 }
 #footer address {
 	position: relative;
