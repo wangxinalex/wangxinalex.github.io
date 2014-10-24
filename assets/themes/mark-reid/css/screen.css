@@ -34,8 +34,8 @@ img { max-width:95%; }
 html>body { font-size:18px; }
 p { margin: 0 0 1.5em 0; text-align: justify; }
 
-a { text-decoration: none; color: #666666; }
-a:hover {  color: #6699CC; }
+a { text-decoration: none; color: #6699CC; }
+a:hover {  color: #666666; }
 a.pdf:before { 
 	margin-right: 1em;
 	content: url(/files/css/icon_pdf.gif); }
@@ -228,6 +228,7 @@ ul.compact li a {
 	margin-bottom: 0;
   top:0;
   background-color:#990033;
+  font-family:Palatino, georgia, "times new roman", serif;
 }
 #header h1 {
 	font-family: Palatino, georgia, "times new roman", serif;
@@ -567,4 +568,17 @@ img.maruku-png { }
 	background:#57A957;
 	border:1px solid #4C964D;
 	color:#FFF;
+}
+@media screen and (max-device-width:800px){
+  body{
+    font-family:"微软雅黑", sans-serif;
+  }
+  #site{
+    width:100%;
+  }
+  #page{
+    padding: 0 0 0 0;
+    margin: 0 auto;
+    width:100%;
+  }
 }
