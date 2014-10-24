@@ -21,21 +21,21 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,t
 /* @end */
 
 body {
-	font-family: Palatino, georgia, "times new roman", serif;
+	font-family: Palatino, georgia, "微软雅黑", sans-serif;
 	background-color: whitesmoke;
 	background-position: center -18em;
 	background-repeat: repeat-x; 
 }
 
 /* Hack via Joel Spolsky to make image rescaling nicer in IE */
-img { max-width:95%; }
+img { max-width:100%; }
 
 /* IE6 ignores this and uses default size of 16pt */
-html>body { font-size:18px; }
+html>body { font-size:1.2em; }
 p { margin: 0 0 1.5em 0; text-align: justify; }
 
-a { text-decoration: none; color: #666666; }
-a:hover {  color: #6699CC; }
+a { text-decoration: none; color: #6699CC; }
+a:hover {  color: #666666; }
 a.pdf:before { 
 	margin-right: 1em;
 	content: url(/files/css/icon_pdf.gif); }
@@ -49,20 +49,20 @@ h1,h2,h3,h4 {
 }
 h1 { 
   margin: 1em 0 1em 0; 
-  font-size:1.5em;
+  font-size:1.3em;
 	font-weight:bold;
 }
 
 h2 {
-	font-size: 1.4em;
+	font-size: 1.2em;
   margin: 0.8em 0 0.8em 0;
 }
 h3{
-  font-size:1.3em;
+  font-size:1.1em;
   margin: 0.5em 0 0.5em 0;
 }
 h4{
-  font-size:1.1em;
+  font-size:1em;
 }
 hr { 
 	border-top: 1px solid silver;
@@ -81,7 +81,7 @@ table td{
 }
 
 #site {
-	width: 60%;
+	width: auto;
 	margin: 1.5em auto 3em auto;
 	line-height:1.5em;
 }
@@ -92,8 +92,10 @@ table td{
 #page, #disqus_thread {
 	background: white;
 /*	background-image: url(grid.png); */
-	padding: 3em 3em 1.5em 3em;
+	padding: 0 0 0 0;
 	border: 1px solid #ccc;
+  width:100%;
+  margin: 0 auto;
 }
 
 
@@ -104,6 +106,9 @@ table td{
 	-moz-box-shadow: 2px 2px 8px #aaa;	
 }
 
+.posts{
+  font-size:1.4em;
+}
 #disqus_thread { padding-top: 0; }
 
 /* TODO
@@ -146,10 +151,10 @@ table td{
 	line-height: 1.714em;
 }
 blockquote {
-	padding: 0 2.0em;
+	padding: 0 1.2em;
 	margin: 1.714em 0;
 	color: #444;
-	font-size: 0.875em;
+	font-size: 1.2em;
 	line-height: 1.714em;
   border-left: thick solid #FF9900;
 }
@@ -239,7 +244,7 @@ ul.compact li a {
 
 #header ul {
 	top: 0;
-	font-size: 100%;
+	font-size: 1.3em;
 	line-height: 1.6em;
 	display: block;
 	margin: auto auto;
@@ -360,7 +365,7 @@ p.excerpt { margin: 0; }
 /* @group Code */
 pre {
 	margin: 1em 0 1.5em 0;
-	font-size: 0.75em; /* Hack to make code look same size as body font */  
+	font-size: 1.1em; /* Hack to make code look same size as body font */  
 	line-height: 1.5em;	
 	color: #111;
 	background: #eee;
@@ -379,7 +384,7 @@ pre:hover {
 }
 code {
   font-family: "courier new";
-	font-size: 1em;
+	font-size: 1.1em;
 	/*background-color: #f7f7ff;*/
 	line-height: 1.2em;
 }
@@ -476,8 +481,8 @@ p.delicious-extended:before { content: ' — '; }
 #footer {
 	margin-top: 0;
 	color: grey;
-	font-size: 87.5%;
-	line-height: 1.3em;
+	font-size: 0.6em;
+  line-height:1.1em;
 }
 #footer address {
 	position: relative;
