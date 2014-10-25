@@ -573,6 +573,7 @@ img.maruku-png { }
     font-family:"微软雅黑", sans-serif;
   }
   #site{
+    margin:1em auto 2em auto;
     width:100%;
   }
   #page{
