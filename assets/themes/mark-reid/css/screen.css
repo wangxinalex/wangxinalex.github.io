@@ -580,6 +580,9 @@ img.maruku-png { }
     margin: 0 auto;
     width:100%;
   }
+  #header{
+    font-size:60%;
+  }
   #header, blockquote{
     font-family:Palatino, georgia, "times new roman", serif;
   }
