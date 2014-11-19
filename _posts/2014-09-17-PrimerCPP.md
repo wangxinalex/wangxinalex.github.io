@@ -109,7 +109,7 @@ tags: C++
   
   和其他成员一样，static成员未定义直接使用会引发链接错误。
 
-本章节的[思维导图](http://io.wxa.me/mindmap/class.pdf)
+本章节的[思维导图](http://io.wxa.me/mindmap/class.swf)
 
 # Chapter13 复制控制 #
 
