@@ -148,7 +148,20 @@ tags: C++
 
   可以定义为成员函数，也可以定义为非成员普通函数。操作符定义为非成员函数时，必须将它们设置为操作类的友元
 
-  赋值=，下标[]，调用()，成员访问箭头->必须定义为成员函数
+	class Sales_item {
+		friend std::istream& operator>>(std::istream&, Sales_item&);
+		friend std::ostream& operator<<(std::ostream&, Sales_item&);
+	public:
+		Sales_item& operator+=(const Sales_item&);
+	};
+
+  * 赋值=，下标[]，调用()，成员访问箭头->必须定义为成员函数
+  * IO操作符必须为非成员函数，因为其左操作数不是该类型的对象而是输入输出流
+
+	ostream& operator<<(ostream& out, const Sales_item& s){
+		out << s.isbn << "\t" << s.units_sold;
+		return out;
+	}
 
 ## 14.8 调用函数符和函数对象 ##
   定义了调用操作符的类，称为函数对象（function object），它门是行为类似函数的对象
