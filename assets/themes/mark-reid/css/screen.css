@@ -31,7 +31,7 @@ body {
 img { max-width:95%; }
 
 /* IE6 ignores this and uses default size of 16pt */
-html>body { font-size:18px; }
+html>body { font-size:16px; }
 p { margin: 0 0 1.5em 0; text-align: justify; }
 
 a { text-decoration: none; color: #6699CC; }
@@ -149,7 +149,7 @@ blockquote {
 	padding: 0 2.0em;
 	margin: 1.714em 0;
 	color: #444;
-	font-size: 0.875em;
+	font-size: 0.9em;
 	line-height: 1.714em;
   border-left: thick solid #FF9900;
 }
