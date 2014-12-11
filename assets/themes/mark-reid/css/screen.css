@@ -40,6 +40,20 @@ a.pdf:before {
 	margin-right: 1em;
 	content: url(/files/css/icon_pdf.gif); }
 
+.excerpt{
+  font-weight: lighter !important;
+  font-size: 12px !important;
+  color: grey;
+  background-color: rgb(233,234,234);
+  border-bottom: grey thin dashed;
+}
+
+.excerpt h1, .excerpt h2, .excerpt h3{
+  font-weight: lighter !important;
+  font-size: 12px !important;
+  color: grey;
+}
+
 h1,h2,h3,h4 { 
 	line-height:1em; 
 	font-size:1.5em; 
@@ -86,9 +100,19 @@ table td{
 	line-height:1.5em;
 }
 
-.emphnext{
-	font-family: Palatino, georgia, "times new roman", serif;
+li.index{
+    border-top: rgb(185, 194, 194);
+    border-top-width: thin;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 0.95em;
 }
+
+.emphnext{
+    font-family: Georgia, Times, "Times New Roman", serif;
+    padding-left: 1.0em;
+}
+
 #page, #disqus_thread {
 	background: white;
 /*	background-image: url(grid.png); */
@@ -322,7 +346,6 @@ body#Kith #header a.kith
 p.line { position: relative; margin: 0; }
 p.excerpt { margin: 0; }
 .comments { font-size: smaller; position: absolute; color: silver; right: 0; top: 0; }
-.excerpt { color: black; }
 
 /* @group Signature */
 .signature { 
@@ -588,3 +611,4 @@ img.maruku-png { }
     font-family:Palatino, georgia, "times new roman", serif;
   }
 }
+
