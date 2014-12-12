@@ -597,7 +597,7 @@ img.maruku-png { }
   }
   #page{
     padding: 0 0 0 0;
-    margin: 0 0.5em;
+    margin: 0 auto;
     width:100%;
   }
   #header{
