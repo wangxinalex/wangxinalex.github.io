@@ -589,14 +589,14 @@ img.maruku-png { }
 }
 @media screen and (max-device-width:800px){
   body{
-    font-family:"微软雅黑", sans-serif;
+    font-family: Georgia, Times, "Times New Roman", serif;
   }
   #site{
     margin:1em auto 2em auto;
     width:100%;
   }
   #page{
-    padding: 0 0 0 0;
+    padding: 0 0.5em 0 0.5em;
     margin: 0 auto;
     width:100%;
   }
@@ -604,7 +604,7 @@ img.maruku-png { }
     font-size:60%;
   }
   #header, blockquote{
-    font-family:Palatino, georgia, "times new roman", serif;
+    font-family: Georgia, Times, "Times New Roman", serif;
   }
 }
 
