@@ -504,6 +504,8 @@ p.delicious-extended:before { content: ' — '; }
 	position: relative;
 	margin: .5em 0 0 0;
 	text-align: right;
+  font-style: normal;
+  font-weight: bold;
 }
 #footer a {
 	font-variant: small-caps;
