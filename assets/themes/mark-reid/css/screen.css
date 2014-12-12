@@ -45,7 +45,7 @@ a.pdf:before {
   font-size: 12px !important;
   color: grey;
   background-color: rgb(233,234,234);
-  border-bottom: grey thin dashed;
+  /*border-bottom: grey thin dashed;*/
 }
 
 h1,h2,h3,h4 { 
