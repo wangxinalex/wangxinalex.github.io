@@ -10,3 +10,4 @@ Thumbs.db
 .rvmrc
 /_posts/_site
 /prettify/_site/
+*.swp
