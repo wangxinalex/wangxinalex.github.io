@@ -75,10 +75,7 @@ One approach to handling phrases is to consider every pair of consecutive terms 
 
 The concept of a biword index can be extended to longer sequences of words, and if the index includes variable length word sequences, it is generally referred to as a *phrase index*.
 
-**Drawbacks**:  
-
-1. High False Positive  
-2. Expanding the size of vocabulary  
+**Drawbacks**:  1. High False Positive 2. Expanding the size of vocabulary  
 
 For the reasons given, a biword index is not the standard solution
 
@@ -102,7 +99,8 @@ For the reasons given, a biword index is not the standard solution
 	                    pp2 = next(pp2)
 	                }
 	                while(l!=<> and |l[0] - pos(pp1)| > k){
-	                    delete(l[0])//delete all tokens remaining in l, which are adjacent to the previous pp1, but not adjacent to the current pp1
+	                    delete(l[0])//delete all tokens remaining in l, 
+						//which are adjacent to the previous pp1, but not adjacent to the current pp1
 	                }
 	                for each(ps in l){
 	                    add(answer, <docID(p1), pos(pp1), ps>) //add all adjacent pairs 
@@ -124,3 +122,6 @@ For the reasons given, a biword index is not the standard solution
 
 A combination strategy uses a phrase index, or just a biword index, for certain
 queries and uses a positional index for other phrase queries.
+
+#Chapter 3 Dictionaries and tolerant retrieval
+

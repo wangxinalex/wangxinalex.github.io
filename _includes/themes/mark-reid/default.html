@@ -68,6 +68,10 @@
   $(function(){
     $("pre").addClass("prettyprint linenums");
     prettyPrint();
+    var colors = ["#990033", "#FFCC33", "#FFFF66", "#CCFF99", "#6699CC", "#0099FF", "#660099"];
+    var dateObj = new Date();
+    var day = dateObj.getDay();
+    $("#header").css("background-color", colors[day]);
   });
 </script>
 
@@ -87,7 +91,6 @@
 
 <div id="site">
   {{ content }}
-  
 
   <div id="footer">
   	<address>
