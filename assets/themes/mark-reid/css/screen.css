@@ -239,9 +239,8 @@ ul.compact li a {
 /* @group Header */
 #header, #header a { color: silver; line-height:75%; }
 #header .hover { color: transparent; }
-#header:hover a { text-shadow: #aaa 2px 2px 3px;}
-#header:hover a:hover { text-decoration: none; }
-#header a:hover .hover { color: silver; }
+/*#header:hover a { text-shadow: #aaa 2px 2px 3px;}*/
+#header a:hover { font-weight: bold; }
 #header {
   width:100%;
 	position: fixed;
@@ -282,7 +281,7 @@ ul.compact li a {
 	font-size: 10pt;
 	line-height: 75%
 }
-#header:hover .byline a:hover { color: #CCCC00; text-shadow: #aaa 1px 1px 2px;}
+#header:hover .byline a:hover { color: #CCCC00; font-weight: bold; /*text-shadow: #aaa 1px 1px 2px;*/}
 
 /* @group Twitter */
 #twitter_update_list { display: inline; margin: 0; }
