@@ -6,6 +6,7 @@ category: booknote
 tags: [Information_Retrieval, Machine_Learning]
 ---
 {% include JB/setup %}
+
 ##2.2 Determining the vocabulary of terms
 
 ###2.2.1 Tokenization
