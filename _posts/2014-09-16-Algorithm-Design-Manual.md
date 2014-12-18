@@ -2,8 +2,8 @@
 layout: post
 title:  "Algorithm Design Manual"
 date:   2014-09-16 20:39:39
-categories: algorithm booknote
-tags: algorithm
+categories: Algorithm Booknote
+tags: Algorithm
 ---
 #Chapter 1 Introduction to Algorithm Design
 

@@ -2,8 +2,8 @@
 layout: post
 title:  "C Interface and Implementation"
 date:   2014-09-16 20:39:39
-categories: C Booknotes
-tagline: booknote C
+categories: C Booknote
+tagline: Booknote C
 ---
 **C Interfaces and Implementations**
 -----

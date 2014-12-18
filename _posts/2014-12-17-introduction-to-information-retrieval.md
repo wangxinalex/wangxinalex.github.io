@@ -2,8 +2,8 @@
 layout: post
 title: "Introduction to Information Retrieval"
 description: ""
-category: 
-tags: []
+category: booknote
+tags: [Information_Retrieval, Machine_Learning]
 ---
 {% include JB/setup %}
 ##2.2 Determining the vocabulary of terms

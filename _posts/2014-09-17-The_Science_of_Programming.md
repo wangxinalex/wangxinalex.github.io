@@ -2,7 +2,7 @@
 layout: post
 title:  "The Science of Programming"
 date:   2014-09-16 20:39:39
-categories: Booknotes
+categories: Booknote
 tags: Mathematics
 ---
 #Chapter 1 Propositions

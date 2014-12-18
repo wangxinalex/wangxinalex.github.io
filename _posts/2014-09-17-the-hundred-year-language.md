@@ -2,7 +2,7 @@
 layout: post
 title:  "100年后的编程语言"
 date:   2014-09-21 20:39:39
-categories: Booknotes
+categories: Booknote
 tags: 
 ---
 
