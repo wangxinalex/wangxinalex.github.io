@@ -261,6 +261,7 @@ ul.compact li a {
 	margin-bottom: 0;
   top:0;
   background-color:#666699;
+  z-index:1;
 }
 #header h1 {
 	font-family: Palatino, georgia, "times new roman", serif;

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Algorithm Design Manual (Chapter 3)"
-date:   2014-09-16 20:39:41
+date:   2014-09-17 20:39:41
 categories: Algorithm Booknote
 tags: Algorithm
 ---
@@ -225,7 +225,7 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 	using namespace std;
 	int main(int argc, char* argv[]) {
 		if(argc != 2){
-			cerr<< "argc != 2"<<endl;
+			cerr << "argc != 2" << endl;
 			return 1;
 		}
 	    string input(argv[1]);
@@ -243,7 +243,7 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 	        }
 	    }
 		if(!parentheses.empty()){
-			cout << "ERROR position: "<< parentheses.top()<<endl;
+			cout << "ERROR position: " << parentheses.top() << endl;
 			return -1;
 		}
 	    cout << "RIGHT" << endl;

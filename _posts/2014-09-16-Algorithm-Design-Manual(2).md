@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Algorithm Design Manual (Chapter 2)"
-date:   2014-09-16 20:39:40
+date:   2014-09-17 20:39:40
 categories: Algorithm Booknote
 tags: Algorithm
 ---
@@ -113,13 +113,13 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 > 2-46. __You have a 100-story building and a couple of marbles. You must identify the lowest floor for which a marble will break if you drop it from this floor. How fast can you find this floor if you are given an infinite supply of marbles? What if you have only two marbles?__
 
 这一题很有意思，如果我是面试官，我会选择这种题目……
-本解答参考[DreamRunner](http://dreamrunner.org/blog/2014/05/29/The-Algorithm-Design-Manual2/)
+本解答参考[DreamRunner](http://dreamrunner.org/blog/2014/05/29/The-Algorithm-Design-Manual2/)，可以归类为动态规划问题。
 
 1. 当小球数量无限时，简单的二分查找问题，$$\lceil log_{2}100\rceil = 7$$
-2. 当只有2个小球时，先考虑简单情况，如果从50楼往下扔，会产生两种情况
+2. 当只有2个小球时，先考虑简单情况，如果从50楼往下扔，会产生两种情况  
 	(1).碎了。那么说明会使小球碎掉的楼层在[1,50]之间，下面就只能从底层一层层往上试验  
 	(2).没碎。那么说明会使小球碎掉的楼层(50,100]之间，下面就只能从50层一层层往上试验，这显然不是最好的情况
-3. 那么考虑更一般的情况: n 个球时在总楼层 r 中某个楼层 x 抛，两种情况： 
+3. 那么考虑更一般的情况: n 个球时在总楼层 r 中某个楼层 x 抛，两种情况：   
 	(1).破碎，剩下的总楼层 x-1 用剩下的 n-1 个球;   
 	(2).没破碎，剩下的总楼层 r-x 用 n 个球  
 那么可以写出如下的程序解答(最后结果14次)：    

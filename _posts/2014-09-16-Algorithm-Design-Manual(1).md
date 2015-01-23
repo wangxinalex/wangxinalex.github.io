@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Algorithm Design Manual (Chapter 1)"
-date:   2014-09-16 20:39:39
+date:   2014-09-17 20:39:39
 categories: Algorithm Booknote
 tags: Algorithm
 ---
