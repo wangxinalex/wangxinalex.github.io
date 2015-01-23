@@ -41,7 +41,7 @@ value in the usual manner.
 
 We say that the recursive procedure has been **memoized**; it “remembers” what results it has computed previously.
 
-<pre class = "brush:cpp">
+<pre class = "brush:cpp; highlight: [14]">
 	Memoized-Cut-Rod(p,n)
 		let r[0..n] be a new array
 		for i = 0 to n
@@ -68,7 +68,7 @@ We say that the recursive procedure has been **memoized**; it “remembers” wh
 
 The bottom-up version is even simpler
 
-<pre class = "brush:cpp">
+<pre class = "brush:cpp; highlight: [7, 8] ">
 	Bottom-Up-Cut-Rod(p,n)
 		let r[0..n] be a new array
 		r[0] = 0
