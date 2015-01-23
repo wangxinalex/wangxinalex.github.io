@@ -69,7 +69,8 @@ $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
     }
 </pre>
 
-$$O((n-m)(m+2)) \rightarrow O(n+m+(n-m)(m+2)) \rightarrow O(n+m+(n-m)m) \rightarrow O(n+m+nm-m^2) \rightarrow O(n+nm-m^2) \rightarrow O(nm)$$
+$$O((n-m)(m+2)) \rightarrow O(n+m+(n-m)(m+2))$$ 
+$$\rightarrow O(n+m+(n-m)m) \rightarrow O(n+m+nm-m^2) \rightarrow O(n+nm-m^2) \rightarrow O(nm)$$
 
 ##2.6 Logarithms and Their Applications
 
@@ -185,7 +186,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 
 <pre class="brush:cpp">
 	using std::vector;
-	bool FindEqual(const vector<int> &num_cube, int low, int high, const int &sum,
+	bool FindEqual(const vector&lt;int&gt; &num_cube, int low, int high, const int &sum,
 	               vector<int> *res) {
 	  if (low >= high) {
 	    return false;
@@ -210,13 +211,13 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 	  return false;
 	}
 	
-	void RamanujamNum(int n, vector<vector<int> > *res) {
-	  vector<int> num_cube(n);
+	void RamanujamNum(int n, vector&lt;vector&lt;int&gt; &gt; *res) {
+	  vector&lt;int&gt; num_cube(n);
 	  int i, j;
 	  for (i = 0; i < n; ++i) {
 	    num_cube[i] = i*i*i;
 	  }
-	  vector<int> ram_num;
+	  vector&lt;int&gt; ram_num;
 	  bool find;
 	  for (i = 0; i < n - 1; ++i) {
 	    for (j = i + 3; j < n; ++j) {
