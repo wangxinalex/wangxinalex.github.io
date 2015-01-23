@@ -62,12 +62,17 @@
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-<link rel="stylesheet" href="/prettify/prettify.css">
-<script src="/prettify/prettify.js"></script>
+<script type="text/javascript" src="/highlighter/js/shCore.js"></script>
+<script type="text/javascript" src="/highlighter/js/shBrushCpp.js"></script>
+<script type="text/javascript" src="/highlighter/js/shAutoloader.js"></script>
+<script type="text/javascript" src="/highlighter/js/shLegacy.js"></script>
+<link href="/highlighter/css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="/highlighter/css/shThemeEclipse.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript">
   $(function(){
-    $("pre").addClass("prettyprint linenums");
-    prettyPrint();
+    //$("pre").addClass("brush: cpp; html-script: true");
+    SyntaxHighlighter.all();
     var colors = ["#660099","#990033", "#FFCC33", "#FFFF66", "#CCFF99", "#6699CC", "#0099FF"];
     var dateObj = new Date();
     var day = dateObj.getDay();

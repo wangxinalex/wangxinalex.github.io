@@ -28,6 +28,8 @@ ol ol{
 ul ul{
   font-size: 0.9em; 
   padding-left: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 body {

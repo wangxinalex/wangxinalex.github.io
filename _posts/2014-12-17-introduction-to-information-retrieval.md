@@ -41,7 +41,8 @@ normally aiming to remove inflectional endings only and to return the base or di
 ![](http://i.imgur.com/VXJtwNx.png)
 
 A simple heuristic for placing skips, which has been found to work well in practice, is that for a postings list of length P, use $$\sqrt{P}$$ evenly-spaced skip pointers.
-	
+
+<pre class = "brush:cpp">
 	IntersetWithSkips(p1, p2)
 	answer = <>
 	while p1 != NIL and p2 != NIL
@@ -62,6 +63,7 @@ A simple heuristic for placing skips, which has been found to work well in pract
 	        else 
 	            p2 = next(p2)
 	return answer
+</pre>
 
 ##2.4 Positional postings and phrase queries
 
@@ -83,6 +85,7 @@ For the reasons given, a biword index is not the standard solution
 ###2.4.2 Positional Indexes 
 ![](http://i.imgur.com/hVZxZp4.png)
 
+<pre class = "brush:cpp">
 	positional_intersect(p1, p2, k){
 	    answer = <>
 	    while(p1 != NIL and p2 != NIL){
@@ -118,6 +121,7 @@ For the reasons given, a biword index is not the standard solution
 	    }
 	    return answer
 	}
+</pre>
 
 ###2.4.3 Combination schemes
 

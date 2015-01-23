@@ -10,6 +10,7 @@ tags: Algorithm Dynamic_Programming
 
 ##Recursive top-down implementation
 
+<pre class = "brush:cpp">
 	function CUT-ROD(p,n)
 		if n == 0
 			return 0
@@ -17,6 +18,7 @@ tags: Algorithm Dynamic_Programming
 		for i = 1 to n
 			q = max(q, p[i] + CUT-ROD(p, n-i))
 		return q
+</pre>
 
 To analyze the running time of CUT-ROD, let `T(n)` denote the total number of calls made to CUT-ROD when called with its second parameter equal to n.
 
@@ -39,6 +41,7 @@ value in the usual manner.
 
 We say that the recursive procedure has been **memoized**; it “remembers” what results it has computed previously.
 
+<pre class = "brush:cpp">
 	Memoized-Cut-Rod(p,n)
 		let r[0..n] be a new array
 		for i = 0 to n
@@ -55,6 +58,7 @@ We say that the recursive procedure has been **memoized**; it “remembers” wh
 				q = max(q, p[i] + Memoized-Cut-Rod-Aux(p, n-i, r))
 		r[n] = q
 		return q
+</pre>
 
 ###Bottom-up method
 
@@ -64,6 +68,7 @@ We say that the recursive procedure has been **memoized**; it “remembers” wh
 
 The bottom-up version is even simpler
 
+<pre class = "brush:cpp">
 	Bottom-Up-Cut-Rod(p,n)
 		let r[0..n] be a new array
 		r[0] = 0
@@ -73,6 +78,7 @@ The bottom-up version is even simpler
 				q = max(q, p[i] + r[j-i])
 			r[j] = q
 		return r[n]
+</pre>
 
 ###Subproblem graphs
 
@@ -84,6 +90,7 @@ The bottom-up method for dynamic programming considers the vertices of the subpr
 
 ###Reconstructing a solution
 
+<pre class = "brush:cpp">
 	Extended-Bottom-Up-Cut-Rod(p,n)
 		let r[0..n] and s[0..n] be new arrays
 		r[0] = 0
@@ -101,6 +108,7 @@ The bottom-up method for dynamic programming considers the vertices of the subpr
 		while n > 0
 			print s[n]
 			n = n - s[n]
+</pre>
 
 ###Exercise
 
@@ -116,6 +124,7 @@ The best choice is not to cut, yet the p(6) has the maximal density.
 
 ####15.1-3
 
+<pre class = "brush:cpp">
  	Bottom-Up-Cut-Rod(p,n)
 		let r[0..n] be a new array
 		r[0] = 0
@@ -126,9 +135,11 @@ The best choice is not to cut, yet the p(6) has the maximal density.
 			q = max(q, p[j]) //not to cut
 			r[j] = q
 		return r[n]
+</pre>
 
 ####15.1-4
 
+<pre class = "brush:cpp">
 	int top_down_rod_cut(const int p[], int n) {
 	    int *r = (int*)calloc(n + 1, sizeof(int));
 	    int *s = (int*)calloc(n + 1, sizeof(int));
@@ -164,11 +175,13 @@ The best choice is not to cut, yet the p(6) has the maximal density.
 	    r[n] = q;
 	    return q;
 	}
+</pre>
 
 ####15.1-5
 vertices: n+1   
 edges: 2n-1
 
+<pre class = "brush:cpp">
 	#include <cstdlib>
 	#include <cstdio>
 	using namespace std;
@@ -195,4 +208,4 @@ edges: 2n-1
 	    free(r);
 	    return result;
 	}
-
+</pre>
