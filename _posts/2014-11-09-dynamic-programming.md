@@ -124,7 +124,7 @@ The best choice is not to cut, yet the p(6) has the maximal density.
 
 ####15.1-3
 
-<pre class = "brush:cpp">
+<pre class = "brush:cpp; highlight:[8]">
  	Bottom-Up-Cut-Rod(p,n)
 		let r[0..n] be a new array
 		r[0] = 0
@@ -139,7 +139,7 @@ The best choice is not to cut, yet the p(6) has the maximal density.
 
 ####15.1-4
 
-<pre class = "brush:cpp">
+<pre class = "brush:cpp; highlight:[26]">
 	int top_down_rod_cut(const int p[], int n) {
 	    int *r = (int*)calloc(n + 1, sizeof(int));
 	    int *s = (int*)calloc(n + 1, sizeof(int));
@@ -181,7 +181,7 @@ The best choice is not to cut, yet the p(6) has the maximal density.
 vertices: n+1   
 edges: 2n-1
 
-<pre class = "brush:cpp">
+<pre class = "brush:cpp; highlight:[19]">
 using namespace std;
 int fib(int n);
 int main(){
@@ -195,12 +195,12 @@ int fib(int n){
         return 0;
     if(n==1)
         return 1;
-    int *r = (int*)calloc(n+1, sizeof(int));
+    int *r = (int*)calloc(n + 1, sizeof(int));
     r[0] = 0;
     r[1] = 1;
         
     for ( int i = 2; i <= n; i++) {
-        r[i] = r[i-1]+r[i-2];
+        r[i] = r[i - 1] + r[i - 2];
     }
     int result = r[n];
     free(r);
