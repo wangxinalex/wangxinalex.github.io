@@ -182,30 +182,28 @@ vertices: n+1
 edges: 2n-1
 
 <pre class = "brush:cpp">
-	#include <cstdlib>
-	#include <cstdio>
-	using namespace std;
-	int fib(int n);
-	int main(){
-	    int s = fib(10);
-	    printf("result = %d\n", s);
-	    return 0;
-	}
-	
-	int fib(int n){
-	    if(n<=0)
-	        return 0;
-	    if(n==1)
-	        return 1;
-	    int *r = (int*)calloc(n+1, sizeof(int));
-	    r[0] = 0;
-	    r[1] = 1;
-	        
-	    for ( int i = 2; i <= n; i++) {
-	        r[i] = r[i-1]+r[i-2];
-	    }
-	    int result = r[n];
-	    free(r);
-	    return result;
-	}
+using namespace std;
+int fib(int n);
+int main(){
+    int s = fib(10);
+    printf("result = %d\n", s);
+    return 0;
+}
+
+int fib(int n){
+    if(n<=0)
+        return 0;
+    if(n==1)
+        return 1;
+    int *r = (int*)calloc(n+1, sizeof(int));
+    r[0] = 0;
+    r[1] = 1;
+        
+    for ( int i = 2; i <= n; i++) {
+        r[i] = r[i-1]+r[i-2];
+    }
+    int result = r[n];
+    free(r);
+    return result;
+}
 </pre>

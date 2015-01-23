@@ -16,10 +16,12 @@ _Traveling Salesman Problem_
 
 ##1.2 Selecting the Right Jobs
 
+<pre class = "brush:cpp">
     OptimalScheduling(I)
         While (I != ∅) do
             Accept the job j from I with the earliest completion date.
             Delete j, and any interval which intersects j from I.
+</pre>
 
 ##1.3 Reasoning about Correctness
 
@@ -114,6 +116,7 @@ $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
 
 ###2.5.3 String Pattern Matching###
 
+<pre class = "brush:cpp">
     int findmatch(char *p, char *t){
         int i,j; /* counters */
         int m, n; /* string lengths */
@@ -127,6 +130,7 @@ $$\Theta(f(n)) * \Theta(g(n)) \rightarrow \Theta(f(n) * g(n))$$
         }
         return(-1);
     }
+</pre>
 
 $$O((n-m)(m+2)) \rightarrow O(n+m+(n-m)(m+2)) \rightarrow O(n+m+(n-m)m) \rightarrow O(n+m+nm-m^2) \rightarrow O(n+nm-m^2) \rightarrow O(nm)$$
 
@@ -144,9 +148,11 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 ##Chapter 2 Exercise
 > 2-43 You are given a set S of n numbers. You must pick a subset S' of k numbers from S such that the probability of each element of S occurring in S' is equal (i.e., each is selected with probability k / n). You may make only one pass over the numbers. What if n is unknown?
 
+<pre class = "brush:cpp">
 	for elem in S
   		if random() < (k - S'.size)/S.size 
     		S'.add(elem)
+</pre>
 
 选中第一个元素的概率为$$\frac{k}{n}$$，选中第二个元素的概率为$$\frac{k}{n}\cdot\frac{k-1}{n-1}+\frac{n-k}{n}\cdot{k}{n-1} = \frac{k}{n}$$,以此类推……
 
@@ -154,10 +160,12 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 
 此题可以参考[RAID](http://en.wikipedia.org/wiki/Standard_RAID_levels)磁盘阵列的方法。将不同的数据位按照条带（striping）的方式备份在不同的节点上。
 
+<pre class = "brush:plain">
 	Node	Node1	 Node2	  Node3	 	    Node1000
 	Copy1	Data1	 Data2	  Data3			Data1000	
 	Copy2	Data1000 Data1	  Data2			Data999
 	Copy3	Data999	 Data1000 Data1			Data998
+</pre>
 
 在1000个节点中随机选取3个节点，共有$${{1000 \choose 3}}$$种选择方式，会造成1个数据损失的选取方法有1000种，期望值为$$1000/{{1000 \choose 3}}=6.02\times10^{-6}$$
 
@@ -179,6 +187,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 	(2).没破碎，剩下的总楼层 r-x 用 n 个球  
 那么可以写出如下的程序解答(最后结果14次)：    
 
+<pre class = "brush:cpp">
         int DropMarbles(int n, int r){
 		    int** marble_drop = (int**)calloc(n , sizeof(int*));  
 		    for ( int i = 0; i < n ; i++) {  
@@ -216,7 +225,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 		    free(marble_drop);
 		    return result;
 		}
-
+</pre>
 
 > 2-47. You are given 10 bags of gold coins. Nine bags contain coins that each weigh 10 grams. One bag contains all false coins that weigh one gram less. You must identify this bag in just one weighing. You have a digital balance that reports the weight of what is placed on it.
 
@@ -237,7 +246,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 
 遵循“固定一边”的思路，假设a < b，当a和b确定时，c和d必然在区间(a,b)之间。则必然有$$b \geq a+3$$，否则c和d无法选择。
 
-	#include <vector>
+<pre class = "brush:cpp">
 	using std::vector;
 	
 	bool FindEqual(const vector<int> &num_cube, int low, int high, const int &sum,
@@ -285,6 +294,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 	    }
 	  }
 	}
+</pre>
 
 > 2-51 Six pirates must divide $300 dollars among themselves. The division is to proceed as follows. The senior pirate proposes a way to divide the money. Then the pirates vote. If the senior pirate gets at least half the votes he wins, and that division remains. If he doesn’t, he is killed and then the next senior-most pirate gets a chance to do the division. Now you have to tell what will happen and why (i.e., how many pirates survive and how the division is done)? All the pirates are intelligent and the first priority is to stay alive and the next priority is to get as much money as possible.
 
@@ -322,6 +332,7 @@ _Pointers_ are the connections that hold the pieces of linked structures togethe
 
 * searching a list 
 
+<pre class = "brush:cpp">
 		list *search_list(list *l, item_type x){
 			if(l == NULL) return NULL;
 			if(l->item == x)
@@ -329,9 +340,11 @@ _Pointers_ are the connections that hold the pieces of linked structures togethe
 			else
 				return search_list(l->next, x);
 		}
+</pre>
 
 * insertion into a list (at the beginning)
 	
+<pre class = "brush:cpp">
         void insert_list(list **l, item_type x){
 			list *p;
 			p = malloc(sizeof(list));
@@ -339,9 +352,11 @@ _Pointers_ are the connections that hold the pieces of linked structures togethe
 			p->next = *l;
 			*l = p;
 		}
+</pre>
 
 * Deletion from a list
 		
+<pre class = "brush:cpp">
 		//find the predecessor in a single-linked list first
 		list *predecessor_list(list* l, item_type x){
 			if((l == NULL)||(l->next == NULL)){
@@ -369,6 +384,7 @@ _Pointers_ are the connections that hold the pieces of linked structures togethe
 				free(p);
 			}
 		}
+</pre>
 
 ###3.1.3 Comparison
 * List: Chopping the first element off a linked list leaves a smaller linked list. This same argument works for strings, since removing characters from string leaves a string. Lists are recursive objects.
@@ -407,16 +423,19 @@ The _dictionary_ data type permits access to data items by content
 ![](http://i.imgur.com/vsqn5yf.png)
 
 * Data Structure
-
+* 
+<pre class = "brush:cpp">
 	typedef struct tree {
 		item_type item; /* data item */
 		struct tree *parent; /* pointer to parent */
 		struct tree *left; /* pointer to left child */
 		struct tree *right; /* pointer to right child */
 	} tree;
+</pre>
 
 * Searching in a Tree
 
+<pre class = "brush:cpp">
 	tree *search_tree(tree *l, item_type x){
 		if (l == NULL) return(NULL);
 		if (l->item == x) return(l);
@@ -425,11 +444,12 @@ The _dictionary_ data type permits access to data items by content
 		else
 			return( search_tree(l->right, x) );
 	}
+</pre>
 
 This search algorithm runs in $$O(h)$$ time, where $$h$$ denotes the height of the tree.
 
 * Finding Minimum and Maximum Elements in a Tree
-
+<pre class = "brush:cpp">
 	tree *find_minimum(tree *t){
 		tree *min; /* pointer to minimum */
 		if (t == NULL) return(NULL);
@@ -438,9 +458,11 @@ This search algorithm runs in $$O(h)$$ time, where $$h$$ denotes the height of t
 			min = min->left;
 		return(min);
 	}
+</pre>
 
 * Traversal in a Tree
 
+<pre class = "brush:cpp">
 	void traverse_tree(tree *l){
 		if (l != NULL) {
 			traverse_tree(l->left);
@@ -448,9 +470,11 @@ This search algorithm runs in $$O(h)$$ time, where $$h$$ denotes the height of t
 			traverse_tree(l->right);
 		}
 	}
+</pre>
 
 * Insertion in a Tree
 		
+<pre class = "brush:cpp">
 	insert_tree(tree **l, item_type x, tree *parent){
 		tree* p;
 		if(*l == NULL){
@@ -466,6 +490,7 @@ This search algorithm runs in $$O(h)$$ time, where $$h$$ denotes the height of t
 		else
 			insert(&((*l)->right), x, *l);
 	}
+</pre>
 
 * Deletion from a Tree
 
@@ -508,8 +533,7 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 ##3.10 Exercises
 > 3-1. A common problem for compilers and text editors is determining whether the parentheses in a string are balanced and properly nested. For example, the string ((())())() contains properly nested pairs of parentheses, which the strings )()( and ()) do not. Give an algorithm that returns true if a string contains properly nested and balanced parentheses, and false if otherwise. For full credit, identify the position of the first offending parenthesis if the string is not properly nested and balanced.
 
-	#include <iostream>
-	#include <stack>
+<pre class = "brush:cpp">
 	using namespace std;
 	int main(int argc, char* argv[]) {
 		if(argc != 2){
@@ -523,7 +547,7 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 	            parentheses.push(i);
 	        } else if(input[i] == ')') {
 				if(parentheses.empty()){
-					cout << "ERROR position: "<<i<<endl;
+					cout << "ERROR position: " << i << endl;
 					return -1;
 				}else{
 					parentheses.pop();
@@ -537,9 +561,11 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 	    cout << "RIGHT" << endl;
 	    return 0;
 	}
+</pre>
 
 > 3-2. Write a program to reverse the direction of a given singly-linked list. In other words, after the reversal all pointers should now point backwards. Your algorithm should take linear time.
 
+<pre class = "brush:cpp">
 	Node* reverse_list(Node * head){
 		queue<int> node_queue;
 		Node * this_node = head;
@@ -568,9 +594,11 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 		*head = new_node;
 		return 0;
 	}
+</pre>
 
 或者还有种空间复杂度更好的（参考[DreamRunner](http://dreamrunner.org/wiki/public_html/Misc/Train/TheAlgorithmDesignManual/The-Algorithm-Design-Manual3.html)）……
 	
+<pre class = "brush:cpp">
 	void ReverseLinkedList(Node **head) {
 	  if (!head || *head == NULL) {
 	    return;
@@ -587,6 +615,7 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 	  }
 	  *head = prev;
 	}
+</pre>
 
 > 3-3. We have seen how dynamic arrays enable arrays to grow while still achieving constant-time amortized performance. This problem concerns extending dynamic arrays to let them both grow and shrink on demand.
 > 
@@ -661,9 +690,7 @@ __worst-fit heuristic__ strategy 要找到的是剩余空间最大的bin，因�
 
 (b)这里需要借助[Cartesian tree](http://en.wikipedia.org/wiki/Cartesian_tree)数据结构
 
-	#include <stdlib.h>
-	#include <limits.h>
-	#include <iostream>
+<pre class = "brush:cpp">
 	using namespace std;
 	struct node {
 	    int value;
@@ -846,6 +873,7 @@ __worst-fit heuristic__ strategy 要找到的是剩余空间最大的bin，因�
 	
 	    return 0;
 	}
+</pre>
 
 #Chapter 4 Sorting and Searching #
 ##4.1 Applications of Sorting
@@ -869,6 +897,7 @@ __worst-fit heuristic__ strategy 要找到的是剩余空间最大的bin，因�
 
 In this spirit, a _heap-labeled tree_ is defined to be a binary tree such that the key labeling of each node _dominates_ the key labeling of each of its children. In a _min-heap_, a node dominates its children by containing a smaller key than they do, while in a _max-heap_ parent nodes dominate by being bigger.
 
+<pre class = "brush:cpp">
 	typedef struct {
 		item_type q[PQ_SIZE+1]; /* body of queue */
 		int n; /* number of queue elements */
@@ -884,12 +913,14 @@ In this spirit, a _heap-labeled tree_ is defined to be a binary tree such that t
 	pq_young_child(int n){
 		return(2 * n);
 	}
+</pre>
 
 Thus we can move around the tree __without any pointers__.
 $$\sum^{h}_{i=0}{2^i} = 2^{h+1}-1 \geqslant n, \therefore h = \lfloor lg n \rfloor$$
 
 ###4.3.2 Constructing Heaps
 
+<pre class = "brush:cpp">
 	pq_insert(priority_queue *q, item_type x){
 		if (q->n >= PQ_SIZE)
 			printf("Warning: priority queue overflow insert x=%d\n",x);
@@ -908,18 +939,22 @@ $$\sum^{h}_{i=0}{2^i} = 2^{h+1}-1 \geqslant n, \therefore h = \lfloor lg n \rflo
 			bubble_up(q, pq_parent(p));
 		}
 	}
+</pre>
 
 This swap process takes constant time at each level. Since the height of an nelement heap is $$\lfloor lgn \rfloor$$, each insertion takes at most $$O(logn)$$ time. Thus an initial heap of n elements can be constructed in $$O(n logn)$$ time through n such insertions:
 
+<pre class = "brush:cpp">
 	make_heap(priority_queue *q, item_type s[], int n){
 		int i; /* counter */
 		pq_init(q);
 		for (i=0; i<n; i++)
 			pq_insert(q, s[i]);
 	}
+</pre>
 
 ###4.3.3 Extracting the Minimum
 
+<pre class = "brush:cpp">
 	item_type extract_min(priority_queue *q){
 		int min = -1; /* minimum value */
 		if (q->n <= 0) printf("Warning: empty priority queue.\n");
@@ -948,11 +983,13 @@ This swap process takes constant time at each level. Since the height of an nele
 			bubble_down(q, min_index);
 		}
 	}
+</pre>
 
 We will reach a leaf after $$\lfloor lg n\rfloor$$ bubble down steps, each constant time. Thus root deletion is completed in $$O(log n)$$ time.
 Exchanging the maximum element with the last element and calling heapify
 repeatedly gives an $$O(n logn)$$ sorting algorithm, named _Heapsort_.
 
+<pre class = "brush:cpp">
 	heapsort(item_type s[], int n){
 		int i; /* counters */
 		priority_queue q; /* heap for heapsort */
@@ -960,17 +997,20 @@ repeatedly gives an $$O(n logn)$$ sorting algorithm, named _Heapsort_.
 		for (i=0; i<n; i++)
 			s[i] = extract_min(&q);
 	}
+</pre>
 
 It is an _inplace_ sort, meaning it uses _no extra memory_ over the array containing the elements to be sorted.
 
 ###4.3.4 Faster Heap Construction
 
+<pre class = "brush:cpp">
 	make_heap(priority_queue *q, item_type s[], int n) {
 		int i; /* counter */
 		q->n = n;
 		for (i=0; i<n; i++) q->q[i+1] = s[i];
 		for (i=q->n; i>=1; i--) bubble_down(q,i);
 	}
+</pre>
 
 Multiplying the number of calls to _bubble down_ (n) times an upper bound on the cost of each operation $$O(log n)$$ gives us a running time analysis of $$O(n log n)$$.
 But note that it is indeed an upper bound, because only the last insertion will actually take $$lg n$$ steps.
@@ -979,6 +1019,7 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 
 > Problem: Given an array-based heap on n elements and a real number x, efficiently determine whether the kth smallest element in the heap is greater than or equal to x. Your algorithm should be $$O(k)$$ in the worst-case, independent of the size of the heap. Hint: you do not have to find the k-th smallest element; you need only determine its relationship to x.
 
+<pre class = "brush:cpp">
 	int heap_compare(priority_queue *q, int i, int count, int x){
 		if ((count <= 0) || (i > q->n) return(count);
 		//keep searching the successors
@@ -988,9 +1029,11 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 		}
 		return(count);
 	}
+</pre>
 
 ###4.3.5 Sorting by Incremental Insertion
 	
+<pre class = "brush:cpp">
 	InsertionSort(A)
 		A[0] = −$$\infinity$$
 		for i = 2 to n do
@@ -998,16 +1041,18 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 			while (A[j] < A[j − 1]) do
 			swap(A[j],A[j − 1])
 				j = j − 1
+</pre>
 
 ##4.5 Mergesort
-	
+
+<pre class = "brush:cpp">
 	Mergesort(A[1, n])
 		Merge( MergeSort(A[1, ceil(n/2)]), MergeSort(A[ceil(n/2) + 1, n]) )
+</pre>
 
 ![](http://i.imgur.com/2CTJt3V.jpg)
 
-{%highlight c%}
-
+<pre class = "brush:cpp">
 	mergesort(item_type s[], int low, int high){
 		int i; /* counter */
 		int middle; /* index of middle element */
@@ -1037,12 +1082,11 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 		while (!empty_queue(&buffer1)) s[i++] = dequeue(&buffer1);
 		while (!empty_queue(&buffer2)) s[i++] = dequeue(&buffer2);
 	}
-{%endhighlight%}
+</pre>
 
 ##4.6 Quicksort
 
-{%highlight c%}
-
+<pre class = "brush:cpp">
 	quicksort(item_type s[], int l, int h) {
 		int p; /* index of partition */
 		if ((h-l)>0) {
@@ -1067,7 +1111,7 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 		swap(&s[p],&s[firsthigh]);
 		return(firsthigh);
 	}
-{%endhighlight%}
+</pre>
 
 ![](http://i.imgur.com/JOI8wH0.png)
 
@@ -1077,6 +1121,7 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 
 ##4.9 Binary Search and Related Algorithms
 
+<pre class = "brush:cpp">
 	int binary_search(item_type s[], item_type key, int low, int high){
 		int middle; /* index of middle element */
 		if (low > high) return (-1); /* key not found */
@@ -1087,13 +1132,16 @@ $$\sum_{h=0}^{\lfloor lg n\rfloor}{\lceil \frac{n}{2^{h+1}} \rceil h} \leqslant 
 		else
 			return(binary_search(s,key,middle+1,high));
 	}
+</pre>
 
 ###4.9.1 Counting Occurrences
 A faster algorithm results by modifying binary search to search for the _boundary_ of the block containing k, instead of k itself. 
 
 * Suppose we delete the equality test
 
+<pre class = "brush:cpp">
 		if (s[middle] == key) return(middle);
+</pre>
 
 * All searches will now be unsuccessful, since there is no equality test. The search will proceed to the right half whenever the key is compared to an identical array element, eventually terminating at the right boundary. 
 * Repeating the search after reversing the direction of the binary comparison will lead us to the left boundary.
@@ -1161,21 +1209,20 @@ $$T(n) = aT(n/b)+f(n)$$
 * 那么如果我们将这两个组合替换为$$(x_0,x_{2n-1}),(x_a,x_b)$$，这两个组合的和具有以下特征：$$x_0+x_a \leqslant x_0+x_{2n-1} \leqslant x_b+x_{2n-1}, x_0+x_a \leqslant x_a+x_b \leqslant x_b+x_{2n-1}$$。
 * 因此替换之后这个组合的和的最大值依然能够在所有的组合中保持最小，因此这依然是最优解。
 
+<pre class = "brush:cpp">
 		start = 0;
 		end = 2n - 1;
 		while (start < end) {
 		  pair(S[star], S[end]);
 		  start++;
 		  end--;
+</pre>
 
 > 4-12 Devise an algorithm for finding the k smallest elements of an unsorted set of n integers in $$O(n + klogn)$$.
 
 以$$O(n)$$的复杂度建立最小堆，执行k次`extract_min`操作，每次的时间复杂度为$$O(logn)$$。
 
-{%highlight c%}
-
-	#include <stdlib.h>
-	#include <iostream>
+<pre class = "brush:cpp">
 	using namespace std;
 	
 	typedef struct s_pq {
@@ -1253,4 +1300,4 @@ $$T(n) = aT(n/b)+f(n)$$
 	    }
 	    return 0;
 	}
-{%endhighlight%}
+</pre>
