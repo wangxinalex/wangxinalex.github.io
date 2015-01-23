@@ -1,11 +1,12 @@
 ---
 layout: post
 title:  "Algorithm Design Manual (Chapter 4)"
-date:   2014-09-17 20:39:42
+date:   2014-09-17 20:39:43
 categories: Algorithm Booknote
 tags: Algorithm
 ---
 #Chapter 4 Sorting and Searching #
+
 ##4.1 Applications of Sorting
 * Searching: binary search
 * Closest pair
@@ -23,6 +24,7 @@ tags: Algorithm
 * Non-numerical data
 
 ##4.3 Heap sort
+
 ###4.3.1 Heaps
 
 In this spirit, a _heap-labeled tree_ is defined to be a binary tree such that the key labeling of each node _dominates_ the key labeling of each of its children. In a _min-heap_, a node dominates its children by containing a smaller key than they do, while in a _max-heap_ parent nodes dominate by being bigger.
