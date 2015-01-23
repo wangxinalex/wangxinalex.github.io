@@ -9,47 +9,59 @@ tags: C++
 
 ## 	9.2 顺序容器的初始化 ##
 
-    C<T> c; //名为c的空容器
+<pre class = "brush:cpp">
+    C&lt;T&gt; c; //名为c的空容器
     C c(c2);
     C c(b,e); //b，e为迭代器
     C c(n,t);//n个值为t的容器
+</pre>
 
 ## 9.3 容器元素操作 ##
 
 ### 9.3.3 添加元素 ###
 
+<pre class = "brush:cpp">
     c.push_back(t):void
     c.push_front(t):void//only for list and deque
     c.insert(p,t):c::iterator //在迭代器p的前面添加新元素t，返回指向新元素的迭代器
     c.insert(p,n,t):void
     c.insert(p,b,e):void
+</pre>
 
 ### 9.3.5 获取容器大小 ###
 
+<pre class = "brush:cpp">
     c.size():c::size_type
     c.empty():bool
+</pre>
 
 ### 9.3.5 访问元素 ###
 
+<pre class = "brush:cpp">
     c.back()
     c.front()
     c[n]       // only for vector and deque
     c.at(n)  // only for vector and deque
+</pre>
 
 ### 9.3.7删除元素 ###
 
+<pre class = "brush:cpp">
     c.erase(p):c::iterator
     c.erase(b,e):c::iterator
     c.clear():void
     c.pop_back():void
     c.pop_front():void //only for list and deque
+</pre>
 
 ### 9.3.8赋值 ###
 
+<pre class = "brush:cpp">
     c1=c2;
     c1.swap(c2);
     c.assign(b,e);
     c.assign(n,t);
+</pre>
 
 # Chapter 12 Class     （Anstract and Encapsulation） #
 
@@ -78,18 +90,24 @@ tags: C++
   构造函数初始化式 : 初始化阶段+普通的计算阶段  
   可以初始化const对象或者应用类型的对象，但不能对他们赋值  
 
+<pre class = "brush:cpp">
     ConstRef::ConstRef(int ii):i(ii),ci(ii),ri(ii){}  
- 
+</pre> 
+
   初始化列表仅仅指定值，不指定顺序，初始化的顺序就是定义的顺序  
   构造函数中常常制定默认实参 
 
+<pre class = "brush:cpp">
     Sales_item(const std::string &book=" "):isbn(book),revenue(0.0){} 
+</pre> 
  
   只有当一个类没有定义构造函数时，编译器才会自动生成一个默认构造函数。默认构造函数只对定义在全局作用域中的对象才初始化，对于定义在局部作用域中的内置或复合类型的成员不初始化。  
 
   **隐式转换**：用单个实参来定义的构造函数定义了从形参类型到该类类型的一个隐式转换。  
 
+<pre class = "brush:cpp">
     item.same_isbn("99-99");//使用接受一个字符串的Sales_item构造函数生成一个新的（临时的）Sales_item对象 
+</pre> 
  
    1. 构造函数声明为explicit，抑制隐式转换  
    2. 为了转换而显式地使用构造函数
@@ -97,8 +115,10 @@ tags: C++
 
 ## 12.5 友元：允许一个类将其非公有成员的访问权授予指定的函数或者类 ##
 
+<pre class = "brush:cpp">
     friend class Window_Mgr;//class
     friend Window_Mgr& Window_Mgr::relocate();//function
+</pre> 
 
 ## 12.6 static类成员：独立于该类的任意对象而存在，每个static数据成员是与类相关联的对象，并不与该类的对象相关联 ##
   static 数据成员必须在类定义体的外部定义
@@ -124,11 +144,12 @@ tags: C++
 
 ## 13.2 赋值操作符:等号的赋值表达式 ##
 
-
+<pre class = "brush:cpp">
     class Sales_item{
         public:
             Sales_item& operator=(const Sales_item&);
     }
+</pre> 
 
 ## 13.3 析构函数：无论类是否定义了自己的析构函数，都会创建和运行合成析构函数 ##
   1. delete动态分配的对象时调用
@@ -148,6 +169,7 @@ tags: C++
 
   可以定义为成员函数，也可以定义为非成员普通函数。操作符定义为非成员函数时，必须将它们设置为操作类的友元
 
+<pre class = "brush:cpp">
 	class Sales_item {
 		friend std::istream& operator>>(std::istream&, Sales_item&);
 		friend std::ostream& operator<<(std::ostream&, Sales_item&);
@@ -159,6 +181,7 @@ tags: C++
 		out << s.isbn << "\t" << s.units_sold;
 		return out;
 	}
+</pre> 
 
   * 赋值=，下标[]，调用()，成员访问箭头->必须定义为成员函数
   * IO操作符必须为非成员函数，因为其左操作数不是该类型的对象而是输入输出流 
@@ -168,8 +191,10 @@ tags: C++
 
   标准库定义的函数对象<functional>
 
-    greater_equal<int> gtr;//greater_equal<int>是类名，operator()是成员函数，只能对于对象调用，必须创建对象
+<pre class = "brush:cpp">
+    greater_equal&lt;int&gt; gtr;//greater_equal&lt;int&gt;是类名，operator()是成员函数，只能对于对象调用，必须创建对象
     if(gtr(iter->size(),10)){...}
+</pre> 
 
 函数适配器：
 绑定器`bind2nd(less_equal<int>(), 10);`
@@ -250,9 +275,11 @@ tags: C++
 
 ### 15.3.2 基类到派生类的自动转换不存在 ###
 
+<pre class = "brush:cpp">
     Bulk_item bulk;
     Item_base *itemP = &bulk;
     Bulk_item *bulkP =  itemP; //ERROR
+</pre>
 
 ##15.4 构造函数和复制控制：当构造、复制、赋值、撤销派生类对象时，也会构造、复制、赋值、撤销这些基类子对象##
 
@@ -271,8 +298,10 @@ tags: C++
 派生类构造函数的初始化卡列表只能初始化派生类的成员，不能直接初始化继承成员
 派生类构造函数通过将基类包含在构造函数初始化列表中来间接初始化继承成员
    
+<pre class = "brush:cpp">
     Bulk_item(const std::string& book, double sales_price, std::size_t qty = 0, double disc_rate = 0.0):
     Item_base(book, sales_price), min_qty(qty), discount(disc_rate){ }
+</pre>
 
 构造函数初始化列表为类的基类和成员提供初始值，并不指定初始化的顺序。首先初始化基类，然后根据声明次序初始化派生类的成员
 
@@ -283,16 +312,20 @@ tags: C++
 ####1. 如果派生类定义了自己的复制构造函数，该复制构造函数一般应显式使用基类复制构造函数初始化对象的基类部分。 ####
 如果省略基类初始化代码,下面的构造函数将使Base部分保存默认值，Derived成员是另一对象的副本
 
+<pre class = "brush:cpp">
 	Derived(const Derived& d){ } 
+</pre>
 
 ####   2. 派生类赋值操作符 ####
 
+<pre class = "brush:cpp">
     Derived &Derived::operator=(const Base& rhs){
 	    if(this != &rhs){
  		    Base::operator=(rhs);
 	    }
 	    return *this;
     }
+</pre>
 
 ####  3. 派生类析构函数： 派生类析构函数不负责撤销积累对象的成员。编译器总是显示调用派生类对象基类部分的析构函数。 ####
 首先运行派生类析构函数，然后按照继承层次依次向上调用各基类析构函数
@@ -333,9 +366,11 @@ tags: C++
 
 ## 15.7 容器与继承 ##
 
-    multiset<Item_base> basket;
+<pre class = "brush:cpp">
+    multiset&lt;Item_base&gt; basket;
     Bulk_item bulk;
     basket.insert(bulk); // ok but bulk is sliced down to its base part
+</pre>
                          
 # Chapter16 模板与泛型编程 #
 
@@ -371,9 +406,11 @@ tags: C++
   
   可以使用函数模板对函数指针进行初始化或赋值
 
-    template <typename T> int compare(const T&, const T&);
+<pre class = "brush:cpp">
+    template &lt;typename T&gt; int compare(const T&, const T&);
     int (&pf1) (const int&, const int&) = compare; //OK
-  
+</pre> 
+ 
   获取函数模板实例化的地址的时候，上下文必须是：它允许为每个模板形参确定唯一的类型或值
 
 ### 16.2.2 函数模板的显式实参
@@ -386,4 +423,3 @@ tags: C++
 
    1. 包含编译模型（inclusion compilation model）
    2. 分别编译模型（separate compilation model）:export关键字 能够知名给定的定义可能会需要在其他文件中产生实例化
-                    
