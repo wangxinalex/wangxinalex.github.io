@@ -187,7 +187,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 <pre class="brush:cpp">
 	using std::vector;
 	bool FindEqual(const vector&lt;int&gt; &num_cube, int low, int high, const int &sum,
-	               vector<int> *res) {
+	               vector&lt;int&gt; *res) {
 	  if (low >= high) {
 	    return false;
 	  }
