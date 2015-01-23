@@ -246,7 +246,7 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 
 遵循“固定一边”的思路，假设a < b，当a和b确定时，c和d必然在区间(a,b)之间。则必然有$$b \geq a+3$$，否则c和d无法选择。
 
-<pre class = "brush:cpp">
+
 	using std::vector;
 	bool FindEqual(const vector<int> &num_cube, int low, int high, const int &sum,
 	               vector<int> *res) {
@@ -293,8 +293,6 @@ Harmonic numbers: $$H(n) = \sum_{i=1}^{n}{1/i} \sim ln n$$
 	    }
 	  }
 	}
-
-</pre>
 
 > 2-51 Six pirates must divide $300 dollars among themselves. The division is to proceed as follows. The senior pirate proposes a way to divide the money. Then the pirates vote. If the senior pirate gets at least half the votes he wins, and that division remains. If he doesn’t, he is killed and then the next senior-most pirate gets a chance to do the division. Now you have to tell what will happen and why (i.e., how many pirates survive and how the division is done)? All the pirates are intelligent and the first priority is to stay alive and the next priority is to get as much money as possible.
 
@@ -423,7 +421,7 @@ The _dictionary_ data type permits access to data items by content
 ![](http://i.imgur.com/vsqn5yf.png)
 
 * Data Structure
-* 
+
 <pre class = "brush:cpp">
 	typedef struct tree {
 		item_type item; /* data item */
@@ -449,6 +447,7 @@ The _dictionary_ data type permits access to data items by content
 This search algorithm runs in $$O(h)$$ time, where $$h$$ denotes the height of the tree.
 
 * Finding Minimum and Maximum Elements in a Tree
+ 
 <pre class = "brush:cpp">
 	tree *find_minimum(tree *t){
 		tree *min; /* pointer to minimum */
