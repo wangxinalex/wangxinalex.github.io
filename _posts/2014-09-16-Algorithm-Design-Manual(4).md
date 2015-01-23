@@ -277,6 +277,7 @@ A faster algorithm results by modifying binary search to search for the _boundar
 * Repeating the search after reversing the direction of the binary comparison will lead us to the left boundary.
 
 ###4.9.2 One-sided Binary Search
+
 ###4.9.3 Square and Other Roots
 
 > Binary search and its variants are the quintessential divide-and-conquer algorithms.
@@ -286,6 +287,7 @@ A faster algorithm results by modifying binary search to search for the _boundar
 > To use divide-and-conquer as an algorithm design technique, we must divide the problem into two smaller sub-problems, solve each of them recursively, and then meld the two partial solutions into one solution to the full problem.
 
 ###4.10.1 Recurrence Relations
+
 ###4.10.2 Divide-and-Conquer Recurrences
 Divide-and-conquer algorithms tend to break a given problem into some number of smaller pieces (say a), each of which is of size $$n/b$$. Further, they spend $$f(n)$$ time to combine these sub-problem solutions into a complete result.
 $$T(n) = aT(n/b)+f(n)$$

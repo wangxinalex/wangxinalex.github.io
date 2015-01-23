@@ -225,7 +225,7 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 	using namespace std;
 	int main(int argc, char* argv[]) {
 		if(argc != 2){
-			cerr << "argc != 2" << endl;
+			fprintf(stderr, "argc != 2\n");
 			return 1;
 		}
 	    string input(argv[1]);
@@ -235,7 +235,7 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 	            parentheses.push(i);
 	        } else if(input[i] == ')') {
 				if(parentheses.empty()){
-					cout << "ERROR position: " << i << endl;
+					printf("Error position: %d\n", i);
 					return -1;
 				}else{
 					parentheses.pop();
@@ -243,10 +243,10 @@ A _hash function_ is a mathematical function that maps keys to integers. We will
 	        }
 	    }
 		if(!parentheses.empty()){
-			cout << "ERROR position: " << parentheses.top() << endl;
+			printf("Error position: %d\n", parentheses.pop());
 			return -1;
 		}
-	    cout << "RIGHT" << endl;
+	    printf("Right\n");
 	    return 0;
 	}
 </pre>
