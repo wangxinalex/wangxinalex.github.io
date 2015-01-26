@@ -628,5 +628,9 @@ img.maruku-png { }
   #header, blockquote{
     font-family: Georgia, Times, "Times New Roman", serif;
   }
+  #footer{
+    font-size: 50%;
+    line-hieght: 1em;
+  }
 }
 
