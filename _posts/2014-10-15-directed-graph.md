@@ -14,7 +14,9 @@ tags: Haskell Graph
 
 如下的有向图可以表示为如下形式：
 
+<pre class = "brush:erl">
 	graph = [(1,2),(1,3),(2,3),(3,4),(3,5),(4,5)]
+<pre>
 
 ![](http://i.imgur.com/g4esgIZ.png)
 
@@ -22,7 +24,9 @@ tags: Haskell Graph
 
 对于任意一个有向图，任意两个节点之间的所有可能路径可以表示为[[Int]]型，其中每一个列表代表一条路径所经过的节点。比如上图中从1到5的路径可以表示为
 
+<pre class = "brush:erl">
 	[[1,3,5],[1,2,3,4,5],[1,2,3,5],[1,3,4,5]]
+</pre>
 
 根据迭代计算的思路，从起点到终点的路径可以表示为两部分：
 
@@ -32,11 +36,13 @@ tags: Haskell Graph
 
 按照这个思路，写出下面的函数
 
+<pre class = "brush:erl">
 	findpathSimple::Int->Int->[[Int]]
 	findpathSimple start dest 
 	    |start == dest      = [[start]]
 	    |otherwise          = [start:path | (x, node) <- graph, x == start, path <- findpathSimple node dest]
-
+</pre>
+		
 ##有环有向图的处理
 
 ![](http://i.imgur.com/vTi1qRN.png)
@@ -45,6 +51,7 @@ tags: Haskell Graph
 
 如下面的代码所示，`detectRing`函数会在寻找下一个节点时不再从已访问过的节点中寻找(`not (elem node visited)`)，并且在递归调用时将现在访问的节点加入这个列表(`(node:visited)`)。
 
+<pre class = "brush:erl">
 	detectRing::Int->Int->[Int]->[[Int]]
 	detectRing start dest visited
 	    | start == dest     = [[start]]
@@ -52,8 +59,11 @@ tags: Haskell Graph
 								not (node `elem` visited), path <- detectRing node dest (node:visited)]
 	findpath::Int->Int->[[Int]]
 	findpath start dest = detectRing start dest [start]
-
+</pre>
+	
 运行结果如下：
 
+<pre class = "brush:erl">
 	*Main> findpath 1 5
 	[[1,2,3,4,5],[1,2,3,5],[1,3,4,5],[1,3,5]]
+</pre>
