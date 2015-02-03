@@ -16,7 +16,7 @@ tags: Haskell Graph
 
 <pre class = "brush:erl">
 	graph = [(1,2),(1,3),(2,3),(3,4),(3,5),(4,5)]
-<pre>
+</pre>
 
 ![](http://i.imgur.com/g4esgIZ.png)
 
