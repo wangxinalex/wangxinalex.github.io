@@ -353,7 +353,9 @@ member(x,T) – Return true iff x ∈ T.
 All operations must take O(log n) time on an n-element set.
 
 一般的Balanced Binary Search Tree也可以满足第一个和第三个条件，至于第二个条件，[panictak](http://blog.panictank.net/tag/data-structure/)给出了这样一种解答：
+
 ![](http://blog.panictank.net/wp-content/uploads/2011/11/3-8.2.png)
+
 在一般的Balanced BST中加入两个counter，分别记录其左子树和右子树的节点数量，这样在查找K-th smallest的节点时可以直接从跟节点计数
 
 > 3-9. A concatenate operation takes two sets S1 and S2, where every key in S1 is smaller than any key in S2, and merges them together. Give an algorithm to concatenate two binary search trees into one binary search tree. The worst-case running time should be O(h), where h is the maximal height of the two trees.
