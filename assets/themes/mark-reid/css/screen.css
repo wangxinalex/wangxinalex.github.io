@@ -184,6 +184,7 @@ blockquote {
 	font-size: 0.9em;
 	line-height: 1.714em;
   border-left: thick solid #FF9900;
+  background-color: #F5F5F5;
 }
 
 .note {
