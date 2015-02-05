@@ -613,7 +613,7 @@ img.maruku-png { }
 }
 @media screen and (max-device-width:800px){
   body{
-    font-family: Georgia, Times, "Times New Roman", serif;
+    font-family: Bitter, Georgia, serif;
   }
   #site{
     margin:1em auto 2em auto;
@@ -628,7 +628,7 @@ img.maruku-png { }
     font-size:60%;
   }
   #header, blockquote{
-    font-family: Georgia, Times, "Times New Roman", serif;
+    font-family: Bitter, Georgia, serif;
   }
   #footer{
     font-size: 50%;
