@@ -1,4 +1,5 @@
 .has-jax{
+    overflow:hidden;
     text-align:left;
 }
 .MathJax_Display{
