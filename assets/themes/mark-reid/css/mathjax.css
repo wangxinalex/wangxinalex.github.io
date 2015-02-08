@@ -3,4 +3,5 @@
 }
 .MathJax_Display{
     text-align:left;
+    overflow:hidden;
 }
