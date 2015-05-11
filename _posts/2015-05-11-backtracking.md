@@ -50,17 +50,17 @@ using namespace std;
 bool finished = false;
 int solutions = 0;
 
-bool is_a_solution(bitset<NMAX> &a, int k, int n) {
+bool is_a_solution(bitset$lt;NMAX&gt; &a, int k, int n) {
 	return k == n;
 }
 
-void construct_candidates(bitset<2>& c, int& ncandidates) {
+void construct_candidates(bitset&lt;2&gt;& c, int& ncandidates) {
 	c.set(0);
 	c.reset(1);
 	ncandidates = 2;
 }
 
-void process_solution(bitset<NMAX>& a, int k) {
+void process_solution(bitset&gt;NMAX&gt;& a, int k) {
 	cout << a << endl;
 	int i;
 	printf("{");
@@ -75,8 +75,8 @@ void process_solution(bitset<NMAX>& a, int k) {
 	}
 }
 
-void backtrack(bitset<NMAX> &a, int k, int n) {
-	bitset<2> c;
+void backtrack(bitset&lt;NMAX&gt; &a, int k, int n) {
+	bitset&lt;2&gt; c;
 	int ncandidates;
 	int i;
 	if(is_a_solution(a, k, n)) {
@@ -94,9 +94,10 @@ void backtrack(bitset<NMAX> &a, int k, int n) {
 }
 
 void generate_subsets(int n) {
-	bitset<NMAX> a;
+	bitset&lt;NMAX&gt; a;
 	backtrack(a, 0, n);
 }
+
 int main() {
 	generate_subsets(4);
 	return 0;
