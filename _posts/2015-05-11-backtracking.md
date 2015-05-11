@@ -38,9 +38,9 @@ backtrack(int a[], int k, data input){
 ##Chapter 1.1 Constructing all subsets
 
 <pre class = "brush:cpp">    
-#include <stdio.h>
-#include <bitset>
-#include <iostream>
+#include &lt;stdio.h&gt;
+#include &lt;bitset&gt;
+#include &lt;iostream&gt;
 
 using namespace std;
 
@@ -50,7 +50,7 @@ using namespace std;
 bool finished = false;
 int solutions = 0;
 
-bool is_a_solution(bitset$lt;NMAX&gt; &a, int k, int n) {
+bool is_a_solution(bitset&lt;NMAX&gt; &a, int k, int n) {
 	return k == n;
 }
 
@@ -108,9 +108,9 @@ int main() {
 
 <pre class = "brush:cpp">    
 
-#include <stdio.h>
-#include <iostream>
-#include <bitset>
+#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;bitset&gt;
 
 using namespace std;
 
@@ -125,7 +125,7 @@ bool is_a_solution(int a[], int k, int n) {
 }
 
 void construct_candidates(int a[], int k, int n, int c[], int &ncands) {
-	bitset<NMAX> in_perm;
+	bitset&lt;NMAX&gt; in_perm;
 	for(int i = 0; i < k; i++) {
 		in_perm.set(a[i]);
 	}
