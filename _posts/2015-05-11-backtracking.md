@@ -175,3 +175,11 @@ int main() {
 	return 0;
 }
 </pre>
+
+##Chpater 1.3 Constructing all paths in a graph
+
+#Chapter 2 Search Pruning
+
+**Pruning** is the technique of cutting off the search the instant we have established that a partial solution cannot be extended into a full solution.
+
+#Chapter 3 Sudoku
