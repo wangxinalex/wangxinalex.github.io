@@ -8,6 +8,7 @@ tags: [Network]
 {% include JB/setup %}
 
 #Chapter 1 Introduction
+
 ##Chapter 1.7 OSI Model
 ![](http://i.imgur.com/xx3mk3n.png)
 
@@ -38,10 +39,12 @@ We also say that UDP provides a *connectionless* service, as there need not be a
 ![](http://i.imgur.com/3fYTVG4.png)
 
 ##Chapter 2.9 Port Number
+
 ###Socket Pair
 The *socket pair* for a TCP connection is the four-tuple that defines the two endpoints of the connection: the local IP address, local port, foreign IP address, and foreign port.
 
 ##Chapter 4 Elementary TCP Sockets
+
 ###Chapter 4.2 socket Function
 ![](http://i.imgur.com/uCBrH8E.png)
 	
