@@ -28,6 +28,7 @@ We also say that UDP provides a *connectionless* service, as there need not be a
 2. The client issues an *active* open by calling `connect`. This causes the client TCP to send a "synchronize" (SYN) segment, which tells the server the client's initial sequence number for the data that the client will send on the connection. Normally, there is no data sent with the SYN; it just contains an IP header, a TCP header, and possible TCP options (which we will talk about shortly).**[First Handshake]**
 3. The server must acknowledge (ACK) the client's SYN and the server must also send its own SYN containing the initial sequence number for the data that the server will send on the connection. The server sends its SYN and the ACK of the client's SYN in a single segment.**[Second Handshake]**
 4. The client must acknowledge the server's SYN.**[Third Handshake]**
+
 ![](http://i.imgur.com/hHfcacz.png)
 
 ###Termination
@@ -81,3 +82,6 @@ The *socket pair* for a TCP connection is the four-tuple that defines the two en
 	int bind(int sockfd, const struct sockaddr *myaddr, socklen_t addrlen);
 	//若成功则返回0，失败返回-1
 </pre>
+
+* 服务器在启动时捆绑它们众所周知的端口。如果一个TCP客户端或服务器未曾调用bind捆绑一个端口，当调用`connect`或`listen`时，内核就为相应的套接字选择一个临时端口。对于客户端来说，让内核来选择临时端口是正常的。对于TCP服务器来说，一般会指定一个端口。
+* 进程可以把一个特定的IP地址绑定到它的套接字上，不过这个IP地址必须属于其所在主机的网络接口之一。TCP客户端通常不把IP地址绑定到它的套接字上，当连接套接字时，内核将根据所用外出网络接口来选择源IP地址。如果TCP服务器没有把IP地址绑定到它的套接字上，内核就把客户发送的SYN的目的IP地址作为服务器的源IP地址。
