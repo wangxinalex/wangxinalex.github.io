@@ -12,10 +12,12 @@ tags: Mathematics
 ![](http://i.imgur.com/C8OZa24.png)
 
 ##1.2 Evaluation of Constant Propositions
+
 Truth Table
 ![](http://i.imgur.com/6igfo2K.png)
 
 ##1.3 Evaluation of Proposition in a State
+
 Definition 1.3.1: A _state_ s is a _function_ from a set of identifiers to the set of values T and F.  
 Definition 1.3.2: Proposition e is _well-defined_ in state s if each identifier in e is associated with either T or F in state s.
 
@@ -31,6 +33,7 @@ $$=(F \vee F)$$
 $$=F   \square$$
 
 ##1.4 Precedence Rules for Operators
+
 1. Sequences of the same operator are evaluated from left to right, e.g. $$b \wedge c \wedge d \equiv ((b \wedge c)\wedge d)$$.
 2. The order of evaluation of different, adjacent operators is given by the list: __not, and, or, imp, equals__.
 
@@ -60,6 +63,7 @@ Proposition b is _weaker_ than c if $$c \Rightarrow b$$. Correspondingly, c is s
 #Chapter 2 Reasoning using Equivalence Transformations
 
 ##2.1 The Laws of Equivalence
+
 Definition 2.1.1: Propositions E1 and E2 are _equivalent_ iff E1=E2 is a tautology. In this case, E1=E2 is an equivalence.
 
 1. Commutative Laws
@@ -180,9 +184,11 @@ $$\frac{e_1=e_2, E(e_1)}{E(e_2)}$$
 ###Some general hints on developing proofs
 
 ###The Development of a proof
+
 ![](http://i.imgur.com/QR31IX0.png)
 
 ###The development of a second proof
+
 ![](http://i.imgur.com/H4SFmEW.png)
 
 ###The Tardy Bus Problem
@@ -196,6 +202,7 @@ $$\frac{e_1=e_2, E(e_1)}{E(e_2)}$$
 ###Reasoning about Atomic Expressions
 
 ###The operators _cand_ and _cor_
+
 short-circuit __and__ and __or__
 
 ![](http://i.imgur.com/EggfRKO.png)
@@ -224,9 +231,11 @@ $$(E\ i: m\leqslant i<m:E_i)=F$$, and, for $$f\geqslant m$$
 $$(E\ i: m\leqslant i<k+1:E_i)=(E\ i:m\leqslant i < k:E_i)\vee E_k \square$$
 
 ###Universal Quantification
+
 Definition. $$(A\ i:m\leqslant i < n:E_i)=\neg(E\ i:m\leqslant i < n: \neg E_i).\ \square$$
 
 ###Numerical Quantification
+
 Definition. $$(N\ i:m\leqslant i < n: E_i)$$ denotes the number of different values i in range $$m \leqslant i < n$$ for which $$E_i$$ is true. N is called the _counting_ quantifier.
 
 $$(E\ i:m\leqslant i < n:E_i) = (N\ i:m\leqslant i < n: E_i)\geqslant 1$$
@@ -238,14 +247,17 @@ Now it is easy to assert than k is the third smallest integer such that $$E_k$$ 
 $$((N\ i: 0\leqslant i < k:E_i)=2)\wedge E_k$$
 
 ###A Note on Ranges
+
 ![](http://i.imgur.com/lYTjCXX.png)
 
 ##4.3 Free and Bound Identifiers
+
 __Restriction on identifiers__: In an expression, an identifier may not be both bound and free, and an identifier may not be bound to two different quantifiers.
 
 ![](http://i.imgur.com/b5sHNdi.png)
 
 ##4.4 Textual Substitution
+
 ![](http://i.imgur.com/OuvpKJG.png)
 
 ![](http://i.imgur.com/O0OUMDG.png)
@@ -285,6 +297,7 @@ $$(E_{\bar{u}}^{\bar{x}})_{\bar{x}}^{\bar{u}} = E \square$$
 #Chapter 5 Notations and Conventions for Arrays
 
 ##5.1 One-dimensional Arrays as Functions
+
 ![](http://i.imgur.com/BayG44W.png)
 
 ##5.2 Array Sections and Pictures
@@ -329,6 +342,7 @@ Q is called the _precondition_ or _input assertion_ of S; R is the _postconditio
 4. **Distributivity of Disjunction**:$$wp(S,Q)\vee wp(S,R)\Rightarrow wp(S, Q\vee R)$$
 
 #Chapter 8 The Commands skip, abort and Composition
+
 **Definition**
 1. $$wp(skip, R) = R$$
 2. $$wp(abort, R) = F$$
@@ -337,6 +351,7 @@ Q is called the _precondition_ or _input assertion_ of S; R is the _postconditio
 #Chapter 9 The Assignment Command
 
 ##9.1 Assignment to Simple Variables
+
 **(!)Definition** $$wp("x:= e", R) = domain(e)$$ **cand** $$R_e^x$$
 Since x will contain the value of e after execution, then R will be true after execution *iff* R, with the value of x replaced by e, is true before execution. 
 
@@ -349,19 +364,24 @@ Since x will contain the value of e after execution, then R will be true after e
 ![](http://i.imgur.com/1nKsxyl.png)
 
 ##9.3 Assignment to an Array Element
+
 **Definition** $$wp("b[i]:=e", R) = inrange(b,i)$$ **cand** $$domain(e)$$ **cand** $$R_{(r, i:e)}^{b}$$ or simply $$wp("b[i]:= e", R) = R_{(b,i:e)}^{b}$$
+
 ![](http://i.imgur.com/hDManYT.png)
 
 ![](http://i.imgur.com/TvbfCwd.png)
 
 ##9.4 The General Multiple Assignment Command
+
 **Execution of a multiple assignment.** First, determine the variables specified by the $$x_i \circ s_i$$ and evaluate the expressions $$e_i$$ to yield values $$v_i$$. Then assign $$v_1$$ to $$x_1 \circ s_1$$, $$v_2$$ to $$x_2 \circ s_2, \ldots,$$ and $$v_n$$ to $$x_n \circ s_n$$. The order to assignment must be from left to right.
 **Definition.** $$wp("\bar{x\circ s}:=\bar{e}", R) = R_{\bar{e}}^{\bar{x\circ s}}$$
+
 ![](http://i.imgur.com/4YOmHHX.png)
 
 ![](http://i.imgur.com/KkCp6fe.png)
 
 #Chapter 10 The Alternative Command
+
 **Definition** $$wp(IF,R) = domain(BB)\wedge BB \wedge B_1\Rightarrow wp(S_1,R)\wedge \cdots \wedge B_n\Rightarrow wp(S_n, R) \square$$
 
 **Definition** $$wp(IF,R) = (E\ i:1\leqslant i \leqslant n: B_i)\wedge (A\ i:1\leqslant i \leqslant n:B_i\Rightarrow wp(S_i,R))\square$$
@@ -370,11 +390,13 @@ Since x will contain the value of e after execution, then R will be true after e
 ###Some Comments about the Alternative Command
 
 ###A Theorem about the Alternative Command
+
 ![](http://i.imgur.com/pjsjVSF.png)
 
 #Chapter 11 The Iterative Command
 
 ###11.1The conventional while-loop and the iterative command
+
 ![](http://i.imgur.com/beTKuwJ.png)
 
 ###The Formal Definition of DO
@@ -388,6 +410,7 @@ $$H_k(R) = H_0(R)\vee wp(IF, H_{k-1}(R)), for\ k>0$$
 * We introduce an integer function, t, of the program variables that is an upper bound on the number of iterations still to be performed. We call t the *bound function*.
 
 ![](http://i.imgur.com/hRyYFd8.png)
+
 **General Procedure:**
     1. Introduce the *invariant* P
     2. Determine that P is true just after the initialization
@@ -409,6 +432,7 @@ $$H_k(R) = H_0(R)\vee wp(IF, H_{k-1}(R)), for\ k>0$$
 #Part III The Development of Programs
 
 #Chapter 13 Introduction
+
 > A program and its proof should be developed hand-in-hand, with the proof usually leading the way. 
 
 > Use theory to provide insight; use common sense and intuition where it is suitable, but fall back on the formal theory for support when difficulties and complexities arise.
@@ -470,12 +494,14 @@ $$t:(N\ i,j:0\leqslant i<j<4;qi>qj)$$
 ![](http://i.imgur.com/nvWChRB.png)
 
 ###16.1.1 Weakening a Predicate
+
 1. **Delete a conjunct**. Predicate $$A\wedge B\wedge C$$ can be weakened to $$A\wedge C$$
 2. **Replace a constant by a variable**. Predicate $$x\leqslant b[1:10]$$, where x is a simple variable, can be weakened to $$x\leqslant b[1:i]\wedge 1\leqslant i\leqslant 10$$, where i is a fresh variable.
 3. **Enlarge the range of a variable.** Predicate $$5\leqslant i<10$$ can be weakened to $$0\leqslant i < 10$$.
 4. **Add a disjunct**. Predicate A can be weakened to $$A\vee B$$, for some other predicate B.
 
 ##16.2 Deleting a Conjunct
+
 For the guard of the loop, use the *complement* of the deleted conjunct, so that when the loop terminates because the guard is false, the deleted conjunct is true.
 
 **Strategy**: When deleting a conjunct from R to produce an invariant P, try using complement of the deleted conjunct for the guard B of the loop.
@@ -500,4 +526,3 @@ $$i,s := 0,0; do\ i\neq n\rightarrow i,s:=i+1,s+b[i]\ od$$
 > Put suitable bounds on each variable introduced.
 
 ##16.4 Enlarging the Range of a Variable
-
