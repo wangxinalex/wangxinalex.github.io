@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "csapp_linking"
+title: "CSAPP程序的链接与运行"
 description: ""
 category: OS 
 tags: []
@@ -64,7 +64,7 @@ int main(){
 }
 </pre>
 
-<pre class = "brush:cpp">
+<pre class = "brush:shell">
 ?> gcc -o symbol symbol.c
 ?> nm symbol
 
