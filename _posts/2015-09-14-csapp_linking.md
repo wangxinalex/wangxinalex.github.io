@@ -1,11 +1,12 @@
----
+﻿---
 layout: post
 title: "重读CSAPP：关于程序的链接与运行"
 description: ""
 category: OS
-tags: []
+tags: OS linker 
 ---
 {% include JB/setup %}
+
 #Chapter 7 Linking
 
 ##7.1 编译器驱动程序
@@ -156,7 +157,25 @@ int main(){
 
 ##7.6符号解析
 
+链接器解析符号引用的方法是将每个引用与它输入的可重定位目标文件的符号表中的一个确定的符号定义联系起来。
+
+1. 编译器只允许每个模块中每个本地符号只有一个定义。
+2. 当**编译器**遇到一个不是在当前模块中定义的符号（变量或函数名时），它会假设该符号是在其他某个模块中定义的，生成一个链接器符号表条目，并把它交给**链接器**处理.
+
+<pre class = "brush:shell; highlight = [1]">
+                     U extern_func
+    0000000000000000 D global
+    0000000000000008 d inner_static.2184
+    0000000000000000 T main
+    0000000000000000 R outer_const
+    0000000000000004 d outer_static
+    0000000000000004 C uninitialized_global
+    0000000000000004 b uninitialized_inner_static.2185
+    0000000000000000 b uninitialized_outer_static
+</pre>
+
 ###7.6.1如何解析多重定义的全局符号
+
 函数和已初始化的全局变量是**强符号**，未初始化的全局变量是**弱符号**。
 
 Unix链接器使用下面的规则来处理多重定义的符号
@@ -169,7 +188,37 @@ Unix链接器使用下面的规则来处理多重定义的符号
 ![](http://i.imgur.com/3u39ZQU.png)
 
 ###7.6.2与静态库链接
-在Unix系统中，静态库以一种称为**存档（archive）**的特殊文件格式存放在磁盘中。存档文件是一组连接起来的可重定位目标文件的集合，有一个头部用来描述每个成员目标文件的大小和位置。
+在Unix系统中，静态库以一种称为**存档（archive）**的特殊文件格式存放在磁盘中。存档文件是**一组连接起来的可重定位目标文件的集合，有一个头部用来描述每个成员目标文件的大小和位置**。
+
+![20150914231016.png-23.7kB][1]
+
+<pre class = "brush:shell">
+unix> gcc -c addvec.c multvec.c
+unix> ar rcs libvector.a addvec.o multvec.o
+</pre>
+
+如果查看libvector.a的符号链接表，会发现`addvec`和`multvec`均在。
+
+<pre class = "brush:shell">
+addvec.o:
+0000000000000000 T addvec
+
+multvec.o:
+0000000000000000 T multvec
+</pre>
+
+![20150914231052.png-23.4kB][2]
+
+<pre class = "brush:shell">
+unix> gcc -O2 -c main2.c
+unix> gcc -static -o p2 main2.o ./libvector.a
+</pre>
+
+而可执行文件p2的符号链接表中，只有`addvec`的相关符号
+
+<pre class = "brush:shell">
+000000000040059d T addvec
+</pre>
 
 ![](http://i.imgur.com/jn6xNrL.png)
 
@@ -190,3 +239,25 @@ Unix链接器使用下面的规则来处理多重定义的符号
 ![](http://i.imgur.com/npBESq5.png)
 
 ###7.7.2重定位符号引用
+
+![20150914201408.png-26.9kB][3]
+
+##7.9 加载可执行目标文件
+
+对于可执行目标文件，Unix shell会调用每个驻留在存储器中称为**加载器**的操作系统代码来执行它。任何Unix程序都可以通过调用`execve`函数来调用加载器。
+
+加载器将可执行目标文件中的代码和数据从磁盘拷贝到存储器中，然后通过跳转到程序的第一条指令或**入口点**来运行该程序。这个将程序拷贝到存储器并运行的过程叫做**加载**。
+
+
+
+![20150914202945.png-184.3kB][4]
+![20150914221259.png-22.3kB][5]
+![20150914221422.png-26.7kB][6]
+
+
+  [1]: http://static.zybuluo.com/wangxinalex/khmpeqpfs6svniceuupgyh7f/20150914231016.png
+  [2]: http://static.zybuluo.com/wangxinalex/eiqikpahqy3omseknjifi4ef/20150914231052.png
+  [3]: http://static.zybuluo.com/wangxinalex/q2eq2bn9utijviu86q4r0kw2/20150914201408.png
+  [4]: http://static.zybuluo.com/wangxinalex/iknfw4qon7rigxg8j633m7q6/20150914202945.png
+  [5]: http://static.zybuluo.com/wangxinalex/mc57gg4r1yzjwfi95rsjcboo/20150914221259.png
+  [6]: http://static.zybuluo.com/wangxinalex/gynzmxs3csh2zfkl03jbcex5/20150914221422.png
