@@ -1,11 +1,12 @@
----
+﻿---
 layout: post
-title: "CSAPP程序的链接与运行"
+title: "重读CSAPP：关于程序的链接与运行"
 description: ""
-category: OS 
-tags: []
+category: OS
+tags: OS Compiler C
 ---
 {% include JB/setup %}
+
 #Chapter 7 Linking
 
 ##7.1 编译器驱动程序
@@ -52,14 +53,14 @@ tags: []
 <pre class = "brush:cpp">
 int global = 100;
 int uninitialized_global;
-const int outer_const_global = 100;
-static int outer_static_global = 100;
-static int uninitialized_outer_static_global;
+const int outer_const = 100;
+static int outer_static = 100;
+static int uninitialized_outer_static;
 int main(){
-	static int inner_static_global = 100;
-	static int uninitialized_inner_static_global;
-	const int inner_const_variable = 100;
-	int local_variable = 0;
+	static int inner_static = 100;
+	static int uninitialized_inner_static;
+	const int inner_const = 100;
+	int local = 0;
 	return 0;	
 }
 </pre>
@@ -68,16 +69,28 @@ int main(){
 ?> gcc -o symbol symbol.c
 ?> nm symbol
 
-0000000000400594 r _ZL18outer_const_global (只读变量，.rodata节，内部链接)
-000000000060103c d _ZL19outer_static_global （静态变量，.data节，内部链接）
-000000000060104c b _ZL33uninitialized_outer_static_global（未初始化的静态变量，.bss节，内部链接）
-0000000000601040 d _ZZ4mainE19inner_static_global（静态变量，.data节，内部链接）
-0000000000601050 b _ZZ4mainE33uninitialized_inner_static_global（未初始化的静态变量，.bss节，内部链接）
+0000000000400594 r _ZL11outer_const
+000000000060103c d _ZL12outer_static
+000000000060104c b _ZL26uninitialized_outer_static
+0000000000601040 d _ZZ4mainE12inner_static
+0000000000601050 b _ZZ4mainE26uninitialized_inner_static
 ...
-0000000000601038 D global（全局变量，.data节，外部链接）
-00000000004004ed T main（函数，.text节，外部链接）
-0000000000601048 B uninitialized_global（未初始化的全局变量，.bss节，外部链接）
+0000000000601038 D global
+00000000004004ed T main
+0000000000601048 B uninitialized_global
 </pre>
+
+|变量名|类型|初始化|链接类型|所在节|
+|------|----|------|--------|------|
+|global|全局变量|是|外部链接|.data|
+|uninitialized_global|全局变量|否|外部链接|.bss|
+|main|函数名|是|外部链接|.text|
+|outer_const|全局变量（只读）|是|内部链接|.rodata|
+|outer_static|静态变量（函数外部）|是|内部链接|.data|
+|uninitialized_outer_static|静态变量（函数外部）|否|内部链接|.bss|
+|inner_static|静态变量（函数内部）|是|内部链接|.data|
+|uninitialized_inner_static|静态变量（函数内部）|否|内部链接|.bss|
+
 
 ##7.5符号和符号表
 每个可重定位目标模块m都有一个符号表，包含m所定义和引用的符号的信息。
