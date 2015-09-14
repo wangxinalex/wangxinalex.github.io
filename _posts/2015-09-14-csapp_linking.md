@@ -1,12 +1,11 @@
-﻿---
+---
 layout: post
-title: "重读CSAPP：关于程序的链接与运行"
+title: "csapp_linking"
 description: ""
 category: OS
-tags: OS Compiler C
+tags: []
 ---
 {% include JB/setup %}
-
 #Chapter 7 Linking
 
 ##7.1 编译器驱动程序
