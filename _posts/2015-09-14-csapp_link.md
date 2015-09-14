@@ -1,4 +1,4 @@
----
+﻿---
 layout: post
 title: "重读CSAPP：关于程序的链接与运行"
 description: ""
@@ -162,7 +162,7 @@ int main(){
 1. 编译器只允许每个模块中每个本地符号只有一个定义。
 2. 当**编译器**遇到一个不是在当前模块中定义的符号（变量或函数名时），它会假设该符号是在其他某个模块中定义的，生成一个链接器符号表条目，并把它交给**链接器**处理.
 
-<pre class = "brush:shell; highlight = [1]">
+<pre class = "brush:shell; highlight:[1]">
                      U extern_func
     0000000000000000 D global
     0000000000000008 d inner_static.2184
