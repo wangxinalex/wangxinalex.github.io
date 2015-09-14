@@ -80,17 +80,73 @@ int main(){
 0000000000601048 B uninitialized_global
 </pre>
 
-|变量名|类型|初始化|链接类型|所在节|
-|------|----|------|--------|------|
-|global|全局变量|是|外部链接|.data|
-|uninitialized_global|全局变量|否|外部链接|.bss|
-|main|函数名|是|外部链接|.text|
-|outer_const|全局变量（只读）|是|内部链接|.rodata|
-|outer_static|静态变量（函数外部）|是|内部链接|.data|
-|uninitialized_outer_static|静态变量（函数外部）|否|内部链接|.bss|
-|inner_static|静态变量（函数内部）|是|内部链接|.data|
-|uninitialized_inner_static|静态变量（函数内部）|否|内部链接|.bss|
-
+<table>
+<thead>
+<tr>
+ <th>变量名</th>
+ <th>类型</th>
+ <th>初始化</th>
+ <th>链接类型</th>
+ <th>所在节</th>
+</tr>
+</thead>
+<tbody><tr>
+ <td>global</td>
+ <td>全局变量</td>
+ <td>是</td>
+ <td>外部链接</td>
+ <td>.data</td>
+</tr>
+<tr>
+ <td>uninitialized_global</td>
+ <td>全局变量</td>
+ <td>否</td>
+ <td>外部链接</td>
+ <td>.bss</td>
+</tr>
+<tr>
+ <td>main</td>
+ <td>函数名</td>
+ <td>是</td>
+ <td>外部链接</td>
+ <td>.text</td>
+</tr>
+<tr>
+ <td>outer_const</td>
+ <td>全局变量（只读）</td>
+ <td>是</td>
+ <td>内部链接</td>
+ <td>.rodata</td>
+</tr>
+<tr>
+ <td>outer_static</td>
+ <td>静态变量（函数外部）</td>
+ <td>是</td>
+ <td>内部链接</td>
+ <td>.data</td>
+</tr>
+<tr>
+ <td>uninitialized_outer_static</td>
+ <td>静态变量（函数外部）</td>
+ <td>否</td>
+ <td>内部链接</td>
+ <td>.bss</td>
+</tr>
+<tr>
+ <td>inner_static</td>
+ <td>静态变量（函数内部）</td>
+ <td>是</td>
+ <td>内部链接</td>
+ <td>.data</td>
+</tr>
+<tr>
+ <td>uninitialized_inner_static</td>
+ <td>静态变量（函数内部）</td>
+ <td>否</td>
+ <td>内部链接</td>
+ <td>.bss</td>
+</tr>
+</tbody></table>
 
 ##7.5符号和符号表
 每个可重定位目标模块m都有一个符号表，包含m所定义和引用的符号的信息。
