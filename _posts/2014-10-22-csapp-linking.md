@@ -1,4 +1,4 @@
----
+﻿---
 layout: post
 title: "重读CSAPP：关于程序的链接与运行"
 description: ""
@@ -48,6 +48,37 @@ tags: OS Compiler C
 8. `.debug`调试符号表
 9. `.line`源文件中的行号和`.text`节中机器指令之间的映射
 10. `.strtab`一个字符串表，其内容包括`.symtab`和`.debug`节中的符号表，以及节头部中的节名字。字符串表就是以null结尾的字符串序列。
+
+
+<pre class = "brush:cpp">
+int global = 100;
+int uninitialized_global;
+const int outer_const_global = 100;
+static int outer_static_global = 100;
+static int uninitialized_outer_static_global;
+int main(){
+	static int inner_static_global = 100;
+	static int uninitialized_inner_static_global;
+	const int inner_const_variable = 100;
+	int local_variable = 0;
+	return 0;	
+}
+</pre>
+
+<pre class = "brush:cpp">
+?> gcc -o symbol symbol.c
+?> nm symbol
+
+0000000000400594 r _ZL18outer_const_global (只读变量，.rodata节，内部链接)
+000000000060103c d _ZL19outer_static_global （静态变量，.data节，内部链接）
+000000000060104c b _ZL33uninitialized_outer_static_global（未初始化的静态变量，.bss节，内部链接）
+0000000000601040 d _ZZ4mainE19inner_static_global（静态变量，.data节，内部链接）
+0000000000601050 b _ZZ4mainE33uninitialized_inner_static_global（未初始化的静态变量，.bss节，内部链接）
+...
+0000000000601038 D global（全局变量，.data节，外部链接）
+00000000004004ed T main（函数，.text节，外部链接）
+0000000000601048 B uninitialized_global（未初始化的全局变量，.bss节，外部链接）
+</pre>
 
 ##7.5符号和符号表
 每个可重定位目标模块m都有一个符号表，包含m所定义和引用的符号的信息。
