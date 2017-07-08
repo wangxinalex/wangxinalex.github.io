@@ -1,0 +1,699 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Rod-cutting QuestionRecursive top-down implementation1234567function CUT-ROD(p,n)	if n == 0		return 0	q = - Inf	for i = 1 to n		q = max(q, p[i] + CUT-ROD(p, n-i))	return q To analyze the running time">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dynamic Programming">
+<meta property="og:url" content="http://yoursite.com/2014/11/09/dynamic-programming/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Rod-cutting QuestionRecursive top-down implementation1234567function CUT-ROD(p,n)	if n == 0		return 0	q = - Inf	for i = 1 to n		q = max(q, p[i] + CUT-ROD(p, n-i))	return q To analyze the running time">
+<meta property="og:image" content="http://i.imgur.com/ClbPe7G.png">
+<meta property="og:image" content="http://i.imgur.com/ogG9QRW.png">
+<meta property="og:updated_time" content="2017-07-08T16:45:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dynamic Programming">
+<meta name="twitter:description" content="Rod-cutting QuestionRecursive top-down implementation1234567function CUT-ROD(p,n)	if n == 0		return 0	q = - Inf	for i = 1 to n		q = max(q, p[i] + CUT-ROD(p, n-i))	return q To analyze the running time">
+<meta name="twitter:image" content="http://i.imgur.com/ClbPe7G.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/11/09/dynamic-programming/"/>
+
+
+
+
+
+  <title>Dynamic Programming | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/11/09/dynamic-programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangxinalex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Dynamic Programming</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-09T00:00:00+08:00">
+                2014-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Rod-cutting-Question"><a href="#Rod-cutting-Question" class="headerlink" title="Rod-cutting Question"></a>Rod-cutting Question</h1><h2 id="Recursive-top-down-implementation"><a href="#Recursive-top-down-implementation" class="headerlink" title="Recursive top-down implementation"></a>Recursive top-down implementation</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function CUT-ROD(p,n)</div><div class="line">	<span class="keyword">if</span> n == <span class="number">0</span></div><div class="line">		<span class="keyword">return</span> <span class="number">0</span></div><div class="line">	q = - Inf</div><div class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to n</div><div class="line">		q = max(q, p[i] + CUT-ROD(p, n-i))</div><div class="line">	<span class="keyword">return</span> q</div></pre></td></tr></table></figure>
+<p>To analyze the running time of CUT-ROD, let <code>T(n)</code> denote the total number of calls made to CUT-ROD when called with its second parameter equal to n.</p>
+<p><img src="http://i.imgur.com/ClbPe7G.png" alt=""></p>
+<p>$$T(n) = 1+\sum^{n-1}_{j=0}{T(j)}$$</p>
+<h2 id="Using-dynamic-programming-for-optimal-rod-cutting"><a href="#Using-dynamic-programming-for-optimal-rod-cutting" class="headerlink" title="Using dynamic programming for optimal rod cutting"></a>Using dynamic programming for optimal rod cutting</h2><blockquote>
+<p>Having observed that a<br>naive recursive solution is inefficient because it solves the same subproblems repeatedly, we arrange for each subproblem to be solved only once, saving its solution. If we need to refer to this subproblem’s solution again later, we can just look it up, rather than recompute it. Dynamic programming thus uses additional memory to save computation time; it serves an example of a <em>time-memory trade-off</em>.</p>
+</blockquote>
+<h3 id="Top-down-with-memorization"><a href="#Top-down-with-memorization" class="headerlink" title="Top-down with memorization"></a>Top-down with memorization</h3><ul>
+<li>write the procedure recursively in a natural manner, but modified to save the result of each subproblem (usually in an array or hash table).  </li>
+<li>The procedure now first checks<br>to see whether it has previously solved this subproblem. If so, it returns the saved<br>value, saving further computation at this level; if not, the procedure computes the<br>value in the usual manner. </li>
+</ul>
+<p>We say that the recursive procedure has been <strong>memoized</strong>; it “remembers” what results it has computed previously.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Memoized-Cut-Rod(p,n)</div><div class="line">	let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line">	<span class="keyword">for</span> i = <span class="number">0</span> to n</div><div class="line">		r[i] = -Inf</div><div class="line">	<span class="keyword">return</span> Memoized-Cut-Rod_Aux(p, n, r)</div><div class="line"></div><div class="line">Memoized-Cut-Rod-Aux(p,n,r)</div><div class="line">	<span class="keyword">if</span> r[n] &gt;= <span class="number">0</span></div><div class="line">		<span class="keyword">return</span> r[n]</div><div class="line">	<span class="keyword">if</span> n == <span class="number">0</span></div><div class="line">		q = <span class="number">0</span></div><div class="line">	<span class="keyword">else</span> q = -Inf</div><div class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to n</div><div class="line">			q = max(q, p[i] + Memoized-Cut-Rod-Aux(p, n-i, r))</div><div class="line">	r[n] = q</div><div class="line">	<span class="keyword">return</span> q</div></pre></td></tr></table></figure>
+<h3 id="Bottom-up-method"><a href="#Bottom-up-method" class="headerlink" title="Bottom-up method"></a>Bottom-up method</h3><ul>
+<li>We sort the subproblems by size and solve them in size order, smallest first. </li>
+<li>When solving a particular subproblem, we have already solved all of the smaller subproblems its solution depends upon, and we have saved their solutions.</li>
+<li>We solve each subproblem only once, and when we first see it, we have already solved all of its prerequisite subproblems.</li>
+</ul>
+<p>The bottom-up version is even simpler</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Bottom-Up-Cut-Rod(p,n)</div><div class="line">	let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line">	r[<span class="number">0</span>] = <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n</div><div class="line">		q = -Inf</div><div class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to j</div><div class="line">			q = max(q, p[i] + r[j-i])</div><div class="line">		r[j] = q</div><div class="line">	<span class="keyword">return</span> r[n]</div></pre></td></tr></table></figure>
+<h3 id="Subproblem-graphs"><a href="#Subproblem-graphs" class="headerlink" title="Subproblem graphs"></a>Subproblem graphs</h3><p>We can think of the subproblem graph as a <strong>reduced</strong> or <strong>collapsed</strong> version of the recursion tree for the top-down recursive method, in which we coalesce all nodes for the same subproblem into a single vertex and direct all edges from parent to child.</p>
+<p><img src="http://i.imgur.com/ogG9QRW.png" alt=""></p>
+<p>The bottom-up method for dynamic programming considers the vertices of the subproblem graph in such an order that we solve the subproblems y adjacent to a given subproblem x before we solve subproblem x.</p>
+<h3 id="Reconstructing-a-solution"><a href="#Reconstructing-a-solution" class="headerlink" title="Reconstructing a solution"></a>Reconstructing a solution</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Extended-Bottom-Up-Cut-Rod(p,n)</div><div class="line">	let r[<span class="number">0.</span>.n] <span class="keyword">and</span> s[<span class="number">0.</span>.n] be <span class="keyword">new</span> arrays</div><div class="line">	r[<span class="number">0</span>] = <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n</div><div class="line">		q = -Inf</div><div class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to j</div><div class="line">			<span class="keyword">if</span> q &lt; p[i] + r[j-i]</div><div class="line">				q = p[i] + r[j<span class="number">-1</span>]</div><div class="line">				s[j] = i</div><div class="line">		r[j] = q</div><div class="line">	<span class="keyword">return</span> r <span class="keyword">and</span> s</div><div class="line"></div><div class="line">Print-Cut-Rod-Solution(p,n)</div><div class="line">	(r,s) = Extended-Bottom-Up-Cut-Rod(p,n)</div><div class="line">	<span class="keyword">while</span> n &gt; <span class="number">0</span></div><div class="line">		print s[n]</div><div class="line">		n = n - s[n]</div></pre></td></tr></table></figure>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><h4 id="15-1-1"><a href="#15-1-1" class="headerlink" title="15.1-1"></a>15.1-1</h4><p>$$T(n+1) = 1+\sum<em>{i=0}^{n}{T(j)} = 1+\sum</em>{i=0}^{n}{2^i} = 2^{n+1}$$</p>
+<h4 id="15-1-2"><a href="#15-1-2" class="headerlink" title="15.1-2"></a>15.1-2</h4><p>p(4) = 0, p(6) = 18, p(10) = 29</p>
+<p>The best choice is not to cut, yet the p(6) has the maximal density.</p>
+<h4 id="15-1-3"><a href="#15-1-3" class="headerlink" title="15.1-3"></a>15.1-3</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Bottom-Up-Cut-Rod(p,n)</div><div class="line">let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line">r[<span class="number">0</span>] = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</div><div class="line">	q = -Inf</div><div class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to j - <span class="number">1</span></div><div class="line">		q = max(q, p[i] + r[j-i] - c)</div><div class="line">	q = max(q, p[j]) <span class="comment">//not to cut</span></div><div class="line">	r[j] = q</div><div class="line"><span class="keyword">return</span> r[n]</div></pre></td></tr></table></figure>
+<h4 id="15-1-4"><a href="#15-1-4" class="headerlink" title="15.1-4"></a>15.1-4</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">top_down_rod_cut</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> p[], <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> *r = (<span class="keyword">int</span>*)<span class="built_in">calloc</span>(n + <span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="keyword">int</span> *s = (<span class="keyword">int</span>*)<span class="built_in">calloc</span>(n + <span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + <span class="number">1</span>; i++) &#123;</div><div class="line">        r[i] = -INT_MAX;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> result = top_down_rod_cut_aux(p, n, r, s);</div><div class="line">    print_cut(s, n);</div><div class="line">    <span class="built_in">free</span>(s);</div><div class="line">    <span class="built_in">free</span>(r);</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">top_down_rod_cut_aux</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> p[], <span class="keyword">int</span> n, <span class="keyword">int</span> r[], <span class="keyword">int</span> s[])</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(r[n] &gt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> r[n];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> q;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</div><div class="line">        q = <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        q = -INT_MAX;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">            <span class="keyword">int</span> new_q = p[i] + top_down_rod_cut_aux(p, n - i, r, s);</div><div class="line">            <span class="keyword">if</span>(new_q &gt; q) &#123;</div><div class="line">                q = new_q;</div><div class="line">                s[n] = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    r[n] = q;</div><div class="line">    <span class="keyword">return</span> q;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="15-1-5"><a href="#15-1-5" class="headerlink" title="15.1-5"></a>15.1-5</h4><p>vertices: n+1<br>edges: 2n-1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> s = fib(<span class="number">10</span>);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"result = %d\n"</span>, s);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> *r = (<span class="keyword">int</span>*)<span class="built_in">calloc</span>(n + <span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    r[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    r[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">        </div><div class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        r[i] = r[i - <span class="number">1</span>] + r[i - <span class="number">2</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> result = r[n];</div><div class="line">    <span class="built_in">free</span>(r);</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/09/17/pointer_C/" rel="next" title="Pointer of C">
+                <i class="fa fa-chevron-left"></i> Pointer of C
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/11/backtracking/" rel="prev" title="Backtracking">
+                Backtracking <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="wangxinalex" />
+          <p class="site-author-name" itemprop="name">wangxinalex</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Rod-cutting-Question"><span class="nav-number">1.</span> <span class="nav-text">Rod-cutting Question</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Recursive-top-down-implementation"><span class="nav-number">1.1.</span> <span class="nav-text">Recursive top-down implementation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-dynamic-programming-for-optimal-rod-cutting"><span class="nav-number">1.2.</span> <span class="nav-text">Using dynamic programming for optimal rod cutting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Top-down-with-memorization"><span class="nav-number">1.2.1.</span> <span class="nav-text">Top-down with memorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bottom-up-method"><span class="nav-number">1.2.2.</span> <span class="nav-text">Bottom-up method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subproblem-graphs"><span class="nav-number">1.2.3.</span> <span class="nav-text">Subproblem graphs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reconstructing-a-solution"><span class="nav-number">1.2.4.</span> <span class="nav-text">Reconstructing a solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise"><span class="nav-number">1.2.5.</span> <span class="nav-text">Exercise</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#15-1-1"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">15.1-1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-1-2"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">15.1-2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-1-3"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">15.1-3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-1-4"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">15.1-4</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-1-5"><span class="nav-number">1.2.5.5.</span> <span class="nav-text">15.1-5</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangxinalex</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
