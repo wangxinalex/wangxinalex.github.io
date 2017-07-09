@@ -783,6 +783,140 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/pointer_C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangxinalex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/09/17/pointer_C/" itemprop="url">Pointer of C</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-17T00:00:00+08:00">
+                2014-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="3-5作用域（scope）"><a href="#3-5作用域（scope）" class="headerlink" title="3.5作用域（scope）"></a>3.5作用域（scope）</h2><ul>
+<li>block scope </li>
+<li>file scope </li>
+<li>prototype scope </li>
+<li>function scope</li>
+</ul>
+<h2 id="3-6链接属性（linkage）"><a href="#3-6链接属性（linkage）" class="headerlink" title="3.6链接属性（linkage）"></a>3.6链接属性（linkage）</h2><ul>
+<li>external </li>
+<li>internal </li>
+<li><p>none</p>
+<p>不是在代码块中声明的变量属性默认为external， 函数属性一般也为external</p>
+<p>static将属性改为internal</p>
+<p>局部变量和形参默认为none</p>
+<p>extern 声明在别处定义的变量，一般用于代码块内与临时声明的局部变量相区分，一旦使用extern，就意味着该变量必须在别处被定义</p>
+<p>用extern的地方一般不初始化，在代码块外会警告，在代码块内同时使用extern和初始化会报错</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> e;</div><div class="line">    <span class="keyword">extern</span> <span class="keyword">int</span> f;<span class="comment">//f必须在别处被定义，否则链接器报错。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-8存储类型（storage-class）"><a href="#3-8存储类型（storage-class）" class="headerlink" title="3.8存储类型（storage class）"></a>3.8存储类型（storage class）</h2><ul>
+<li>static：在任何代码块之外的声明，不能指定其他的存储类型。 在代码块内部的声明如果加上static，可以使存储类型从自动变为静态，但并不改变scope。函数代码总是处在静态内存中。（static关键字代码块内部的声明改变存储类型，代码块之外改变链接属性）。只初始化一次。</li>
+<li>automatic：代码块内部声明，处于stack中，不会自动初始化</li>
+<li>register：寄存器中，不可取址，不会初始化。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/The_Science_of_Programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1105,140 +1239,6 @@
 <p>Put suitable bounds on each variable introduced.</p>
 </blockquote>
 <h2 id="16-4-Enlarging-the-Range-of-a-Variable"><a href="#16-4-Enlarging-the-Range-of-a-Variable" class="headerlink" title="16.4 Enlarging the Range of a Variable"></a>16.4 Enlarging the Range of a Variable</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/pointer_C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangxinalex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/09/17/pointer_C/" itemprop="url">Pointer of C</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-17T00:00:00+08:00">
-                2014-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="3-5作用域（scope）"><a href="#3-5作用域（scope）" class="headerlink" title="3.5作用域（scope）"></a>3.5作用域（scope）</h2><ul>
-<li>block scope </li>
-<li>file scope </li>
-<li>prototype scope </li>
-<li>function scope</li>
-</ul>
-<h2 id="3-6链接属性（linkage）"><a href="#3-6链接属性（linkage）" class="headerlink" title="3.6链接属性（linkage）"></a>3.6链接属性（linkage）</h2><ul>
-<li>external </li>
-<li>internal </li>
-<li><p>none</p>
-<p>不是在代码块中声明的变量属性默认为external， 函数属性一般也为external</p>
-<p>static将属性改为internal</p>
-<p>局部变量和形参默认为none</p>
-<p>extern 声明在别处定义的变量，一般用于代码块内与临时声明的局部变量相区分，一旦使用extern，就意味着该变量必须在别处被定义</p>
-<p>用extern的地方一般不初始化，在代码块外会警告，在代码块内同时使用extern和初始化会报错</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> e;</div><div class="line">    <span class="keyword">extern</span> <span class="keyword">int</span> f;<span class="comment">//f必须在别处被定义，否则链接器报错。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-8存储类型（storage-class）"><a href="#3-8存储类型（storage-class）" class="headerlink" title="3.8存储类型（storage class）"></a>3.8存储类型（storage class）</h2><ul>
-<li>static：在任何代码块之外的声明，不能指定其他的存储类型。 在代码块内部的声明如果加上static，可以使存储类型从自动变为静态，但并不改变scope。函数代码总是处在静态内存中。（static关键字代码块内部的声明改变存储类型，代码块之外改变链接属性）。只初始化一次。</li>
-<li>automatic：代码块内部声明，处于stack中，不会自动初始化</li>
-<li>register：寄存器中，不可取址，不会初始化。</li>
-</ul>
-
           
         
       
