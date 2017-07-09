@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="3.5作用域（scope） block scope  file scope  prototype scope  function scope  3.6链接属性（linkage） external  internal  none 不是在代码块中声明的变量属性默认为external， 函数属性一般也为external static将属性改为internal 局部变量和形参默认为none extern">
+<meta name="description" content="Windows下sublime+samutraPDF工具链windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。 windows下一般通过Ctex套件来安装latex相关编译工具，安装Ctex完毕后pdflatex xelatex bibtex等工具应已经全部就绪。 安装latexTools安装sublime，通过package c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pointer of C">
-<meta property="og:url" content="http://yoursite.com/2014/09/17/pointer_C/index.html">
+<meta property="og:title" content="Sublime编辑LaTeX的方法总结">
+<meta property="og:url" content="http://yoursite.com/2017/07/09/sublime-1499594375952/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="3.5作用域（scope） block scope  file scope  prototype scope  function scope  3.6链接属性（linkage） external  internal  none 不是在代码块中声明的变量属性默认为external， 函数属性一般也为external static将属性改为internal 局部变量和形参默认为none extern">
-<meta property="og:updated_time" content="2017-07-08T16:28:15.000Z">
+<meta property="og:description" content="Windows下sublime+samutraPDF工具链windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。 windows下一般通过Ctex套件来安装latex相关编译工具，安装Ctex完毕后pdflatex xelatex bibtex等工具应已经全部就绪。 安装latexTools安装sublime，通过package c">
+<meta property="og:updated_time" content="2017-07-09T10:01:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pointer of C">
-<meta name="twitter:description" content="3.5作用域（scope） block scope  file scope  prototype scope  function scope  3.6链接属性（linkage） external  internal  none 不是在代码块中声明的变量属性默认为external， 函数属性一般也为external static将属性改为internal 局部变量和形参默认为none extern">
+<meta name="twitter:title" content="Sublime编辑LaTeX的方法总结">
+<meta name="twitter:description" content="Windows下sublime+samutraPDF工具链windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。 windows下一般通过Ctex套件来安装latex相关编译工具，安装Ctex完毕后pdflatex xelatex bibtex等工具应已经全部就绪。 安装latexTools安装sublime，通过package c">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2014/09/17/pointer_C/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/09/sublime-1499594375952/"/>
 
 
 
 
 
-  <title>Pointer of C | Hexo</title>
+  <title>Sublime编辑LaTeX的方法总结 | Hexo</title>
   
 
 
@@ -255,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/pointer_C/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/sublime-1499594375952/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangxinalex">
@@ -272,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Pointer of C</h1>
+          <h1 class="post-title" itemprop="name headline">Sublime编辑LaTeX的方法总结</h1>
         
 
         <div class="post-meta">
@@ -284,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-17T00:00:00+08:00">
-                2014-09-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T17:59:35+08:00">
+                2017-07-09
               </time>
             
 
@@ -319,29 +319,25 @@
       
 
       
-        <h2 id="3-5作用域（scope）"><a href="#3-5作用域（scope）" class="headerlink" title="3.5作用域（scope）"></a>3.5作用域（scope）</h2><ul>
-<li>block scope </li>
-<li>file scope </li>
-<li>prototype scope </li>
-<li>function scope</li>
-</ul>
-<h2 id="3-6链接属性（linkage）"><a href="#3-6链接属性（linkage）" class="headerlink" title="3.6链接属性（linkage）"></a>3.6链接属性（linkage）</h2><ul>
-<li>external </li>
-<li>internal </li>
-<li><p>none</p>
-<p>不是在代码块中声明的变量属性默认为external， 函数属性一般也为external</p>
-<p>static将属性改为internal</p>
-<p>局部变量和形参默认为none</p>
-<p>extern 声明在别处定义的变量，一般用于代码块内与临时声明的局部变量相区分，一旦使用extern，就意味着该变量必须在别处被定义</p>
-<p>用extern的地方一般不初始化，在代码块外会警告，在代码块内同时使用extern和初始化会报错</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> e;</div><div class="line">    <span class="keyword">extern</span> <span class="keyword">int</span> f;<span class="comment">//f必须在别处被定义，否则链接器报错。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-8存储类型（storage-class）"><a href="#3-8存储类型（storage-class）" class="headerlink" title="3.8存储类型（storage class）"></a>3.8存储类型（storage class）</h2><ul>
-<li>static：在任何代码块之外的声明，不能指定其他的存储类型。 在代码块内部的声明如果加上static，可以使存储类型从自动变为静态，但并不改变scope。函数代码总是处在静态内存中。（static关键字代码块内部的声明改变存储类型，代码块之外改变链接属性）。只初始化一次。</li>
-<li>automatic：代码块内部声明，处于stack中，不会自动初始化</li>
-<li>register：寄存器中，不可取址，不会初始化。</li>
-</ul>
+        <h2 id="Windows下sublime-samutraPDF工具链"><a href="#Windows下sublime-samutraPDF工具链" class="headerlink" title="Windows下sublime+samutraPDF工具链"></a>Windows下sublime+samutraPDF工具链</h2><p>windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。</p>
+<p>windows下一般通过Ctex套件来安装latex相关编译工具，安装Ctex完毕后<code>pdflatex</code> <code>xelatex</code> <code>bibtex</code>等工具应已经全部就绪。</p>
+<h3 id="安装latexTools"><a href="#安装latexTools" class="headerlink" title="安装latexTools"></a>安装latexTools</h3><p>安装sublime，通过package control安装<code>LatexTools</code>。</p>
+<blockquote>
+<p>Preference -&gt; Package Cotnrol<br>Install New Packages<br>LatexTools</p>
+</blockquote>
+<p>LatexTools在windows下一般使用pdflatex编译tex文件，因此如果原文件中使用了eps格式的图片，一般需要在引言部分加上<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">&#123;graphicx&#125;</span></span></div><div class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">&#123;epstopdf&#125;</span></span></div></pre></td></tr></table></figure></p>
+<p>将eps图片转为pdf格式图片，使得pdflatex支持。</p>
+<h3 id="配置LatexTools"><a href="#配置LatexTools" class="headerlink" title="配置LatexTools"></a>配置LatexTools</h3><p>Windows下<code>LatexTools</code>默认的查看pdf的viewer是<a href="https://www.sumatrapdfreader.org/free-pdf-reader.html" target="_blank" rel="external">sumatrapdf</a>。安装完毕后配置User配置文件，主要是配置viewer的路径，<br>windows下默认的viewer一般为sumatraPDF。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">"windows": &#123;</div><div class="line">	// Command to invoke Sumatra. If blank, "SumatraPDF.exe" is used (it has to be on your PATH)</div><div class="line">	"sumatra": "D:\\Application\\SumatraPDF\\SumatraPDF.exe",</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<h3 id="配置sumatraPDF"><a href="#配置sumatraPDF" class="headerlink" title="配置sumatraPDF"></a>配置sumatraPDF</h3><p>打开sumatrapdf，在设置选项中加上“双击pdf时执行命令”<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"D:\Application\Sublime Text 3\sublime_text.exe"</span> <span class="string">"%f:%l"</span></div></pre></td></tr></table></figure></p>
+<p>以此实现双击反向跳转。配置完成之后，在latex文件中使用<code>Ctrl+B</code>可以编译latex文件，使用<code>Ctrl+l v</code>可以预览编译好的pdf文件。在sumatrapdf中双击对应文字，可以跳转回latex源码中。</p>
+<p><strong>对于包含多tex文件的文章</strong>，可以在每一个子文件开头加上<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">%!TEX root = XXX.tex</span></div></pre></td></tr></table></figure></p>
+<p>以保证在各个子文件中均可以编译和查看pdf文件。</p>
+<h2 id="Mac下实现sublime-skim工具链"><a href="#Mac下实现sublime-skim工具链" class="headerlink" title="Mac下实现sublime+skim工具链"></a>Mac下实现sublime+skim工具链</h2><p>Mac下一般以sublime编辑latex文件，并用skim来查看pdf和反向跳转到latex源码。</p>
+<p>Mac首先安装MacTex相关套件。安装完毕后，有可能会出现path路径找不到编译套件的情况。此时需要修改<code>/etc/paths</code>文件加上mactex套件的路径。</p>
+<p>按照windows下相同的方法下载<code>LatexTools</code>。</p>
+<h3 id="配置skim"><a href="#配置skim" class="headerlink" title="配置skim"></a>配置skim</h3><p>Mac下<code>LatexTools</code>默认的查看pdf的viewer是skim。<br>安装<a href="http://skim-app.sourceforge.net/" target="_blank" rel="external">skim</a>，选择选项-&gt;同步，并设置pdf-tex查看软件为sublime text 2。</p>
+<p>此时打开终端，输入<code>subl</code>如果不能打开sublime，则需要链接<code>subl</code>到<code>PATH</code>目录下。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/bin/subl</div></pre></td></tr></table></figure></p>
+<p>完成后再skim中按住<code>Command+Shift</code>再点击对应的文字，就会跳转到相应的源代码。</p>
 
       
     </div>
@@ -378,8 +374,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2014/09/17/The_Science_of_Programming/" rel="next" title="The Science of Programming">
-                <i class="fa fa-chevron-left"></i> The Science of Programming
+              <a href="/2015/06/19/unix-network/" rel="next" title="UNIX_Network">
+                <i class="fa fa-chevron-left"></i> UNIX_Network
               </a>
             
           </div>
@@ -388,8 +384,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/11/09/dynamic-programming/" rel="prev" title="Dynamic Programming">
-                Dynamic Programming <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/09/Git-proxy-1499594567750/" rel="prev" title="Git 代理使用方法">
+                Git 代理使用方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -501,7 +497,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5作用域（scope）"><span class="nav-number">1.</span> <span class="nav-text">3.5作用域（scope）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6链接属性（linkage）"><span class="nav-number">2.</span> <span class="nav-text">3.6链接属性（linkage）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8存储类型（storage-class）"><span class="nav-number">3.</span> <span class="nav-text">3.8存储类型（storage class）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows下sublime-samutraPDF工具链"><span class="nav-number">1.</span> <span class="nav-text">Windows下sublime+samutraPDF工具链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装latexTools"><span class="nav-number">1.1.</span> <span class="nav-text">安装latexTools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置LatexTools"><span class="nav-number">1.2.</span> <span class="nav-text">配置LatexTools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置sumatraPDF"><span class="nav-number">1.3.</span> <span class="nav-text">配置sumatraPDF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac下实现sublime-skim工具链"><span class="nav-number">2.</span> <span class="nav-text">Mac下实现sublime+skim工具链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置skim"><span class="nav-number">2.1.</span> <span class="nav-text">配置skim</span></a></li></ol></li></ol></div>
             
 
           </div>
