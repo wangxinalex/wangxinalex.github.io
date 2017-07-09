@@ -253,6 +253,517 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/vim-vundle-1499595407338/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangxinalex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/09/vim-vundle-1499595407338/" itemprop="url">Vim Vundle使用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T18:16:47+08:00">
+                2017-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vim/" itemprop="url" rel="index">
+                    <span itemprop="name">vim</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-下载Vundle插件"><a href="#1-下载Vundle插件" class="headerlink" title="1. 下载Vundle插件"></a>1. 下载Vundle插件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir -p ~/.vim/bundle</div><div class="line">git <span class="built_in">clone</span> https://github.com/VundleVim/Vundle.Vim.git ~/.vim/bundle/vundle</div></pre></td></tr></table></figure>
+<h1 id="2-配置-vimrc文件，设置需要下载的插件"><a href="#2-配置-vimrc文件，设置需要下载的插件" class="headerlink" title="2. 配置.vimrc文件，设置需要下载的插件"></a>2. 配置<code>.vimrc</code>文件，设置需要下载的插件</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">vi</span> ~/.vimrc</div><div class="line"><span class="keyword">set</span> nocampatible</div><div class="line"><span class="keyword">filetype</span> off</div><div class="line"><span class="keyword">set</span> rtp+=~/.<span class="keyword">vim</span>/bundle/vundle/</div><div class="line"><span class="keyword">call</span> vundle#rc()</div><div class="line"></div><div class="line">Plugin <span class="string">'VundleVim/Vundle.Vim'</span></div><div class="line">...</div><div class="line"><span class="keyword">filetype</span> plufin <span class="built_in">indent</span> <span class="keyword">on</span></div></pre></td></tr></table></figure>
+<h1 id="3-下载插件"><a href="#3-下载插件" class="headerlink" title="3.下载插件"></a>3.下载插件</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:PluginInstall</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/vim-1499595270248/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangxinalex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/09/vim-1499595270248/" itemprop="url">Vim 块编辑方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T18:14:30+08:00">
+                2017-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vim/" itemprop="url" rel="index">
+                    <span itemprop="name">vim</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="末尾添加字符"><a href="#末尾添加字符" class="headerlink" title="末尾添加字符"></a>末尾添加字符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;Slides/01Introduction-17.ppt&quot;&gt;Lecture 01&lt;/a&gt;&lt;br/&gt;</div><div class="line">&lt;a href=&quot;Slides/02Performance-17.ppt&quot;&gt;Lecture 02&lt;/a&gt;&lt;br/&gt;</div><div class="line">&lt;a href=&quot;Slides/03ISA-17.ppt&quot;&gt;Lecture 03&lt;/a&gt;&lt;br/&gt;</div><div class="line">&lt;a href=&quot;Slides/04singlecycle.ppt&quot;&gt;Lecture 04&lt;/a&gt;&lt;br/&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>命令模式按<code>ctrl+v</code>进入纵向编辑模式，将光标移至<code>Slides</code>末尾，向下移动光标，选中4行的<code>Slides</code>末尾的字符。</li>
+<li>然后按<code>A</code>进入<strong>行尾插入模式</strong>，添加2017。</li>
+<li>按<code>ESC</code>退出行尾编辑模式，此时4行<code>Slides</code>均变为<code>Slides2017</code>。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;Slides2017/01Introduction-17.ppt&quot;&gt;Lecture 01&lt;/a&gt;&lt;br/&gt;</div><div class="line">&lt;a href=&quot;Slides2017/02Performance-17.ppt&quot;&gt;Lecture 02&lt;/a&gt;&lt;br/&gt;</div><div class="line">&lt;a href=&quot;Slides2017/03ISA-17.ppt&quot;&gt;Lecture 03&lt;/a&gt;&lt;br/&gt;</div><div class="line">&lt;a href=&quot;Slides2017/04singlecycle.ppt&quot;&gt;Lecture 04&lt;/a&gt;&lt;br/&gt;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/Go-1499595215453/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangxinalex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/09/Go-1499595215453/" itemprop="url">Go代理使用方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T18:13:35+08:00">
+                2017-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="链接远程服务器，设置SSH端口转发"><a href="#链接远程服务器，设置SSH端口转发" class="headerlink" title="链接远程服务器，设置SSH端口转发"></a>链接远程服务器，设置SSH端口转发</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install plink</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">plink -N -v -P 22 user@[ipv6address] -D 127.0.0.1:7070 -pw XXXX</div></pre></td></tr></table></figure>
+<h1 id="将SOCK5代理转发为HTTP代理"><a href="#将SOCK5代理转发为HTTP代理" class="headerlink" title="将SOCK5代理转发为HTTP代理"></a>将SOCK5代理转发为HTTP代理</h1><p>（Go不支持SOCKS5代理）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 安装privoxy</div><div class="line">sudo apt-get install privoxy</div><div class="line"></div><div class="line"># 设置privoxy配置文件/etc/privoxy/config</div><div class="line">forward-socks5 / 127.0.0.1:7070 . #SOCKS5代理地址</div><div class="line">listen-address 127.0.0.1:8118 #HTTP代理地址</div><div class="line"></div><div class="line">forward 192.168.*.*/ . #本地地址不走代理通道</div><div class="line">forward 10.*.*.*/ .</div><div class="line">forward 127.*.*.*/ .</div><div class="line"></div><div class="line"># 启动privoxy</div><div class="line">/etc/init.d/privoxy start</div></pre></td></tr></table></figure>
+<h1 id="设置HTTP代理"><a href="#设置HTTP代理" class="headerlink" title="设置HTTP代理"></a>设置HTTP代理</h1><p>（Go不支持SOCKS5代理）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export http_proxy=http://127.0.0.1:8118</div><div class="line">export https_proxy=http://127.0.0.1:8118</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/awk-1499595168934/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangxinalex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/09/awk-1499595168934/" itemprop="url">awk, sed, grep使用笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T18:12:48+08:00">
+                2017-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="利用sed删除空行"><a href="#利用sed删除空行" class="headerlink" title="利用sed删除空行"></a>利用sed删除空行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed <span class="string">'/^$/d'</span> sources.list</div></pre></td></tr></table></figure>
+<h2 id="利用sed删除行首的空格"><a href="#利用sed删除行首的空格" class="headerlink" title="利用sed删除行首的空格"></a>利用sed删除行首的空格</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed `s/^[[:space:]]*//g` sources.list</div></pre></td></tr></table></figure>
+<h2 id="利用cut截取字符串"><a href="#利用cut截取字符串" class="headerlink" title="利用cut截取字符串"></a>利用cut截取字符串</h2><pre><code class="bash">cut -cN-  <span class="comment">#from N's character</span>
+cut -c-N
+cut -cM-N
+</code></pre>
+<h2 id="利用awk将多行文本合并为一行"><a href="#利用awk将多行文本合并为一行" class="headerlink" title="利用awk将多行文本合并为一行"></a>利用awk将多行文本合并为一行</h2><pre><code class="bash">awk BEGIN{RS=EOF}<span class="string">'{gsub(/\n/,",");print}'</span> results.txt
+</code></pre>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/Git-proxy-1499594567750/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -320,15 +831,17 @@
 
       
         
-          
-            <p>经试验，似乎Git只对SOCK5代理协议有效</p>
+          <p>经试验，似乎Git只对SOCK5代理协议有效</p>
 <h1 id="链接SOCK5代理"><a href="#链接SOCK5代理" class="headerlink" title="链接SOCK5代理"></a>链接SOCK5代理</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install plink</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">plink -N -v -P 22 wangxinalex@[2604:a880:800:10::1838:b001] -D 127.0.0.1:7070 -pw XXXX</div></pre></td></tr></table></figure>
 <h1 id="设置Git的http-https代理-SOCKS5协议"><a href="#设置Git的http-https代理-SOCKS5协议" class="headerlink" title="设置Git的http/https代理(SOCKS5协议)"></a>设置Git的http/https代理(SOCKS5协议)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy &apos;socks5://127.0.0.1:7070&apos;</div><div class="line">git config --global https.proxy &apos;socks5://127.0.0.1:7070&apos;</div></pre></td></tr></table></figure>
-<h1 id="设置Git-HTTP协议"><a href="#设置Git-HTTP协议" class="headerlink" title="设置Git (HTTP协议)"></a>设置Git (HTTP协议)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy http://username:passwd@[ipv6address]:port</div><div class="line">git config --global https.proxy http://username:passwd@[ipv6address]:port</div></pre></td></tr></table></figure>
-<h1 id="删除代理"><a href="#删除代理" class="headerlink" title="删除代理"></a>删除代理</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global --<span class="built_in">unset</span> http.proxy</div><div class="line">git config --global --get http.proxy</div></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/09/Git-proxy-1499594567750/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -412,6 +925,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/editor/" itemprop="url" rel="index">
+                    <span itemprop="name">editor</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -437,28 +972,15 @@
 
       
         
-          
-            <h2 id="Windows下sublime-samutraPDF工具链"><a href="#Windows下sublime-samutraPDF工具链" class="headerlink" title="Windows下sublime+samutraPDF工具链"></a>Windows下sublime+samutraPDF工具链</h2><p>windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。</p>
+          <h2 id="Windows下sublime-samutraPDF工具链"><a href="#Windows下sublime-samutraPDF工具链" class="headerlink" title="Windows下sublime+samutraPDF工具链"></a>Windows下sublime+samutraPDF工具链</h2><p>windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。</p>
 <p>windows下一般通过Ctex套件来安装latex相关编译工具，安装Ctex完毕后<code>pdflatex</code> <code>xelatex</code> <code>bibtex</code>等工具应已经全部就绪。</p>
-<h3 id="安装latexTools"><a href="#安装latexTools" class="headerlink" title="安装latexTools"></a>安装latexTools</h3><p>安装sublime，通过package control安装<code>LatexTools</code>。</p>
-<blockquote>
-<p>Preference -&gt; Package Cotnrol<br>Install New Packages<br>LatexTools</p>
-</blockquote>
-<p>LatexTools在windows下一般使用pdflatex编译tex文件，因此如果原文件中使用了eps格式的图片，一般需要在引言部分加上<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">&#123;graphicx&#125;</span></span></div><div class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">&#123;epstopdf&#125;</span></span></div></pre></td></tr></table></figure></p>
-<p>将eps图片转为pdf格式图片，使得pdflatex支持。</p>
-<h3 id="配置LatexTools"><a href="#配置LatexTools" class="headerlink" title="配置LatexTools"></a>配置LatexTools</h3><p>Windows下<code>LatexTools</code>默认的查看pdf的viewer是<a href="https://www.sumatrapdfreader.org/free-pdf-reader.html" target="_blank" rel="external">sumatrapdf</a>。安装完毕后配置User配置文件，主要是配置viewer的路径，<br>windows下默认的viewer一般为sumatraPDF。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">"windows": &#123;</div><div class="line">	// Command to invoke Sumatra. If blank, "SumatraPDF.exe" is used (it has to be on your PATH)</div><div class="line">	"sumatra": "D:\\Application\\SumatraPDF\\SumatraPDF.exe",</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
-<h3 id="配置sumatraPDF"><a href="#配置sumatraPDF" class="headerlink" title="配置sumatraPDF"></a>配置sumatraPDF</h3><p>打开sumatrapdf，在设置选项中加上“双击pdf时执行命令”<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"D:\Application\Sublime Text 3\sublime_text.exe"</span> <span class="string">"%f:%l"</span></div></pre></td></tr></table></figure></p>
-<p>以此实现双击反向跳转。配置完成之后，在latex文件中使用<code>Ctrl+B</code>可以编译latex文件，使用<code>Ctrl+l v</code>可以预览编译好的pdf文件。在sumatrapdf中双击对应文字，可以跳转回latex源码中。</p>
-<p><strong>对于包含多tex文件的文章</strong>，可以在每一个子文件开头加上<br><figure class="highlight tex"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">%!TEX root = XXX.tex</span></div></pre></td></tr></table></figure></p>
-<p>以保证在各个子文件中均可以编译和查看pdf文件。</p>
-<h2 id="Mac下实现sublime-skim工具链"><a href="#Mac下实现sublime-skim工具链" class="headerlink" title="Mac下实现sublime+skim工具链"></a>Mac下实现sublime+skim工具链</h2><p>Mac下一般以sublime编辑latex文件，并用skim来查看pdf和反向跳转到latex源码。</p>
-<p>Mac首先安装MacTex相关套件。安装完毕后，有可能会出现path路径找不到编译套件的情况。此时需要修改<code>/etc/paths</code>文件加上mactex套件的路径。</p>
-<p>按照windows下相同的方法下载<code>LatexTools</code>。</p>
-<h3 id="配置skim"><a href="#配置skim" class="headerlink" title="配置skim"></a>配置skim</h3><p>Mac下<code>LatexTools</code>默认的查看pdf的viewer是skim。<br>安装<a href="http://skim-app.sourceforge.net/" target="_blank" rel="external">skim</a>，选择选项-&gt;同步，并设置pdf-tex查看软件为sublime text 2。</p>
-<p>此时打开终端，输入<code>subl</code>如果不能打开sublime，则需要链接<code>subl</code>到<code>PATH</code>目录下。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/bin/subl</div></pre></td></tr></table></figure></p>
-<p>完成后再skim中按住<code>Command+Shift</code>再点击对应的文字，就会跳转到相应的源代码。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/09/sublime-1499594375952/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -567,48 +1089,17 @@
 
       
         
-          
-            <h1 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1 Introduction"></a>Chapter 1 Introduction</h1><h2 id="Chapter-1-7-OSI-Model"><a href="#Chapter-1-7-OSI-Model" class="headerlink" title="Chapter 1.7 OSI Model"></a>Chapter 1.7 OSI Model</h2><p><img src="http://i.imgur.com/xx3mk3n.png" alt=""></p>
+          <h1 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1 Introduction"></a>Chapter 1 Introduction</h1><h2 id="Chapter-1-7-OSI-Model"><a href="#Chapter-1-7-OSI-Model" class="headerlink" title="Chapter 1.7 OSI Model"></a>Chapter 1.7 OSI Model</h2><p><img src="http://i.imgur.com/xx3mk3n.png" alt=""></p>
 <h1 id="Chpater-2-The-Transport-Layer-TCP-UDP-and-SCTP"><a href="#Chpater-2-The-Transport-Layer-TCP-UDP-and-SCTP" class="headerlink" title="Chpater 2 The Transport Layer: TCP, UDP, and SCTP"></a>Chpater 2 The Transport Layer: TCP, UDP, and SCTP</h1><h2 id="Chapter-2-3-User-Datagram-Protocol-UDP"><a href="#Chapter-2-3-User-Datagram-Protocol-UDP" class="headerlink" title="Chapter 2.3 User Datagram Protocol (UDP)"></a>Chapter 2.3 User Datagram Protocol (UDP)</h2><p>The application writes a message to a UDP socket, which is then <em>encapsulated</em> in a UDP datagram, which is then further encapsulated as an IP datagram, which is then sent to its destination.</p>
 <p>There is <em>no guarantee</em> that a UDP datagram will ever reach its final destination, that order will be preserved across the network, or that datagrams arrive only once.</p>
 <p>We also say that UDP provides a <em>connectionless</em> service, as there need not be any long-term relationship between a UDP client and server.</p>
-<h2 id="Chapter-2-6-TCP-Connection-Establishment-and-Termination"><a href="#Chapter-2-6-TCP-Connection-Establishment-and-Termination" class="headerlink" title="Chapter 2.6 TCP Connection Establishment and Termination"></a>Chapter 2.6 TCP Connection Establishment and Termination</h2><h3 id="Establishment"><a href="#Establishment" class="headerlink" title="Establishment"></a>Establishment</h3><ol>
-<li>The server must be prepared to accept an incoming connection. This is normally done by calling <code>socket</code>, <code>bind</code>, and <code>listen</code> and is called a <em>passive open</em>.</li>
-<li>The client issues an <em>active</em> open by calling <code>connect</code>. This causes the client TCP to send a “synchronize” (SYN) segment, which tells the server the client’s initial sequence number for the data that the client will send on the connection. Normally, there is no data sent with the SYN; it just contains an IP header, a TCP header, and possible TCP options (which we will talk about shortly).<strong>[First Handshake]</strong></li>
-<li>The server must acknowledge (ACK) the client’s SYN and the server must also send its own SYN containing the initial sequence number for the data that the server will send on the connection. The server sends its SYN and the ACK of the client’s SYN in a single segment.<strong>[Second Handshake]</strong></li>
-<li>The client must acknowledge the server’s SYN.<strong>[Third Handshake]</strong></li>
-</ol>
-<p><img src="http://i.imgur.com/hHfcacz.png" alt=""></p>
-<h3 id="Termination"><a href="#Termination" class="headerlink" title="Termination"></a>Termination</h3><ol>
-<li>One application calls <code>close</code> first, and we say that this end performs the <em>active close</em>. This end’s TCP sends a FIN segment, which means it is finished sending data.</li>
-<li>The other end that receives the FIN performs the <em>passive close</em>. The received FIN is acknowledged by TCP. The receipt of the FIN is also passed to the application as an end-of-file (after any data that may have already been queued for the application to receive), since the receipt of the FIN means the application will not receive any additional data on the connection.</li>
-<li>Sometime later, the application that received the end-of-file will <code>close</code> its socket. This causes its TCP to send a FIN.</li>
-<li>The TCP on the system that receives this final FIN (the end that did the active close) acknowledges the FIN.</li>
-</ol>
-<p><img src="http://i.imgur.com/3fYTVG4.png" alt=""></p>
-<h2 id="Chapter-2-9-Port-Number"><a href="#Chapter-2-9-Port-Number" class="headerlink" title="Chapter 2.9 Port Number"></a>Chapter 2.9 Port Number</h2><h3 id="Socket-Pair"><a href="#Socket-Pair" class="headerlink" title="Socket Pair"></a>Socket Pair</h3><p>The <em>socket pair</em> for a TCP connection is the four-tuple that defines the two endpoints of the connection: the local IP address, local port, foreign IP address, and foreign port.</p>
-<h2 id="Chapter-4-Elementary-TCP-Sockets"><a href="#Chapter-4-Elementary-TCP-Sockets" class="headerlink" title="Chapter 4 Elementary TCP Sockets"></a>Chapter 4 Elementary TCP Sockets</h2><p><img src="http://i.imgur.com/uCBrH8E.png" alt=""></p>
-<h3 id="Chapter-4-2-socket-Function"><a href="#Chapter-4-2-socket-Function" class="headerlink" title="Chapter 4.2 socket Function"></a>Chapter 4.2 <code>socket</code> Function</h3><blockquote>
-<p><code>socket</code>函数指定期望的通信协议类型。</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> family, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;</div><div class="line"><span class="comment">//若成功返回非负描述符，失败返回-1</span></div></pre></td></tr></table></figure>
-<p><code>socket</code>函数在成功时返回一个小的非负整数值，它与文件描述符相似，成为套接字描述符(socket descriptor)。为了得到这个套接字描述符，我们只是指定了协议族(IPv4, IPv6, Unix)和套接字类型(字节流，数据报，原始套接字)。并没有指定本地协议地址和远程协议地址。</p>
-<h3 id="Chapter-4-3-connect-Function"><a href="#Chapter-4-3-connect-Function" class="headerlink" title="Chapter 4.3 connect Function"></a>Chapter 4.3 <code>connect</code> Function</h3><blockquote>
-<p>TCP客户端用<code>connect</code>函数来建立与TCP服务器的连接。</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> sockfd, <span class="keyword">const</span> struct sockaddr *servaddr, <span class="keyword">socklen_t</span> addrlen)</span></span>;</div><div class="line"><span class="comment">//若成功则返回0，出错则返回-1</span></div></pre></td></tr></table></figure>
-<p>客户端在调用<code>connect</code>之前不必调用<code>bind</code>函数，因为如果需要的话，内核会确定源IP地址，并选择一个临时端口作为源端口。</p>
-<p>如果是TCP套接字，调用<code>connect</code>函数将激发<strong>TCP三路握手</strong>过程，并且尽在连接成功或出错时才返回。</p>
-<h2 id="Chapter-4-4-bind-Function"><a href="#Chapter-4-4-bind-Function" class="headerlink" title="Chapter 4.4 bind Function"></a>Chapter 4.4 <code>bind</code> Function</h2><blockquote>
-<p><code>bind</code>函数把一个本地协议地址赋予一个套接字</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">bind</span><span class="params">(<span class="keyword">int</span> sockfd, <span class="keyword">const</span> struct sockaddr *myaddr, <span class="keyword">socklen_t</span> addrlen)</span></span>;</div><div class="line"><span class="comment">//若成功则返回0，失败返回-1</span></div></pre></td></tr></table></figure>
-<ul>
-<li>服务器在启动时捆绑它们众所周知的端口。如果一个TCP客户端或服务器未曾调用bind捆绑一个端口，当调用<code>connect</code>或<code>listen</code>时，内核就为相应的套接字选择一个临时端口。对于客户端来说，让内核来选择临时端口是正常的。对于TCP服务器来说，一般会指定一个端口。</li>
-<li>进程可以把一个特定的IP地址绑定到它的套接字上，不过这个IP地址必须属于其所在主机的网络接口之一。TCP客户端通常不把IP地址绑定到它的套接字上，当连接套接字时，内核将根据所用外出网络接口来选择源IP地址。如果TCP服务器没有把IP地址绑定到它的套接字上，内核就把客户发送的SYN的目的IP地址作为服务器的源IP地址。</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/06/19/unix-network/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -717,16 +1208,17 @@
 
       
         
-          
-            <h1 id="Chapter-1-Backtracking"><a href="#Chapter-1-Backtracking" class="headerlink" title="Chapter 1 Backtracking"></a>Chapter 1 Backtracking</h1><blockquote>
+          <h1 id="Chapter-1-Backtracking"><a href="#Chapter-1-Backtracking" class="headerlink" title="Chapter 1 Backtracking"></a>Chapter 1 Backtracking</h1><blockquote>
 <p>Backtracking is a <strong>systematic</strong> way to iterate through all the possible configurations of a search space.<br>These configurations may represent all possible arrangemants if objects (permutations) or all possible<br>ways of building a collections of them (subsets).</p>
 </blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">bool</span> finished = FALSE;</div><div class="line">backtrack(<span class="keyword">int</span> a[], <span class="keyword">int</span> k, data input)&#123;</div><div class="line">	<span class="keyword">int</span> c[MAXCANDIDATES];</div><div class="line">	<span class="keyword">int</span> ncandidates;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	</div><div class="line">	<span class="keyword">if</span>(is_a_solution(a, k, input))&#123;</div><div class="line">		process_solution(a, k, input);</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		k = k + <span class="number">1</span>;</div><div class="line">		construct_candidates(a, k, input, c, &amp;ncandidates);</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; ncandidates; i++)&#123;</div><div class="line">			a[k] = c[i];</div><div class="line">			make_move(a, k, input);</div><div class="line">			backtrack(a, k, input);</div><div class="line">			unmake_move(a, k, input);</div><div class="line">			<span class="keyword">if</span>(finished) <span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Chapter-1-1-Constructing-all-subsets"><a href="#Chapter-1-1-Constructing-all-subsets" class="headerlink" title="Chapter 1.1 Constructing all subsets"></a>Chapter 1.1 Constructing all subsets</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> NMAX 4</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> SUBSET_NUM 16</span></div><div class="line"></div><div class="line"><span class="keyword">bool</span> finished = <span class="literal">false</span>;</div><div class="line"><span class="keyword">int</span> solutions = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_a_solution</span><span class="params">(<span class="built_in">bitset</span>&lt;NMAX&gt; &amp;a, <span class="keyword">int</span> k, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> k == n;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">construct_candidates</span><span class="params">(<span class="built_in">bitset</span>&lt;<span class="number">2</span>&gt;&amp; c, <span class="keyword">int</span>&amp; ncandidates)</span> </span>&#123;</div><div class="line">	c.<span class="built_in">set</span>(<span class="number">0</span>);</div><div class="line">	c.reset(<span class="number">1</span>);</div><div class="line">	ncandidates = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">process_solution</span><span class="params">(<span class="built_in">bitset</span>&lt;NMAX&gt; &amp;a, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"&#123;"</span>);</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; k; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(a.test(i)) &#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">" %d"</span>, i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">" &#125;\n"</span>);</div><div class="line">	<span class="keyword">if</span>(++solutions == SUBSET_NUM) &#123;</div><div class="line">		finished = <span class="literal">true</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="built_in">bitset</span>&lt;NMAX&gt; &amp;a, <span class="keyword">int</span> k, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	<span class="built_in">bitset</span>&lt;2&gt; c;</div><div class="line">	<span class="keyword">int</span> ncandidates;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">if</span>(is_a_solution(a, k, n)) &#123;</div><div class="line">		process_solution(a, k);</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		construct_candidates(c, ncandidates);</div><div class="line">		<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; ncandidates; i++) &#123;</div><div class="line">			a[k] = c[i];</div><div class="line">			backtrack(a, k + <span class="number">1</span>, n);</div><div class="line">			<span class="keyword">if</span>(finished) &#123;</div><div class="line">				<span class="keyword">return</span> ;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">generate_subsets</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	<span class="built_in">bitset</span>&lt;NMAX&gt; a;</div><div class="line">	backtrack(a, <span class="number">0</span>, n);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	generate_subsets(<span class="number">4</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Chapter-1-2-Constructing-all-permutations"><a href="#Chapter-1-2-Constructing-all-permutations" class="headerlink" title="Chapter 1.2 Constructing all permutations"></a>Chapter 1.2 Constructing all permutations</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bitset&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> NMAX 4</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> PERM_NUM 24</span></div><div class="line"></div><div class="line"><span class="keyword">bool</span> finished = <span class="literal">false</span>;</div><div class="line"><span class="keyword">int</span> solutions = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_a_solution</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> k, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> k == n;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">construct_candidates</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> k, <span class="keyword">int</span> n, <span class="keyword">int</span> c[], <span class="keyword">int</span> &amp;ncands)</span> </span>&#123;</div><div class="line">	<span class="built_in">bitset</span>&lt;NMAX&gt; in_perm;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</div><div class="line">		in_perm.<span class="built_in">set</span>(a[i]);</div><div class="line">	&#125;</div><div class="line">	ncands = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">		<span class="keyword">if</span>(!in_perm.test(i)) &#123;</div><div class="line">			c[ncands++] = i;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">process_solution</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"&#123;"</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">" %d"</span>, a[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">" &#125;\n"</span>);</div><div class="line">	<span class="keyword">if</span>(++solutions == PERM_NUM) &#123;</div><div class="line">		finished = <span class="literal">true</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> k, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> ncands = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> c[NMAX];</div><div class="line">	<span class="keyword">if</span>(is_a_solution(a, k, n)) &#123;</div><div class="line">		process_solution(a, k);</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		construct_candidates(a, k, n, c, ncands);</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ncands; i++) &#123;</div><div class="line">			a[k] = c[i];</div><div class="line">			backtrack(a, k + <span class="number">1</span>, n);</div><div class="line">			<span class="keyword">if</span>(finished) &#123;</div><div class="line">				<span class="keyword">return</span> ;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">generate_perms</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> a[NMAX];</div><div class="line">	backtrack(a, <span class="number">0</span>, n);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	generate_perms(<span class="number">4</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Chpater-1-3-Constructing-all-paths-in-a-graph"><a href="#Chpater-1-3-Constructing-all-paths-in-a-graph" class="headerlink" title="Chpater 1.3 Constructing all paths in a graph"></a>Chpater 1.3 Constructing all paths in a graph</h2><h1 id="Chapter-2-Search-Pruning"><a href="#Chapter-2-Search-Pruning" class="headerlink" title="Chapter 2 Search Pruning"></a>Chapter 2 Search Pruning</h1><p><strong>Pruning</strong> is the technique of cutting off the search the instant we have established that a partial solution cannot be extended into a full solution.</p>
-<h1 id="Chapter-3-Sudoku"><a href="#Chapter-3-Sudoku" class="headerlink" title="Chapter 3 Sudoku"></a>Chapter 3 Sudoku</h1>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/05/11/backtracking/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -835,40 +1327,17 @@
 
       
         
-          
-            <h1 id="Rod-cutting-Question"><a href="#Rod-cutting-Question" class="headerlink" title="Rod-cutting Question"></a>Rod-cutting Question</h1><h2 id="Recursive-top-down-implementation"><a href="#Recursive-top-down-implementation" class="headerlink" title="Recursive top-down implementation"></a>Recursive top-down implementation</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function CUT-ROD(p,n)</div><div class="line">	<span class="keyword">if</span> n == <span class="number">0</span></div><div class="line">		<span class="keyword">return</span> <span class="number">0</span></div><div class="line">	q = - Inf</div><div class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to n</div><div class="line">		q = max(q, p[i] + CUT-ROD(p, n-i))</div><div class="line">	<span class="keyword">return</span> q</div></pre></td></tr></table></figure>
+          <h1 id="Rod-cutting-Question"><a href="#Rod-cutting-Question" class="headerlink" title="Rod-cutting Question"></a>Rod-cutting Question</h1><h2 id="Recursive-top-down-implementation"><a href="#Recursive-top-down-implementation" class="headerlink" title="Recursive top-down implementation"></a>Recursive top-down implementation</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function CUT-ROD(p,n)</div><div class="line">	<span class="keyword">if</span> n == <span class="number">0</span></div><div class="line">		<span class="keyword">return</span> <span class="number">0</span></div><div class="line">	q = - Inf</div><div class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to n</div><div class="line">		q = max(q, p[i] + CUT-ROD(p, n-i))</div><div class="line">	<span class="keyword">return</span> q</div></pre></td></tr></table></figure>
 <p>To analyze the running time of CUT-ROD, let <code>T(n)</code> denote the total number of calls made to CUT-ROD when called with its second parameter equal to n.</p>
 <p><img src="http://i.imgur.com/ClbPe7G.png" alt=""></p>
 <p>$$T(n) = 1+\sum^{n-1}_{j=0}{T(j)}$$</p>
-<h2 id="Using-dynamic-programming-for-optimal-rod-cutting"><a href="#Using-dynamic-programming-for-optimal-rod-cutting" class="headerlink" title="Using dynamic programming for optimal rod cutting"></a>Using dynamic programming for optimal rod cutting</h2><blockquote>
-<p>Having observed that a<br>naive recursive solution is inefficient because it solves the same subproblems repeatedly, we arrange for each subproblem to be solved only once, saving its solution. If we need to refer to this subproblem’s solution again later, we can just look it up, rather than recompute it. Dynamic programming thus uses additional memory to save computation time; it serves an example of a <em>time-memory trade-off</em>.</p>
-</blockquote>
-<h3 id="Top-down-with-memorization"><a href="#Top-down-with-memorization" class="headerlink" title="Top-down with memorization"></a>Top-down with memorization</h3><ul>
-<li>write the procedure recursively in a natural manner, but modified to save the result of each subproblem (usually in an array or hash table).  </li>
-<li>The procedure now first checks<br>to see whether it has previously solved this subproblem. If so, it returns the saved<br>value, saving further computation at this level; if not, the procedure computes the<br>value in the usual manner. </li>
-</ul>
-<p>We say that the recursive procedure has been <strong>memoized</strong>; it “remembers” what results it has computed previously.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Memoized-Cut-Rod(p,n)</div><div class="line">	let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line">	<span class="keyword">for</span> i = <span class="number">0</span> to n</div><div class="line">		r[i] = -Inf</div><div class="line">	<span class="keyword">return</span> Memoized-Cut-Rod_Aux(p, n, r)</div><div class="line"></div><div class="line">Memoized-Cut-Rod-Aux(p,n,r)</div><div class="line">	<span class="keyword">if</span> r[n] &gt;= <span class="number">0</span></div><div class="line">		<span class="keyword">return</span> r[n]</div><div class="line">	<span class="keyword">if</span> n == <span class="number">0</span></div><div class="line">		q = <span class="number">0</span></div><div class="line">	<span class="keyword">else</span> q = -Inf</div><div class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to n</div><div class="line">			q = max(q, p[i] + Memoized-Cut-Rod-Aux(p, n-i, r))</div><div class="line">	r[n] = q</div><div class="line">	<span class="keyword">return</span> q</div></pre></td></tr></table></figure>
-<h3 id="Bottom-up-method"><a href="#Bottom-up-method" class="headerlink" title="Bottom-up method"></a>Bottom-up method</h3><ul>
-<li>We sort the subproblems by size and solve them in size order, smallest first. </li>
-<li>When solving a particular subproblem, we have already solved all of the smaller subproblems its solution depends upon, and we have saved their solutions.</li>
-<li>We solve each subproblem only once, and when we first see it, we have already solved all of its prerequisite subproblems.</li>
-</ul>
-<p>The bottom-up version is even simpler</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Bottom-Up-Cut-Rod(p,n)</div><div class="line">	let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line">	r[<span class="number">0</span>] = <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n</div><div class="line">		q = -Inf</div><div class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to j</div><div class="line">			q = max(q, p[i] + r[j-i])</div><div class="line">		r[j] = q</div><div class="line">	<span class="keyword">return</span> r[n]</div></pre></td></tr></table></figure>
-<h3 id="Subproblem-graphs"><a href="#Subproblem-graphs" class="headerlink" title="Subproblem graphs"></a>Subproblem graphs</h3><p>We can think of the subproblem graph as a <strong>reduced</strong> or <strong>collapsed</strong> version of the recursion tree for the top-down recursive method, in which we coalesce all nodes for the same subproblem into a single vertex and direct all edges from parent to child.</p>
-<p><img src="http://i.imgur.com/ogG9QRW.png" alt=""></p>
-<p>The bottom-up method for dynamic programming considers the vertices of the subproblem graph in such an order that we solve the subproblems y adjacent to a given subproblem x before we solve subproblem x.</p>
-<h3 id="Reconstructing-a-solution"><a href="#Reconstructing-a-solution" class="headerlink" title="Reconstructing a solution"></a>Reconstructing a solution</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Extended-Bottom-Up-Cut-Rod(p,n)</div><div class="line">	let r[<span class="number">0.</span>.n] <span class="keyword">and</span> s[<span class="number">0.</span>.n] be <span class="keyword">new</span> arrays</div><div class="line">	r[<span class="number">0</span>] = <span class="number">0</span></div><div class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n</div><div class="line">		q = -Inf</div><div class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to j</div><div class="line">			<span class="keyword">if</span> q &lt; p[i] + r[j-i]</div><div class="line">				q = p[i] + r[j<span class="number">-1</span>]</div><div class="line">				s[j] = i</div><div class="line">		r[j] = q</div><div class="line">	<span class="keyword">return</span> r <span class="keyword">and</span> s</div><div class="line"></div><div class="line">Print-Cut-Rod-Solution(p,n)</div><div class="line">	(r,s) = Extended-Bottom-Up-Cut-Rod(p,n)</div><div class="line">	<span class="keyword">while</span> n &gt; <span class="number">0</span></div><div class="line">		print s[n]</div><div class="line">		n = n - s[n]</div></pre></td></tr></table></figure>
-<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><h4 id="15-1-1"><a href="#15-1-1" class="headerlink" title="15.1-1"></a>15.1-1</h4><p>$$T(n+1) = 1+\sum<em>{i=0}^{n}{T(j)} = 1+\sum</em>{i=0}^{n}{2^i} = 2^{n+1}$$</p>
-<h4 id="15-1-2"><a href="#15-1-2" class="headerlink" title="15.1-2"></a>15.1-2</h4><p>p(4) = 0, p(6) = 18, p(10) = 29</p>
-<p>The best choice is not to cut, yet the p(6) has the maximal density.</p>
-<h4 id="15-1-3"><a href="#15-1-3" class="headerlink" title="15.1-3"></a>15.1-3</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Bottom-Up-Cut-Rod(p,n)</div><div class="line">let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span></div><div class="line">r[<span class="number">0</span>] = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</div><div class="line">	q = -Inf</div><div class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to j - <span class="number">1</span></div><div class="line">		q = max(q, p[i] + r[j-i] - c)</div><div class="line">	q = max(q, p[j]) <span class="comment">//not to cut</span></div><div class="line">	r[j] = q</div><div class="line"><span class="keyword">return</span> r[n]</div></pre></td></tr></table></figure>
-<h4 id="15-1-4"><a href="#15-1-4" class="headerlink" title="15.1-4"></a>15.1-4</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">top_down_rod_cut</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> p[], <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> *r = (<span class="keyword">int</span>*)<span class="built_in">calloc</span>(n + <span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    <span class="keyword">int</span> *s = (<span class="keyword">int</span>*)<span class="built_in">calloc</span>(n + <span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n + <span class="number">1</span>; i++) &#123;</div><div class="line">        r[i] = -INT_MAX;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> result = top_down_rod_cut_aux(p, n, r, s);</div><div class="line">    print_cut(s, n);</div><div class="line">    <span class="built_in">free</span>(s);</div><div class="line">    <span class="built_in">free</span>(r);</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">top_down_rod_cut_aux</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> p[], <span class="keyword">int</span> n, <span class="keyword">int</span> r[], <span class="keyword">int</span> s[])</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span>(r[n] &gt;= <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> r[n];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> q;</div><div class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</div><div class="line">        q = <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        q = -INT_MAX;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">            <span class="keyword">int</span> new_q = p[i] + top_down_rod_cut_aux(p, n - i, r, s);</div><div class="line">            <span class="keyword">if</span>(new_q &gt; q) &#123;</div><div class="line">                q = new_q;</div><div class="line">                s[n] = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    r[n] = q;</div><div class="line">    <span class="keyword">return</span> q;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="15-1-5"><a href="#15-1-5" class="headerlink" title="15.1-5"></a>15.1-5</h4><p>vertices: n+1<br>edges: 2n-1</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> s = fib(<span class="number">10</span>);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"result = %d\n"</span>, s);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> *r = (<span class="keyword">int</span>*)<span class="built_in">calloc</span>(n + <span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</div><div class="line">    r[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    r[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">        </div><div class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</div><div class="line">        r[i] = r[i - <span class="number">1</span>] + r[i - <span class="number">2</span>];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> result = r[n];</div><div class="line">    <span class="built_in">free</span>(r);</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/11/09/dynamic-programming/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -910,7 +1379,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/pointer_C/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/The-Science-of-Programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangxinalex">
@@ -929,7 +1398,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/09/17/pointer_C/" itemprop="url">Pointer of C</a></h1>
+                <a class="post-title-link" href="/2014/09/17/The-Science-of-Programming/" itemprop="url">The Science of Programming</a></h1>
         
 
         <div class="post-meta">
@@ -977,396 +1446,20 @@
 
       
         
-          
-            <h2 id="3-5作用域（scope）"><a href="#3-5作用域（scope）" class="headerlink" title="3.5作用域（scope）"></a>3.5作用域（scope）</h2><ul>
-<li>block scope </li>
-<li>file scope </li>
-<li>prototype scope </li>
-<li>function scope</li>
-</ul>
-<h2 id="3-6链接属性（linkage）"><a href="#3-6链接属性（linkage）" class="headerlink" title="3.6链接属性（linkage）"></a>3.6链接属性（linkage）</h2><ul>
-<li>external </li>
-<li>internal </li>
-<li><p>none</p>
-<p>不是在代码块中声明的变量属性默认为external， 函数属性一般也为external</p>
-<p>static将属性改为internal</p>
-<p>局部变量和形参默认为none</p>
-<p>extern 声明在别处定义的变量，一般用于代码块内与临时声明的局部变量相区分，一旦使用extern，就意味着该变量必须在别处被定义</p>
-<p>用extern的地方一般不初始化，在代码块外会警告，在代码块内同时使用extern和初始化会报错</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> e;</div><div class="line">    <span class="keyword">extern</span> <span class="keyword">int</span> f;<span class="comment">//f必须在别处被定义，否则链接器报错。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-8存储类型（storage-class）"><a href="#3-8存储类型（storage-class）" class="headerlink" title="3.8存储类型（storage class）"></a>3.8存储类型（storage class）</h2><ul>
-<li>static：在任何代码块之外的声明，不能指定其他的存储类型。 在代码块内部的声明如果加上static，可以使存储类型从自动变为静态，但并不改变scope。函数代码总是处在静态内存中。（static关键字代码块内部的声明改变存储类型，代码块之外改变链接属性）。只初始化一次。</li>
-<li>automatic：代码块内部声明，处于stack中，不会自动初始化</li>
-<li>register：寄存器中，不可取址，不会初始化。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/The_Science_of_Programming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangxinalex">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/09/17/The_Science_of_Programming/" itemprop="url">The Science of Programming</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-09-17T00:00:00+08:00">
-                2014-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Chapter-1-Propositions"><a href="#Chapter-1-Propositions" class="headerlink" title="Chapter 1 Propositions"></a>Chapter 1 Propositions</h1><h2 id="1-1-Fully-Parenthesized-Propositions"><a href="#1-1-Fully-Parenthesized-Propositions" class="headerlink" title="1.1 Fully Parenthesized Propositions"></a>1.1 Fully Parenthesized Propositions</h2><p><img src="http://i.imgur.com/C8OZa24.png" alt=""></p>
+          <h1 id="Chapter-1-Propositions"><a href="#Chapter-1-Propositions" class="headerlink" title="Chapter 1 Propositions"></a>Chapter 1 Propositions</h1><h2 id="1-1-Fully-Parenthesized-Propositions"><a href="#1-1-Fully-Parenthesized-Propositions" class="headerlink" title="1.1 Fully Parenthesized Propositions"></a>1.1 Fully Parenthesized Propositions</h2><p><img src="http://i.imgur.com/C8OZa24.png" alt=""></p>
 <h2 id="1-2-Evaluation-of-Constant-Propositions"><a href="#1-2-Evaluation-of-Constant-Propositions" class="headerlink" title="1.2 Evaluation of Constant Propositions"></a>1.2 Evaluation of Constant Propositions</h2><p>Truth Table<br><img src="http://i.imgur.com/6igfo2K.png" alt=""></p>
 <p>Definition 1.3.1: A <em>state</em> s is a <em>function</em> from a set of identifiers to the set of values T and F.<br>Definition 1.3.2: Proposition e is <em>well-defined</em> in state s if each identifier in e is associated with either T or F in state s.</p>
 <p>In state $$s = {(b,T),(c,F)}$$, proposition $$(b \vee c)$$ is well-definition while proposition $$(b \wedge d)$$ is not.</p>
 <p>Definition 1.3.3: Let proposition e be well-defined in state s. Then s(e), the value of e in state s, is the value obtained by replacing all occurrences of identifiers b in e by their values s(b) and evaluating the resulting constant proposition.</p>
 <p>$$s(((\neg b)\vee c))$$ is evaluated in state $$s = {(b,T),(c,F)}$$</p>
 <p>$$s(((\neg b)\vee c))$$<br>$$=((\neg T)\vee F )$$<br>$$=(F \vee F)$$<br>$$=F   \square$$</p>
-<h2 id="1-4-Precedence-Rules-for-Operators"><a href="#1-4-Precedence-Rules-for-Operators" class="headerlink" title="1.4 Precedence Rules for Operators"></a>1.4 Precedence Rules for Operators</h2><ol>
-<li>Sequences of the same operator are evaluated from left to right, e.g. $$b \wedge c \wedge d \equiv ((b \wedge c)\wedge d)$$.</li>
-<li>The order of evaluation of different, adjacent operators is given by the list: <strong>not, and, or, imp, equals</strong>.</li>
-</ol>
-<p>$$\neg b = b \wedge c \equiv (\neg b) = (b \wedge c)$$</p>
-<p>$$b \vee \neg c \Rightarrow d \equiv (b\vee(\neg c)) \Rightarrow d$$</p>
-<p>$$b \Rightarrow c \Rightarrow d \vee e \equiv (b \Rightarrow c)\Rightarrow (d \wedge e) \square$$</p>
-<p><img src="http://i.imgur.com/Up19xUP.png" alt=""></p>
-<p><img src="http://i.imgur.com/hvyMXV3.png" alt=""></p>
-<p><img src="http://i.imgur.com/FINlzK5.png" alt=""></p>
-<h2 id="1-5-Tautologies"><a href="#1-5-Tautologies" class="headerlink" title="1.5 Tautologies"></a>1.5 Tautologies</h2><p>The basic way to show that proposition is a tautology is to show that its evaluation yields T in every possible state.</p>
-<blockquote>
-<p>To prove a conjecture, it is necessary to prove that it is true in all cases; to disprove a conjecture, it is sufficient to find a single case where it is false.</p>
-</blockquote>
-<h2 id="1-6-Propositions-as-Sets-of-States"><a href="#1-6-Propositions-as-Sets-of-States" class="headerlink" title="1.6 Propositions as Sets of States"></a>1.6 Propositions as Sets of States</h2><p>Proposition b is <em>weaker</em> than c if $$c \Rightarrow b$$. Correspondingly, c is said to be <em>stronger</em> than b. A strong proposition makes more restrictions on the <strong>combinations of values its identifiers can be associated with</strong>, a weaker proposition makes fewer. The  weakest proposition is T (or any tautology), because it represents the set of all states; the strongest is F, because it represents the set of no states.</p>
-<h2 id="1-7-Transforming-English-to-Proposition-Form"><a href="#1-7-Transforming-English-to-Proposition-Form" class="headerlink" title="1.7 Transforming English to Proposition Form"></a>1.7 Transforming English to Proposition Form</h2><h1 id="Chapter-2-Reasoning-using-Equivalence-Transformations"><a href="#Chapter-2-Reasoning-using-Equivalence-Transformations" class="headerlink" title="Chapter 2 Reasoning using Equivalence Transformations"></a>Chapter 2 Reasoning using Equivalence Transformations</h1><h2 id="2-1-The-Laws-of-Equivalence"><a href="#2-1-The-Laws-of-Equivalence" class="headerlink" title="2.1 The Laws of Equivalence"></a>2.1 The Laws of Equivalence</h2><p>Definition 2.1.1: Propositions E1 and E2 are <em>equivalent</em> iff E1=E2 is a tautology. In this case, E1=E2 is an equivalence.</p>
-<ol>
-<li>Commutative Laws</li>
-<li>Associative Laws</li>
-<li>Distributive Laws</li>
-<li>De Morgan’s Laws<ol>
-<li>$$\neg(E1 \wedge E2) = \neg E1 \vee \neg E2$$</li>
-<li>$$\neg(E1 \vee E2) = \neg E1 \wedge \neg E2$$</li>
-</ol>
-</li>
-<li>Law of Negation</li>
-<li>Law of the Excluded Middle: $$E1 \vee \neg E1 = T$$</li>
-<li>Law of Contradiction</li>
-<li>Law of Implication: $$E1\Rightarrow E2 = \neg E1 \vee E2$$</li>
-<li>Law of Equality: $$(E1 = E2) = (E1\Rightarrow E2)\wedge(E2\Rightarrow E1)$$</li>
-<li>Laws of or-simplification:<ol>
-<li>$$E1\vee E1 = E1$$</li>
-<li>$$E1\vee T = T$$</li>
-<li>$$E1\vee F = E1$$</li>
-<li>$$E1\vee(E1\wedge E2) = E1$$</li>
-</ol>
-</li>
-<li>Laws of and-simplification:<ol>
-<li>$$E1\wedge E1 = E1$$</li>
-<li>$$E1\wedge T = E1$$</li>
-<li>$$E1\wedge F = F$$</li>
-<li>$$E1\wedge(E1\vee E2) = E1$$</li>
-</ol>
-</li>
-<li>Law of Idnetity: $$E1=E1$$</li>
-</ol>
-<p>The laws of Equality and Implication deserve special mention. Together, they define <strong>equality</strong> and <strong>impl</strong> in terms of other operators: $$b=c$$ can always be replaced by $$(b\Rightarrow c)\wedge (c\Rightarrow b)$$ and $$\neg b\Rightarrow c$$ by $$b\vee c$$. </p>
-<h2 id="2-2-The-Rules-of-Substitution-and-Transitivity"><a href="#2-2-The-Rules-of-Substitution-and-Transitivity" class="headerlink" title="2.2 The Rules of Substitution and Transitivity"></a>2.2 The Rules of Substitution and Transitivity</h2><blockquote>
-<p><strong>Rule of Substitution</strong>: Let e1=e2 be an equivalence and E(p) be a proposition, written as a function of one of its identifiers p. Then E(e1)=E(e2) and E(e2)=E(e1) are also equivalent.</p>
-<p><strong>Rule of Transitivity</strong>: If e1=e2 and e2=e3 are equivalences, then so is e1=e3(and hence e1 is equivalent to e3).</p>
-</blockquote>
-<h2 id="2-3-A-Formal-System-of-Axioms-and-Interfaces-Rules"><a href="#2-3-A-Formal-System-of-Axioms-and-Interfaces-Rules" class="headerlink" title="2.3 A Formal System of Axioms and Interfaces Rules"></a>2.3 A Formal System of Axioms and Interfaces Rules</h2><blockquote>
-<p>Axioms. Any proposition that arises by substituting propositions for E1, E2 and E3 in one of the Laws 1-12 is called a <em>theorem</em>.</p>
-</blockquote>
-<ol>
-<li><strong>Rule of Substitution</strong>: $$\frac{e1=e2}{E(e1)=E(e2), E(e2)=E(e1)}$$</li>
-<li><strong>Rule of Transitivity</strong>: $$\frac{e1=e2,e2=e3}{e1=e3}$$</li>
-</ol>
-<h1 id="Chapter-3-A-Natural-Deduction-System"><a href="#Chapter-3-A-Natural-Deduction-System" class="headerlink" title="Chapter 3 A Natural Deduction System"></a>Chapter 3 A Natural Deduction System</h1><h2 id="3-1-Introduction-to-Deductive-Proofs"><a href="#3-1-Introduction-to-Deductive-Proofs" class="headerlink" title="3.1 Introduction to Deductive Proofs"></a>3.1 Introduction to Deductive Proofs</h2><h2 id="3-2-Inference-Rules"><a href="#3-2-Inference-Rules" class="headerlink" title="3.2 Inference Rules"></a>3.2 Inference Rules</h2><p>$$\wedge-I: \frac{E_1, \cdots, E_n}{E_1 \wedge \cdots \wedge E_n}$$</p>
-<p>$$\wedge-E: \frac{E_1\wedge \cdots \wedge E_n}{E_i}$$</p>
-<p>$$\vee-I:\frac{E_i}{E_1\vee \cdots \vee E_n}$$</p>
-<p><img src="http://i.imgur.com/FgMvauq.png" alt=""></p>
-<p>$$\vee-E:\frac{E_1\vee \cdots \vee E_n, E_1\Rightarrow E, \cdots , E_n\Rightarrow E}{E}$$</p>
-<p><img src="http://i.imgur.com/Z2XLjvl.png" alt=""></p>
-<p>$$\Rightarrow-E: \frac{E_1\Rightarrow E_2, E_1}{E_2}$$</p>
-<p>Rule $\Rightarrow-E$ is called <em>modus ponens</em>(演绎推理).</p>
-<p>$$=-I: \frac{E_1\Rightarrow E_2, E_2\Rightarrow E_1}{E_1=E_2}$$</p>
-<p>$$=-E: \frac{E_1=E_2}{E_1\Rightarrow E_2,E_2\Rightarrow E_1}$$</p>
-<h2 id="3-3-Proofs-and-Subproofs"><a href="#3-3-Proofs-and-Subproofs" class="headerlink" title="3.3 Proofs and Subproofs"></a>3.3 Proofs and Subproofs</h2><p>$$\Rightarrow -I:\frac{From E_1, \cdots, E_n infer E}{(E_1\wedge \cdots \wedge E_n)\Rightarrow E}$$</p>
-<p>A theorem of the form “From $$e_1,\cdots, e_n$$ infer $$e$$” is interpreted as: if $$e_1,\ldots,e_n$$ are true in a state, then so is $$e$$.</p>
-<h3 id="Subproofs"><a href="#Subproofs" class="headerlink" title="Subproofs"></a>Subproofs</h3><p><img src="http://i.imgur.com/zzQCWfF.png" alt=""></p>
-<h3 id="Scope-Rules"><a href="#Scope-Rules" class="headerlink" title="Scope Rules"></a>Scope Rules</h3><p><img src="http://i.imgur.com/AnUdxFw.png" alt=""></p>
-<h3 id="Proof-by-Contradiction"><a href="#Proof-by-Contradiction" class="headerlink" title="Proof by Contradiction"></a>Proof by Contradiction</h3><p>$$\neg-I: \frac{From\  E\ infer\ E_1\wedge \neg E_1}{\neg E}$$</p>
-<p>$$\neg-E: \frac{From\ \neg E\ infer\ E_1\wedge \neg E_1}{E}$$</p>
-<p><img src="http://i.imgur.com/5JrMD05.png" alt=""></p>
-<h2 id="3-4-Adding-flexibility-to-the-Natural-Deduction-System"><a href="#3-4-Adding-flexibility-to-the-Natural-Deduction-System" class="headerlink" title="3.4 Adding flexibility to the Natural Deduction System"></a>3.4 Adding flexibility to the Natural Deduction System</h2><h3 id="Using-theorems-as-schemata"><a href="#Using-theorems-as-schemata" class="headerlink" title="Using theorems as schemata"></a>Using theorems as schemata</h3><h3 id="Informal-proof"><a href="#Informal-proof" class="headerlink" title="Informal proof"></a>Informal proof</h3><p>$$\frac{From\ E_1(p),\cdots,E_n(p)\ infer\ E(p)}{From\ E_1(G), \cdots, E_n(G)\ infer\ E(G)}$$</p>
-<h3 id="The-Rule-of-Substitution-of-equals-for-equals"><a href="#The-Rule-of-Substitution-of-equals-for-equals" class="headerlink" title="The Rule of Substitution of equals for equals"></a>The Rule of Substitution of equals for equals</h3><blockquote>
-<p>Let proposition E be thought of as a function of one of its identifiers, p, so that we write it as E(p). Then  if e1=e2 and E(e1) appear on previous lines, then we may write E(e2) on a line.</p>
-</blockquote>
-<p>$$\frac{e_1=e_2, E(e_1)}{E(e_2)}$$</p>
-<h3 id="Some-basic-theorems"><a href="#Some-basic-theorems" class="headerlink" title="Some basic theorems"></a>Some basic theorems</h3><ol>
-<li>Commutative laws.</li>
-<li>Associative laws.</li>
-<li>Distributive laws.</li>
-<li>De Morgan’s laws.<ol>
-<li><img src="http://i.imgur.com/s2LQcg9.png" alt=""></li>
-<li><img src="http://i.imgur.com/kg1E6q9.png" alt=""></li>
-</ol>
-</li>
-<li>Law of Negation. </li>
-<li>Law of the Excluded Middle</li>
-<li>Law of Contradiction</li>
-<li>Law of Implication</li>
-<li>Law of Equality</li>
-<li>Laws of or-simplication</li>
-<li>Laws of and-implication</li>
-</ol>
-<h2 id="3-5-Developing-Natural-Deduction-System-Proofs"><a href="#3-5-Developing-Natural-Deduction-System-Proofs" class="headerlink" title="3.5 Developing Natural Deduction System Proofs"></a>3.5 Developing Natural Deduction System Proofs</h2><h3 id="Some-general-hints-on-developing-proofs"><a href="#Some-general-hints-on-developing-proofs" class="headerlink" title="Some general hints on developing proofs"></a>Some general hints on developing proofs</h3><h3 id="The-Development-of-a-proof"><a href="#The-Development-of-a-proof" class="headerlink" title="The Development of a proof"></a>The Development of a proof</h3><p><img src="http://i.imgur.com/QR31IX0.png" alt=""></p>
-<h3 id="The-development-of-a-second-proof"><a href="#The-development-of-a-second-proof" class="headerlink" title="The development of a second proof"></a>The development of a second proof</h3><p><img src="http://i.imgur.com/H4SFmEW.png" alt=""></p>
-<h3 id="The-Tardy-Bus-Problem"><a href="#The-Tardy-Bus-Problem" class="headerlink" title="The Tardy Bus Problem"></a>The Tardy Bus Problem</h3><h1 id="Chapter-4-Predicates"><a href="#Chapter-4-Predicates" class="headerlink" title="Chapter 4 Predicates"></a>Chapter 4 Predicates</h1><h2 id="4-1-Extending-the-Range-of-s-State"><a href="#4-1-Extending-the-Range-of-s-State" class="headerlink" title="4.1 Extending the Range of s State"></a>4.1 Extending the Range of s State</h2><h3 id="Evaluating-Predicates"><a href="#Evaluating-Predicates" class="headerlink" title="Evaluating Predicates"></a>Evaluating Predicates</h3><h3 id="Reasoning-about-Atomic-Expressions"><a href="#Reasoning-about-Atomic-Expressions" class="headerlink" title="Reasoning about Atomic Expressions"></a>Reasoning about Atomic Expressions</h3><h3 id="The-operators-cand-and-cor"><a href="#The-operators-cand-and-cor" class="headerlink" title="The operators cand and cor"></a>The operators <em>cand</em> and <em>cor</em></h3><p>short-circuit <strong>and</strong> and <strong>or</strong></p>
-<p><img src="http://i.imgur.com/EggfRKO.png" alt=""></p>
-<p>b <strong>cand</strong> c: <strong>if</strong> b <strong>then</strong> c <strong>else</strong> F<br>b <strong>cor</strong> c: <strong>if</strong> b <strong>then</strong> T <strong>else</strong> c</p>
-<ol>
-<li>Associativity</li>
-<li>Distributivity</li>
-<li>De Morgan: $$\neg(E1\ cand\ E2) = \neg E1\ cor\ \neg E2$$</li>
-<li>Excluded Middle</li>
-<li>Contradiction</li>
-<li>cor-simplification: E1 cor (E1 cand E2) = E1</li>
-<li>cand-simplification: E1 cand (E1 cor E2) = E1</li>
-</ol>
-<h2 id="4-2-Quantification"><a href="#4-2-Quantification" class="headerlink" title="4.2 Quantification"></a>4.2 Quantification</h2><h3 id="Existential-Quantification"><a href="#Existential-Quantification" class="headerlink" title="Existential Quantification"></a>Existential Quantification</h3><p><img src="http://i.imgur.com/vhaxr89.png" alt=""></p>
-<p>Definition of E:</p>
-<p>$$(E\ i: m\leqslant i&lt;m:E_i)=F$$, and, for $$f\geqslant m$$</p>
-<p>$$(E\ i: m\leqslant i&lt;k+1:E_i)=(E\ i:m\leqslant i &lt; k:E_i)\vee E_k \square$$</p>
-<h3 id="Universal-Quantification"><a href="#Universal-Quantification" class="headerlink" title="Universal Quantification"></a>Universal Quantification</h3><p>Definition. $$(A\ i:m\leqslant i &lt; n:E_i)=\neg(E\ i:m\leqslant i &lt; n: \neg E_i).\ \square$$</p>
-<h3 id="Numerical-Quantification"><a href="#Numerical-Quantification" class="headerlink" title="Numerical Quantification"></a>Numerical Quantification</h3><p>Definition. $$(N\ i:m\leqslant i &lt; n: E_i)$$ denotes the number of different values i in range $$m \leqslant i &lt; n$$ for which $$E_i$$ is true. N is called the <em>counting</em> quantifier.</p>
-<p>$$(E\ i:m\leqslant i &lt; n:E_i) = (N\ i:m\leqslant i &lt; n: E_i)\geqslant 1$$</p>
-<p>$$(A\ i: m\leqslant i &lt; n:E_i) = (N\ i:m\leqslant i &lt; n:E_i)=n-m$$</p>
-<p>Now it is easy to assert than k is the third smallest integer such that $$E_k$$ holds: </p>
-<p>$$((N\ i: 0\leqslant i &lt; k:E_i)=2)\wedge E_k$$</p>
-<h3 id="A-Note-on-Ranges"><a href="#A-Note-on-Ranges" class="headerlink" title="A Note on Ranges"></a>A Note on Ranges</h3><p><img src="http://i.imgur.com/lYTjCXX.png" alt=""></p>
-<h2 id="4-3-Free-and-Bound-Identifiers"><a href="#4-3-Free-and-Bound-Identifiers" class="headerlink" title="4.3 Free and Bound Identifiers"></a>4.3 Free and Bound Identifiers</h2><p><strong>Restriction on identifiers</strong>: In an expression, an identifier may not be both bound and free, and an identifier may not be bound to two different quantifiers.</p>
-<p><img src="http://i.imgur.com/b5sHNdi.png" alt=""></p>
-<h2 id="4-4-Textual-Substitution"><a href="#4-4-Textual-Substitution" class="headerlink" title="4.4 Textual Substitution"></a>4.4 Textual Substitution</h2><p><img src="http://i.imgur.com/OuvpKJG.png" alt=""></p>
-<p><img src="http://i.imgur.com/O0OUMDG.png" alt=""></p>
-<h3 id="Simultaneous-Substitution"><a href="#Simultaneous-Substitution" class="headerlink" title="Simultaneous Substitution"></a>Simultaneous Substitution</h3><h2 id="4-5-Quantification-Over-Other-Ranges"><a href="#4-5-Quantification-Over-Other-Ranges" class="headerlink" title="4.5 Quantification Over Other Ranges"></a>4.5 Quantification Over Other Ranges</h2><h3 id="The-Type-of-a-Quantified-Identifier"><a href="#The-Type-of-a-Quantified-Identifier" class="headerlink" title="The Type of a Quantified Identifier"></a>The Type of a Quantified Identifier</h3><h3 id="Tautologies-and-Implicit-Quantification"><a href="#Tautologies-and-Implicit-Quantification" class="headerlink" title="Tautologies and Implicit Quantification"></a>Tautologies and Implicit Quantification</h3><h3 id="Inference-Rules-for-A-and-E"><a href="#Inference-Rules-for-A-and-E" class="headerlink" title="Inference Rules for A and E"></a>Inference Rules for A and E</h3><p>$$A-I:\frac{R\Rightarrow E}{(A\ i:R:E)}$$ where <em>i</em> is a fresh identifier.</p>
-<p>$$A-E:\frac{(A\ i:R:E)}{R^i_e\Rightarrow E^i_e}$$ for any predicate <em>e</em></p>
-<p>$$E-I:\frac{(A\ i:R:E)}{\neg(E\ i:R:\neg E)}$$</p>
-<p>$$E-E:\frac{(E\ i:R:E)}{\neg(A\ i:R:\neg E)}$$</p>
-<p><strong>bound-variable substitution:</strong>$$\frac{E\ i:R:E}{E\ k:R^i_k:E^i_k}$$(provided <em>k</em> does not appear free in R and E)</p>
-<h2 id="4-6-Some-Theorems-about-Textual-Substitution-and-States"><a href="#4-6-Some-Theorems-about-Textual-Substitution-and-States" class="headerlink" title="4.6 Some Theorems about Textual Substitution and States"></a>4.6 Some Theorems about Textual Substitution and States</h2><p>$$s(E^x<em>e) = s(E^x</em>{s(e)})$$</p>
-<p>Substituting an expression <em>e</em> for <em>x</em> in E and then evaluating in <em>s</em> yields the same result as substituting the <em>value</em> of <em>e</em> in <em>s</em> for <em>x</em> and then evaluating.</p>
-<p>Let $$s’=(s;x:s(e))$$. Then $$s’(E)=s(E^x_e)$$</p>
-<p>For a list of distinct identifiers $$\bar{x}$$, expression E and a list $$\bar{u}$$ (of the same length as $$\bar{x}$$) of fresh, distinct identifiers, we have </p>
-<p>$$(E<em>{\bar{u}}^{\bar{x}})</em>{\bar{x}}^{\bar{u}} = E \square$$</p>
-<h1 id="Chapter-5-Notations-and-Conventions-for-Arrays"><a href="#Chapter-5-Notations-and-Conventions-for-Arrays" class="headerlink" title="Chapter 5 Notations and Conventions for Arrays"></a>Chapter 5 Notations and Conventions for Arrays</h1><h2 id="5-1-One-dimensional-Arrays-as-Functions"><a href="#5-1-One-dimensional-Arrays-as-Functions" class="headerlink" title="5.1 One-dimensional Arrays as Functions"></a>5.1 One-dimensional Arrays as Functions</h2><p><img src="http://i.imgur.com/BayG44W.png" alt=""></p>
-<h2 id="5-2-Array-Sections-and-Pictures"><a href="#5-2-Array-Sections-and-Pictures" class="headerlink" title="5.2 Array Sections and Pictures"></a>5.2 Array Sections and Pictures</h2><h3 id="Array-Pictures"><a href="#Array-Pictures" class="headerlink" title="(!)Array Pictures"></a>(!)Array Pictures</h3><p><img src="http://i.imgur.com/YbKjwnT.png" alt=""></p>
-<p><img src="http://i.imgur.com/XPft6u5.png" alt=""></p>
-<p><img src="http://i.imgur.com/wdO73rl.png" alt=""></p>
-<h2 id="5-3-Handling-Arrays-of-Arrays-of…"><a href="#5-3-Handling-Arrays-of-Arrays-of…" class="headerlink" title="5.3 Handling Arrays of Arrays of…"></a>5.3 Handling Arrays of Arrays of…</h2><p><img src="http://i.imgur.com/58VfVhz.png" alt=""></p>
-<h1 id="Chapter-6-Using-Assertions-To-Document-Programs"><a href="#Chapter-6-Using-Assertions-To-Document-Programs" class="headerlink" title="Chapter 6 Using Assertions To Document Programs"></a>Chapter 6 Using Assertions To Document Programs</h1><h2 id="6-1-Program-Specifications"><a href="#6-1-Program-Specifications" class="headerlink" title="6.1 Program Specifications"></a>6.1 Program Specifications</h2><blockquote>
-<p>If execution of S in begun in a state satisfying Q, then it is guaranteed to terminate in a finite amount of time in a state satisfying R.</p>
-</blockquote>
-<p>Q is called the <em>precondition</em> or <em>input assertion</em> of S; R is the <em>postcondition, output assertion or result assertion</em>.</p>
-<h2 id="6-2-Representing-Initial-and-Final-Values-of-Variables"><a href="#6-2-Representing-Initial-and-Final-Values-of-Variables" class="headerlink" title="6.2 Representing Initial and Final Values of Variables"></a>6.2 Representing Initial and Final Values of Variables</h2><h2 id="6-3-Proof-Outlines"><a href="#6-3-Proof-Outlines" class="headerlink" title="6.3 Proof Outlines"></a>6.3 Proof Outlines</h2><p><img src="http://i.imgur.com/LMDApkJ.png" alt=""></p>
-<p><img src="http://i.imgur.com/Oakyc3S.png" alt=""></p>
-<h1 id="Part-II-The-Semantics-of-a-Small-Language"><a href="#Part-II-The-Semantics-of-a-Small-Language" class="headerlink" title="Part II The Semantics of a Small Language"></a>Part II The Semantics of a Small Language</h1><h1 id="Chapter-7-The-Predicate-Transformer-wp"><a href="#Chapter-7-The-Predicate-Transformer-wp" class="headerlink" title="Chapter 7 The Predicate Transformer wp"></a>Chapter 7 The Predicate Transformer wp</h1><blockquote>
-<p>For any command S and predicate R, which describes the desired result of executing S, we will define another predicate, denoted by <em>wp(S,R)</em>, that represents: the set of <strong>all</strong> states such that execution of S begun in any one of them is guaranteed to terminate in a finite amount of time in a state satisfying R.</p>
-<p><strong>The notation {Q}S{R} is simply another notation for $$Q\Rightarrow wp(S,R)$$.</strong></p>
-</blockquote>
-<h3 id="Some-properties-of-wp"><a href="#Some-properties-of-wp" class="headerlink" title="Some properties of wp"></a>Some properties of wp</h3><ol>
-<li><strong>Law of the Excluded Miracle</strong>:$$wp(S,F) = F$$</li>
-<li><strong>Distributivity of Conjunction</strong>: $$wp(S,Q)\wedge wp(S,R) = wp(S,Q\wedge R)$$</li>
-<li><strong>Law of Monotonicity</strong>: if $$Q\Rightarrow R$$ then $$wp(S,Q)\Rightarrow wp(S,R)$$</li>
-<li><strong>Distributivity of Disjunction</strong>:$$wp(S,Q)\vee wp(S,R)\Rightarrow wp(S, Q\vee R)$$</li>
-</ol>
-<h1 id="Chapter-8-The-Commands-skip-abort-and-Composition"><a href="#Chapter-8-The-Commands-skip-abort-and-Composition" class="headerlink" title="Chapter 8 The Commands skip, abort and Composition"></a>Chapter 8 The Commands skip, abort and Composition</h1><p><strong>Definition</strong></p>
-<ol>
-<li>$$wp(skip, R) = R$$</li>
-<li>$$wp(abort, R) = F$$</li>
-<li>$$wp(“S1;S2”, R) = wp(S1,wp(S2,R))$$(sequential composition)</li>
-</ol>
-<h1 id="Chapter-9-The-Assignment-Command"><a href="#Chapter-9-The-Assignment-Command" class="headerlink" title="Chapter 9 The Assignment Command"></a>Chapter 9 The Assignment Command</h1><h2 id="9-1-Assignment-to-Simple-Variables"><a href="#9-1-Assignment-to-Simple-Variables" class="headerlink" title="9.1 Assignment to Simple Variables"></a>9.1 Assignment to Simple Variables</h2><p><strong>(!)Definition</strong> $$wp(“x:= e”, R) = domain(e)$$ <strong>cand</strong> $$R_e^x$$<br>Since x will contain the value of e after execution, then R will be true after execution <em>iff</em> R, with the value of x replaced by e, is true before execution. </p>
-<h2 id="9-2-Multiple-Assignment-to-Simple-Variables"><a href="#9-2-Multiple-Assignment-to-Simple-Variables" class="headerlink" title="9.2 Multiple Assignment to Simple Variables"></a>9.2 Multiple Assignment to Simple Variables</h2><p><strong>Definition</strong> $$wp(“\bar{x}:= \bar{e}”, R) = domain(\bar{e})$$ <strong>cand</strong>$$R_{\bar{e}}^{\bar{x}}$$</p>
-<p><strong>Caution</strong>: $$x,y:=e1,e2$$ is semantically equivalent to “$$x:=e1;y:=e2$$” and also to “$$y:=e2;x:=e1$$”, <strong>provided that x does not occur in e2 and y does not occur in e1</strong>.</p>
-<p><img src="http://i.imgur.com/1nKsxyl.png" alt=""></p>
-<h2 id="9-3-Assignment-to-an-Array-Element"><a href="#9-3-Assignment-to-an-Array-Element" class="headerlink" title="9.3 Assignment to an Array Element"></a>9.3 Assignment to an Array Element</h2><p><strong>Definition</strong> $$wp(“b[i]:=e”, R) = inrange(b,i)$$ <strong>cand</strong> $$domain(e)$$ <strong>cand</strong> $$R<em>{(r, i:e)}^{b}$$ or simply $$wp(“b[i]:= e”, R) = R</em>{(b,i:e)}^{b}$$</p>
-<p><img src="http://i.imgur.com/hDManYT.png" alt=""></p>
-<p><img src="http://i.imgur.com/TvbfCwd.png" alt=""></p>
-<h2 id="9-4-The-General-Multiple-Assignment-Command"><a href="#9-4-The-General-Multiple-Assignment-Command" class="headerlink" title="9.4 The General Multiple Assignment Command"></a>9.4 The General Multiple Assignment Command</h2><p><strong>Execution of a multiple assignment.</strong> First, determine the variables specified by the $$x_i \circ s_i$$ and evaluate the expressions $$e_i$$ to yield values $$v_i$$. Then assign $$v_1$$ to $$x_1 \circ s_1$$, $$v_2$$ to $$x_2 \circ s_2, \ldots,$$ and $$v_n$$ to $$x_n \circ s<em>n$$. The order to assignment must be from left to right.<br><strong>Definition.</strong> $$wp(“\bar{x\circ s}:=\bar{e}”, R) = R</em>{\bar{e}}^{\bar{x\circ s}}$$</p>
-<p><img src="http://i.imgur.com/4YOmHHX.png" alt=""></p>
-<p><img src="http://i.imgur.com/KkCp6fe.png" alt=""></p>
-<h1 id="Chapter-10-The-Alternative-Command"><a href="#Chapter-10-The-Alternative-Command" class="headerlink" title="Chapter 10 The Alternative Command"></a>Chapter 10 The Alternative Command</h1><p><strong>Definition</strong> $$wp(IF,R) = domain(BB)\wedge BB \wedge B_1\Rightarrow wp(S_1,R)\wedge \cdots \wedge B_n\Rightarrow wp(S_n, R) \square$$</p>
-<p><strong>Definition</strong> $$wp(IF,R) = (E\ i:1\leqslant i \leqslant n: B_i)\wedge (A\ i:1\leqslant i \leqslant n:B_i\Rightarrow wp(S_i,R))\square$$<br><img src="http://i.imgur.com/ipSSgaM.png" alt=""></p>
-<h3 id="Some-Comments-about-the-Alternative-Command"><a href="#Some-Comments-about-the-Alternative-Command" class="headerlink" title="Some Comments about the Alternative Command"></a>Some Comments about the Alternative Command</h3><h3 id="A-Theorem-about-the-Alternative-Command"><a href="#A-Theorem-about-the-Alternative-Command" class="headerlink" title="A Theorem about the Alternative Command"></a>A Theorem about the Alternative Command</h3><p><img src="http://i.imgur.com/pjsjVSF.png" alt=""></p>
-<h1 id="Chapter-11-The-Iterative-Command"><a href="#Chapter-11-The-Iterative-Command" class="headerlink" title="Chapter 11 The Iterative Command"></a>Chapter 11 The Iterative Command</h1><h3 id="11-1The-conventional-while-loop-and-the-iterative-command"><a href="#11-1The-conventional-while-loop-and-the-iterative-command" class="headerlink" title="11.1The conventional while-loop and the iterative command"></a>11.1The conventional while-loop and the iterative command</h3><p><img src="http://i.imgur.com/beTKuwJ.png" alt=""></p>
-<h3 id="The-Formal-Definition-of-DO"><a href="#The-Formal-Definition-of-DO" class="headerlink" title="The Formal Definition of DO"></a>The Formal Definition of DO</h3><p>$$H_k(R) = H<em>0(R)\vee wp(IF, H</em>{k-1}(R)), for\ k&gt;0$$</p>
-<p><strong>Definition</strong>. $$wp(DO,R) = (E\ k:0\leqslant k:H_k(R))\square$$</p>
-<ul>
-<li>Predicate $$H_k(R)$$, for k &gt; 0, to represent the set of all states in which execution of DO terminates in k or <em>fewer</em> iterations, with R true.</li>
-<li>A predicate P that is true before and after each iteration of a loop is called an <em>invariant relation</em> or <em>invariant</em> of the loop.</li>
-<li>We introduce an integer function, t, of the program variables that is an upper bound on the number of iterations still to be performed. We call t the <em>bound function</em>.</li>
-</ul>
-<p><img src="http://i.imgur.com/hRyYFd8.png" alt=""></p>
-<p><strong>General Procedure:</strong></p>
-<pre><code>1. Introduce the *invariant* P
-2. Determine that P is true just after the initialization
-3. Any iteration of the loop beginning with P true terminates with P true, so that P is an invariant of the loop.
-4. P must be true upon the termination.
-</code></pre><h3 id="A-theorem-concerning-a-loop-an-invariant-and-a-bound-function"><a href="#A-theorem-concerning-a-loop-an-invariant-and-a-bound-function" class="headerlink" title="A theorem concerning a loop, an invariant and a bound function"></a>A theorem concerning a loop, an invariant and a bound function</h3><p><img src="http://i.imgur.com/gX90qwV.png" alt=""></p>
-<h3 id="Annotation-a-loop-and-understanding-the-annotation"><a href="#Annotation-a-loop-and-understanding-the-annotation" class="headerlink" title="Annotation a loop and understanding the annotation"></a>Annotation a loop and understanding the annotation</h3><p><img src="http://i.imgur.com/pFy5NJP.png" alt=""></p>
-<p><strong>Checklist for understanding a loop:</strong></p>
-<p><img src="http://i.imgur.com/YQnIJJH.png" alt=""></p>
-<h1 id="Part-III-The-Development-of-Programs"><a href="#Part-III-The-Development-of-Programs" class="headerlink" title="Part III The Development of Programs"></a>Part III The Development of Programs</h1><h1 id="Chapter-13-Introduction"><a href="#Chapter-13-Introduction" class="headerlink" title="Chapter 13 Introduction"></a>Chapter 13 Introduction</h1><blockquote>
-<p>A program and its proof should be developed hand-in-hand, with the proof usually leading the way. </p>
-<p>Use theory to provide insight; use common sense and intuition where it is suitable, but fall back on the formal theory for support when difficulties and complexities arise.</p>
-<p>Know the properties of the objects that are to be manipulated by a program.</p>
-<p>Never dismiss as obvious any fundamental principal, for it is only through conscious application of such principals that success will be achieved.</p>
-</blockquote>
-<h1 id="Chapter-14-Programming-as-a-Goal-Oriented-Activity"><a href="#Chapter-14-Programming-as-a-Goal-Oriented-Activity" class="headerlink" title="Chapter 14 Programming as a Goal-Oriented Activity"></a>Chapter 14 Programming as a Goal-Oriented Activity</h1><blockquote>
-<p>Programming is a goal-oriented activity.</p>
-<p>Before attempting to solve a problem, make absolutely sure you know what the problem is.</p>
-<p>Before developing a program, make precise and refine the pre- and postconditions.</p>
-</blockquote>
-<p><strong>Strategy for developing an alternative command:</strong> To invent a guarded command, find a command C whose execution will establish postcondition R in at least some cases; find a Boolean B satisfying $$B\Rightarrow wp(C,R)$$; and put them together to form $$B\rightarrow C$$. Continue to invent guarded commands until the precondition of the construct implies that at least one guard is true.</p>
-<blockquote>
-<p>All other thins being equal, make the guards of an alternative command as strong as possible, so that some errors will cause abortion.</p>
-</blockquote>
-<h1 id="Chapter-15-Developing-Loops-from-Invariants-and-Bounds"><a href="#Chapter-15-Developing-Loops-from-Invariants-and-Bounds" class="headerlink" title="Chapter 15 Developing Loops from Invariants and Bounds"></a>Chapter 15 Developing Loops from Invariants and Bounds</h1><blockquote>
-<p>All other things being equal, make the guards of a loop as weak as possible, so that an error may cause an infinite loop.</p>
-</blockquote>
-<p><strong>Strategy for developing a loop:</strong> First develop the guard B so that $$P\wedge \neg B \Rightarrow R$$; then develop the body so that it decreases the bound function while reestablishing the loop invariant.</p>
-<p>$$R:(0\leqslant i &lt; m \wedge 0\leqslant j &lt; n \wedge x  = b[i,j])\vee (i = m \wedge x \notin b)$$</p>
-<p><img src="http://i.imgur.com/FhRkBJu.png" alt=""></p>
-<p>$$\neg B: i = m\vee (i &lt; m\ cand\ x=b[i,j])$$</p>
-<p>$$B: i \neq m\ cand\ x\neq b[i,j]$$</p>
-<p>$$if\ j &lt; n - 1 \rightarrow j := j + 1\ else\ j = n - 1\rightarrow i,j := i + 1, 0\ fi$$</p>
-<p><img src="http://i.imgur.com/qsBGgbv.png" alt=""></p>
-<h2 id="15-2-Making-Progress-Towards-Termination"><a href="#15-2-Making-Progress-Towards-Termination" class="headerlink" title="15.2 Making Progress Towards Termination"></a>15.2 Making Progress Towards Termination</h2><blockquote>
-<p>Write a program that sorts the four integer variables q0,q1,q2,q3. That is, upon termination the following should be true: $$q0\leqslant q1 \leqslant q2\leqslant q3$$</p>
-</blockquote>
-<p>$$Q:q0=Q1\wedge q1=Q1 \wedge q2=Q2 \wedge q3=Q3$$</p>
-<p>$$R:q0\leqslant q1\leqslant q2\leqslant q3 \wedge perm((q0,q1,q2,q3),(Q0,Q1,Q2,Q3))$$</p>
-<p>$$P:perm((q0,q1,q2,q3),(Q0,Q1,Q2,Q3))$$</p>
-<p>$$t:(N\ i,j:0\leqslant i<j<4;qi>qj)$$</j<4;qi></p>
-<p><img src="http://i.imgur.com/v3pi46C.png" alt=""></p>
-<h1 id="Chapter-16-Developing-Invariants"><a href="#Chapter-16-Developing-Invariants" class="headerlink" title="Chapter 16 Developing Invariants"></a>Chapter 16 Developing Invariants</h1><h2 id="16-1-The-Balloon-Theory"><a href="#16-1-The-Balloon-Theory" class="headerlink" title="16.1 The Balloon Theory"></a>16.1 The Balloon Theory</h2><p><img src="http://i.imgur.com/nvWChRB.png" alt=""></p>
-<h3 id="16-1-1-Weakening-a-Predicate"><a href="#16-1-1-Weakening-a-Predicate" class="headerlink" title="16.1.1 Weakening a Predicate"></a>16.1.1 Weakening a Predicate</h3><ol>
-<li><strong>Delete a conjunct</strong>. Predicate $$A\wedge B\wedge C$$ can be weakened to $$A\wedge C$$</li>
-<li><strong>Replace a constant by a variable</strong>. Predicate $$x\leqslant b[1:10]$$, where x is a simple variable, can be weakened to $$x\leqslant b[1:i]\wedge 1\leqslant i\leqslant 10$$, where i is a fresh variable.</li>
-<li><strong>Enlarge the range of a variable.</strong> Predicate $$5\leqslant i&lt;10$$ can be weakened to $$0\leqslant i &lt; 10$$.</li>
-<li><strong>Add a disjunct</strong>. Predicate A can be weakened to $$A\vee B$$, for some other predicate B.</li>
-</ol>
-<h2 id="16-2-Deleting-a-Conjunct"><a href="#16-2-Deleting-a-Conjunct" class="headerlink" title="16.2 Deleting a Conjunct"></a>16.2 Deleting a Conjunct</h2><p>For the guard of the loop, use the <em>complement</em> of the deleted conjunct, so that when the loop terminates because the guard is false, the deleted conjunct is true.</p>
-<p><strong>Strategy</strong>: When deleting a conjunct from R to produce an invariant P, try using complement of the deleted conjunct for the guard B of the loop.</p>
-<p><strong>The Linear Search Principle</strong>: to find a minimum value(at least equal to some lower bound) with a property, investigate values starting at that lower bound in <em>increasing</em> order. Similarly, when looking for a maximum value investigate values in decreasing order.</p>
-<h2 id="16-3-Replacing-a-Constant-By-a-Variable"><a href="#16-3-Replacing-a-Constant-By-a-Variable" class="headerlink" title="16.3 Replacing a Constant By a Variable"></a>16.3 Replacing a Constant By a Variable</h2><p>$$R: s = (\sum j:0\leqslant i &lt; n:b[j])$$</p>
-<p>R can be weakened by replacing n by a fresh variable i, yielding</p>
-<p>$$s = (\sum j: 0\leqslant j &lt; i:b[j])$$</p>
-<p>$$P: 0\leqslant i &lt; n\wedge s = (\sum j:0\leqslant j &lt; i:b[j])$$</p>
-<p>$$i,s := 0,0; do\ i\neq n\rightarrow i,s:=i+1,s+b[i]\ od$$</p>
-<blockquote>
-<p>Introduce a variable only when there is a good reason for doing so.</p>
-<p>Put suitable bounds on each variable introduced.</p>
-</blockquote>
-<h2 id="16-4-Enlarging-the-Range-of-a-Variable"><a href="#16-4-Enlarging-the-Range-of-a-Variable" class="headerlink" title="16.4 Enlarging the Range of a Variable"></a>16.4 Enlarging the Range of a Variable</h2>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/17/The-Science-of-Programming/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1402,6 +1495,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1444,14 +1541,32 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>

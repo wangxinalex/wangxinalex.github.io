@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="vim,vundle," />
 
 
 
@@ -93,16 +93,17 @@
 
 
 
-<meta name="description" content="经试验，似乎Git只对SOCK5代理协议有效 链接SOCK5代理1sudo apt-get install plink 12#!/bin/bashplink -N -v -P 22 wangxinalex@[2604:a880:800:10::1838:b001] -D 127.0.0.1:7070 -pw XXXX 设置Git的http/https代理(SOCKS5协议)12git config">
+<meta name="description" content="1. 下载Vundle插件12mkdir -p ~/.vim/bundlegit clone https://github.com/VundleVim/Vundle.Vim.git ~/.vim/bundle/vundle 2. 配置.vimrc文件，设置需要下载的插件123456789# vi ~/.vimrcset nocampatiblefiletype offset rtp+=~/.vim">
+<meta name="keywords" content="vim,vundle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git 代理使用方法">
-<meta property="og:url" content="http://yoursite.com/2017/07/09/Git-proxy-1499594567750/index.html">
+<meta property="og:title" content="Vim Vundle使用方法">
+<meta property="og:url" content="http://yoursite.com/2017/07/09/vim-vundle-1499595407338/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="经试验，似乎Git只对SOCK5代理协议有效 链接SOCK5代理1sudo apt-get install plink 12#!/bin/bashplink -N -v -P 22 wangxinalex@[2604:a880:800:10::1838:b001] -D 127.0.0.1:7070 -pw XXXX 设置Git的http/https代理(SOCKS5协议)12git config">
-<meta property="og:updated_time" content="2017-07-09T10:11:21.000Z">
+<meta property="og:description" content="1. 下载Vundle插件12mkdir -p ~/.vim/bundlegit clone https://github.com/VundleVim/Vundle.Vim.git ~/.vim/bundle/vundle 2. 配置.vimrc文件，设置需要下载的插件123456789# vi ~/.vimrcset nocampatiblefiletype offset rtp+=~/.vim">
+<meta property="og:updated_time" content="2017-07-09T10:19:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git 代理使用方法">
-<meta name="twitter:description" content="经试验，似乎Git只对SOCK5代理协议有效 链接SOCK5代理1sudo apt-get install plink 12#!/bin/bashplink -N -v -P 22 wangxinalex@[2604:a880:800:10::1838:b001] -D 127.0.0.1:7070 -pw XXXX 设置Git的http/https代理(SOCKS5协议)12git config">
+<meta name="twitter:title" content="Vim Vundle使用方法">
+<meta name="twitter:description" content="1. 下载Vundle插件12mkdir -p ~/.vim/bundlegit clone https://github.com/VundleVim/Vundle.Vim.git ~/.vim/bundle/vundle 2. 配置.vimrc文件，设置需要下载的插件123456789# vi ~/.vimrcset nocampatiblefiletype offset rtp+=~/.vim">
 
 
 
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/09/Git-proxy-1499594567750/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/09/vim-vundle-1499595407338/"/>
 
 
 
 
 
-  <title>Git 代理使用方法 | Hexo</title>
+  <title>Vim Vundle使用方法 | Hexo</title>
   
 
 
@@ -255,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/Git-proxy-1499594567750/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/09/vim-vundle-1499595407338/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangxinalex">
@@ -272,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git 代理使用方法</h1>
+          <h1 class="post-title" itemprop="name headline">Vim Vundle使用方法</h1>
         
 
         <div class="post-meta">
@@ -284,7 +285,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T18:02:47+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-09T18:16:47+08:00">
                 2017-07-09
               </time>
             
@@ -294,6 +295,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vim/" itemprop="url" rel="index">
+                    <span itemprop="name">vim</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -319,13 +342,9 @@
       
 
       
-        <p>经试验，似乎Git只对SOCK5代理协议有效</p>
-<h1 id="链接SOCK5代理"><a href="#链接SOCK5代理" class="headerlink" title="链接SOCK5代理"></a>链接SOCK5代理</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install plink</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">plink -N -v -P 22 wangxinalex@[2604:a880:800:10::1838:b001] -D 127.0.0.1:7070 -pw XXXX</div></pre></td></tr></table></figure>
-<h1 id="设置Git的http-https代理-SOCKS5协议"><a href="#设置Git的http-https代理-SOCKS5协议" class="headerlink" title="设置Git的http/https代理(SOCKS5协议)"></a>设置Git的http/https代理(SOCKS5协议)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy &apos;socks5://127.0.0.1:7070&apos;</div><div class="line">git config --global https.proxy &apos;socks5://127.0.0.1:7070&apos;</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h1 id="设置Git-HTTP协议"><a href="#设置Git-HTTP协议" class="headerlink" title="设置Git (HTTP协议)"></a>设置Git (HTTP协议)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global http.proxy http://username:passwd@[ipv6address]:port</div><div class="line">git config --global https.proxy http://username:passwd@[ipv6address]:port</div></pre></td></tr></table></figure>
-<h1 id="删除代理"><a href="#删除代理" class="headerlink" title="删除代理"></a>删除代理</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global --<span class="built_in">unset</span> http.proxy</div><div class="line">git config --global --get http.proxy</div></pre></td></tr></table></figure>
+        <h1 id="1-下载Vundle插件"><a href="#1-下载Vundle插件" class="headerlink" title="1. 下载Vundle插件"></a>1. 下载Vundle插件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir -p ~/.vim/bundle</div><div class="line">git <span class="built_in">clone</span> https://github.com/VundleVim/Vundle.Vim.git ~/.vim/bundle/vundle</div></pre></td></tr></table></figure>
+<h1 id="2-配置-vimrc文件，设置需要下载的插件"><a href="#2-配置-vimrc文件，设置需要下载的插件" class="headerlink" title="2. 配置.vimrc文件，设置需要下载的插件"></a>2. 配置<code>.vimrc</code>文件，设置需要下载的插件</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">vi</span> ~/.vimrc</div><div class="line"><span class="keyword">set</span> nocampatible</div><div class="line"><span class="keyword">filetype</span> off</div><div class="line"><span class="keyword">set</span> rtp+=~/.<span class="keyword">vim</span>/bundle/vundle/</div><div class="line"><span class="keyword">call</span> vundle#rc()</div><div class="line"></div><div class="line">Plugin <span class="string">'VundleVim/Vundle.Vim'</span></div><div class="line">...</div><div class="line"><span class="keyword">filetype</span> plufin <span class="built_in">indent</span> <span class="keyword">on</span></div></pre></td></tr></table></figure>
+<h1 id="3-下载插件"><a href="#3-下载插件" class="headerlink" title="3.下载插件"></a>3.下载插件</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:PluginInstall</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -353,6 +372,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/vim/" rel="tag"># vim</a>
+          
+            <a href="/tags/vundle/" rel="tag"># vundle</a>
+          
+        </div>
+      
 
       
       
@@ -362,8 +389,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/09/sublime-1499594375952/" rel="next" title="Sublime编辑LaTeX的方法总结">
-                <i class="fa fa-chevron-left"></i> Sublime编辑LaTeX的方法总结
+              <a href="/2017/07/09/vim-1499595270248/" rel="next" title="Vim 块编辑方法">
+                <i class="fa fa-chevron-left"></i> Vim 块编辑方法
               </a>
             
           </div>
@@ -371,10 +398,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/09/awk-1499595168934/" rel="prev" title="awk, sed, grep使用笔记">
-                awk, sed, grep使用笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -503,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#链接SOCK5代理"><span class="nav-number">1.</span> <span class="nav-text">链接SOCK5代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置Git的http-https代理-SOCKS5协议"><span class="nav-number">2.</span> <span class="nav-text">设置Git的http/https代理(SOCKS5协议)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置Git-HTTP协议"><span class="nav-number">3.</span> <span class="nav-text">设置Git (HTTP协议)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#删除代理"><span class="nav-number">4.</span> <span class="nav-text">删除代理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-下载Vundle插件"><span class="nav-number">1.</span> <span class="nav-text">1. 下载Vundle插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-配置-vimrc文件，设置需要下载的插件"><span class="nav-number">2.</span> <span class="nav-text">2. 配置.vimrc文件，设置需要下载的插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-下载插件"><span class="nav-number">3.</span> <span class="nav-text">3.下载插件</span></a></li></ol></div>
             
 
           </div>

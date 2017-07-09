@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://i.imgur.com/hHfcacz.png">
 <meta property="og:image" content="http://i.imgur.com/3fYTVG4.png">
 <meta property="og:image" content="http://i.imgur.com/uCBrH8E.png">
-<meta property="og:updated_time" content="2017-07-09T09:53:56.000Z">
+<meta property="og:updated_time" content="2017-07-09T10:12:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UNIX_Network">
 <meta name="twitter:description" content="Chapter 1 IntroductionChapter 1.7 OSI Model Chpater 2 The Transport Layer: TCP, UDP, and SCTPChapter 2.3 User Datagram Protocol (UDP)The application writes a message to a UDP socket, which is then enc">
@@ -328,6 +328,7 @@
 <h1 id="Chpater-2-The-Transport-Layer-TCP-UDP-and-SCTP"><a href="#Chpater-2-The-Transport-Layer-TCP-UDP-and-SCTP" class="headerlink" title="Chpater 2 The Transport Layer: TCP, UDP, and SCTP"></a>Chpater 2 The Transport Layer: TCP, UDP, and SCTP</h1><h2 id="Chapter-2-3-User-Datagram-Protocol-UDP"><a href="#Chapter-2-3-User-Datagram-Protocol-UDP" class="headerlink" title="Chapter 2.3 User Datagram Protocol (UDP)"></a>Chapter 2.3 User Datagram Protocol (UDP)</h2><p>The application writes a message to a UDP socket, which is then <em>encapsulated</em> in a UDP datagram, which is then further encapsulated as an IP datagram, which is then sent to its destination.</p>
 <p>There is <em>no guarantee</em> that a UDP datagram will ever reach its final destination, that order will be preserved across the network, or that datagrams arrive only once.</p>
 <p>We also say that UDP provides a <em>connectionless</em> service, as there need not be any long-term relationship between a UDP client and server.</p>
+<a id="more"></a>
 <h2 id="Chapter-2-6-TCP-Connection-Establishment-and-Termination"><a href="#Chapter-2-6-TCP-Connection-Establishment-and-Termination" class="headerlink" title="Chapter 2.6 TCP Connection Establishment and Termination"></a>Chapter 2.6 TCP Connection Establishment and Termination</h2><h3 id="Establishment"><a href="#Establishment" class="headerlink" title="Establishment"></a>Establishment</h3><ol>
 <li>The server must be prepared to accept an incoming connection. This is normally done by calling <code>socket</code>, <code>bind</code>, and <code>listen</code> and is called a <em>passive open</em>.</li>
 <li>The client issues an <em>active</em> open by calling <code>connect</code>. This causes the client TCP to send a “synchronize” (SYN) segment, which tells the server the client’s initial sequence number for the data that the client will send on the connection. Normally, there is no data sent with the SYN; it just contains an IP header, a TCP header, and possible TCP options (which we will talk about shortly).<strong>[First Handshake]</strong></li>
@@ -483,14 +484,32 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
