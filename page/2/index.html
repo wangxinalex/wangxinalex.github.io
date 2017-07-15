@@ -253,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/pointer_C/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/09/17/The-Science-of-Programming/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangxinalex">
@@ -272,7 +272,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/09/17/pointer_C/" itemprop="url">Pointer of C</a></h1>
+                <a class="post-title-link" href="/2014/09/17/The-Science-of-Programming/" itemprop="url">The Science of Programming</a></h1>
         
 
         <div class="post-meta">
@@ -320,32 +320,20 @@
 
       
         
-          
-            <h2 id="3-5作用域（scope）"><a href="#3-5作用域（scope）" class="headerlink" title="3.5作用域（scope）"></a>3.5作用域（scope）</h2><ul>
-<li>block scope </li>
-<li>file scope </li>
-<li>prototype scope </li>
-<li>function scope</li>
-</ul>
-<h2 id="3-6链接属性（linkage）"><a href="#3-6链接属性（linkage）" class="headerlink" title="3.6链接属性（linkage）"></a>3.6链接属性（linkage）</h2><ul>
-<li>external </li>
-<li>internal </li>
-<li><p>none</p>
-<p>不是在代码块中声明的变量属性默认为external， 函数属性一般也为external</p>
-<p>static将属性改为internal</p>
-<p>局部变量和形参默认为none</p>
-<p>extern 声明在别处定义的变量，一般用于代码块内与临时声明的局部变量相区分，一旦使用extern，就意味着该变量必须在别处被定义</p>
-<p>用extern的地方一般不初始化，在代码块外会警告，在代码块内同时使用extern和初始化会报错</p>
-</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> e;</div><div class="line">    <span class="keyword">extern</span> <span class="keyword">int</span> f;<span class="comment">//f必须在别处被定义，否则链接器报错。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-8存储类型（storage-class）"><a href="#3-8存储类型（storage-class）" class="headerlink" title="3.8存储类型（storage class）"></a>3.8存储类型（storage class）</h2><ul>
-<li>static：在任何代码块之外的声明，不能指定其他的存储类型。 在代码块内部的声明如果加上static，可以使存储类型从自动变为静态，但并不改变scope。函数代码总是处在静态内存中。（static关键字代码块内部的声明改变存储类型，代码块之外改变链接属性）。只初始化一次。</li>
-<li>automatic：代码块内部声明，处于stack中，不会自动初始化</li>
-<li>register：寄存器中，不可取址，不会初始化。</li>
-</ul>
-
-          
+          <h1 id="Chapter-1-Propositions"><a href="#Chapter-1-Propositions" class="headerlink" title="Chapter 1 Propositions"></a>Chapter 1 Propositions</h1><h2 id="1-1-Fully-Parenthesized-Propositions"><a href="#1-1-Fully-Parenthesized-Propositions" class="headerlink" title="1.1 Fully Parenthesized Propositions"></a>1.1 Fully Parenthesized Propositions</h2><p><img src="http://i.imgur.com/C8OZa24.png" alt=""></p>
+<h2 id="1-2-Evaluation-of-Constant-Propositions"><a href="#1-2-Evaluation-of-Constant-Propositions" class="headerlink" title="1.2 Evaluation of Constant Propositions"></a>1.2 Evaluation of Constant Propositions</h2><p>Truth Table<br><img src="http://i.imgur.com/6igfo2K.png" alt=""></p>
+<p>Definition 1.3.1: A <em>state</em> s is a <em>function</em> from a set of identifiers to the set of values T and F.<br>Definition 1.3.2: Proposition e is <em>well-defined</em> in state s if each identifier in e is associated with either T or F in state s.</p>
+<p>In state $$s = {(b,T),(c,F)}$$, proposition $$(b \vee c)$$ is well-definition while proposition $$(b \wedge d)$$ is not.</p>
+<p>Definition 1.3.3: Let proposition e be well-defined in state s. Then s(e), the value of e in state s, is the value obtained by replacing all occurrences of identifiers b in e by their values s(b) and evaluating the resulting constant proposition.</p>
+<p>$$s(((\neg b)\vee c))$$ is evaluated in state $$s = {(b,T),(c,F)}$$</p>
+<p>$$s(((\neg b)\vee c))$$<br>$$=((\neg T)\vee F )$$<br>$$=(F \vee F)$$<br>$$=F   \square$$</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/09/17/The-Science-of-Programming/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -438,7 +426,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>

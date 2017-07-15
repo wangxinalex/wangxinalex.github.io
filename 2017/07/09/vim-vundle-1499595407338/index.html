@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/09/vim-vundle-1499595407338/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 下载Vundle插件12mkdir -p ~/.vim/bundlegit clone https://github.com/VundleVim/Vundle.Vim.git ~/.vim/bundle/vundle 2. 配置.vimrc文件，设置需要下载的插件123456789# vi ~/.vimrcset nocampatiblefiletype offset rtp+=~/.vim">
-<meta property="og:updated_time" content="2017-07-09T10:19:19.000Z">
+<meta property="og:updated_time" content="2017-07-15T05:15:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim Vundle使用方法">
 <meta name="twitter:description" content="1. 下载Vundle插件12mkdir -p ~/.vim/bundlegit clone https://github.com/VundleVim/Vundle.Vim.git ~/.vim/bundle/vundle 2. 配置.vimrc文件，设置需要下载的插件123456789# vi ~/.vimrcset nocampatiblefiletype offset rtp+=~/.vim">
@@ -343,7 +343,7 @@
 
       
         <h1 id="1-下载Vundle插件"><a href="#1-下载Vundle插件" class="headerlink" title="1. 下载Vundle插件"></a>1. 下载Vundle插件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir -p ~/.vim/bundle</div><div class="line">git <span class="built_in">clone</span> https://github.com/VundleVim/Vundle.Vim.git ~/.vim/bundle/vundle</div></pre></td></tr></table></figure>
-<h1 id="2-配置-vimrc文件，设置需要下载的插件"><a href="#2-配置-vimrc文件，设置需要下载的插件" class="headerlink" title="2. 配置.vimrc文件，设置需要下载的插件"></a>2. 配置<code>.vimrc</code>文件，设置需要下载的插件</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">vi</span> ~/.vimrc</div><div class="line"><span class="keyword">set</span> nocampatible</div><div class="line"><span class="keyword">filetype</span> off</div><div class="line"><span class="keyword">set</span> rtp+=~/.<span class="keyword">vim</span>/bundle/vundle/</div><div class="line"><span class="keyword">call</span> vundle#rc()</div><div class="line"></div><div class="line">Plugin <span class="string">'VundleVim/Vundle.Vim'</span></div><div class="line">...</div><div class="line"><span class="keyword">filetype</span> plufin <span class="built_in">indent</span> <span class="keyword">on</span></div></pre></td></tr></table></figure>
+<h1 id="2-配置-vimrc文件，设置需要下载的插件"><a href="#2-配置-vimrc文件，设置需要下载的插件" class="headerlink" title="2. 配置.vimrc文件，设置需要下载的插件"></a>2. 配置<code>.vimrc</code>文件，设置需要下载的插件</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">vi</span> ~/.vimrc</div><div class="line"><span class="keyword">set</span> nocampatible</div><div class="line"><span class="keyword">filetype</span> off</div><div class="line"><span class="keyword">set</span> rtp+=~/.<span class="keyword">vim</span>/bundle/vundle/</div><div class="line"><span class="keyword">call</span> vundle#rc()</div><div class="line"></div><div class="line">Plugin <span class="string">'VundleVim/Vundle.Vim'</span></div><div class="line">...</div><div class="line"><span class="keyword">filetype</span> plugin <span class="built_in">indent</span> <span class="keyword">on</span></div></pre></td></tr></table></figure>
 <h1 id="3-下载插件"><a href="#3-下载插件" class="headerlink" title="3.下载插件"></a>3.下载插件</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:PluginInstall</div></pre></td></tr></table></figure>
 
       
@@ -480,7 +480,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
