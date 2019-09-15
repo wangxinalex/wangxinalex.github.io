@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Effective Java Creating and Destroying Objects Item 1: Static factory methods instead of constructors Pros:
+ have names not required to create a new object each time they’re invoked
+ flyweight pattern singleton pattern
+import java.util.HashMap; public class ShapeFactory { private static final HashMap&lt;String, Shape&gt; circleMap = new HashMap&lt;&gt;(); public static Shape getCircle(String color) { Circle circle = (Circle)circleMap.get(color); if(circle == null) { // lazy creation  circle = new Circle(color); circleMap.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Effective Java Notes • Tour de Babel'>
+<meta property='og:description' content='Effective Java Creating and Destroying Objects Item 1: Static factory methods instead of constructors Pros:
+ have names not required to create a new object each time they’re invoked
+ flyweight pattern singleton pattern
+import java.util.HashMap; public class ShapeFactory { private static final HashMap&lt;String, Shape&gt; circleMap = new HashMap&lt;&gt;(); public static Shape getCircle(String color) { Circle circle = (Circle)circleMap.get(color); if(circle == null) { // lazy creation  circle = new Circle(color); circleMap.'>
+<meta property='og:url' content='http://io.wxa.me/posts/effective-java-notes/'>
+<meta property='og:site_name' content='Tour de Babel'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2019-09-15T19:08:43&#43;08:00'/><meta property='article:modified_time' content='2019-09-15T19:08:43&#43;08:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.58.2" />
+
+  <title>Effective Java Notes • Tour de Babel</title>
+  <link rel='canonical' href='http://io.wxa.me/posts/effective-java-notes/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Tour de Babel
+      </a>
+    </h2>
+    <div class='desc'>
+    Minimalist theme for Hugo
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/java/' style='font-size:1em'>Java</a>
+      </li><li>
+        <a href='/tags/zsh/' style='font-size:1em'>Zsh</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://github.com/MunifTanjim/minimo'>Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Tour de Babel</a></li><li><a href='/posts/'>Posts</a></li><li><span>Effective Java Notes</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Tour de Babel</p><p class='desc site-desc'>Minimalist theme for Hugo</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Effective Java Notes</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2019-09-15T19:08:43&#43;08:00'>2019, Sep 15</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+30 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  
+
+<h1 id="effective-java">Effective Java</h1>
+
+<h2 id="creating-and-destroying-objects">Creating and Destroying Objects</h2>
+
+<h3 id="item-1-static-factory-methods-instead-of-constructors">Item 1: Static factory methods instead of constructors</h3>
+
+<p>Pros:</p>
+
+<ol>
+<li>have names</li>
+
+<li><p>not required to create a new object each time they’re invoked</p>
+
+<ol>
+<li>flyweight pattern</li>
+
+<li><p>singleton pattern</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">HashMap</span>;
+ 
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> ShapeFactory {
+<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">HashMap</span><span style="color:#f92672">&lt;</span>String, Shape<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">circleMap</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
+ 
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> Shape <span style="color:#a6e22e">getCircle</span>(String <span style="color:#a6e22e">color</span>) {
+Circle <span style="color:#a6e22e">circle</span> <span style="color:#f92672">=</span> (Circle)circleMap.<span style="color:#a6e22e">get</span>(color);
+ 
+<span style="color:#66d9ef">if</span>(circle <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) { <span style="color:#75715e">// lazy creation
+</span><span style="color:#75715e"></span> circle <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Circle(color);
+ circleMap.<span style="color:#a6e22e">put</span>(color, circle);
+ System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Creating circle of color : &#34;</span> <span style="color:#f92672">+</span> color);
+}
+<span style="color:#66d9ef">return</span> circle;
+}
+}</code></pre></div></li>
+</ol></li>
+
+<li><p>they can return an object of any subtype of their return type</p></li>
+
+<li><p>returned object can vary from call to call as a function of the input parameters</p></li>
+
+<li><p>returned object need not exist when the class containing the method is written</p>
+
+<ol>
+<li>bridge pattern</li>
+</ol></li>
+</ol>
+
+<p>Cons:</p>
+
+<ol>
+<li>classes without public or protected constructors cannot be subclassed</li>
+<li>factory methods is that they are hard for programmers to find</li>
+</ol>
+
+<h3 id="item-2-consider-a-builder-when-faced-with-many-constructor-parameters">Item 2: Consider a builder when faced with many constructor parameters</h3>
+
+<p><strong>Builder pattern</strong>:</p>
+
+<ol>
+<li>no setter methods</li>
+<li>private constructors</li>
+<li>final fields</li>
+<li>builder&rsquo;s setter methods may be <em>chained</em></li>
+</ol>
+
+<p>The Builder pattern is well suited to class hierarchies.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Builder pattern for class hierarchies
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pizza</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Topping { HAM, MUSHROOM, ONION, PEPPER, SAUSAGE }
+    <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Set</span><span style="color:#f92672">&lt;</span>Topping<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">toppings</span>;
+    <span style="color:#66d9ef">abstract</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Builder</span><span style="color:#f92672">&lt;</span>T <span style="color:#a6e22e">extends</span> Builder<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span> {
+        EnumSet<span style="color:#f92672">&lt;</span>Topping<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">toppings</span> <span style="color:#f92672">=</span> EnumSet.<span style="color:#a6e22e">noneOf</span>(Topping.<span style="color:#a6e22e">class</span>);
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">T</span> addTopping(Topping <span style="color:#a6e22e">topping</span>) {
+            toppings.<span style="color:#a6e22e">add</span>(Objects.<span style="color:#a6e22e">requireNonNull</span>(topping));
+            <span style="color:#66d9ef">return</span> self();
+        }
+        <span style="color:#75715e">// build method
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">abstract</span> <span style="color:#a6e22e">Pizza</span> build();
+        <span style="color:#75715e">// Subclasses must override this method to return &#34;this&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">abstract</span> T <span style="color:#a6e22e">self</span>();
+    }
+    Pizza(Builder<span style="color:#f92672">&lt;?&gt;</span> builder) {
+        toppings <span style="color:#f92672">=</span> builder.<span style="color:#a6e22e">toppings</span>.<span style="color:#a6e22e">clone</span>(); <span style="color:#75715e">// See Item 50
+</span><span style="color:#75715e"></span>    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> NyPizza <span style="color:#a6e22e">extends</span> Pizza {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Size { SMALL, MEDIUM, LARGE }
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> Size <span style="color:#a6e22e">size</span>;
+    <span style="color:#75715e">// concrete builder class
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Builder</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Pizza</span>.<span style="color:#a6e22e">Builder</span><span style="color:#f92672">&lt;</span>Builder<span style="color:#f92672">&gt;</span> {
+        <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> Size <span style="color:#a6e22e">size</span>;
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Builder</span>(Size <span style="color:#a6e22e">size</span>) {
+            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> Objects.<span style="color:#a6e22e">requireNonNull</span>(size);
+        }
+        <span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">NyPizza</span> build() {
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> NyPizza(<span style="color:#66d9ef">this</span>);
+        }
+        <span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">Builder</span> self() { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>; }
+    }
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">NyPizza</span>(Builder <span style="color:#a6e22e">builder</span>) {
+        <span style="color:#66d9ef">super</span>(builder);
+        size <span style="color:#f92672">=</span> builder.<span style="color:#a6e22e">size</span>;
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">NyPizza <span style="color:#a6e22e">pizza</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NyPizza.<span style="color:#a6e22e">Builder</span>(SMALL).<span style="color:#a6e22e">addTopping</span>(SAUSAGE).<span style="color:#a6e22e">addTopping</span>(ONION).<span style="color:#a6e22e">build</span>();</code></pre></div>
+<h3 id="item-3-singleton-property-with-private-constructor-or-enum-type">Item 3: singleton property with private constructor or enum type</h3>
+
+<h3 id="item-4-enforce-noninstantiability-with-a-private-constructor">Item 4: enforce noninstantiability with a private constructor</h3>
+
+<h3 id="item-5-prefer-dependency-injection-to-hardwiring-resources">Item 5: prefer dependency injection to hardwiring resources</h3>
+
+<p><strong>Dependency injection pattern</strong>: Pass the resource into the constructor when creating a new instance</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Dependency injection provides flexibility and testability
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> SpellChecker {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> Lexicon <span style="color:#a6e22e">dictionary</span>;
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SpellChecker</span>(Lexicon <span style="color:#a6e22e">dictionary</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">dictionary</span> <span style="color:#f92672">=</span> Objects.<span style="color:#a6e22e">requireNonNull</span>(dictionary);
+    }
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">boolean</span> isValid(String <span style="color:#a6e22e">word</span>) { ... }
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">suggestions</span>(String <span style="color:#a6e22e">typo</span>) { ... }
+}</code></pre></div>
+<p>Java 8: supplier<T> interface</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Mosaic <span style="color:#a6e22e">create</span>(Supplier<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Tile</span><span style="color:#f92672">&gt;</span> tileFactory) { ... }</code></pre></div>
+<h3 id="item-6-avoid-creating-unnecessary-objects">Item 6: avoid creating unnecessary objects</h3>
+
+<h3 id="item-7-eliminate-obsolete-object-references">Item 7: eliminate obsolete object references</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Object</span> pop() {
+    <span style="color:#66d9ef">if</span> (size <span style="color:#f92672">==</span> 0)
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> EmptyStackException();
+    Object <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> elements[<span style="color:#f92672">--</span>size];
+    elements[size] <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>; <span style="color:#75715e">// Eliminate obsolete reference
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> result;
+}</code></pre></div>
+<p>Sources of memory leak:</p>
+
+<ol>
+<li>obsolete references</li>
+<li>caches</li>
+<li>listeners and other callbacks</li>
+</ol>
+
+<h3 id="item-8-avoid-finalizers">Item 8: avoid finalizers</h3>
+
+<h3 id="item-9-prefer-try-with-resources-to-try-finally">Item 9: prefer try-with-resources to try-finally</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// try-with-resources on multiple resources - short and sweet
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#a6e22e">void</span> copy(String <span style="color:#a6e22e">src</span>, String <span style="color:#a6e22e">dst</span>) <span style="color:#66d9ef">throws</span> <span style="color:#a6e22e">IOException</span> {
+    <span style="color:#66d9ef">try</span> (InputStream <span style="color:#a6e22e">in</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileInputStream(src);
+    OutputStream <span style="color:#a6e22e">out</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream(dst)) {
+        <span style="color:#66d9ef">byte</span>[] <span style="color:#a6e22e">buf</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span>[BUFFER_SIZE];
+        <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">n</span>;
+        <span style="color:#66d9ef">while</span> ((n <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">read</span>(buf)) <span style="color:#f92672">&gt;=</span> 0)
+            out.<span style="color:#a6e22e">write</span>(buf, 0, n);
+    }
+}</code></pre></div>
+<p>Resources must implement <code>AutoClosable</code> interface</p>
+
+<p>If exceptions are thrown by both the readLine call and the (invisible) close, the latter exception is <em>suppressed</em> in favor of the former.</p>
+
+<h2 id="methods-common-to-all-objects">Methods common to all objects</h2>
+
+<h3 id="item-10-obey-the-general-contract-when-overriding-equals">Item 10: Obey the general contract when overriding <code>equals</code></h3>
+
+<p>The easiest way to avoid problems is not to override the <code>equals</code> method</p>
+
+<ul>
+<li>Each instance of the class is inherently unique</li>
+<li>There is no need for the class to provide a “logical equality” test</li>
+<li>A superclass has already overridden equals, and the superclass behavior
+is appropriate for this class</li>
+
+<li><p>The class is private or package-private, and you are certain that its equals
+method will never be invoked</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">boolean</span> equals(Object <span style="color:#a6e22e">o</span>) {
+<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> AssertionError(); <span style="color:#75715e">// Method is never called
+</span><span style="color:#75715e"></span>}</code></pre></div></li>
+</ul>
+
+<p>Properties
+* Reflexive: for any non-null value x, <code>x.equal(x)</code> must be true;
+* Symmetric: <code>x.equals(y) &lt;=&gt; y.equals(x)</code>
+* Transitive: be aware of class inheritance
+* Consistent
+* Non-nullity</p>
+
+<p><strong>Liskov substitution principle</strong>: any important property of a type should also hold for all its subtypes so that any method written for the type should work equally well on its subtypes</p>
+
+<p>There is no way to extend an instantiable class and add a value component while <strong>preserving the equals contract</strong></p>
+
+<ol>
+<li>Use the <code>==</code> operator to check if the argument is a reference to this object (performance optimization).</li>
+<li>Use the <code>instanceof</code> operator to check if the argument has the correct type.</li>
+<li>Cast the argument to the correct type.</li>
+
+<li><p>For each “significant” field in the class, check if that field of the argument
+matches the corresponding field of this object.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Class with a typical equals method
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">final</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PhoneNumber</span> {
+<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> <span style="color:#66d9ef">short</span> <span style="color:#a6e22e">areaCode</span>, prefix, lineNum;
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">PhoneNumber</span>(<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">areaCode</span>, <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">prefix</span>, <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">lineNum</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">areaCode</span> <span style="color:#f92672">=</span> rangeCheck(areaCode, 999, <span style="color:#e6db74">&#34;area code&#34;</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">prefix</span> <span style="color:#f92672">=</span> rangeCheck(prefix, 999, <span style="color:#e6db74">&#34;prefix&#34;</span>);
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">lineNum</span> <span style="color:#f92672">=</span> rangeCheck(lineNum, 9999, <span style="color:#e6db74">&#34;line num&#34;</span>);
+}
+<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">short</span> <span style="color:#a6e22e">rangeCheck</span>(<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">val</span>, <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">max</span>, String <span style="color:#a6e22e">arg</span>) {
+    <span style="color:#66d9ef">if</span> (val <span style="color:#f92672">&lt;</span> 0 <span style="color:#f92672">||</span> val <span style="color:#f92672">&gt;</span> max)
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(arg <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> val);
+    <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">short</span>) val;
+}
+<span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">boolean</span> equals(Object <span style="color:#a6e22e">o</span>) {
+    <span style="color:#66d9ef">if</span> (o <span style="color:#f92672">==</span> <span style="color:#66d9ef">this</span>) <span style="color:#75715e">// check if it is the object itself
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>(o <span style="color:#a6e22e">instanceof</span> PhoneNumber)) <span style="color:#75715e">// check the type
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+    PhoneNumber <span style="color:#a6e22e">pn</span> <span style="color:#f92672">=</span> (PhoneNumber)o; <span style="color:#75715e">// cast 
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> pn.<span style="color:#a6e22e">lineNum</span> <span style="color:#f92672">==</span> lineNum <span style="color:#f92672">&amp;&amp;</span> pn.<span style="color:#a6e22e">prefix</span> <span style="color:#f92672">==</span> prefix <span style="color:#f92672">&amp;&amp;</span> pn.<span style="color:#a6e22e">areaCode</span> <span style="color:#f92672">==</span> areaCode; <span style="color:#75715e">// check each field
+</span><span style="color:#75715e"></span>}
+... <span style="color:#75715e">// Remainder omitted
+</span><span style="color:#75715e"></span>}</code></pre></div></li>
+</ol>
+
+<ul>
+<li>Always override <code>hashCode</code> when you override <code>equals</code></li>
+<li>Don’t substitute another type for <code>Object</code> in the equals declaration</li>
+</ul>
+
+<h3 id="item-11-always-override-hashcode-when-you-override-equals">Item 11: Always override <code>hashCode</code> when you override <code>equals</code></h3>
+
+<p>You <em>must</em> override hashCode in every class that overrides equals.</p>
+
+<ul>
+<li>When the hashCode method is invoked on an object repeatedly during an execution of an application, it must consistently return the same value.</li>
+<li>If two objects are equal according to the equals(Object) method, then calling <code>hashCode</code> on the two objects <em>must</em> produce the same integer result.</li>
+<li>If two objects are unequal according to the equals(Object) method, it is <em>not</em> required that calling hashCode on each of the objects must produce distinct results.</li>
+</ul>
+
+<p>Notes for writing a proper <code>hashCode</code> method:
+1. Declare an int variable named result
+2. For every remaining significant field f in your object, do the following
+    1. Compute an int hash code c for the field
+        1. If the field is of a <em>primitive type</em>, compute Type.hashCode(f), where Type is the boxed primitive class corresponding to f’s type.
+        2. If the field is an object reference and this class’s equals method compares the field by recursively invoking <code>equals</code>, recursively invoke <code>hashCode</code> on the field.
+        3. If the field is an array, treat it as if each significant element were a
+separate field. If all elements are significant, use <code>Arrays.hashCode</code>.
+    2. Combine the hash code c computed in step 2.1. <code>result = 31 * result + c;</code>
+3. Return <code>result</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Typical hashCode method
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">int</span> hashCode() {
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> Short.<span style="color:#a6e22e">hashCode</span>(areaCode);
+    result <span style="color:#f92672">=</span> 31 <span style="color:#f92672">*</span> result <span style="color:#f92672">+</span> Short.<span style="color:#a6e22e">hashCode</span>(prefix);
+    result <span style="color:#f92672">=</span> 31 <span style="color:#f92672">*</span> result <span style="color:#f92672">+</span> Short.<span style="color:#a6e22e">hashCode</span>(lineNum);
+    <span style="color:#66d9ef">return</span> result;
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// One-line hashCode method - mediocre performance
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">int</span> hashCode() {
+    <span style="color:#66d9ef">return</span> Objects.<span style="color:#a6e22e">hash</span>(lineNum, prefix, areaCode);
+}</code></pre></div>
+<p>Only if the object is <em>immutable</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// hashCode method with lazily initialized cached hash code
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">int</span> hashCode; <span style="color:#75715e">// Automatically initialized to 0
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">int</span> hashCode() {
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> hashCode;
+    <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> 0) {
+        result <span style="color:#f92672">=</span> Short.<span style="color:#a6e22e">hashCode</span>(areaCode);
+        result <span style="color:#f92672">=</span> 31 <span style="color:#f92672">*</span> result <span style="color:#f92672">+</span> Short.<span style="color:#a6e22e">hashCode</span>(prefix);
+        result <span style="color:#f92672">=</span> 31 <span style="color:#f92672">*</span> result <span style="color:#f92672">+</span> Short.<span style="color:#a6e22e">hashCode</span>(lineNum);
+        hashCode <span style="color:#f92672">=</span> result;
+    }
+    <span style="color:#66d9ef">return</span> result;
+}</code></pre></div>
+<h3 id="item-12-always-override-tostring">Item 12: Always override <code>toString</code></h3>
+
+<p>When practical, the toString method should return all of the interesting information contained in the object.</p>
+
+<h3 id="item-13-override-clone-judiciously">Item 13: Override <code>clone</code> judiciously</h3>
+
+<p>In practice, a class implementing <code>Cloneable</code> is expected to provide a properly functioning public clone method.</p>
+
+<h3 id="item-14-considering-implementing-comparable">Item 14: Considering implementing <code>Comparable</code></h3>
+
+<h2 id="classes-and-interfaces">Classes and interfaces</h2>
+
+<h3 id="item15-minimize-the-accessibility">Item15: Minimize the accessibility</h3>
+
+<p>make each class or member as <em>inaccessible</em> as possible</p>
+
+<ul>
+<li><p>Top-level classes and interfaces: package-private or public
+If a package-private top-level class or interface is used <em>by only one class</em>,
+consider making the top-level class a <em>private static nested class</em> of the sole class
+that uses it.</p></li>
+
+<li><p>Members (fields, methods, <em>nested classes</em>, and <em>nested interfaces</em>): private, package-private, protected, public</p></li>
+</ul>
+
+<p>If a method overrides a superclass method, it <em>cannot have a more restrictive access level</em> in the subclass than in the superclass. (Liskov substitution principle)</p>
+
+<p>Nonzero-length array is <em>always mutable</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Potential security hole!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Thing</span>[] VALUES <span style="color:#f92672">=</span> { ... }; <span style="color:#75715e">// always mutable
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// Approach 1
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Thing</span>[] PRIVATE_VALUES <span style="color:#f92672">=</span> { ... };
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>Thing<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">VALUES</span> <span style="color:#f92672">=</span>
+Collections.<span style="color:#a6e22e">unmodifiableList</span>(Arrays.<span style="color:#a6e22e">asList</span>(PRIVATE_VALUES));
+
+<span style="color:#75715e">// Approach 2
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Thing</span>[] PRIVATE_VALUES <span style="color:#f92672">=</span> { ... };
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Thing</span>[] values() {
+    <span style="color:#66d9ef">return</span> PRIVATE_VALUES.<span style="color:#a6e22e">clone</span>();
+}</code></pre></div>
+<h3 id="item-16-in-public-classes-use-method-accessors-not-public-fields">Item 16: In public classes, use method accessors, not public fields</h3>
+
+<h3 id="item-17-minimize-mutability">Item 17: Minimize mutability</h3>
+
+<ol>
+<li>Don’t provide methods that modify the object’s state (known as mutators).</li>
+<li>Ensure that the class can’t be extended. <em>final class</em></li>
+<li>Make all fields final.</li>
+<li>Make all fields private.</li>
+<li>Ensure exclusive access to any mutable components. <em>defensive copy</em></li>
+</ol>
+
+<ul>
+<li>Classes should be <strong>immutable</strong> unless there’s a very good reason to make them mutable</li>
+<li>Declare every field <strong>private final</strong> unless there’s a good reason to do otherwise.</li>
+<li>Constructors should create <strong>fully initialized objects</strong> with all of their invariants established.</li>
+</ul>
+
+<h3 id="item-18-favor-composition-over-inheritance">Item 18: Favor composition over inheritance</h3>
+
+<p>Unlike method invocation, <strong>inheritance violates encapsulation</strong></p>
+
+<p>Instead of extending an existing class, give your new class a private field that references an
+instance of the existing class (<em>composition</em>)
+* forwarding and forwarding methods</p>
+
+<p><strong>Decorator pattern</strong></p>
+
+<h3 id="item-19-design-and-document-for-inheritance-or-prohibit-it">Item 19: Design and document for inheritance or prohibit it</h3>
+
+<h3 id="item-20-prefer-interfaces-to-abstract-classes">Item 20: Prefer interfaces to abstract classes</h3>
+
+<h3 id="item-21-design-interfaces-for-posterity">Item 21: Design interfaces for posterity</h3>
+
+<h3 id="item-22-use-interfaces-only-to-define-types">Item 22: Use interfaces only to define types</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Constant interface antipattern - do not use!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">interface</span> PhysicalConstants {
+    <span style="color:#75715e">// Avogadro&#39;s number (1/mol)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">final</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">AVOGADROS_NUMBER</span> <span style="color:#f92672">=</span> 6.<span style="color:#a6e22e">022_140_857e23</span>;
+    <span style="color:#75715e">// Boltzmann constant (J/K)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">final</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">BOLTZMANN_CONSTANT</span> <span style="color:#f92672">=</span> 1.<span style="color:#a6e22e">380_648_52e</span><span style="color:#f92672">-</span>23;
+    <span style="color:#75715e">// Mass of the electron (kg)
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#a6e22e">final</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">ELECTRON_MASS</span> <span style="color:#f92672">=</span> 9.<span style="color:#a6e22e">109_383_56e</span><span style="color:#f92672">-</span>31;
+}</code></pre></div>
+<p>The constant interface pattern is a <strong>poor use of interfaces</strong>.
+Use <code>enum</code> type or <em>noninstantiable utility class</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Constant utility class
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">effectivejava</span>.<span style="color:#a6e22e">science</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> PhysicalConstants {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">PhysicalConstants</span>() { } <span style="color:#75715e">// Prevents instantiation
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">double</span> AVOGADROS_NUMBER <span style="color:#f92672">=</span> 6.<span style="color:#a6e22e">022_140_857e23</span>;
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">double</span> BOLTZMANN_CONST <span style="color:#f92672">=</span> 1.<span style="color:#a6e22e">380_648_52e</span><span style="color:#f92672">-</span>23;
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">double</span> ELECTRON_MASS <span style="color:#f92672">=</span> 9.<span style="color:#a6e22e">109_383_56e</span><span style="color:#f92672">-</span>31;
+}</code></pre></div>
+<h3 id="item-23-prefer-class-hierarchies-to-tagged-classes">Item 23: Prefer class hierarchies to tagged classes</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Tagged class - vastly inferior to a class hierarchy!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Figure</span> {
+    <span style="color:#66d9ef">enum</span> <span style="color:#a6e22e">Shape</span> { RECTANGLE, CIRCLE };
+    <span style="color:#75715e">// Tag field - the shape of this figure
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Shape</span> shape;
+    <span style="color:#75715e">// These fields are used only if shape is RECTANGLE
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">length</span>;
+    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">width</span>;
+    <span style="color:#75715e">// This field is used only if shape is CIRCLE
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">radius</span>;
+    <span style="color:#75715e">// Constructor for circle
+</span><span style="color:#75715e"></span>    Figure(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">radius</span>) {
+        shape <span style="color:#f92672">=</span> Shape.<span style="color:#a6e22e">CIRCLE</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">radius</span> <span style="color:#f92672">=</span> radius;
+    }
+    <span style="color:#75715e">// Constructor for rectangle
+</span><span style="color:#75715e"></span>    Figure(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">length</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">width</span>) {
+        shape <span style="color:#f92672">=</span> Shape.<span style="color:#a6e22e">RECTANGLE</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> length;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> width;
+    }
+    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">area</span>() {
+        <span style="color:#66d9ef">switch</span>(shape) {
+            <span style="color:#66d9ef">case</span> RECTANGLE<span style="color:#f92672">:</span>
+                <span style="color:#66d9ef">return</span> length <span style="color:#f92672">*</span> width;
+            <span style="color:#66d9ef">case</span> CIRCLE<span style="color:#f92672">:</span>
+                <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> (radius <span style="color:#f92672">*</span> radius);
+            <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> AssertionError(shape);
+        }
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Class hierarchy replacement for a tagged class
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">abstract</span> <span style="color:#a6e22e">class</span> Figure {
+    <span style="color:#66d9ef">abstract</span> <span style="color:#a6e22e">double</span> area();
+}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Circle</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Figure</span> {
+    <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">double</span> radius;
+    Circle(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">radius</span>) { <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">radius</span> <span style="color:#f92672">=</span> radius; }
+    <span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">area</span>() { <span style="color:#66d9ef">return</span> Math.<span style="color:#a6e22e">PI</span> <span style="color:#f92672">*</span> (radius <span style="color:#f92672">*</span> radius); }
+}
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Rectangle</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Figure</span> {
+    <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">double</span> length;
+    <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">double</span> width;
+    Rectangle(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">length</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">width</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span> length;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> width;
+    }
+    <span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">area</span>() { <span style="color:#66d9ef">return</span> length <span style="color:#f92672">*</span> width; }
+}</code></pre></div>
+<h3 id="item-24-favor-static-member-classes-over-nonstatic">Item 24: Favor static member classes over nonstatic</h3>
+
+<p>Four types of nested classes:</p>
+
+<ul>
+<li>static memebr class</li>
+<li>nonstatic member class</li>
+<li>anonymous class</li>
+<li>local class</li>
+</ul>
+
+<h3 id="item-25-limit-source-files-to-a-single-top-level-class">Item 25: Limit source files to a single top-level class</h3>
+
+<p>Never put multiple top-level classes or interfaces in a single source file.</p>
+
+<h2 id="generics">Generics</h2>
+
+<h3 id="item-26-don-t-use-raw-types">Item 26: Don&rsquo;t use raw types</h3>
+
+<h3 id="item-27-eliminate-unchecked-warnings">Item 27: Eliminate unchecked warnings</h3>
+
+<h3 id="item-28-prefer-lists-to-arrays">Item 28: Prefer Lists to Arrays</h3>
+
+<p>Arrays are <em>covariant</em> and <em>reified</em>; generics are <em>invariant</em> and <em>erased</em></p>
+
+<p><strong>covariant</strong>: C[] is a subclass of P[] if C is a subclass of P
+<strong>invariant</strong>: Collection<C> is <strong>NOT</strong> a subclass of Collection<P> even if C is a subclass of P</p>
+
+<p><strong>Reified</strong>: arrays know and enforce their element type at <em>runtime</em>
+<strong>Erased</strong>: generics enforce their type constraints <em>only at compile time</em> and discard (or <strong>erase</strong>) their element type information at runtime. Runtime representation contains less information than compile-time representation.</p>
+
+<h3 id="item-29-favor-generic-types">Item 29: Favor generic types</h3>
+
+<h3 id="item-30-favor-generic-methods">Item 30: Favor generic methods</h3>
+
+<p>Static utility methods that operate on parameterized types are usually generic.</p>
+
+<p><strong>Recursive type bound</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Builder pattern for class hierarchies
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pizza</span> {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Topping {HAM, MUSHROOM, ONION, PEPPER, SAUSAGE}
+
+    <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Set</span><span style="color:#f92672">&lt;</span>Topping<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">toppings</span>;
+
+    <span style="color:#66d9ef">abstract</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Builder</span><span style="color:#f92672">&lt;</span>T <span style="color:#a6e22e">extends</span> Builder<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;&gt;</span> { <span style="color:#75715e">// recursive type bound
+</span><span style="color:#75715e"></span>        EnumSet<span style="color:#f92672">&lt;</span>Topping<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">toppings</span> <span style="color:#f92672">=</span> EnumSet.<span style="color:#a6e22e">noneOf</span>(Topping.<span style="color:#a6e22e">class</span>);
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">T</span> addTopping(Topping <span style="color:#a6e22e">topping</span>) {
+            toppings.<span style="color:#a6e22e">add</span>(Objects.<span style="color:#a6e22e">requireNonNull</span>(topping));
+            <span style="color:#66d9ef">return</span> self();
+        }
+
+        <span style="color:#66d9ef">abstract</span> <span style="color:#a6e22e">Pizza</span> build();
+
+        <span style="color:#75715e">// Subclasses must override this method to return &#34;this&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">protected</span> <span style="color:#a6e22e">abstract</span> T <span style="color:#a6e22e">self</span>();
+    }
+
+    Pizza(Builder<span style="color:#f92672">&lt;?&gt;</span> builder) {
+        toppings <span style="color:#f92672">=</span> builder.<span style="color:#a6e22e">toppings</span>.<span style="color:#a6e22e">clone</span>(); <span style="color:#75715e">// See Item 50
+</span><span style="color:#75715e"></span>    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Returns max value in a collection - uses recursive type bound
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#f92672">&lt;</span>E <span style="color:#a6e22e">extends</span> Comparable<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">E</span> max(Collection<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">c</span>) {
+    <span style="color:#66d9ef">if</span> (c.<span style="color:#a6e22e">isEmpty</span>())
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(<span style="color:#e6db74">&#34;Empty collection&#34;</span>);
+    E <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>;
+    <span style="color:#66d9ef">for</span> (E <span style="color:#a6e22e">e</span> <span style="color:#f92672">:</span> c)
+        <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">||</span> e.<span style="color:#a6e22e">compareTo</span>(result) <span style="color:#f92672">&gt;</span> 0)
+            result <span style="color:#f92672">=</span> Objects.<span style="color:#a6e22e">requireNonNull</span>(e);
+    <span style="color:#66d9ef">return</span> result;
+}</code></pre></div>
+<h3 id="item-31-use-bounded-wildcards-to-increase-api-flexibility">Item 31: Use <em>bounded wildcards</em> to increase API flexibility</h3>
+
+<p><strong>Bounded wildcard type</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Stack<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Object</span>[] elements;
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">int</span> size <span style="color:#f92672">=</span> 0;
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">int</span> DEFAULT_INITIAL_CAPACITY <span style="color:#f92672">=</span> 16;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Stack</span>() {
+        elements <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object[DEFAULT_INITIAL_CAPACITY];
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> push(E <span style="color:#a6e22e">e</span>) {
+        ensureCapacity();
+        elements[size<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> e;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">E</span> pop() {
+        <span style="color:#66d9ef">if</span> (size <span style="color:#f92672">==</span> 0)
+            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> EmptyStackException();
+        <span style="color:#a6e22e">@SuppressWarnings</span>(<span style="color:#e6db74">&#34;unchecked&#34;</span>)
+        E <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> (E) elements[<span style="color:#f92672">--</span>size];
+        elements[size] <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>; <span style="color:#75715e">// Eliminate obsolete reference
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> result;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">boolean</span> isEmpty() {
+        <span style="color:#66d9ef">return</span> size <span style="color:#f92672">==</span> 0;
+    }
+
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">void</span> ensureCapacity() {
+        <span style="color:#66d9ef">if</span> (elements.<span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> size)
+            elements <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">copyOf</span>(elements, 2 <span style="color:#f92672">*</span> size <span style="color:#f92672">+</span> 1);
+    }
+
+    <span style="color:#75715e">//producer
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> pushAll(Iterable<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">E</span><span style="color:#f92672">&gt;</span> src) {
+        <span style="color:#66d9ef">for</span> (E <span style="color:#a6e22e">e</span> <span style="color:#f92672">:</span> src) {
+            push(e);
+        }
+    }
+    
+    <span style="color:#75715e">//consumer
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> popAll(Collection<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> <span style="color:#a6e22e">E</span><span style="color:#f92672">&gt;</span> dst) {
+        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>isEmpty()) {
+            dst.<span style="color:#a6e22e">add</span>(pop());
+        }
+    }
+    
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String[] <span style="color:#a6e22e">args</span>) {
+        Stack<span style="color:#f92672">&lt;</span>Number<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">numberStack</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stack<span style="color:#f92672">&lt;&gt;</span>();
+        Iterable<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">integers</span> <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(1, 2, 3);
+        numberStack.<span style="color:#a6e22e">pushAll</span>(integers);
+        
+        Collection<span style="color:#f92672">&lt;</span>Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">objects</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+        numberStack.<span style="color:#a6e22e">popAll</span>(objects);
+    }
+}</code></pre></div>
+<p>For maximum flexibility, use <strong>wildcard types</strong> on input parameters that represent producers (extends) or consumers (super).</p>
+
+<p><strong>PECS</strong> stands for producer-extends, consumer-super.</p>
+
+<p><strong>Do not use bounded wildcard types as return types</strong>.</p>
+
+<p>Comparables are always consumers, so you should generally use <code>Comparable&lt;? super T&gt;</code> in preference to <code>Comparable&lt;T&gt;</code>.</p>
+
+<h3 id="item-32-combine-generics-and-varargs-judiciously">Item 32: Combine generics and varargs judiciously</h3>
+
+<p>Varargs is a <em>leaky abstraction</em>: when you invoke a varargs method, an array is created to hold the varargs parameters; that array, which should be an implementation detail, is visible.</p>
+
+<p><em>Heap pollution</em>: when a variable of a parameterized type refers to an object that is not of that type</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Mixing generics and varargs can violate type safety!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#a6e22e">void</span> dangerous(List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span>... <span style="color:#a6e22e">stringLists</span>) {
+    List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">intList</span> <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(42);
+    Object[] <span style="color:#a6e22e">objects</span> <span style="color:#f92672">=</span> stringLists;
+    objects[0] <span style="color:#f92672">=</span> intList; <span style="color:#75715e">// Heap pollution
+</span><span style="color:#75715e"></span>    String <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> stringLists[0].<span style="color:#a6e22e">get</span>(0); <span style="color:#75715e">// ClassCastException
+</span><span style="color:#75715e"></span>}</code></pre></div>
+<p>This cast fails, demonstrating that type safety has been compromised, and it is unsafe to store a value <strong>in a generic varargs array parameter</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// UNSAFE - Exposes a reference to its generic parameter array!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">T</span>[] toArray(T... <span style="color:#a6e22e">args</span>) {
+    <span style="color:#66d9ef">return</span> args;
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@SafeVarargs</span>
+<span style="color:#66d9ef">static</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">flatten</span>(List<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>... lists) {
+    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(lists.<span style="color:#a6e22e">getClass</span>());
+    List<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+    <span style="color:#66d9ef">for</span> (List<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span> list <span style="color:#f92672">:</span> lists) {
+        result.<span style="color:#a6e22e">addAll</span>(list);
+    }
+    <span style="color:#66d9ef">return</span> result;
+}</code></pre></div>
+<p>As a reminder, a generic varargs methods is safe if:
+1. it doesn’t store anything in the varargs parameter array, and
+2. it doesn’t make the array (or a clone) visible to untrusted code.</p>
+
+<p>varargs and generics do not interact well because the varargs
+facility is a leaky abstraction built atop arrays, and arrays have different type rules
+from generics. (Item 28)</p>
+
+<h3 id="item-33-consider-typesafe-heterogeneous-containers">Item 33: Consider typesafe heterogeneous containers</h3>
+
+<p>When a class literal is passed among methods to communicate both compile-time and runtime type information, it is called a <em>type token</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Favorites {
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">&lt;</span>Class<span style="color:#f92672">&lt;?&gt;</span>, Object<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">favorites</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
+
+    <span style="color:#66d9ef">private</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">void</span> putFavorite(Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">type</span>, T <span style="color:#a6e22e">instance</span>) {
+        favorites.<span style="color:#a6e22e">put</span>(Objects.<span style="color:#a6e22e">requireNonNull</span>(type), instance);
+    }
+
+    <span style="color:#66d9ef">private</span> <span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">T</span> getFavorite(Class<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">type</span>) {
+        <span style="color:#66d9ef">return</span> type.<span style="color:#a6e22e">cast</span>(favorites.<span style="color:#a6e22e">get</span>(type)); <span style="color:#75715e">//dynamic cast
+</span><span style="color:#75715e"></span>    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@SuppressWarnings</span>(<span style="color:#e6db74">&#34;unchecked&#34;</span>)
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">T</span> cast(Object <span style="color:#a6e22e">obj</span>) {
+    <span style="color:#66d9ef">if</span> (obj <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isInstance(obj))
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ClassCastException(cannotCastMsg(obj));
+    <span style="color:#66d9ef">return</span> (T) obj;
+}</code></pre></div>
+<p><strong>Bounded type token</strong>: a type token that places a bound on what type can be represented,
+using a <em>bounded type parameter</em> (Item 30, <code>E extends Comparable</code>) or a <em>bounded wildcard</em> (Item 31, <code>? extends Comparable</code>, sometimes you need more flexibility than invariant typing can provide).</p>
+
+<h2 id="enums-and-annotations">Enums and annotations</h2>
+
+<h3 id="item-34-use-enums-instead-of-int-constants">Item 34: Use enums instead of int constants</h3>
+
+<p>To associate data with enum constants, declare <strong>instance fields</strong> and write a <strong>constructor</strong> that takes the data and stores it in the fields. All fields should be <code>final</code>.</p>
+
+<p><strong>Constant-specific method implementations</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Operation {
+    PLUS(<span style="color:#e6db74">&#34;+&#34;</span>) {
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) {
+            <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> y;
+        }
+    },
+    MINUS(<span style="color:#e6db74">&#34;-&#34;</span>) {
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) {
+            <span style="color:#66d9ef">return</span> x <span style="color:#f92672">-</span> y;
+        }
+    },
+    TIMES(<span style="color:#e6db74">&#34;*&#34;</span>) {
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) {
+            <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> y;
+        }
+    },
+    DIVIDE(<span style="color:#e6db74">&#34;/&#34;</span>) {
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) {
+            <span style="color:#66d9ef">return</span> x <span style="color:#f92672">/</span> y;
+        }
+    };
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> String <span style="color:#a6e22e">symbol</span>;
+
+    Operation(String <span style="color:#a6e22e">symbol</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">symbol</span> <span style="color:#f92672">=</span> symbol;
+    }
+
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">String</span> toString() {
+        <span style="color:#66d9ef">return</span> symbol;
+    }
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">abstract</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">a</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">b</span>);
+}</code></pre></div>
+<p>Use enums any time you need a set of constants whose members are <strong>known at compile time</strong>.
+It is not necessary that the set of constants in an enum type stay fixed for all time.</p>
+
+<h3 id="item-35-use-instance-fields-instead-of-ordinals">Item 35: Use instance fields instead of ordinals</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Abuse of ordinal to derive an associated value - DON&#39;T DO THIS
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Ensemble {
+    SOLO, DUET, TRIO, QUARTET, QUINTET,
+    SEXTET, SEPTET, OCTET, NONET, DECTET;
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">int</span> numberOfMusicians() { <span style="color:#66d9ef">return</span> ordinal() <span style="color:#f92672">+</span> 1; }
+}</code></pre></div>
+<p>Never derive a value associated with an enum from its <strong>ordinal</strong>; store it in an <strong>instance field</strong> instead.</p>
+
+<h3 id="item-36-use-enumset-instead-of-bit-fields">Item 36: Use EnumSet instead of bit fields</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Bit field enumeration constants - OBSOLETE!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Text {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">int</span> STYLE_BOLD <span style="color:#f92672">=</span> 1 <span style="color:#f92672">&lt;&lt;</span> 0; <span style="color:#75715e">// 1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">int</span> STYLE_ITALIC <span style="color:#f92672">=</span> 1 <span style="color:#f92672">&lt;&lt;</span> 1; <span style="color:#75715e">// 2
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">int</span> STYLE_UNDERLINE <span style="color:#f92672">=</span> 1 <span style="color:#f92672">&lt;&lt;</span> 2; <span style="color:#75715e">// 4
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">int</span> STYLE_STRIKETHROUGH <span style="color:#f92672">=</span> 1 <span style="color:#f92672">&lt;&lt;</span> 3; <span style="color:#75715e">// 8
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Parameter is bitwise OR of zero or more STYLE_ constants
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> applyStyles(<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">styles</span>) { ... }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// EnumSet - a modern replacement for bit fields
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Text {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Style { BOLD, ITALIC, UNDERLINE, STRIKETHROUGH }
+    <span style="color:#75715e">// Any Set could be passed in, but EnumSet is clearly best
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> applyStyles(Set<span style="color:#f92672">&lt;</span>Style<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">styles</span>) { ... }
+}
+
+text.<span style="color:#a6e22e">applyStyles</span>(EnumSet.<span style="color:#a6e22e">of</span>(Style.<span style="color:#a6e22e">BOLD</span>, Style.<span style="color:#a6e22e">ITALIC</span>));</code></pre></div>
+<h3 id="item-37-use-enummap-instead-of-ordinal-indexing">Item 37: Use EnumMap instead of ordinal indexing</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Using an EnumMap to associate data with an enum
+</span><span style="color:#75715e"></span>Map<span style="color:#f92672">&lt;</span>Plant.<span style="color:#a6e22e">LifeCycle</span>, Set<span style="color:#f92672">&lt;</span>Plant<span style="color:#f92672">&gt;&gt;</span> <span style="color:#a6e22e">plantsByLifeCycle</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EnumMap<span style="color:#f92672">&lt;&gt;</span>(Plant.<span style="color:#a6e22e">LifeCycle</span>.<span style="color:#a6e22e">class</span>);
+<span style="color:#66d9ef">for</span> (Plant.<span style="color:#a6e22e">LifeCycle</span> <span style="color:#a6e22e">lc</span> <span style="color:#f92672">:</span> Plant.<span style="color:#a6e22e">LifeCycle</span>.<span style="color:#a6e22e">values</span>())
+    plantsByLifeCycle.<span style="color:#a6e22e">put</span>(lc, <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>()); <span style="color:#75715e">// create a set for each value of LifeCycle
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (Plant <span style="color:#a6e22e">p</span> <span style="color:#f92672">:</span> garden)
+    plantsByLifeCycle.<span style="color:#a6e22e">get</span>(p.<span style="color:#a6e22e">lifeCycle</span>).<span style="color:#a6e22e">add</span>(p);
+System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(plantsByLifeCycle);</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Phase {
+    SOLID, LIQUID, GAS;
+
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Transition {
+        MELT(SOLID, LIQUID), FREEZE(LIQUID, SOLID),
+        BOIL(LIQUID, GAS), CONDENSE(GAS, LIQUID),
+        SUBLIME(SOLID, GAS), DEPOSIT(GAS, SOLID);
+        <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> Phase <span style="color:#a6e22e">from</span>;
+        <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> Phase <span style="color:#a6e22e">to</span>;
+
+        Transition(Phase <span style="color:#a6e22e">from</span>, Phase <span style="color:#a6e22e">to</span>) {
+            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">from</span> <span style="color:#f92672">=</span> from;
+            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">to</span> <span style="color:#f92672">=</span> to;
+        }
+
+        <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">&lt;</span>Phase, Map<span style="color:#f92672">&lt;</span>Phase, Transition<span style="color:#f92672">&gt;&gt;</span>
+                <span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(values()).<span style="color:#a6e22e">collect</span>(groupingBy(t <span style="color:#f92672">-&gt;</span> t.<span style="color:#a6e22e">from</span>,
+                () <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> EnumMap<span style="color:#f92672">&lt;&gt;</span>(Phase.<span style="color:#a6e22e">class</span>),
+                toMap(t <span style="color:#f92672">-&gt;</span> t.<span style="color:#a6e22e">to</span>, t <span style="color:#f92672">-&gt;</span> t,
+                        (x, y) <span style="color:#f92672">-&gt;</span> y, () <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> EnumMap<span style="color:#f92672">&lt;&gt;</span>(Phase.<span style="color:#a6e22e">class</span>))));
+
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> Transition <span style="color:#a6e22e">from</span>(Phase <span style="color:#a6e22e">from</span>, Phase <span style="color:#a6e22e">to</span>) {
+            <span style="color:#66d9ef">return</span> m.<span style="color:#a6e22e">get</span>(from).<span style="color:#a6e22e">get</span>(to);
+        }
+    }
+}</code></pre></div>
+<p>It is rarely appropriate to use ordinals to index into arrays: use EnumMap instead.</p>
+
+<h3 id="item-38-emulate-extensible-enums-with-interfaces">Item 38: Emulate extensible enums with interfaces</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">interface</span> Operation {
+    <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>);
+}
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> BasicOperation <span style="color:#a6e22e">implements</span> Operation {
+    PLUS(<span style="color:#e6db74">&#34;+&#34;</span>) {
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) { <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> y; }
+    },
+    MINUS(<span style="color:#e6db74">&#34;-&#34;</span>) {
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) { <span style="color:#66d9ef">return</span> x <span style="color:#f92672">-</span> y; }
+    },
+    TIMES(<span style="color:#e6db74">&#34;*&#34;</span>) {
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) { <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> y; }
+    },
+    DIVIDE(<span style="color:#e6db74">&#34;/&#34;</span>) {
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) { <span style="color:#66d9ef">return</span> x <span style="color:#f92672">/</span> y; }
+    };
+    <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> String <span style="color:#a6e22e">symbol</span>;
+    BasicOperation(String <span style="color:#a6e22e">symbol</span>) {
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">symbol</span> <span style="color:#f92672">=</span> symbol;
+    }
+    <span style="color:#a6e22e">@Override</span> <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">String</span> toString() {
+        <span style="color:#66d9ef">return</span> symbol;
+    }
+}</code></pre></div>
+<h3 id="item-39-prefer-annotations-to-naming-patterns">Item 39: Prefer annotations to naming patterns</h3>
+
+<h3 id="item-40-consistency-use-the-override-annotation">Item 40: Consistency use the @Override annotation</h3>
+
+<p>The compiler can protect you from a great many errors if you use the Override annotation on every method declaration that you believe to override a supertype declaration.</p>
+
+<h3 id="item-41-use-marker-interfaces-to-define-types">Item 41: Use marker interfaces to define types</h3>
+
+<p>A marker interface is an interface that contains no method declarations but merely designates (or “marks”) a class that implements the interface <strong>as having some property</strong> (<code>Serializable</code> interface)</p>
+
+<p>Marker interfaces have two advantages over marker annotations.
+1. marker interfaces define a <strong>type</strong> that is implemented by instances of the marked class; marker annotations do not.
+2. they can be targeted more precisely.</p>
+
+<h2 id="lambdas-and-streams">Lambdas and Streams</h2>
+
+<h3 id="item-42-prefer-lambdas-to-anonymous-classes">Item 42: Prefer lambdas to anonymous classes</h3>
+
+<p>Interfaces (or, rarely, abstract classes) with a single abstract method were used as <em>function types</em>.
+Their instances, known as <em>function objects</em>, represent functions or actions.
+<em>Anonymous class</em> was the primary means of creating <em>function objects</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Anonymous class instance as a function object - obsolete!
+</span><span style="color:#75715e"></span>Collections.<span style="color:#a6e22e">sort</span>(words, <span style="color:#66d9ef">new</span> Comparator<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span>() {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">int</span> compare(String <span style="color:#a6e22e">s1</span>, String <span style="color:#a6e22e">s2</span>) {
+        <span style="color:#66d9ef">return</span> Integer.<span style="color:#a6e22e">compare</span>(s1.<span style="color:#a6e22e">length</span>(), s2.<span style="color:#a6e22e">length</span>());
+    }
+});</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Lambda expression as function object (replaces anonymous class)
+</span><span style="color:#75715e"></span>Collections.<span style="color:#a6e22e">sort</span>(words, (s1,s2)<span style="color:#f92672">-&gt;</span>Integer.<span style="color:#a6e22e">compare</span>(s1.<span style="color:#a6e22e">length</span>(),s2.<span style="color:#a6e22e">length</span>()));</code></pre></div>
+<p><em>Type inference</em>: The compiler <strong>deduces</strong> these types from context. Omit the types of all lambda parameters unless their presence makes your program clearer.</p>
+
+<p>By way of example, the code snippet above won’t compile if the variable words is declared to
+be of the <em>raw type</em> <code>List</code> instead of the <em>parameterized type</em> <code>List&lt;String&gt;</code>. (Item 26)</p>
+
+<p><em>comparator construction method</em>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Collections.<span style="color:#a6e22e">sort</span>(words, comparingInt(String<span style="color:#f92672">::</span>length));</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">words.<span style="color:#a6e22e">sort</span>(comparingInt(String<span style="color:#f92672">::</span>length));</code></pre></div>
+<ul>
+<li>Lambdas cannot obsoletes constant-specific method bodies: lambdas lack names and documentation; if a computation isn’t self-explanatory, or exceeds a few lines, don’t put it in a lambda. One line is ideal for a lambda, and three lines is a reasonable maximum.</li>
+<li>Lambdas cannot obsoletes anonymous classes: Lambdas are limited to functional interfaces.
+
+<ul>
+<li>If you want to create <em>an instance of an abstract class</em>, you can do it with an anonymous class, but not a lambda.</li>
+<li>A lambda cannot obtain a reference to <em>itself</em>.</li>
+</ul></li>
+</ul>
+
+<p>As of Java 8, lambdas are by far the best way to represent <strong>small function objects</strong>. Don’t use anonymous classes for function objects unless you have to create instances of types that aren’t functional interfaces.</p>
+
+<h3 id="item-43-prefer-method-reference-to-lambdas">Item 43: Prefer method reference to lambdas</h3>
+
+<p>Java provides a way to generate function objects even more succinct than lambdas: <em>method references</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">map.<span style="color:#a6e22e">merge</span>(key, 1, (count, incr) <span style="color:#f92672">-&gt;</span> count <span style="color:#f92672">+</span> incr);</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">map.<span style="color:#a6e22e">merge</span>(key, 1, Integer<span style="color:#f92672">::</span>sum);</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Method Ref Type</th>
+<th>Example</th>
+<th>Lambda Equivalent</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Static</td>
+<td><code>Integer::parseInt</code></td>
+<td><code>str -&gt; Integer.parseInt(str)</code></td>
+</tr>
+
+<tr>
+<td>Bound</td>
+<td><code>Instant.now()::isAfter</code></td>
+<td><code>Instant then = Instant.now(); t -&gt; then.isAfter(t)</code></td>
+</tr>
+
+<tr>
+<td>Unbound</td>
+<td><code>String::toLowerCase</code></td>
+<td><code>str -&gt; str.toLowerCase()</code></td>
+</tr>
+
+<tr>
+<td>Class Constructor</td>
+<td><code>TreeMap&lt;K,V&gt;::new</code></td>
+<td><code>() -&gt; new TreeMap&lt;K,V&gt;</code></td>
+</tr>
+
+<tr>
+<td>Array Constructor</td>
+<td><code>int[]::new</code></td>
+<td><code>len -&gt; new int[len]</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="item-44-favor-the-use-of-standard-functional-interfaces">Item 44: Favor the use of standard functional interfaces</h3>
+
+<p>If one of the standard functional interfaces does the job, you should generally use it in preference to a purpose-built functional interface.</p>
+
+<ul>
+<li>The <code>Operator</code> interfaces represent functions whose result and argument types are the <strong>same</strong>.</li>
+<li>The <code>Predicate</code> interface represents a function that takes <strong>an argument</strong> and returns a <code>boolean</code>.</li>
+<li>The <code>Function</code> interface represents a function whose argument and return types <strong>differ</strong>.</li>
+<li>The <code>Supplier</code> interface represents a function that takes <strong>no arguments</strong> and <strong>returns (or “supplies”) a value</strong>.</li>
+<li>The <code>Consumer</code> represents a function that takes <strong>an argument</strong> and <strong>returns
+nothing</strong>, essentially <em>consuming</em> its argument.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Function Signature</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>UnaryOperator&lt;T&gt;</code></td>
+<td><code>T apply(T t)</code></td>
+<td><code>String::toLowerCase</code></td>
+</tr>
+
+<tr>
+<td><code>BinaryOperator&lt;T&gt;</code></td>
+<td><code>T apply(T t1, T t2)</code></td>
+<td><code>BigInteger::add</code></td>
+</tr>
+
+<tr>
+<td><code>Predicate&lt;T&gt;</code></td>
+<td><code>boolean test(T t)</code></td>
+<td><code>Collection::isEmpty</code></td>
+</tr>
+
+<tr>
+<td><code>Function&lt;T,R&gt;</code></td>
+<td><code>R apply(T t)</code></td>
+<td><code>Arrays::asList</code></td>
+</tr>
+
+<tr>
+<td><code>Supplier&lt;T&gt;</code></td>
+<td><code>T get()</code></td>
+<td><code>Instant::now</code></td>
+</tr>
+
+<tr>
+<td><code>Consumer&lt;T&gt;</code></td>
+<td><code>void accept(T t)</code></td>
+<td><code>System.out::println</code></td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Don’t be tempted to use basic functional interfaces with boxed primitives instead of primitive functional interfaces</strong></p>
+
+<h3 id="item-45-use-streams-judiciously">Item 45: Use streams judiciously</h3>
+
+<p>A stream pipeline consists of a source stream followed by zero or more <em>intermediate operations</em> and one <em>terminal operation</em>.</p>
+
+<p>Stream pipelines are evaluated <em>lazily</em>.
+The streams API is <em>fluent</em>.</p>
+
+<h3 id="item-46-prefer-side-effect-free-methods-in-streams">Item 46: Prefer side-effect-free methods in streams</h3>
+
+<p><strong>Pure function</strong>: A pure function is one whose result depends only on its input: it does not depend on any mutable state, nor does it update any state.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Uses the streams API but not the paradigm--Don&#39;t do this!
+</span><span style="color:#75715e"></span>Map<span style="color:#f92672">&lt;</span>String, Long<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">freq</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
+<span style="color:#66d9ef">try</span> (Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">words</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Scanner(file).<span style="color:#a6e22e">tokens</span>()) {
+    words.<span style="color:#a6e22e">forEach</span>(word <span style="color:#f92672">-&gt;</span> {
+        freq.<span style="color:#a6e22e">merge</span>(word.<span style="color:#a6e22e">toLowerCase</span>(), 1L, Long<span style="color:#f92672">::</span>sum);
+    });
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Proper use of streams to initialize a frequency table
+</span><span style="color:#75715e"></span>Map<span style="color:#f92672">&lt;</span>String, Long<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">freq</span>;
+<span style="color:#66d9ef">try</span> (Stream<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">words</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Scanner(file).<span style="color:#a6e22e">tokens</span>()) {
+    freq <span style="color:#f92672">=</span> words.<span style="color:#a6e22e">collect</span>(groupingBy(String<span style="color:#f92672">::</span>toLowerCase, counting()));
+}</code></pre></div>
+<p>The <code>forEach</code> operation should be used only to report the result of a stream computation, not to perform the computation.</p>
+
+<p><em>collector</em>: You can ignore the Collector interface and think of a collector as an opaque object that encapsulates a <em>reduction</em> strategy.
+The collectors for gathering the elements of a stream into a true <code>Collection</code>
+are straightforward.</p>
+
+<ul>
+<li><p>There are three such collectors: <code>toList()</code>, <code>toSet()</code>, and <code>toCollection(collectionFactory)</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Pipeline to get a top-ten list of words from a frequency table
+</span><span style="color:#75715e"></span>List<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">topTen</span> <span style="color:#f92672">=</span> freq.<span style="color:#a6e22e">keySet</span>().<span style="color:#a6e22e">stream</span>()
+.<span style="color:#a6e22e">sorted</span>(comparing(freq<span style="color:#f92672">::</span>get).<span style="color:#a6e22e">reversed</span>())
+.<span style="color:#a6e22e">limit</span>(10) <span style="color:#75715e">//SQL?
+</span><span style="color:#75715e"></span>.<span style="color:#a6e22e">collect</span>(toList());</code></pre></div></li>
+
+<li><p><code>toMap</code> collector:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Using a toMap collector to make a map from string to enum
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Map</span><span style="color:#f92672">&lt;</span>String, Operation<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">stringToEnum</span> <span style="color:#f92672">=</span>
+Stream.<span style="color:#a6e22e">of</span>(values()).<span style="color:#a6e22e">collect</span>(toMap(Object<span style="color:#f92672">::</span>toString, e <span style="color:#f92672">-&gt;</span> e));</code></pre></div></li>
+</ul>
+
+<p>The three-argument form of toMap is also useful to make a map from a key to a chosen element associated with that key.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Collector to generate a map from key to chosen element for key
+</span><span style="color:#75715e"></span>Map<span style="color:#f92672">&lt;</span>Artist, Album<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">topHits</span> <span style="color:#f92672">=</span> albums.<span style="color:#a6e22e">collect</span>(
+toMap(Album<span style="color:#f92672">::</span>artist, a<span style="color:#f92672">-&gt;</span>a, maxBy(comparing(Album<span style="color:#f92672">::</span>sales))));</code></pre></div>
+<p>Another use of the three-argument form of toMap is to produce a collector that imposes a <em>last-write-wins policy</em> when there are collisions.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Collector to impose last-write-wins policy
+</span><span style="color:#75715e"></span>toMap(keyMapper, valueMapper, (v1, v2) <span style="color:#f92672">-&gt;</span> v2);</code></pre></div>
+<ul>
+<li><p><code>groupingBy</code> method, which returns collectors to produce maps that group elements into
+categories based on a <em>classifier</em> function. The classifier function <strong>takes an element</strong>
+and <strong>returns the category</strong> into which it falls.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">words.<span style="color:#a6e22e">collect</span>(groupingBy(word <span style="color:#f92672">-&gt;</span> alphabetize(word)));</code></pre></div></li>
+</ul>
+
+<p>If you want groupingBy to return a collector that produces a map <strong>with values other than lists</strong>, you can specify a <em>downstream collector</em> in addition to a classifier.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="color:#f92672">&lt;</span>String, Long<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">freq</span> <span style="color:#f92672">=</span> words.<span style="color:#a6e22e">collect</span>(groupingBy(String<span style="color:#f92672">::</span>toLowerCase, counting()));</code></pre></div>
+<h3 id="item-47-prefer-collection-to-stream-as-a-return-type">Item 47: Prefer Collection to Stream as a return type</h3>
+
+<ul>
+<li><p>Stream<E> to Iterable<E>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Won&#39;t compile, due to limitations on Java&#39;s type inference
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (ProcessHandle <span style="color:#a6e22e">ph</span> <span style="color:#f92672">:</span> ProcessHandle.<span style="color:#a6e22e">allProcesses</span>()<span style="color:#f92672">::</span>iterator) {
+<span style="color:#75715e">// Process the process
+</span><span style="color:#75715e"></span>}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Adapter from Stream&lt;E&gt; to Iterable&lt;E&gt;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">Iterable</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">iterableOf</span>(Stream<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">stream</span>) {
+<span style="color:#66d9ef">return</span> stream<span style="color:#f92672">::</span>iterator;
+}
+
+<span style="color:#66d9ef">for</span> (ProcessHandle <span style="color:#a6e22e">p</span> <span style="color:#f92672">:</span> iterableOf(ProcessHandle.<span style="color:#a6e22e">allProcesses</span>())) {
+<span style="color:#75715e">// Process the process
+</span><span style="color:#75715e"></span>}</code></pre></div></li>
+
+<li><p>Iterable<E> to Stream<E>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Adapter from Iterable&lt;E&gt; to Stream&lt;E&gt;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">Stream</span><span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">streamOf</span>(Iterable<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">iterable</span>) {
+<span style="color:#66d9ef">return</span> StreamSupport.<span style="color:#a6e22e">stream</span>(iterable.<span style="color:#a6e22e">spliterator</span>(), <span style="color:#66d9ef">false</span>);
+}</code></pre></div></li>
+</ul>
+
+<h3 id="item-48-use-caution-when-making-streams-parallel">Item 48: Use caution when making streams parallel</h3>
+
+<p>Parallelizing a pipeline is <em>unlikely to increase its performance</em> if the source is from <code>Stream.iterate</code>, or the intermediate operation <code>limit</code> is used.</p>
+
+<p>Performance gains from parallelism are best on streams over <code>ArrayList</code>, <code>HashMap</code>, <code>HashSet</code>, and <code>ConcurrentHashMap</code> instances; arrays; <code>int</code> ranges; and <code>long</code> ranges.</p>
+
+<h2 id="methods">Methods</h2>
+
+<h3 id="item-49-check-parameters-for-validity">Item 49: Check parameters for validity</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">* Returns a BigInteger whose value is (this mod m). This method
+</span><span style="color:#75715e">* differs from the remainder method in that it always returns a
+</span><span style="color:#75715e">* non-negative BigInteger.
+</span><span style="color:#75715e">*
+</span><span style="color:#75715e">* @param m the modulus, which must be positive
+</span><span style="color:#75715e">* @return this mod m
+</span><span style="color:#75715e">* @throws ArithmeticException if m is less than or equal to 0
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BigInteger</span> mod(BigInteger <span style="color:#a6e22e">m</span>) {
+    <span style="color:#66d9ef">if</span> (m.<span style="color:#a6e22e">signum</span>() <span style="color:#f92672">&lt;=</span> 0)
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> ArithmeticException(<span style="color:#e6db74">&#34;Modulus &lt;= 0: &#34;</span> <span style="color:#f92672">+</span> m);
+        ... <span style="color:#75715e">// Do the computation
+</span><span style="color:#75715e"></span>}</code></pre></div>
+<p>The <code>Objects.requireNonNull</code> method, added in Java 7, is flexible and convenient, so there’s no reason to perform null checks manually anymore.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javar" data-lang="javar">// Inline use of Java&#39;s null-checking facility
+this.strategy = Objects.requireNonNull(strategy, &#34;strategy&#34;);</code></pre></div>
+<p>You should <strong>document</strong> these restrictions and <strong>enforce them with explicit checks</strong> at the beginning of the method body.</p>
+
+<h3 id="item-50-make-defensive-copies-when-needed">Item 50: Make defensive copies when needed</h3>
+
+<p>You must program <strong>defensively</strong>, with the assumption that clients of your class will do their best to destroy its invariants.</p>
+
+<p>It is essential to make a <strong>defensive copy</strong> of each mutable parameter to the constructor</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Attack the internals of a Period instance
+</span><span style="color:#75715e"></span>Date <span style="color:#a6e22e">start</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+Date <span style="color:#a6e22e">end</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+Period <span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Period(start, end);
+end.<span style="color:#a6e22e">setYear</span>(78); <span style="color:#f92672">//</span> Modifies <span style="color:#a6e22e">internals</span> of <span style="color:#a6e22e">p</span><span style="color:#f92672">!</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Repaired constructor - makes defensive copies of parameters
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Period</span>(Date <span style="color:#a6e22e">start</span>, Date <span style="color:#a6e22e">end</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">start</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date(start.<span style="color:#a6e22e">getTime</span>()); <span style="color:#75715e">//defensive copy
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">end</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date(end.<span style="color:#a6e22e">getTime</span>());
+    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">start</span>.<span style="color:#a6e22e">compareTo</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">end</span>) <span style="color:#f92672">&gt;</span> 0)
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">start</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; after &#34;</span> <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">end</span>);
+}</code></pre></div>
+<p>Defensive copies are made <em>before</em> checking the validity of the parameters, and the validity check is performed on the copies rather than on the originals.
+It protects the class against changes to the parameters from another thread during the <em>window of vulnerability</em> between the time the parameters are <em>checked</em> and the time they are <em>copied</em>. In the computer security community, this is known as a <em>time-of-check/time-of-use</em> or <em>TOCTOU</em> attack.</p>
+
+<p>Do not use the <code>clone</code> method to make a defensive copy of a parameter whose type is subclassable by untrusted parties.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Second attack on the internals of a Period instance
+</span><span style="color:#75715e"></span>Date <span style="color:#a6e22e">start</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+Date <span style="color:#a6e22e">end</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Date();
+Period <span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Period(start, end);
+p.<span style="color:#a6e22e">end</span>().<span style="color:#a6e22e">setYear</span>(78); <span style="color:#f92672">//</span> Modifies <span style="color:#a6e22e">internals</span> of <span style="color:#a6e22e">p</span><span style="color:#f92672">!</span></code></pre></div>
+<p>Return defensive copies of mutable internal fields.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Repaired accessors - make defensive copies of internal fields
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Date</span> start() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Date(start.<span style="color:#a6e22e">getTime</span>());
+}
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Date</span> end() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Date(end.<span style="color:#a6e22e">getTime</span>());
+}</code></pre></div>
+<p>Non-zero length arrays are always mutable.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Thing</span>[] PRIVATE_VALUES <span style="color:#f92672">=</span> { ... };
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>Thing<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">VALUES</span> <span style="color:#f92672">=</span> Collections.<span style="color:#a6e22e">unmodifiableList</span>(Arrays.<span style="color:#a6e22e">asList</span>(PRIVATE_VALUES));</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Thing</span>[] PRIVATE_VALUES <span style="color:#f92672">=</span> { ... };
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Thing</span>[] values() {
+    <span style="color:#66d9ef">return</span> PRIVATE_VALUES.<span style="color:#a6e22e">clone</span>();
+}</code></pre></div>
+<h3 id="item-51-design-method-signatures-carefully">Item 51: Design method signatures carefully</h3>
+
+<ul>
+<li>Choose method names carefully</li>
+<li>Don’t go overboard in providing convenience methods</li>
+<li>Avoid long parameter lists. Long sequences of identically typed parameters are especially
+harmful, like <code>method(int, int, int, int)</code>
+
+<ul>
+<li><strong>Break the method</strong> up to multiple methods</li>
+<li>Create <strong>helper classes</strong> to hold groups of parameters</li>
+<li>Adapt the <strong>Builder pattern</strong> from object construction to method invocation</li>
+</ul></li>
+<li>For parameter types, favor interfaces over classes</li>
+<li>Prefer two-element enum types to <code>boolean</code> parameters.</li>
+</ul>
+
+<h3 id="item-52-use-overloading-judiciously">Item 52: Use overloading judiciously</h3>
+
+<p>The choice of <em>which overloading to invoke</em> is made at <strong>compile time</strong>: no dynamic binding.</p>
+
+<p>Selection among <strong>overloaded</strong> methods is <strong>static</strong>, while selection among <strong>overridden</strong> methods is <strong>dynamic</strong>.</p>
+
+<p>A safe, conservative policy is never to export two overloadings <strong>with the same number of parameters</strong>.</p>
+
+<h3 id="item-53-use-varargs-judiciously">Item 53: Use varargs judiciously</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// The WRONG way to use varargs to pass one or more arguments!
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#a6e22e">int</span> min(<span style="color:#66d9ef">int</span>... <span style="color:#a6e22e">args</span>) {
+    <span style="color:#66d9ef">if</span> (args.<span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 0)
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException(<span style="color:#e6db74">&#34;Too few arguments&#34;</span>);
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">=</span> args[0];
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> 1; i <span style="color:#f92672">&lt;</span> args.<span style="color:#a6e22e">length</span>; i<span style="color:#f92672">++</span>)
+        <span style="color:#66d9ef">if</span> (args[i] <span style="color:#f92672">&lt;</span> min)
+            min <span style="color:#f92672">=</span> args[i];
+    <span style="color:#66d9ef">return</span> min;
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// The right way to use varargs to pass one or more arguments
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#a6e22e">int</span> min(<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">firstArg</span>, <span style="color:#66d9ef">int</span>... <span style="color:#a6e22e">remainingArgs</span>) {
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">min</span> <span style="color:#f92672">=</span> firstArg;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">arg</span> <span style="color:#f92672">:</span> remainingArgs)
+        <span style="color:#66d9ef">if</span> (arg <span style="color:#f92672">&lt;</span> min)
+            min <span style="color:#f92672">=</span> arg;
+    <span style="color:#66d9ef">return</span> min;
+}</code></pre></div>
+<h3 id="item-54-return-empty-collections-or-arrays-not-nulls">Item 54: Return empty collections or arrays, not nulls</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//The right way to return a possibly empty collection
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>Cheese<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getCheeses</span>() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>(cheesesInStock);
+}
+
+<span style="color:#75715e">// Optimization - avoids allocating empty collections
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>Cheese<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getCheeses</span>() {
+    <span style="color:#66d9ef">return</span> cheesesInStock.<span style="color:#a6e22e">isEmpty</span>() <span style="color:#f92672">?</span> Collections.<span style="color:#a6e22e">emptyList</span>()
+        <span style="color:#f92672">:</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>(cheesesInStock);
+}
+
+<span style="color:#75715e">//The right way to return a possibly empty array
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Cheese</span>[] getCheeses() {
+    <span style="color:#66d9ef">return</span> cheesesInStock.<span style="color:#a6e22e">toArray</span>(<span style="color:#66d9ef">new</span> Cheese[0]);
+}
+
+<span style="color:#75715e">// Optimization - avoids allocating empty arrays
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">final</span> <span style="color:#a6e22e">Cheese</span>[] EMPTY_CHEESE_ARRAY <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Cheese[0];
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Cheese</span>[] getCheeses() {
+    <span style="color:#66d9ef">return</span> cheeseInStock.<span style="color:#a6e22e">toArray</span>(EMPTY_CHEESE_ARRAY);
+}</code></pre></div>
+<p>In the optimized version, we pass the <strong>same empty array</strong> into every toArray call, and this array will be returned from getCheeses whenever cheesesInStock is empty.</p>
+
+<p>Reference:</p>
+
+<p><code>public &lt;T&gt; T[] toArray(T[] a)</code></p>
+
+<p>Returns an array containing <em>all of the elements in this collection</em>; the runtime type of the returned array is that of the specified array. If the collection <em>fits in</em> the specified array, it is returned therein. Otherwise, <em>a new array is allocated</em> with the runtime type of the specified array and the size of this collection.
+If this collection <em>fits in the specified array with room to spare</em> (i.e., the array has more elements than this collection), <em>the element in the array immediately following the end of the collection is set to null</em>. (This is useful in determining the length of this collection only if the caller knows that this collection does not contain any null elements.)</p>
+
+<h3 id="item-55-return-optionals-judiciously">Item 55: Return optionals judiciously</h3>
+
+<h2 id="10-exceptions">10 Exceptions</h2>
+
+<h3 id="item-70-use-checked-exceptions-for-recoverable-conditions-and-runtime-exceptions-for-programming-errors">Item 70: Use checked exceptions for recoverable conditions and runtime exceptions for programming errors</h3>
+
+<p>Three kinds of throwables: <code>checked exceptions</code>, <code>runtime exceptions</code>, <code>errors</code>.</p>
+
+<ul>
+<li>Use <strong>checked exceptions</strong> for conditions from which the caller can reasonably be expected to <em>recover</em>.</li>
+<li>Runtime exceptions and errors need not and should not be caught.</li>
+<li>Use <strong>runtime exceptions</strong> to indicate programming errors.</li>
+<li>Provide methods on your checked exceptions to aid in recovery.</li>
+</ul>
+
+<h3 id="item-71-avoid-unnecessary-use-of-checked-exceptions">Item 71: Avoid unnecessary use of checked exceptions</h3>
+
+<ul>
+<li>The easiest way to eliminate a checked exception is to return an optional of the desired result type.</li>
+
+<li><p>Break the method that throws the exception into two methods, the first of which returns a <code>boolean</code> indicating whether the exception would be thrown.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Invocation with checked exception
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">try</span> {
+obj.<span style="color:#a6e22e">action</span>(args);
+} <span style="color:#66d9ef">catch</span> (TheCheckedException <span style="color:#a6e22e">e</span>) {
+... <span style="color:#75715e">// Handle exceptional condition
+</span><span style="color:#75715e"></span>}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Invocation with state-testing method and unchecked exception
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (obj.<span style="color:#a6e22e">actionPermitted</span>(args)) {
+obj.<span style="color:#a6e22e">action</span>(args);
+} <span style="color:#66d9ef">else</span> {
+... <span style="color:#75715e">// Handle exceptional condition
+</span><span style="color:#75715e"></span>}</code></pre></div></li>
+
+<li><p>If callers won’t be able to recover from failures, throw <em>unchecked exceptions</em>.</p></li>
+
+<li><p>If recovery may be possible and you want to <em>force</em> callers to handle exceptional conditions, first consider returning an <em>optional</em>.</p></li>
+
+<li><p>Only if this would provide insufficient information in the case of failure should you throw a checked exception.</p></li>
+</ul>
+
+<h3 id="item-72-favor-the-use-of-standard-exceptions">Item 72: Favor the use of standard exceptions</h3>
+
+<p>The most commonly reused exception type is <code>IllegalArgumentException</code>. This is generally the exception to throw when the caller passes in an argument whose value is inappropriate.</p>
+
+<p>Another commonly reused exception is <code>IllegalStateException</code>. This is generally the exception to throw if the invocation is illegal because of the state of the receiving object.</p>
+
+<p>Another reusable exception is <code>ConcurrentModificationException</code>. It should be thrown if an object that was designed for use by a single thread (or with external synchronization) detects that it is being modified concurrently.</p>
+
+<p>A last standard exception of note is <code>UnsupportedOperationException</code>. This is the exception to throw if an object does not support an attempted operation. Its use is rare because most objects support all of their methods.</p>
+
+<p>Do not reuse Exception, RuntimeException, Throwable, or Error <strong>directly</strong>.</p>
+
+<table>
+<thead>
+<tr>
+<th>Exception</th>
+<th>Occasion for Use</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>IllegalArgumentException</td>
+<td>Non-null parameter value is inappropriate</td>
+</tr>
+
+<tr>
+<td>IllegalStateException</td>
+<td>Object state is inappropriate for method invocation</td>
+</tr>
+
+<tr>
+<td>NullPointerException</td>
+<td>Parameter value is null where prohibited</td>
+</tr>
+
+<tr>
+<td>IndexOutOfBoundsException</td>
+<td>Index parameter value is out of range</td>
+</tr>
+
+<tr>
+<td>ConcurrentModificationException</td>
+<td>Concurrent modification of an object has been detected where it is prohibited</td>
+</tr>
+
+<tr>
+<td>UnsupportedOperationException</td>
+<td>Object does not support method</td>
+</tr>
+</tbody>
+</table>
+
+<p>Throw <code>IllegalStateException</code> if no argument values would have worked, otherwise throw <code>IllegalArgumentException</code>.</p>
+
+<h3 id="item-73-throw-exceptions-appropriate-to-the-abstraction">Item 73: Throw exceptions appropriate to the abstraction</h3>
+
+<p>Exception translation: higher layers should catch lower-level exceptions and, in their place, throw exceptions that can be explained <em>in terms of the higher-level abstraction</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Exception Translation
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">try</span> {
+    ... <span style="color:#75715e">// Use lower-level abstraction to do our bidding
+</span><span style="color:#75715e"></span>} <span style="color:#66d9ef">catch</span> (LowerLevelException <span style="color:#a6e22e">e</span>) {
+    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> HigherLevelException(...);
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">* Returns the element at the specified position in this list.
+</span><span style="color:#75715e">* @throws IndexOutOfBoundsException if the index is out of range
+</span><span style="color:#75715e">* ({@code index &lt; 0 || index &gt;= size()}).
+</span><span style="color:#75715e">*/</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">E</span> get(<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">index</span>) {
+    ListIterator<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> listIterator(index);
+    <span style="color:#66d9ef">try</span> {
+        <span style="color:#66d9ef">return</span> i.<span style="color:#a6e22e">next</span>();
+    } <span style="color:#66d9ef">catch</span> (NoSuchElementException <span style="color:#a6e22e">e</span>) {
+        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IndexOutOfBoundsException(<span style="color:#e6db74">&#34;Index: &#34;</span> <span style="color:#f92672">+</span> index);
+    }
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Exception Chaining
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">try</span> {
+... <span style="color:#75715e">// Use lower-level abstraction to do our bidding
+</span><span style="color:#75715e"></span>} <span style="color:#66d9ef">catch</span> (LowerLevelException <span style="color:#a6e22e">cause</span>) {
+    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> HigherLevelException(cause);
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Exception with chaining-aware constructor
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HigherLevelException</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">Exception</span> {
+    HigherLevelException(Throwable <span style="color:#a6e22e">cause</span>) {
+        <span style="color:#66d9ef">super</span>(cause);
+    }
+}</code></pre></div>
+<p>While exception translation is superior to mindless propagation of exceptions from lower layers, it should not be overused.</p>
+
+<h3 id="item-74-document-all-exceptions-thrown-by-each-method">Item 74: Document all exceptions thrown by each method</h3>
+
+<p>Always declare checked exceptions individually, and document precisely the conditions under which each one is thrown using the Javadoc <code>@throws</code> tag.</p>
+
+<h3 id="item-79-avoid-excessive-synchronization">Item 79: Avoid Excessive Synchronization</h3>
+
+<ul>
+<li>To avoid liveness and safety failures, never cede control to the client within a synchronized method or block.</li>
+<li>As a rule, you should do as little work as possible inside synchronized regions.</li>
+</ul>
+
+<p>Two options for a mutable class:
+1. omit all synchronization and allow the client to synchronize externally (<code>java.util.*</code>)
+2. synchronize internally, making the class <em>thread-safe</em> (<code>java.util.concurrent.*</code>)</p>
+
+<p>If you do synchronize your class internally, you can use various techniques to
+achieve high concurrency, such as <em>lock splitting</em>, <em>lock striping</em>, and <em>nonblocking concurrency control</em>.</p>
+
+<h3 id="item-80-prefer-executors-tasks-and-streams-to-threads">Item 80: Prefer executors, tasks, and streams to threads</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ExecutorService <span style="color:#a6e22e">exec</span> <span style="color:#f92672">=</span> Executors.<span style="color:#a6e22e">newSingleThreadExecutor</span>();
+exec.<span style="color:#a6e22e">execute</span>(runnable);
+exec.<span style="color:#a6e22e">shutdown</span>();</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ExecutorService <span style="color:#a6e22e">service</span> <span style="color:#f92672">=</span> Executors.<span style="color:#a6e22e">newCachedThreadPool</span>();
+ExecutorService <span style="color:#a6e22e">service2</span> <span style="color:#f92672">=</span> Executors.<span style="color:#a6e22e">newFixedThreadPool</span>(10);</code></pre></div>
+<p>Not only should you refrain from writing your own work queues, but you
+should generally refrain from working directly with threads.</p>
+
+<h3 id="item-81-prefer-concurrency-utilities-to-wait-and-notify">Item 81: Prefer concurrency utilities to wait and notify</h3>
+
+<ul>
+<li>Executor Framework</li>
+<li>concurrent collections</li>
+
+<li><p>synchronizers</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// The standard idiom for using the wait method
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">synchronized</span> (obj) {
+<span style="color:#66d9ef">while</span> (<span style="color:#f92672">&lt;</span>condition <span style="color:#a6e22e">does</span> not <span style="color:#a6e22e">hold</span><span style="color:#f92672">&gt;</span>)
+    obj.<span style="color:#a6e22e">wait</span>(); <span style="color:#75715e">// (Releases lock, and reacquires on wakeup)
+</span><span style="color:#75715e"></span>... <span style="color:#75715e">// Perform action appropriate to condition
+</span><span style="color:#75715e"></span>}</code></pre></div></li>
+</ul>
+
+<h3 id="item-82-document-thread-safety">Item 82: Document thread safety</h3>
+
+<p>A class must clearly document what level of thread safety it supports
+* Immutable
+* Unconditionally thread safe
+* Conditionally thread safe
+* Not thread-safe
+* Thread-hostile</p>
+
+<h3 id="item-83-use-lazy-initialization-judiciously">Item 83: Use lazy initialization judiciously</h3>
+
+<p>If you need to use lazy initialization for performance on an instance field, use the <em>double-check idiom</em>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Double-check idiom for lazy initialization of instance fields
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">volatile</span> FieldType <span style="color:#a6e22e">field</span>;
+<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">FieldType</span> getField() {
+FieldType <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> field;
+<span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) { <span style="color:#75715e">// First check (no locking)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">synchronized</span>(<span style="color:#66d9ef">this</span>) {
+<span style="color:#66d9ef">if</span> (field <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) <span style="color:#75715e">// Second check (with locking)
+</span><span style="color:#75715e"></span>field <span style="color:#f92672">=</span> result <span style="color:#f92672">=</span> computeFieldValue();
+}
+}
+<span style="color:#66d9ef">return</span> result;
+}</code></pre></div>
+<blockquote>
+<p>The value of this variable will never be cached thread-locally: all reads and writes will go straight to &ldquo;main memory&rdquo;;
+Access to the variable acts as though it is enclosed in a synchronized block, synchronized on itself.</p>
+</blockquote>
+
+<h3 id="item-84-do-not-depend-on-thread-scheduler">Item 84: Do not depend on thread scheduler</h3>
+
+<p>Threads should not <em>busy-wait</em>, repeatedly checking a shared object waiting for its state to change.</p>
+
+<p>The resulting program will be neither robust nor portable.</p>
+
+<h2 id="chapter-12-serialziation">Chapter 12. Serialziation</h2>
+
+<h3 id="item-84-prefer-alternatives-to-java-serialization">Item 84: Prefer alternatives to Java serialization</h3>
+
+<p>The best way to avoid serialization exploits is never to deserialize anything. There is no reason to use Java serialization in any new system you write.</p>
+
+<p><em>cross-platform structured-data representations</em>: JSON, Protobuf</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/programming/'>Programming</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/java/'>Java</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/my-first-post/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>一些常用的zsh插件</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/MunifTanjim' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/MunifTanjim' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/MunifTanjim' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/MunifTanjim' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:contact@example.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://codepen.io/MunifTanjim' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Codepen account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+  <line x1="12" y1="22" x2="12" y2="15.5"/>
+  <polyline points="22 8.5 12 15.5 2 8.5"/>
+  <polyline points="2 15.5 12 8.5 22 15.5"/>
+  <line x1="12" y1="2" x2="12" y2="8.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://gitlab.com/MunifTanjim' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Gitlab account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/muniftanjim' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+  <rect x="2" y="9" width="4" height="12"/>
+  <circle cx="4" cy="4" r="2"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://t.me/MunifTanjim' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Telegram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="m 22.05,1.577 c -0.393,-0.016 -0.784,0.08 -1.117,0.235 -0.484,0.186 -4.92,1.902 -9.41,3.64 C 9.263,6.325 7.005,7.198 5.267,7.867 3.53,8.537 2.222,9.035 2.153,9.059 c -0.46,0.16 -1.082,0.362 -1.61,0.984 -0.79581202,1.058365 0.21077405,1.964825 1.004,2.499 1.76,0.564 3.58,1.102 5.087,1.608 0.556,1.96 1.09,3.927 1.618,5.89 0.174,0.394 0.553,0.54 0.944,0.544 l -0.002,0.02 c 0,0 0.307,0.03 0.606,-0.042 0.3,-0.07 0.677,-0.244 1.02,-0.565 0.377,-0.354 1.4,-1.36 1.98,-1.928 l 4.37,3.226 0.035,0.02 c 0,0 0.484,0.34 1.192,0.388 0.354,0.024 0.82,-0.044 1.22,-0.337 0.403,-0.294 0.67,-0.767 0.795,-1.307 0.374,-1.63 2.853,-13.427 3.276,-15.38 L 23.676,4.725 C 23.972,3.625 23.863,2.617 23.18,2.02 22.838,1.723 22.444,1.593 22.05,1.576 Z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://scholar.google.com/citations?user=qc6CJjYAAAAJ' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Google_scholar account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M21.328 2.002v9.2M8.695 7.85c.014-.787-.11-2.236.28-2.89.623-1.045.856-1.39 1.797-1.989 1.953-.988 4.296.692 4.296.692.803.564 1.672 2.1 1.672 2.1l1.368-1.824-5.444-1.754-3.515 1.34L6.08 7.681m9.109 3.42s.65-.633 1.168-1.085c.461-.402.516-.714.6-.914.18-.426.268-.909.268-1.446 0-.7-.131-1.274-.388-1.735-.031-.053 0 0-.097-.157l4.588-3.762H10.32L3.672 7.85l5.023-.024c.23 1.237.619 1.575 1.019 2.222.744.719 1.13 1.194 2.215 1.194.254 0 2.6-.057 2.842-.09 0 0 .546 1.199-.133 1.71-.41.31.576 1.304.576 1.304s-5.577.831-6.523 1.427a4.13 4.13 0 0 0-1.306 1.277 3.034 3.034 0 0 0-.493 1.665c0 .502.106.955.32 1.357.214.403.493.733.84.99.345.258.744.473 1.194.649.45.174.896.297 1.342.367a8.348 8.348 0 0 0 3.41-.166 7.754 7.754 0 0 0 1.964-.807 4.28 4.28 0 0 0 1.49-1.443c.38-.609.57-1.292.57-2.049 0-.574-.116-1.096-.347-1.57a3.755 3.755 0 0 0-.847-1.164c-.335-.302-2.19-1.837-2.19-1.837"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://www.youtube.com/channel/UCT-U0rNerYxItGcuoPX-WYA' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Youtube account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2019 MunifTanjim </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

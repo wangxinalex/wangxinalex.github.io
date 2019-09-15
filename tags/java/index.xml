@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on Tour de Babel</title>
+    <link>http://io.wxa.me/tags/java/</link>
+    <description>Recent content in Java on Tour de Babel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 15 Sep 2019 19:08:43 +0800</lastBuildDate>
+    
+	<atom:link href="http://io.wxa.me/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Effective Java Notes</title>
+      <link>http://io.wxa.me/posts/effective-java-notes/</link>
+      <pubDate>Sun, 15 Sep 2019 19:08:43 +0800</pubDate>
+      
+      <guid>http://io.wxa.me/posts/effective-java-notes/</guid>
+      <description>Effective Java Creating and Destroying Objects Item 1: Static factory methods instead of constructors Pros:
+ have names not required to create a new object each time they’re invoked
+ flyweight pattern singleton pattern
+import java.util.HashMap; public class ShapeFactory { private static final HashMap&amp;lt;String, Shape&amp;gt; circleMap = new HashMap&amp;lt;&amp;gt;(); public static Shape getCircle(String color) { Circle circle = (Circle)circleMap.get(color); if(circle == null) { // lazy creation  circle = new Circle(color); circleMap.</description>
+    </item>
+    
+  </channel>
+</rss>
