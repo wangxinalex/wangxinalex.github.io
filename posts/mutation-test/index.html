@@ -288,11 +288,12 @@ apply plugin: <span style="color:#e6db74">&#39;info.solidsoft.pitest&#39;</span>
 </tbody>
 </table>
 
-<p>我们可以发现，由<code>changed conditional boundary</code>带来的一个mutation survived。这个mutation的行为是将<code>num  &gt; 0</code>改为<code>num &gt;= 0</code>，即更改边界条件，但测试用例没能捕捉到这个差异。</p>
+<p>我们可以发现，由<code>changed conditional boundary</code>(<a href="http://pitest.org/quickstart/mutators/#CONDITIONALS_BOUNDARY" target="_blank">CONDITIONALS_BOUNDARY</a>)带来的一个mutation survived。这个mutation的行为是将<code>num  &gt; 0</code>改为<code>num &gt;= 0</code>，即更改边界条件，但测试用例没能捕捉到这个差异。</p>
 
 <p><img src="https://s2.ax1x.com/2019/09/17/nIccJU.png" alt="PITest Report" /></p>
 
-<p>PITest可以提醒我们添加<code>num == 0</code>的测试用例，而当我们添加了这个测试用例后，错误的判断条件就会被测试出来。</p>
+<p>为了捕捉到这个mutant，我们需要针对<code>num == 0</code>这种边界条件添加新的测试用例
+，而当我们添加了这个测试用例后，错误的判断条件（<code>num &gt; 0</code>）就会被测试出来。</p>
 
 </div>
 
