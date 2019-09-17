@@ -234,6 +234,8 @@ package com.example.pitest; import org.junit.Assert; import org.junit.Test; publ
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> ./gradlew jacocoTestReport </code></pre></div>
 <p>以上测试用例使用10和-10作为输入，测试<code>isNaturalNumber</code>方法能否做出正确判断。如果我们使用JaCoCo作为代码测试覆盖率工具，因为此时<code>num &gt; 0</code>的两个分支均已覆盖到，JaCoCo会显示此时的代码覆盖率是100%。但这里的测试用例显然是不充分的，因为它没有反映最为关键的<code>num == 0</code>的情况。而一般的代码覆盖率工具无法有效地反映出这一点。</p>
 
+<p><img src="https://s2.ax1x.com/2019/09/17/nIcmGD.png" alt="JaCoCo Report" /></p>
+
 <h2 id="mutation-test的意义">mutation test的意义</h2>
 
 <p>普通的代码覆盖率检查并不能有效检测出上述测试用例的缺失，背后原因是以上的两个测试用例仅仅是分别将<code>num &gt; 0</code>的两个分支路径执行了一遍，而并没有真正体现出此判断条件的作用，如果我们将<code>num &gt; 0</code> 改为 <code>num &gt; 1</code>，上述测试用例一样可以通过且代码覆盖率为100%。</p>
@@ -283,6 +285,8 @@ apply plugin: <span style="color:#e6db74">&#39;info.solidsoft.pitest&#39;</span>
 </table>
 
 <p>我们可以发现，由<code>changed conditional boundary</code>带来的一个mutation survived。这个mutation的行为是将<code>num  &gt; 0</code>改为<code>num &gt;= 0</code>，即更改边界条件，但测试用例没能捕捉到这个差异。</p>
+
+<p><img src="https://s2.ax1x.com/2019/09/17/nIccJU.png" alt="PITest Report" /></p>
 
 <p>PITest可以提醒我们添加<code>num == 0</code>的测试用例，而当我们添加了这个测试用例后，错误的判断条件就会被测试出来。</p>
 
