@@ -5,10 +5,21 @@
     <link>http://io.wxa.me/posts/</link>
     <description>Recent content in Posts on Tour de Babel</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 17 Sep 2019 20:27:21 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Sep 2019 20:34:19 +0800</lastBuildDate>
     
 	<atom:link href="http://io.wxa.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vim Block Edit</title>
+      <link>http://io.wxa.me/posts/vim-block-edit/</link>
+      <pubDate>Tue, 17 Sep 2019 20:34:19 +0800</pubDate>
+      
+      <guid>http://io.wxa.me/posts/vim-block-edit/</guid>
+      <description> Vim 块编辑方法 ##末尾添加字符
+	&amp;lt;a href=&amp;quot;Slides/01Introduction-17.ppt&amp;quot;&amp;gt;Lecture 01&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/02Performance-17.ppt&amp;quot;&amp;gt;Lecture 02&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/03ISA-17.ppt&amp;quot;&amp;gt;Lecture 03&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/04singlecycle.ppt&amp;quot;&amp;gt;Lecture 04&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;   命令模式按ctrl+v进入纵向编辑模式，将光标移至Slides末尾，向下移动光标，选中4行的Slides末尾的字符。 然后按A进入行尾插入模式，添加2017。 按ESC退出行尾编辑模式，此时4行Slides均变为Slides2017。
+	&amp;lt;a href=&amp;quot;Slides2017/01Introduction-17.ppt&amp;quot;&amp;gt;Lecture 01&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/02Performance-17.ppt&amp;quot;&amp;gt;Lecture 02&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/03ISA-17.ppt&amp;quot;&amp;gt;Lecture 03&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/04singlecycle.ppt&amp;quot;&amp;gt;Lecture 04&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;   </description>
+    </item>
     
     <item>
       <title>Mutation Test</title>

@@ -2,21 +2,23 @@
 <html lang='en'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Break down these walls and come on in'>
+<meta name='description' content=' Vim 块编辑方法 ##末尾添加字符
+	&lt;a href=&quot;Slides/01Introduction-17.ppt&quot;&gt;Lecture 01&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides/02Performance-17.ppt&quot;&gt;Lecture 02&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides/03ISA-17.ppt&quot;&gt;Lecture 03&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides/04singlecycle.ppt&quot;&gt;Lecture 04&lt;/a&gt;&lt;br/&gt;   命令模式按ctrl&#43;v进入纵向编辑模式，将光标移至Slides末尾，向下移动光标，选中4行的Slides末尾的字符。 然后按A进入行尾插入模式，添加2017。 按ESC退出行尾编辑模式，此时4行Slides均变为Slides2017。
+	&lt;a href=&quot;Slides2017/01Introduction-17.ppt&quot;&gt;Lecture 01&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides2017/02Performance-17.ppt&quot;&gt;Lecture 02&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides2017/03ISA-17.ppt&quot;&gt;Lecture 03&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides2017/04singlecycle.ppt&quot;&gt;Lecture 04&lt;/a&gt;&lt;br/&gt;   '>
 <meta name='theme-color' content='#ffcd00'>
 
-<meta property='og:title' content='Tag: Java • Tour de Babel'>
-<meta property='og:description' content='Break down these walls and come on in'>
-<meta property='og:url' content='http://io.wxa.me/tags/java/'>
+<meta property='og:title' content='Vim Block Edit • Tour de Babel'>
+<meta property='og:description' content=' Vim 块编辑方法 ##末尾添加字符
+	&lt;a href=&quot;Slides/01Introduction-17.ppt&quot;&gt;Lecture 01&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides/02Performance-17.ppt&quot;&gt;Lecture 02&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides/03ISA-17.ppt&quot;&gt;Lecture 03&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides/04singlecycle.ppt&quot;&gt;Lecture 04&lt;/a&gt;&lt;br/&gt;   命令模式按ctrl&#43;v进入纵向编辑模式，将光标移至Slides末尾，向下移动光标，选中4行的Slides末尾的字符。 然后按A进入行尾插入模式，添加2017。 按ESC退出行尾编辑模式，此时4行Slides均变为Slides2017。
+	&lt;a href=&quot;Slides2017/01Introduction-17.ppt&quot;&gt;Lecture 01&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides2017/02Performance-17.ppt&quot;&gt;Lecture 02&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides2017/03ISA-17.ppt&quot;&gt;Lecture 03&lt;/a&gt;&lt;br/&gt; &lt;a href=&quot;Slides2017/04singlecycle.ppt&quot;&gt;Lecture 04&lt;/a&gt;&lt;br/&gt;   '>
+<meta property='og:url' content='http://io.wxa.me/posts/vim-block-edit/'>
 <meta property='og:site_name' content='Tour de Babel'>
-<meta property='og:type' content='website'><meta property='og:updated_time' content='2019-09-17T20:34:19&#43;08:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Vim'><meta property='article:published_time' content='2019-09-17T20:34:19&#43;08:00'/><meta property='article:modified_time' content='2019-09-17T20:34:19&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.58.2" />
 
-  <title>Tag: Java • Tour de Babel</title>
-  <link rel='canonical' href='http://io.wxa.me/tags/java/'>
-  
-    <link href="http://io.wxa.me/tags/java/index.xml" rel="alternate" type="application/rss+xml" title="Tour de Babel" />
+  <title>Vim Block Edit • Tour de Babel</title>
+  <link rel='canonical' href='http://io.wxa.me/posts/vim-block-edit/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -27,7 +29,7 @@
   
 
 </head>
-<body class='taxonomy type-tags taxonomy-tag has-sidebar'>
+<body class='page type-posts has-sidebar'>
 
   <div class='site'><div id='sidebar' class='sidebar'>
   <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
@@ -118,7 +120,7 @@
     <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
   <section class='widget widget-breadcrumbs sep-after'>
     <nav id='breadcrumbs'>
-      <ol><li><a href='/'>Tour de Babel</a></li><li><a href='/tags/'>Tags</a></li><li><span>Java</span></li></ol>
+      <ol><li><a href='/'>Tour de Babel</a></li><li><a href='/posts/'>Posts</a></li><li><span>Vim Block Edit</span></li></ol>
     </nav>
   </section></div>
       </div>
@@ -133,44 +135,114 @@
       <main id='content'>
 
 
-<header class='header'>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
   <div class='container sep-after'>
     <div class='header-info'>
-      <h1 class='title'><span class='taxonomy-name'>Tag: </span>Java</h1>
-
+      <h1 class='title'>Vim Block Edit</h1>
       
 
     </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2019-09-17T20:34:19&#43;08:00'>2019, Sep 17</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+One min read
+</span>
+
+
+</div>
+
+
   </div>
 </header>
 
-
-
-
-<div class='container list-container'>
-  <ul class='list'>
-    
-      <li class='item'>
-  <div class='meta'>
-    <span>
-  <span class='screen-reader-text'>Posted on </span>
-  <time datetime='2019-09-15T19:08:43&#43;08:00'>2019, Sep 15</time>
-</span>
-
-  </div>
-  <header class='item-header'>
-    <h3 class='item-title'>
-      <a href='/posts/effective-java-notes/'>Effective Java Notes</a>
-    </h3>
-  </header>
-</li>
-
-    
-  </ul>
-
+  
   
 
+  <div class='container entry-content'>
+  
+
+<h1 id="vim-块编辑方法">Vim 块编辑方法</h1>
+
+<p>##末尾添加字符</p>
+
+<pre><code>	&lt;a href=&quot;Slides/01Introduction-17.ppt&quot;&gt;Lecture 01&lt;/a&gt;&lt;br/&gt;
+	&lt;a href=&quot;Slides/02Performance-17.ppt&quot;&gt;Lecture 02&lt;/a&gt;&lt;br/&gt;
+	&lt;a href=&quot;Slides/03ISA-17.ppt&quot;&gt;Lecture 03&lt;/a&gt;&lt;br/&gt;
+	&lt;a href=&quot;Slides/04singlecycle.ppt&quot;&gt;Lecture 04&lt;/a&gt;&lt;br/&gt;
+</code></pre>
+
+<ol>
+<li>命令模式按<code>ctrl+v</code>进入纵向编辑模式，将光标移至<code>Slides</code>末尾，向下移动光标，选中4行的<code>Slides</code>末尾的字符。</li>
+<li>然后按<code>A</code>进入<strong>行尾插入模式</strong>，添加2017。</li>
+
+<li><p>按<code>ESC</code>退出行尾编辑模式，此时4行<code>Slides</code>均变为<code>Slides2017</code>。</p>
+
+<pre><code>	&lt;a href=&quot;Slides2017/01Introduction-17.ppt&quot;&gt;Lecture 01&lt;/a&gt;&lt;br/&gt;
+	&lt;a href=&quot;Slides2017/02Performance-17.ppt&quot;&gt;Lecture 02&lt;/a&gt;&lt;br/&gt;
+	&lt;a href=&quot;Slides2017/03ISA-17.ppt&quot;&gt;Lecture 03&lt;/a&gt;&lt;br/&gt;
+	&lt;a href=&quot;Slides2017/04singlecycle.ppt&quot;&gt;Lecture 04&lt;/a&gt;&lt;br/&gt;
+</code></pre></li>
+</ol>
+
 </div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/tools/'>Tools</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/vim/'>Vim</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/mutation-test/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Mutation Test</a>
+    </div></div>
+</nav>
+
+
+
 
       </main>
 
