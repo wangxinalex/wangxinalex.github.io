@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Mutation Test with PITest 测试用例代码覆盖率的意义 一般的软件测试关注测试用例的代码复杂度，理想的状态是100%的代码覆盖率，即测试用例能将所有业务代码执行一遍，保证所有的函数、方法、模块都被测试过。一些测试工具，如JaCoco等，可以统计测试用例的代码覆盖率。
+代码覆盖率的局限性 举一个简单的例子，判断一个正数是不是自然数：
+package com.example.pitest; public class NaturalNumber { private int num; public NaturalNumber(int num) { this.num = num; } // wrong condition judgement  public boolean isNaturalNumber() { return num &gt; 0; } } 引入JaCoCo gradle插件
+plugins { id &#39;java&#39; id &#39;jacoco&#39; } 以上函数isNaturalNumber()对于自然数的判断条件明显错误（正确应为num &gt;= 0）。然而如果我们的测试用例不够完善，就会忽略这个错误，比如下面的测试用例：
+package com.example.pitest; import org.junit.Assert; import org.junit.Test; public class TestNaturalNumber { @Test public void PositiveNumberIsNaturalNumber() { Assert.assertTrue(new NaturalNumber(10).isNaturalNumber()); } @Test public void NegativeNumberIsNotNaturalNumber() { Assert.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Mutation Test • Tour de Babel'>
+<meta property='og:description' content='Mutation Test with PITest 测试用例代码覆盖率的意义 一般的软件测试关注测试用例的代码复杂度，理想的状态是100%的代码覆盖率，即测试用例能将所有业务代码执行一遍，保证所有的函数、方法、模块都被测试过。一些测试工具，如JaCoco等，可以统计测试用例的代码覆盖率。
+代码覆盖率的局限性 举一个简单的例子，判断一个正数是不是自然数：
+package com.example.pitest; public class NaturalNumber { private int num; public NaturalNumber(int num) { this.num = num; } // wrong condition judgement  public boolean isNaturalNumber() { return num &gt; 0; } } 引入JaCoCo gradle插件
+plugins { id &#39;java&#39; id &#39;jacoco&#39; } 以上函数isNaturalNumber()对于自然数的判断条件明显错误（正确应为num &gt;= 0）。然而如果我们的测试用例不够完善，就会忽略这个错误，比如下面的测试用例：
+package com.example.pitest; import org.junit.Assert; import org.junit.Test; public class TestNaturalNumber { @Test public void PositiveNumberIsNaturalNumber() { Assert.assertTrue(new NaturalNumber(10).isNaturalNumber()); } @Test public void NegativeNumberIsNotNaturalNumber() { Assert.'>
+<meta property='og:url' content='http://io.wxa.me/posts/mutation-test/'>
+<meta property='og:site_name' content='Tour de Babel'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:published_time' content='2019-09-17T20:27:21&#43;08:00'/><meta property='article:modified_time' content='2019-09-17T20:27:21&#43;08:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.58.2" />
+
+  <title>Mutation Test • Tour de Babel</title>
+  <link rel='canonical' href='http://io.wxa.me/posts/mutation-test/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Tour de Babel
+      </a>
+    </h2>
+    <div class='desc'>
+    Break down these walls and come on in
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/java/' style='font-size:1em'>Java</a>
+      </li><li>
+        <a href='/tags/zsh/' style='font-size:1em'>Zsh</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://github.com/wangxinalex'>Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Tour de Babel</a></li><li><a href='/posts/'>Posts</a></li><li><span>Mutation Test</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Tour de Babel</p><p class='desc site-desc'>Break down these walls and come on in</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Mutation Test</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2019-09-17T20:27:21&#43;08:00'>2019, Sep 17</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+2 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  
+
+<h1 id="mutation-test-with-pitest">Mutation Test with PITest</h1>
+
+<h2 id="测试用例代码覆盖率的意义">测试用例代码覆盖率的意义</h2>
+
+<p>一般的软件测试关注测试用例的代码复杂度，理想的状态是100%的代码覆盖率，即测试用例能将所有业务代码执行一遍，保证所有的函数、方法、模块都被测试过。一些测试工具，如<a href="https://www.jacoco.org" target="_blank">JaCoco</a>等，可以统计测试用例的代码覆盖率。</p>
+
+<h3 id="代码覆盖率的局限性">代码覆盖率的局限性</h3>
+
+<p>举一个简单的例子，判断一个正数是不是自然数：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">example</span>.<span style="color:#a6e22e">pitest</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> NaturalNumber {
+
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">int</span> num;
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">NaturalNumber</span>(<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">num</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> num;
+  }
+  <span style="color:#75715e">// wrong condition judgement
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">boolean</span> isNaturalNumber() {
+    <span style="color:#66d9ef">return</span> num <span style="color:#f92672">&gt;</span> 0;
+  }
+}</code></pre></div>
+<p>引入JaCoCo gradle插件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">plugins <span style="color:#f92672">{</span>
+    id <span style="color:#e6db74">&#39;java&#39;</span>
+    id <span style="color:#e6db74">&#39;jacoco&#39;</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p>以上函数<code>isNaturalNumber()</code>对于自然数的判断条件明显错误（正确应为<code>num &gt;= 0</code>）。然而如果我们的测试用例不够完善，就会忽略这个错误，比如下面的测试用例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">example</span>.<span style="color:#a6e22e">pitest</span>;
+
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">junit</span>.<span style="color:#a6e22e">Assert</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">junit</span>.<span style="color:#a6e22e">Test</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> TestNaturalNumber {
+
+  <span style="color:#a6e22e">@Test</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> PositiveNumberIsNaturalNumber() {
+    Assert.<span style="color:#a6e22e">assertTrue</span>(<span style="color:#66d9ef">new</span> NaturalNumber(10).<span style="color:#a6e22e">isNaturalNumber</span>());
+  }
+
+  <span style="color:#a6e22e">@Test</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> NegativeNumberIsNotNaturalNumber() {
+    Assert.<span style="color:#a6e22e">assertFalse</span>(<span style="color:#66d9ef">new</span> NaturalNumber(<span style="color:#f92672">-</span>10).<span style="color:#a6e22e">isNaturalNumber</span>());
+  }
+}</code></pre></div>
+<p>运行JaCoCo test命令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> ./gradlew jacocoTestReport </code></pre></div>
+<p>以上测试用例使用10和-10作为输入，测试<code>isNaturalNumber</code>方法能否做出正确判断。如果我们使用JaCoCo作为代码测试覆盖率工具，因为此时<code>num &gt; 0</code>的两个分支均已覆盖到，JaCoCo会显示此时的代码覆盖率是100%。但这里的测试用例显然是不充分的，因为它没有反映最为关键的<code>num == 0</code>的情况。而一般的代码覆盖率工具无法有效地反映出这一点。</p>
+
+<h2 id="mutation-test的意义">mutation test的意义</h2>
+
+<p>普通的代码覆盖率检查并不能有效检测出上述测试用例的缺失，背后原因是以上的两个测试用例仅仅是分别将<code>num &gt; 0</code>的两个分支路径执行了一遍，而并没有真正体现出此判断条件的作用，如果我们将<code>num &gt; 0</code> 改为 <code>num &gt; 1</code>，上述测试用例一样可以通过且代码覆盖率为100%。</p>
+
+<p>针对类似情况，我们可以引入<a href="https://en.wikipedia.org/wiki/Mutation_testing" target="_blank">mutation test</a>框架</p>
+
+<blockquote>
+<p>Mutation testing (or mutation analysis or program mutation) is used to design new software tests and evaluate the quality of existing software tests. Mutation testing involves modifying a program in small ways. Each mutated version is called a mutant and tests detect and reject mutants by causing the behavior of the original version to differ from the mutant. This is called killing the mutant. Test suites are measured by the percentage of mutants that they kill. &hellip; The purpose is to help the tester develop effective tests or locate weaknesses in the test data used for the program or in sections of the code that are seldom or never accessed during execution.</p>
+</blockquote>
+
+<p>简言之，mutation test会在程序编译或运行时插入微小的差异(mutant)，理想的测试用例应当能够检测出这些差异带来的程序行为异常。如果一个mutant引发的程序行为异常能够被testcases捕捉并导致testcases失败，则称mutant被消灭（killed）；反之如果mutant带来的程序行为变化无法被测试用例捕捉，则称mutant存活（survived）。理想的测试用例应当能够100%消灭mutants，这意味着程序中所有的判断、运算的作用均已被测试用例运行并捕捉到。</p>
+
+<h3 id="mutation-test-with-pitest-1">mutation test with PITest</h3>
+
+<p><a href="http://pitest.org" target="_blank">PITest</a>是一个比较流行的mutation test框架，可以在程序编译时期插入差异，并生成mutation coverage报告，结合以上例子，如果使用PITest生成测试报告，会发现测试用例存在覆盖率不足的问题。</p>
+
+<p>引入PITest gradle插件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">buildscript <span style="color:#f92672">{</span>
+    repositories <span style="color:#f92672">{</span>
+        mavenCentral<span style="color:#f92672">()</span>
+    <span style="color:#f92672">}</span>
+    dependencies <span style="color:#f92672">{</span>
+        classpath <span style="color:#e6db74">&#39;info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.4.5&#39;</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+apply plugin: <span style="color:#e6db74">&#39;info.solidsoft.pitest&#39;</span></code></pre></div>
+<p>运行同样的测试用例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew pitest</code></pre></div>
+<p>生成的测试报告会显示，代码覆盖度是100%，但mutation覆盖度仅为67%。</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Line Coverage</th>
+<th>Mutation Coverage</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>NaturalNumber.java</td>
+<td>100% <sup>4</sup>&frasl;<sub>4</sub></td>
+<td>67% <sup>2</sup>&frasl;<sub>3</sub></td>
+</tr>
+</tbody>
+</table>
+
+<p>我们可以发现，由<code>changed conditional boundary</code>带来的一个mutation survived。这个mutation的行为是将<code>num  &gt; 0</code>改为<code>num &gt;= 0</code>，即更改边界条件，但测试用例没能捕捉到这个差异。</p>
+
+<p>PITest可以提醒我们添加<code>num == 0</code>的测试用例，而当我们添加了这个测试用例后，错误的判断条件就会被测试出来。</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'>
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/effective-java-notes/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Effective Java Notes</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:wangxinalex@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+  <rect x="2" y="9" width="4" height="12"/>
+  <circle cx="4" cy="4" r="2"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2019 wangxinalex </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

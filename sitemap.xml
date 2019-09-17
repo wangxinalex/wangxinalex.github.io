@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://io.wxa.me/posts/mutation-test/</loc>
+    <lastmod>2019-09-17T20:27:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://io.wxa.me/posts/</loc>
+    <lastmod>2019-09-17T20:27:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://io.wxa.me/</loc>
+    <lastmod>2019-09-17T20:27:21+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://io.wxa.me/categories/</loc>
     <lastmod>2019-09-15T19:08:43+08:00</lastmod>
   </url>
@@ -18,22 +33,12 @@
   </url>
   
   <url>
-    <loc>http://io.wxa.me/posts/</loc>
-    <lastmod>2019-09-15T19:08:43+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://io.wxa.me/categories/programming/</loc>
     <lastmod>2019-09-15T19:08:43+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://io.wxa.me/tags/</loc>
-    <lastmod>2019-09-15T19:08:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://io.wxa.me/</loc>
     <lastmod>2019-09-15T19:08:43+08:00</lastmod>
   </url>
   
