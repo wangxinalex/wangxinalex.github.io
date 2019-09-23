@@ -5,10 +5,28 @@
     <link>http://io.wxa.me/tags/</link>
     <description>Recent content in Tags on Tour de Babel</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 17 Sep 2019 20:34:19 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 17 Sep 2019 22:59:39 +0800</lastBuildDate>
     
 	<atom:link href="http://io.wxa.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Latex</title>
+      <link>http://io.wxa.me/tags/latex/</link>
+      <pubDate>Tue, 17 Sep 2019 22:59:39 +0800</pubDate>
+      
+      <guid>http://io.wxa.me/tags/latex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sublime</title>
+      <link>http://io.wxa.me/tags/sublime/</link>
+      <pubDate>Tue, 17 Sep 2019 22:59:39 +0800</pubDate>
+      
+      <guid>http://io.wxa.me/tags/sublime/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Vim</title>
