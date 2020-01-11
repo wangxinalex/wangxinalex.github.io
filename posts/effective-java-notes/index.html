@@ -1251,8 +1251,8 @@ and <strong>returns the category</strong> into which it falls.</p>
         ... <span style="color:#75715e">// Do the computation
 </span><span style="color:#75715e"></span>}</code></pre></div>
 <p>The <code>Objects.requireNonNull</code> method, added in Java 7, is flexible and convenient, so there’s no reason to perform null checks manually anymore.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javar" data-lang="javar">// Inline use of Java&#39;s null-checking facility
-this.strategy = Objects.requireNonNull(strategy, &#34;strategy&#34;);</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Inline use of Java&#39;s null-checking facility
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">strategy</span> <span style="color:#f92672">=</span> Objects.<span style="color:#a6e22e">requireNonNull</span>(strategy, <span style="color:#e6db74">&#34;strategy&#34;</span>);</code></pre></div>
 <p>You should <strong>document</strong> these restrictions and <strong>enforce them with explicit checks</strong> at the beginning of the method body.</p>
 
 <h3 id="item-50-make-defensive-copies-when-needed">Item 50: Make defensive copies when needed</h3>
@@ -1573,7 +1573,7 @@ Access to the variable acts as though it is enclosed in a synchronized block, sy
 
 <p>The resulting program will be neither robust nor portable.</p>
 
-<h2 id="chapter-12-serialziation">Chapter 12. Serialziation</h2>
+<h2 id="chapter-12-serialization">Chapter 12. Serialization</h2>
 
 <h3 id="item-84-prefer-alternatives-to-java-serialization">Item 84: Prefer alternatives to Java serialization</h3>
 
