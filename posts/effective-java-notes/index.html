@@ -170,7 +170,7 @@ import java.util.HashMap; public class ShapeFactory { private static final HashM
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-30 mins read
+31 mins read
 </span>
 
 
@@ -227,9 +227,58 @@ Circle <span style="color:#a6e22e">circle</span> <span style="color:#f92672">=</
 
 <li><p>returned object need not exist when the class containing the method is written</p>
 
-<ol>
-<li>bridge pattern</li>
-</ol></li>
+<ul>
+<li><p>bridge pattern</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#66d9ef">namespace</span> BridgePattern
+{
+<span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HandsetSoft</span>
+{
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> Run();
+}
+}
+
+<span style="color:#66d9ef">using</span> System;
+
+<span style="color:#66d9ef">namespace</span> BridgePattern
+{
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HandsetGame</span> : HandsetSoft
+{
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Run()
+{
+    Console.WriteLine(<span style="color:#e6db74">&#34;运行手机游戏&#34;</span>);
+}
+}
+}
+
+<span style="color:#66d9ef">namespace</span> BridgePattern
+{
+<span style="color:#75715e">//手机品牌
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HandsetBrand</span>
+{
+<span style="color:#66d9ef">protected</span> HandsetSoft soft;
+<span style="color:#75715e">//设置手机软件
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> SetHandsetSoft(HandsetSoft soft)
+{
+    <span style="color:#66d9ef">this</span>.soft = soft;
+}
+<span style="color:#75715e">//运行
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> Run();
+}
+}
+
+<span style="color:#66d9ef">namespace</span> BridgePattern
+{
+<span style="color:#75715e">//手机品牌N
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HandsetBrandN</span> : HandsetBrand
+{
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">void</span> Run()
+{
+    soft.Run();
+}
+}
+}
+</code></pre></div></li>
+</ul></li>
 </ol>
 
 <p>Cons:</p>
@@ -830,6 +879,28 @@ using a <em>bounded type parameter</em> (Item 30, <code>E extends Comparable</co
     }
 
     <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">abstract</span> <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">apply</span>(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">a</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">b</span>);
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">enum</span> Operation {
+  PLUS(<span style="color:#e6db74">&#34;+&#34;</span>, (x, y) <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">+</span> y),
+  MINUS(<span style="color:#e6db74">&#34;-&#34;</span>, (x, y) <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">-</span> y),
+  MULTIPLY(<span style="color:#e6db74">&#34;*&#34;</span>, (x, y) <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">*</span> y),
+  DIVIDE(<span style="color:#e6db74">&#34;/&#34;</span>, (x, y) <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">/</span> y);
+  
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> String <span style="color:#a6e22e">symbol</span>;
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> DoubleBinaryOperator <span style="color:#a6e22e">op</span>;
+
+  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">String</span> toString() {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">symbol</span>;
+  }
+
+  Operation(String <span style="color:#a6e22e">symbol</span>, DoubleBinaryOperator <span style="color:#a6e22e">op</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">symbol</span> <span style="color:#f92672">=</span> symbol;
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">op</span> <span style="color:#f92672">=</span> op;
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">double</span> apply(<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">x</span>, <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">y</span>) {
+    <span style="color:#66d9ef">return</span> op.<span style="color:#a6e22e">applyAsDouble</span>(x, y);
+  }
 }</code></pre></div>
 <p>Use enums any time you need a set of constants whose members are <strong>known at compile time</strong>.
 It is not necessary that the set of constants in an enum type stay fixed for all time.</p>
@@ -1482,14 +1553,14 @@ should generally refrain from working directly with threads.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Double-check idiom for lazy initialization of instance fields
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#a6e22e">volatile</span> FieldType <span style="color:#a6e22e">field</span>;
 <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">FieldType</span> getField() {
-FieldType <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> field;
-<span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) { <span style="color:#75715e">// First check (no locking)
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">synchronized</span>(<span style="color:#66d9ef">this</span>) {
-<span style="color:#66d9ef">if</span> (field <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) <span style="color:#75715e">// Second check (with locking)
-</span><span style="color:#75715e"></span>field <span style="color:#f92672">=</span> result <span style="color:#f92672">=</span> computeFieldValue();
-}
-}
-<span style="color:#66d9ef">return</span> result;
+    FieldType <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> field;
+    <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) { <span style="color:#75715e">// First check (no locking)
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">synchronized</span>(<span style="color:#66d9ef">this</span>) {
+            <span style="color:#66d9ef">if</span> (field <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) <span style="color:#75715e">// Second check (with locking)
+</span><span style="color:#75715e"></span>            field <span style="color:#f92672">=</span> result <span style="color:#f92672">=</span> computeFieldValue();
+        }
+    }
+    <span style="color:#66d9ef">return</span> result;
 }</code></pre></div>
 <blockquote>
 <p>The value of this variable will never be cached thread-locally: all reads and writes will go straight to &ldquo;main memory&rdquo;;
@@ -1611,7 +1682,7 @@ Access to the variable acts as though it is enclosed in a synchronized block, sy
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2019 wangxinalex </p>
+  <p> &copy; 2017-2020 wangxinalex </p>
 </div>
 
         </div>
