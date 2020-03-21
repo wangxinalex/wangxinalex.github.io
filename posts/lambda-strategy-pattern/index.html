@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='策略模式 策略模式是一种常见的在运行时改变代码行为的设计模式。
+参见以下例子：
+// 策略类接口 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; public interface CompressionStrategy { OutputStream compress(OutputStream data) throws IOException; } // 实体策略类1 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; import java.util.zip.GZIPOutputStream; public class GZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) throws IOException { return new GZIPOutputStream(data); } } // 实体策略类2 package com.chapter.eight.strategy; import java.io.OutputStream; import java.util.zip.ZipOutputStream; public class ZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) { return new ZipOutputStream(data); } } // 策略使用者 package com.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Lambda表达式在策略模式中的应用 • Tour de Babel'>
+<meta property='og:description' content='策略模式 策略模式是一种常见的在运行时改变代码行为的设计模式。
+参见以下例子：
+// 策略类接口 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; public interface CompressionStrategy { OutputStream compress(OutputStream data) throws IOException; } // 实体策略类1 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; import java.util.zip.GZIPOutputStream; public class GZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) throws IOException { return new GZIPOutputStream(data); } } // 实体策略类2 package com.chapter.eight.strategy; import java.io.OutputStream; import java.util.zip.ZipOutputStream; public class ZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) { return new ZipOutputStream(data); } } // 策略使用者 package com.'>
+<meta property='og:url' content='http://io.wxa.me/posts/lambda-strategy-pattern/'>
+<meta property='og:site_name' content='Tour de Babel'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2020-03-20T19:09:43&#43;08:00'/><meta property='article:modified_time' content='2020-03-20T19:09:43&#43;08:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.58.2" />
+
+  <title>Lambda表达式在策略模式中的应用 • Tour de Babel</title>
+  <link rel='canonical' href='http://io.wxa.me/posts/lambda-strategy-pattern/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Tour de Babel
+      </a>
+    </h2>
+    <div class='desc'>
+    Break down these walls and come on in
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/java/' style='font-size:2em'>Java</a>
+      </li><li>
+        <a href='/tags/latex/' style='font-size:1em'>Latex</a>
+      </li><li>
+        <a href='/tags/pitest/' style='font-size:1em'>PITest</a>
+      </li><li>
+        <a href='/tags/sublime/' style='font-size:1em'>Sublime</a>
+      </li><li>
+        <a href='/tags/vim/' style='font-size:1em'>Vim</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://github.com/wangxinalex'>Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Tour de Babel</a></li><li><a href='/posts/'>Posts</a></li><li><span>Lambda表达式在策略模式中的应用</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Tour de Babel</p><p class='desc site-desc'>Break down these walls and come on in</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Lambda表达式在策略模式中的应用</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-03-20T19:09:43&#43;08:00'>2020, Mar 20</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+One min read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  
+
+<h2 id="策略模式">策略模式</h2>
+
+<p>策略模式是一种常见的在运行时改变代码行为的设计模式。</p>
+
+<p>参见以下例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 策略类接口
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">chapter</span>.<span style="color:#a6e22e">eight</span>.<span style="color:#a6e22e">strategy</span>;
+
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">IOException</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">OutputStream</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">interface</span> CompressionStrategy {
+  OutputStream <span style="color:#a6e22e">compress</span>(OutputStream <span style="color:#a6e22e">data</span>) <span style="color:#66d9ef">throws</span> <span style="color:#a6e22e">IOException</span>;
+}
+
+<span style="color:#75715e">// 实体策略类1
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">chapter</span>.<span style="color:#a6e22e">eight</span>.<span style="color:#a6e22e">strategy</span>;
+
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">IOException</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">OutputStream</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">zip</span>.<span style="color:#a6e22e">GZIPOutputStream</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> GZipCompressionStrategy <span style="color:#a6e22e">implements</span> CompressionStrategy {
+
+  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">OutputStream</span> compress(OutputStream <span style="color:#a6e22e">data</span>) <span style="color:#66d9ef">throws</span> <span style="color:#a6e22e">IOException</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> GZIPOutputStream(data);
+  }
+
+}
+
+<span style="color:#75715e">// 实体策略类2
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">chapter</span>.<span style="color:#a6e22e">eight</span>.<span style="color:#a6e22e">strategy</span>;
+
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">OutputStream</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">zip</span>.<span style="color:#a6e22e">ZipOutputStream</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> ZipCompressionStrategy <span style="color:#a6e22e">implements</span> CompressionStrategy {
+
+  <span style="color:#a6e22e">@Override</span>
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">OutputStream</span> compress(OutputStream <span style="color:#a6e22e">data</span>) {
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> ZipOutputStream(data);
+  }
+}
+
+<span style="color:#75715e">// 策略使用者
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">chapter</span>.<span style="color:#a6e22e">eight</span>.<span style="color:#a6e22e">strategy</span>;
+
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">File</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">FileOutputStream</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">IOException</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">OutputStream</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Files</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">file</span>.<span style="color:#a6e22e">Path</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Compressor {
+
+  <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">final</span> CompressionStrategy <span style="color:#a6e22e">strategy</span>;
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Compressor</span>(CompressionStrategy <span style="color:#a6e22e">strategy</span>) {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">strategy</span> <span style="color:#f92672">=</span> strategy;
+  }
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> compress(Path <span style="color:#a6e22e">inFile</span>, File <span style="color:#a6e22e">outFile</span>) <span style="color:#66d9ef">throws</span> <span style="color:#a6e22e">IOException</span> {
+    <span style="color:#66d9ef">try</span> (OutputStream <span style="color:#a6e22e">outStream</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FileOutputStream(outFile)) {
+      Files.<span style="color:#a6e22e">copy</span>(inFile, strategy.<span style="color:#a6e22e">compress</span>(outStream));
+    }
+  }
+}
+
+<span style="color:#75715e">// 入口
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">chapter</span>.<span style="color:#a6e22e">eight</span>.<span style="color:#a6e22e">strategy</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> CompressDemo {
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String[] <span style="color:#a6e22e">args</span>) {
+
+    Compressor <span style="color:#a6e22e">gzipCompressor</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Compressor(<span style="color:#66d9ef">new</span> GzipCompressionStrategy());
+
+    Compressor <span style="color:#a6e22e">zipCompressor</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Compressor(<span style="color:#66d9ef">new</span> ZipCompressionStrategy());
+  }
+}</code></pre></div>
+<p>在上述例子中，<code>GZipCompressionStrategy</code>和<code>ZipCompressionStrategy</code>两个策略实体类都实现了<code>CompressionStrategy</code>接口，后者是一个标准的函数接口，因此一定可以替换为lambda表达式。改函数接口输入一个<code>OutputStream</code>对象，输出一个<code>OutputStream</code>对象，符合<code>GZipOutputStream</code>和<code>ZipOutputStream</code>的构造方法的签名，因此可以用其构造方法代替。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// GZIPOutputStream的构造方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">GZIPOutputStream</span>(OutputStream <span style="color:#a6e22e">out</span>) <span style="color:#66d9ef">throws</span> <span style="color:#a6e22e">IOException</span> {
+    <span style="color:#66d9ef">this</span>(out, 512, <span style="color:#66d9ef">false</span>);
+}</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 入口
+</span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">chapter</span>.<span style="color:#a6e22e">eight</span>.<span style="color:#a6e22e">strategy</span>;
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> CompressDemo {
+
+  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String[] <span style="color:#a6e22e">args</span>) {
+
+    Compressor <span style="color:#a6e22e">gzipCompressor</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Compressor(GZipOutputStream<span style="color:#f92672">::</span><span style="color:#66d9ef">new</span>);
+
+    Compressor <span style="color:#a6e22e">zipCompressor</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Compressor(ZipOutputStream<span style="color:#f92672">::</span><span style="color:#66d9ef">new</span>));
+  }
+}</code></pre></div>
+<p>可以看到lambda表达式和方法引用可以有效替换策略模式中的具体策略类，给策略的使用者传入不同的行为。</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/programming/'>Programming</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/java/'>Java</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/lambda-command-pattern/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Lambda表达式在命令者模式中的应用</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:wangxinalex@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+  <rect x="2" y="9" width="4" height="12"/>
+  <circle cx="4" cy="4" r="2"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2020 wangxinalex </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+
