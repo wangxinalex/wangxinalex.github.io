@@ -83,21 +83,5 @@ package com.example.pitest; import org.junit.Assert; import org.junit.Test; publ
 import java.util.HashMap; public class ShapeFactory { private static final HashMap&amp;lt;String, Shape&amp;gt; circleMap = new HashMap&amp;lt;&amp;gt;(); public static Shape getCircle(String color) { Circle circle = (Circle)circleMap.get(color); if(circle == null) { // lazy creation  circle = new Circle(color); circleMap.</description>
     </item>
     
-    <item>
-      <title>一些常用的zsh插件</title>
-      <link>http://io.wxa.me/posts/zsh-plugins/</link>
-      <pubDate>Sun, 15 Sep 2019 18:12:58 +0800</pubDate>
-      
-      <guid>http://io.wxa.me/posts/zsh-plugins/</guid>
-      <description>一些常用的zsh插件 安装zsh brew install zsh 安装oh-my-zsh https://github.com/robbyrussell/oh-my-zsh
-sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; zsh插件 auto-suggestions https://github.com/zsh-users/zsh-autosuggestions
- Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions Add the plugin to the list of plugins for Oh My Zsh to load (inside ~/.zshrc):
-plugins=(zsh-autosuggestions) Start a new terminal session.
-  zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting
- Clone this repository in oh-my-zsh&amp;rsquo;s plugins directory:
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting Activate the plugin in ~/.</description>
-    </item>
-    
   </channel>
 </rss>
