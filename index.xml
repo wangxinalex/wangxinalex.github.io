@@ -5,20 +5,18 @@
     <link>http://io.wxa.me/</link>
     <description>Recent content on Tour de Babel</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 20 Mar 2020 19:09:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 19:10:43 +0800</lastBuildDate>
     
 	<atom:link href="http://io.wxa.me/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Lambda表达式在策略模式中的应用</title>
-      <link>http://io.wxa.me/posts/lambda-strategy-pattern/</link>
-      <pubDate>Fri, 20 Mar 2020 19:09:43 +0800</pubDate>
+      <title>Lambda表达式在观察者模式中的应用</title>
+      <link>http://io.wxa.me/posts/lambda-observer-pattern/</link>
+      <pubDate>Fri, 20 Mar 2020 19:10:43 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/lambda-strategy-pattern/</guid>
-      <description>策略模式 策略模式是一种常见的在运行时改变代码行为的设计模式。
-参见以下例子：
-// 策略类接口 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; public interface CompressionStrategy { OutputStream compress(OutputStream data) throws IOException; } // 实体策略类1 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; import java.util.zip.GZIPOutputStream; public class GZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) throws IOException { return new GZIPOutputStream(data); } } // 实体策略类2 package com.chapter.eight.strategy; import java.io.OutputStream; import java.util.zip.ZipOutputStream; public class ZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) { return new ZipOutputStream(data); } } // 策略使用者 package com.</description>
+      <guid>http://io.wxa.me/posts/lambda-observer-pattern/</guid>
+      <description>观察者模式 // 观察者接口 package com.chapter.eight.observer; public interface LandingObserver { void observerLanding(String name); } // 观察者实现类1 package com.chapter.eight.observer; public class Aliens implements LandingObserver { @Override public void observerLanding(String name) { if (name.contains(&amp;#34;Apollo&amp;#34;)) { System.out.println(&amp;#34;They&amp;#39;redistracted,lets invade earth!&amp;#34;); } } } // 观察者实现类2 package com.chapter.eight.observer; public class Nasa implements LandingObserver { @Override public void observerLanding(String name) { if (name.contains(&amp;#34;Apollo&amp;#34;)) { System.out.println(&amp;#34;We made it!&amp;#34;); } } } // 被观察者  package com.chapter.eight.observer; import java.</description>
     </item>
     
     <item>
@@ -34,6 +32,17 @@ public interface ActionListener extends EventListener { public void actionPerfor
 因此invoker对象可以直接接受lambda表达式并直接调用。
 参见以下例子（详见https://www.runoob.com/design-pattern/command-pattern.html）
 // 命令对象接口 public interface Order { void execute(); } // 命令接受者 public class Stock { private String name = &amp;#34;ABC&amp;#34;; private int quantity = 10; public void buy(){ System.out.println(&amp;#34;Stock [ Name: &amp;#34;+name+&amp;#34;, Quantity: &amp;#34; + quantity +&amp;#34; ] bought&amp;#34;); } public void sell(){ System.out.println(&amp;#34;Stock [ Name: &amp;#34;+name+&amp;#34;, Quantity: &amp;#34; + quantity +&amp;#34; ] sold&amp;#34;); } } // 命令实体类 public class BuyStock implements Order { private Stock abcStock; public BuyStock(Stock abcStock){ this.</description>
+    </item>
+    
+    <item>
+      <title>Lambda表达式在策略模式中的应用</title>
+      <link>http://io.wxa.me/posts/lambda-strategy-pattern/</link>
+      <pubDate>Fri, 20 Mar 2020 19:01:43 +0800</pubDate>
+      
+      <guid>http://io.wxa.me/posts/lambda-strategy-pattern/</guid>
+      <description>策略模式 策略模式是一种常见的在运行时改变代码行为的设计模式。
+参见以下例子：
+// 策略类接口 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; public interface CompressionStrategy { OutputStream compress(OutputStream data) throws IOException; } // 实体策略类1 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; import java.util.zip.GZIPOutputStream; public class GZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) throws IOException { return new GZIPOutputStream(data); } } // 实体策略类2 package com.chapter.eight.strategy; import java.io.OutputStream; import java.util.zip.ZipOutputStream; public class ZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) { return new ZipOutputStream(data); } } // 策略使用者 package com.</description>
     </item>
     
     <item>
