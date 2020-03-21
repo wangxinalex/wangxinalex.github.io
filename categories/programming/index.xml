@@ -5,10 +5,25 @@
     <link>http://io.wxa.me/categories/programming/</link>
     <description>Recent content in Programming on Tour de Babel</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 15 Sep 2019 19:08:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 19:08:43 +0800</lastBuildDate>
     
 	<atom:link href="http://io.wxa.me/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lambda表达式在命令者模式中的应用</title>
+      <link>http://io.wxa.me/posts/lambda-command-pattern/</link>
+      <pubDate>Fri, 20 Mar 2020 19:08:43 +0800</pubDate>
+      
+      <guid>http://io.wxa.me/posts/lambda-command-pattern/</guid>
+      <description>@FunctionalInterface的作用 函数接口: 函数接口是*只有一个抽象方法*的接口，用作Lambda表达式的类型。如下例：
+public interface ActionListener extends EventListener { public void actionPerformed(ActionEvent event); } 其中actionPerformed抽象方法必须用来表示行为
+ 函数接口中抽象方法的命名不重要，只要方法签名和lambda表达式的*类型*匹配即可。 类型包括：接收参数类型，返回结果类型  @FunctionalInterface会检查某接口是否符合函数接口的定义。
+命令者模式 命令者模式是最适合使用lambda表达式替换的设计模式。命令者模式中的Command对象本身就是一种封装了行为接口，完全符合函数接口的定义。
+因此invoker对象可以直接接受lambda表达式并直接调用。
+参见以下例子（详见https://www.runoob.com/design-pattern/command-pattern.html）
+// 命令对象接口 public interface Order { void execute(); } // 命令接受者 public class Stock { private String name = &amp;#34;ABC&amp;#34;; private int quantity = 10; public void buy(){ System.out.println(&amp;#34;Stock [ Name: &amp;#34;+name+&amp;#34;, Quantity: &amp;#34; + quantity +&amp;#34; ] bought&amp;#34;); } public void sell(){ System.out.println(&amp;#34;Stock [ Name: &amp;#34;+name+&amp;#34;, Quantity: &amp;#34; + quantity +&amp;#34; ] sold&amp;#34;); } } // 命令实体类 public class BuyStock implements Order { private Stock abcStock; public BuyStock(Stock abcStock){ this.</description>
+    </item>
     
     <item>
       <title>Effective Java Notes</title>

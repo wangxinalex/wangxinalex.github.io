@@ -4,16 +4,41 @@
   
   <url>
     <loc>http://io.wxa.me/categories/</loc>
-    <lastmod>2019-09-17T22:59:39+08:00</lastmod>
+    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://io.wxa.me/tags/latex/</loc>
-    <lastmod>2019-09-17T22:59:39+08:00</lastmod>
+    <loc>http://io.wxa.me/tags/java/</loc>
+    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://io.wxa.me/posts/lambda-command-pattern/</loc>
+    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://io.wxa.me/posts/</loc>
+    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://io.wxa.me/categories/programming/</loc>
+    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://io.wxa.me/tags/</loc>
+    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://io.wxa.me/</loc>
+    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://io.wxa.me/tags/latex/</loc>
     <lastmod>2019-09-17T22:59:39+08:00</lastmod>
   </url>
   
@@ -28,17 +53,7 @@
   </url>
   
   <url>
-    <loc>http://io.wxa.me/tags/</loc>
-    <lastmod>2019-09-17T22:59:39+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://io.wxa.me/categories/tools/</loc>
-    <lastmod>2019-09-17T22:59:39+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://io.wxa.me/</loc>
     <lastmod>2019-09-17T22:59:39+08:00</lastmod>
   </url>
   
@@ -70,26 +85,6 @@
   <url>
     <loc>http://io.wxa.me/posts/effective-java-notes/</loc>
     <lastmod>2019-09-15T19:08:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://io.wxa.me/tags/java/</loc>
-    <lastmod>2019-09-15T19:08:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://io.wxa.me/categories/programming/</loc>
-    <lastmod>2019-09-15T19:08:43+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://io.wxa.me/tags/zsh/</loc>
-    <lastmod>2019-09-15T18:12:58+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://io.wxa.me/posts/my-first-post/</loc>
-    <lastmod>2019-09-15T18:12:58+08:00</lastmod>
   </url>
   
   <url>

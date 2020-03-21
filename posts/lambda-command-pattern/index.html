@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='@FunctionalInterface的作用 函数接口: 函数接口是*只有一个抽象方法*的接口，用作Lambda表达式的类型。如下例：
+public interface ActionListener extends EventListener { public void actionPerformed(ActionEvent event); } 其中actionPerformed抽象方法必须用来表示行为
+ 函数接口中抽象方法的命名不重要，只要方法签名和lambda表达式的*类型*匹配即可。 类型包括：接收参数类型，返回结果类型  @FunctionalInterface会检查某接口是否符合函数接口的定义。
+命令者模式 命令者模式是最适合使用lambda表达式替换的设计模式。命令者模式中的Command对象本身就是一种封装了行为接口，完全符合函数接口的定义。
+因此invoker对象可以直接接受lambda表达式并直接调用。
+参见以下例子（详见https://www.runoob.com/design-pattern/command-pattern.html）
+// 命令对象接口 public interface Order { void execute(); } // 命令接受者 public class Stock { private String name = &#34;ABC&#34;; private int quantity = 10; public void buy(){ System.out.println(&#34;Stock [ Name: &#34;&#43;name&#43;&#34;, Quantity: &#34; &#43; quantity &#43;&#34; ] bought&#34;); } public void sell(){ System.out.println(&#34;Stock [ Name: &#34;&#43;name&#43;&#34;, Quantity: &#34; &#43; quantity &#43;&#34; ] sold&#34;); } } // 命令实体类 public class BuyStock implements Order { private Stock abcStock; public BuyStock(Stock abcStock){ this.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Lambda表达式在命令者模式中的应用 • Tour de Babel'>
+<meta property='og:description' content='@FunctionalInterface的作用 函数接口: 函数接口是*只有一个抽象方法*的接口，用作Lambda表达式的类型。如下例：
+public interface ActionListener extends EventListener { public void actionPerformed(ActionEvent event); } 其中actionPerformed抽象方法必须用来表示行为
+ 函数接口中抽象方法的命名不重要，只要方法签名和lambda表达式的*类型*匹配即可。 类型包括：接收参数类型，返回结果类型  @FunctionalInterface会检查某接口是否符合函数接口的定义。
+命令者模式 命令者模式是最适合使用lambda表达式替换的设计模式。命令者模式中的Command对象本身就是一种封装了行为接口，完全符合函数接口的定义。
+因此invoker对象可以直接接受lambda表达式并直接调用。
+参见以下例子（详见https://www.runoob.com/design-pattern/command-pattern.html）
+// 命令对象接口 public interface Order { void execute(); } // 命令接受者 public class Stock { private String name = &#34;ABC&#34;; private int quantity = 10; public void buy(){ System.out.println(&#34;Stock [ Name: &#34;&#43;name&#43;&#34;, Quantity: &#34; &#43; quantity &#43;&#34; ] bought&#34;); } public void sell(){ System.out.println(&#34;Stock [ Name: &#34;&#43;name&#43;&#34;, Quantity: &#34; &#43; quantity &#43;&#34; ] sold&#34;); } } // 命令实体类 public class BuyStock implements Order { private Stock abcStock; public BuyStock(Stock abcStock){ this.'>
+<meta property='og:url' content='http://io.wxa.me/posts/lambda-command-pattern/'>
+<meta property='og:site_name' content='Tour de Babel'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2020-03-20T19:08:43&#43;08:00'/><meta property='article:modified_time' content='2020-03-20T19:08:43&#43;08:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.58.2" />
+
+  <title>Lambda表达式在命令者模式中的应用 • Tour de Babel</title>
+  <link rel='canonical' href='http://io.wxa.me/posts/lambda-command-pattern/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.6a060eb7.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/logo.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Tour de Babel
+      </a>
+    </h2>
+    <div class='desc'>
+    Break down these walls and come on in
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-search sep-after'>
+  <header>
+    <h4 class='title widget-title'>Search</h4>
+  </header>
+
+  <form action='/search' id='search-form' class='search-form'>
+    <label>
+      <span class='screen-reader-text'>Search</span>
+      <input id='search-term' class='search-term' type='search' name='q' placeholder='Search&hellip;'>
+    </label></form>
+
+</section>
+<section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/java/' style='font-size:2em'>Java</a>
+      </li><li>
+        <a href='/tags/latex/' style='font-size:1em'>Latex</a>
+      </li><li>
+        <a href='/tags/pitest/' style='font-size:1em'>PITest</a>
+      </li><li>
+        <a href='/tags/sublime/' style='font-size:1em'>Sublime</a>
+      </li><li>
+        <a href='/tags/vim/' style='font-size:1em'>Vim</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    <a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button>
+    <ul><li class='item'>
+        <a href='https://github.com/wangxinalex'>Repo</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Tour de Babel</a></li><li><a href='/posts/'>Posts</a></li><li><span>Lambda表达式在命令者模式中的应用</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Tour de Babel</p><p class='desc site-desc'>Break down these walls and come on in</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Lambda表达式在命令者模式中的应用</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-03-20T19:08:43&#43;08:00'>2020, Mar 20</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+2 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  
+
+<h2 id="functionalinterface的作用">@FunctionalInterface的作用</h2>
+
+<p><strong>函数接口</strong>: 函数接口是*只有一个抽象方法*的接口，用作Lambda表达式的类型。如下例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">interface</span> ActionListener <span style="color:#a6e22e">extends</span> EventListener {
+    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> actionPerformed(ActionEvent <span style="color:#a6e22e">event</span>);
+}</code></pre></div>
+<p>其中<code>actionPerformed</code>抽象方法必须用来表示<em>行为</em></p>
+
+<ul>
+<li>函数接口中抽象方法的命名不重要，只要方法签名和lambda表达式的*类型*匹配即可。</li>
+<li>类型包括：接收参数类型，返回结果类型</li>
+</ul>
+
+<p><code>@FunctionalInterface</code>会检查某接口是否符合函数接口的定义。</p>
+
+<h2 id="命令者模式">命令者模式</h2>
+
+<p>命令者模式是最适合使用lambda表达式替换的设计模式。命令者模式中的Command对象本身就是一种封装了行为接口，完全符合函数接口的定义。</p>
+
+<p>因此invoker对象可以直接接受lambda表达式并直接调用。</p>
+
+<p>参见以下例子（详见<a href="https://www.runoob.com/design-pattern/command-pattern.html）" target="_blank">https://www.runoob.com/design-pattern/command-pattern.html）</a></p>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/5024743-95e19b15d19aac27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image" /></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 命令对象接口
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">interface</span> Order {
+   <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">execute</span>();
+}
+
+<span style="color:#75715e">// 命令接受者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Stock {
+   
+   <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">String</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABC&#34;</span>;
+   <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">int</span> quantity <span style="color:#f92672">=</span> 10;
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> buy(){
+      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Stock [ Name: &#34;</span><span style="color:#f92672">+</span>name<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;, 
+</span><span style="color:#e6db74">         Quantity: &#34;</span> <span style="color:#f92672">+</span> quantity <span style="color:#f92672">+</span><span style="color:#e6db74">&#34; ] bought&#34;</span>);
+   }
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> sell(){
+      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Stock [ Name: &#34;</span><span style="color:#f92672">+</span>name<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;, 
+</span><span style="color:#e6db74">         Quantity: &#34;</span> <span style="color:#f92672">+</span> quantity <span style="color:#f92672">+</span><span style="color:#e6db74">&#34; ] sold&#34;</span>);
+   }
+}
+
+<span style="color:#75715e">// 命令实体类
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> BuyStock <span style="color:#a6e22e">implements</span> Order {
+   <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Stock</span> abcStock;
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">BuyStock</span>(Stock <span style="color:#a6e22e">abcStock</span>){
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">abcStock</span> <span style="color:#f92672">=</span> abcStock;
+   }
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> execute() {
+      abcStock.<span style="color:#a6e22e">buy</span>();
+   }
+}
+
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> SellStock <span style="color:#a6e22e">implements</span> Order {
+   <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">Stock</span> abcStock;
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">SellStock</span>(Stock <span style="color:#a6e22e">abcStock</span>){
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">abcStock</span> <span style="color:#f92672">=</span> abcStock;
+   }
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> execute() {
+      abcStock.<span style="color:#a6e22e">sell</span>();
+   }
+}
+
+<span style="color:#75715e">// 命令调用者类
+</span><span style="color:#75715e"></span>
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">ArrayList</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">List</span>;
+ 
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Broker {
+   <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">orderList</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;</span>(); 
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> takeOrder(Order <span style="color:#a6e22e">order</span>){
+      orderList.<span style="color:#a6e22e">add</span>(order);      
+   }
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> placeOrders(){
+      <span style="color:#66d9ef">for</span> (Order <span style="color:#a6e22e">order</span> <span style="color:#f92672">:</span> orderList) {
+         order.<span style="color:#a6e22e">execute</span>();
+      }
+      orderList.<span style="color:#a6e22e">clear</span>();
+   }
+}
+
+<span style="color:#75715e">// 入口
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> CommandPatternDemo {
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String[] <span style="color:#a6e22e">args</span>) {
+      Stock <span style="color:#a6e22e">abcStock</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stock();
+ 
+      BuyStock <span style="color:#a6e22e">buyStockOrder</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BuyStock(abcStock);
+      SellStock <span style="color:#a6e22e">sellStockOrder</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SellStock(abcStock);
+ 
+      Broker <span style="color:#a6e22e">broker</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Broker();
+      broker.<span style="color:#a6e22e">takeOrder</span>(buyStockOrder);
+      broker.<span style="color:#a6e22e">takeOrder</span>(sellStockOrder);
+ 
+      broker.<span style="color:#a6e22e">placeOrders</span>();
+   }
+}</code></pre></div>
+<p>其中<code>Order</code>明显符合函数接口的定义，因此一定可以用lambda表达式或方法引用替换。替换它的lambda表达式的类型一定与<code>Order</code>接口中的抽象方法签名相同，在本例中，命令接受者的两个方法<code>buy</code>和<code>sell</code>符合此抽象方法的类型<void>-&gt;<void>，因此可以直接将命令接受者的两个方法的方法引用传入命令调用者，省去了构造命令实体类的工作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 命令对象接口(声明为@FunctionalInterface)
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">@FunctionalInterface</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">interface</span> Order {
+   <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">execute</span>();
+}
+
+<span style="color:#75715e">// 命令接受者
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Stock {
+   
+   <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">String</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABC&#34;</span>;
+   <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">int</span> quantity <span style="color:#f92672">=</span> 10;
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> buy(){
+      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Stock [ Name: &#34;</span><span style="color:#f92672">+</span>name<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;, 
+</span><span style="color:#e6db74">         Quantity: &#34;</span> <span style="color:#f92672">+</span> quantity <span style="color:#f92672">+</span><span style="color:#e6db74">&#34; ] bought&#34;</span>);
+   }
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> sell(){
+      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Stock [ Name: &#34;</span><span style="color:#f92672">+</span>name<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;, 
+</span><span style="color:#e6db74">         Quantity: &#34;</span> <span style="color:#f92672">+</span> quantity <span style="color:#f92672">+</span><span style="color:#e6db74">&#34; ] sold&#34;</span>);
+   }
+}
+
+<span style="color:#75715e">// 命令调用者类
+</span><span style="color:#75715e"></span>
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">ArrayList</span>;
+<span style="color:#f92672">import</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">List</span>;
+ 
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> Broker {
+   <span style="color:#66d9ef">private</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">orderList</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span>Order<span style="color:#f92672">&gt;</span>(); 
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> takeOrder(Order <span style="color:#a6e22e">order</span>){
+      orderList.<span style="color:#a6e22e">add</span>(order);      
+   }
+ 
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">void</span> placeOrders(){
+      <span style="color:#66d9ef">for</span> (Order <span style="color:#a6e22e">order</span> <span style="color:#f92672">:</span> orderList) {
+         order.<span style="color:#a6e22e">execute</span>();
+      }
+      orderList.<span style="color:#a6e22e">clear</span>();
+   }
+}
+
+<span style="color:#75715e">// 入口
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> CommandPatternDemo {
+   <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String[] <span style="color:#a6e22e">args</span>) {
+      Stock <span style="color:#a6e22e">abcStock</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stock();
+      
+      Broker <span style="color:#a6e22e">broker</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Broker();
+      broker.<span style="color:#a6e22e">takeOrder</span>(abcStock<span style="color:#f92672">::</span>buy);
+      broker.<span style="color:#a6e22e">takeOrder</span>(abcStock<span style="color:#f92672">::</span>sell); <span style="color:#75715e">//传入lambda表达式
+</span><span style="color:#75715e"></span> 
+      broker.<span style="color:#a6e22e">placeOrders</span>();
+   }
+}</code></pre></div>
+<p>在原有的命令者模式中，之所以需要构造命令实体类（<code>BuyStock</code>和<code>SellStock</code>, 均实现了<code>Order</code>接口），是需要命令实体类作为一种组合成员，传入命令接口<code>Order</code>的不同实现，从而生成不同的行为。而lambda表达式可以直接传入不同的行为，因此在命令实体类不十分复杂，仅仅为命令接受者的不同方法的简单包装时，可以直接利用lambda表达式传入命令接受者的不同行为，无需再构造瘦包装的命令类。</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/programming/'>Programming</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/java/'>Java</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/sublime-latex/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Sublime编辑LaTeX的方法总结</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:wangxinalex@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/wangxinalex' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+  <rect x="2" y="9" width="4" height="12"/>
+  <circle cx="4" cy="4" r="2"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2020 wangxinalex </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.67d669ac.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+
