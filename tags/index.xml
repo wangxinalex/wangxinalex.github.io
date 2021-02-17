@@ -2,56 +2,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Tour de Babel</title>
-    <link>http://io.wxa.me/tags/</link>
+    <link>https://io.wxa.me/tags/</link>
     <description>Recent content in Tags on Tour de Babel</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 20 Mar 2020 19:20:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 19:08:43 +0800</lastBuildDate>
     
-	<atom:link href="http://io.wxa.me/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://io.wxa.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java</title>
-      <link>http://io.wxa.me/tags/java/</link>
-      <pubDate>Fri, 20 Mar 2020 19:20:43 +0800</pubDate>
+      <link>https://io.wxa.me/tags/java/</link>
+      <pubDate>Fri, 20 Mar 2020 19:08:43 +0800</pubDate>
       
-      <guid>http://io.wxa.me/tags/java/</guid>
+      <guid>https://io.wxa.me/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Latex</title>
-      <link>http://io.wxa.me/tags/latex/</link>
+      <link>https://io.wxa.me/tags/latex/</link>
       <pubDate>Tue, 17 Sep 2019 22:59:39 +0800</pubDate>
       
-      <guid>http://io.wxa.me/tags/latex/</guid>
+      <guid>https://io.wxa.me/tags/latex/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sublime</title>
-      <link>http://io.wxa.me/tags/sublime/</link>
+      <link>https://io.wxa.me/tags/sublime/</link>
       <pubDate>Tue, 17 Sep 2019 22:59:39 +0800</pubDate>
       
-      <guid>http://io.wxa.me/tags/sublime/</guid>
+      <guid>https://io.wxa.me/tags/sublime/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vim</title>
-      <link>http://io.wxa.me/tags/vim/</link>
+      <link>https://io.wxa.me/tags/vim/</link>
       <pubDate>Tue, 17 Sep 2019 20:34:19 +0800</pubDate>
       
-      <guid>http://io.wxa.me/tags/vim/</guid>
+      <guid>https://io.wxa.me/tags/vim/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PITest</title>
-      <link>http://io.wxa.me/tags/pitest/</link>
+      <link>https://io.wxa.me/tags/pitest/</link>
       <pubDate>Tue, 17 Sep 2019 20:27:21 +0800</pubDate>
       
-      <guid>http://io.wxa.me/tags/pitest/</guid>
+      <guid>https://io.wxa.me/tags/pitest/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zsh</title>
+      <link>https://io.wxa.me/tags/zsh/</link>
+      <pubDate>Sun, 15 Sep 2019 18:12:58 +0800</pubDate>
+      
+      <guid>https://io.wxa.me/tags/zsh/</guid>
       <description></description>
     </item>
     

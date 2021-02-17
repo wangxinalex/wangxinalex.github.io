@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tools on Tour de Babel</title>
-    <link>http://io.wxa.me/categories/tools/</link>
+    <link>https://io.wxa.me/categories/tools/</link>
     <description>Recent content in Tools on Tour de Babel</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 17 Sep 2019 22:59:39 +0800</lastBuildDate>
     
-	<atom:link href="http://io.wxa.me/categories/tools/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://io.wxa.me/categories/tools/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sublime编辑LaTeX的方法总结</title>
-      <link>http://io.wxa.me/posts/sublime-latex/</link>
+      <link>https://io.wxa.me/posts/sublime-latex/</link>
       <pubDate>Tue, 17 Sep 2019 22:59:39 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/sublime-latex/</guid>
+      <guid>https://io.wxa.me/posts/sublime-latex/</guid>
       <description>Sublime编辑LaTeX的方法总结 Windows下sublime+samutraPDF工具链 windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。
 windows下一般通过Ctex套件来安装latex相关编译工具，安装Ctex完毕后pdflatex xelatex bibtex等工具应已经全部就绪。
 安装latexTools 安装sublime，通过package control安装LatexTools。
@@ -35,12 +35,28 @@ Mac首先安装MacTex相关套件。安装完毕后，有可能会出现path路�
     
     <item>
       <title>Vim Block Edit</title>
-      <link>http://io.wxa.me/posts/vim-block-edit/</link>
+      <link>https://io.wxa.me/posts/vim-block-edit/</link>
       <pubDate>Tue, 17 Sep 2019 20:34:19 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/vim-block-edit/</guid>
+      <guid>https://io.wxa.me/posts/vim-block-edit/</guid>
       <description> Vim 块编辑方法 末尾添加字符 &amp;lt;a href=&amp;quot;Slides/01Introduction-17.ppt&amp;quot;&amp;gt;Lecture 01&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/02Performance-17.ppt&amp;quot;&amp;gt;Lecture 02&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/03ISA-17.ppt&amp;quot;&amp;gt;Lecture 03&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/04singlecycle.ppt&amp;quot;&amp;gt;Lecture 04&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;   命令模式按ctrl+v进入纵向编辑模式，将光标移至Slides末尾，向下移动光标，选中4行的Slides末尾的字符。 然后按A进入行尾插入模式，添加2017。 按ESC退出行尾编辑模式，此时4行Slides均变为Slides2017。
 &amp;lt;a href=&amp;quot;Slides2017/01Introduction-17.ppt&amp;quot;&amp;gt;Lecture 01&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/02Performance-17.ppt&amp;quot;&amp;gt;Lecture 02&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/03ISA-17.ppt&amp;quot;&amp;gt;Lecture 03&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/04singlecycle.ppt&amp;quot;&amp;gt;Lecture 04&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;   </description>
+    </item>
+    
+    <item>
+      <title>一些常用的zsh插件</title>
+      <link>https://io.wxa.me/posts/zsh-plugins/</link>
+      <pubDate>Sun, 15 Sep 2019 18:12:58 +0800</pubDate>
+      
+      <guid>https://io.wxa.me/posts/zsh-plugins/</guid>
+      <description>一些常用的zsh插件 安装zsh brew install zsh 安装oh-my-zsh https://github.com/robbyrussell/oh-my-zsh
+sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; zsh插件 auto-suggestions https://github.com/zsh-users/zsh-autosuggestions
+ Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions Add the plugin to the list of plugins for Oh My Zsh to load (inside ~/.zshrc):
+plugins=(zsh-autosuggestions) Start a new terminal session.
+  zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting
+ Clone this repository in oh-my-zsh&amp;rsquo;s plugins directory:
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting Activate the plugin in ~/.</description>
     </item>
     
   </channel>

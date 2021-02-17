@@ -15,14 +15,14 @@ package com.example.pitest; import org.junit.Assert; import org.junit.Test; publ
 package com.example.pitest; public class NaturalNumber { private int num; public NaturalNumber(int num) { this.num = num; } // wrong condition judgement  public boolean isNaturalNumber() { return num &gt; 0; } } 引入JaCoCo gradle插件
 plugins { id &#39;java&#39; id &#39;jacoco&#39; } 以上函数isNaturalNumber()对于自然数的判断条件明显错误（正确应为num &gt;= 0）。然而如果我们的测试用例不够完善，就会忽略这个错误，比如下面的测试用例：
 package com.example.pitest; import org.junit.Assert; import org.junit.Test; public class TestNaturalNumber { @Test public void PositiveNumberIsNaturalNumber() { Assert.assertTrue(new NaturalNumber(10).isNaturalNumber()); } @Test public void NegativeNumberIsNotNaturalNumber() { Assert.'>
-<meta property='og:url' content='http://io.wxa.me/posts/mutation-test/'>
+<meta property='og:url' content='https://io.wxa.me/posts/mutation-test/'>
 <meta property='og:site_name' content='Tour de Babel'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='PITest'><meta property='article:published_time' content='2019-09-17T20:27:21&#43;08:00'/><meta property='article:modified_time' content='2019-09-17T20:27:21&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.58.2" />
 
   <title>Mutation Test • Tour de Babel</title>
-  <link rel='canonical' href='http://io.wxa.me/posts/mutation-test/'>
+  <link rel='canonical' href='https://io.wxa.me/posts/mutation-test/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -86,6 +86,8 @@ package com.example.pitest; import org.junit.Assert; import org.junit.Test; publ
         <a href='/tags/sublime/' style='font-size:1em'>Sublime</a>
       </li><li>
         <a href='/tags/vim/' style='font-size:1em'>Vim</a>
+      </li><li>
+        <a href='/tags/zsh/' style='font-size:1em'>Zsh</a>
       </li></ul>
 </div>
 
@@ -394,7 +396,7 @@ apply plugin: <span style="color:#e6db74">&#39;info.solidsoft.pitest&#39;</span>
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2020 wangxinalex </p>
+  <p> &copy; 2017-2021 wangxinalex </p>
 </div>
 
         </div>

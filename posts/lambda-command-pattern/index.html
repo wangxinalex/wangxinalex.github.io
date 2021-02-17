@@ -19,14 +19,14 @@ public interface ActionListener extends EventListener { public void actionPerfor
 因此invoker对象可以直接接受lambda表达式并直接调用。
 参见以下例子（详见https://www.runoob.com/design-pattern/command-pattern.html）
 // 命令对象接口 public interface Order { void execute(); } // 命令接受者 public class Stock { private String name = &#34;ABC&#34;; private int quantity = 10; public void buy(){ System.out.println(&#34;Stock [ Name: &#34;&#43;name&#43;&#34;, Quantity: &#34; &#43; quantity &#43;&#34; ] bought&#34;); } public void sell(){ System.out.println(&#34;Stock [ Name: &#34;&#43;name&#43;&#34;, Quantity: &#34; &#43; quantity &#43;&#34; ] sold&#34;); } } // 命令实体类 public class BuyStock implements Order { private Stock abcStock; public BuyStock(Stock abcStock){ this.'>
-<meta property='og:url' content='http://io.wxa.me/posts/lambda-command-pattern/'>
+<meta property='og:url' content='https://io.wxa.me/posts/lambda-command-pattern/'>
 <meta property='og:site_name' content='Tour de Babel'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2020-03-20T19:08:43&#43;08:00'/><meta property='article:modified_time' content='2020-03-20T19:08:43&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.58.2" />
 
   <title>Lambda表达式在命令者模式中的应用 • Tour de Babel</title>
-  <link rel='canonical' href='http://io.wxa.me/posts/lambda-command-pattern/'>
+  <link rel='canonical' href='https://io.wxa.me/posts/lambda-command-pattern/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -90,6 +90,8 @@ public interface ActionListener extends EventListener { public void actionPerfor
         <a href='/tags/sublime/' style='font-size:1em'>Sublime</a>
       </li><li>
         <a href='/tags/vim/' style='font-size:1em'>Vim</a>
+      </li><li>
+        <a href='/tags/zsh/' style='font-size:1em'>Zsh</a>
       </li></ul>
 </div>
 
@@ -380,7 +382,7 @@ public interface ActionListener extends EventListener { public void actionPerfor
 
 <nav class='entry-nav'>
   <div class='container'><div class='prev-entry sep-before'>
-      <a href='/posts/lambda-strategy-pattern/'>
+      <a href='/posts/sublime-latex/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -388,17 +390,7 @@ public interface ActionListener extends EventListener { public void actionPerfor
   
 </svg>
  Previous</span>
-        <span class='screen-reader-text'>Previous post: </span>Lambda表达式在策略模式中的应用</a>
-    </div><div class='next-entry sep-before'>
-      <a href='/posts/lambda-observer-pattern/'>
-        <span class='screen-reader-text'>Next post: </span>Lambda表达式在观察者模式中的应用<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
-  
-</svg>
-</span>
-      </a>
+        <span class='screen-reader-text'>Previous post: </span>Sublime编辑LaTeX的方法总结</a>
     </div></div>
 </nav>
 
@@ -455,7 +447,7 @@ public interface ActionListener extends EventListener { public void actionPerfor
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2020 wangxinalex </p>
+  <p> &copy; 2017-2021 wangxinalex </p>
 </div>
 
         </div>

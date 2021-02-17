@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Latex on Tour de Babel</title>
-    <link>http://io.wxa.me/tags/latex/</link>
+    <link>https://io.wxa.me/tags/latex/</link>
     <description>Recent content in Latex on Tour de Babel</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 17 Sep 2019 22:59:39 +0800</lastBuildDate>
     
-	<atom:link href="http://io.wxa.me/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://io.wxa.me/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sublime编辑LaTeX的方法总结</title>
-      <link>http://io.wxa.me/posts/sublime-latex/</link>
+      <link>https://io.wxa.me/posts/sublime-latex/</link>
       <pubDate>Tue, 17 Sep 2019 22:59:39 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/sublime-latex/</guid>
+      <guid>https://io.wxa.me/posts/sublime-latex/</guid>
       <description>Sublime编辑LaTeX的方法总结 Windows下sublime+samutraPDF工具链 windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。
 windows下一般通过Ctex套件来安装latex相关编译工具，安装Ctex完毕后pdflatex xelatex bibtex等工具应已经全部就绪。
 安装latexTools 安装sublime，通过package control安装LatexTools。

@@ -13,14 +13,14 @@ import java.util.HashMap; public class ShapeFactory { private static final HashM
  have names not required to create a new object each time they’re invoked
  flyweight pattern singleton pattern
 import java.util.HashMap; public class ShapeFactory { private static final HashMap&lt;String, Shape&gt; circleMap = new HashMap&lt;&gt;(); public static Shape getCircle(String color) { Circle circle = (Circle)circleMap.get(color); if(circle == null) { // lazy creation  circle = new Circle(color); circleMap.'>
-<meta property='og:url' content='http://io.wxa.me/posts/effective-java-notes/'>
+<meta property='og:url' content='https://io.wxa.me/posts/effective-java-notes/'>
 <meta property='og:site_name' content='Tour de Babel'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2019-09-15T19:08:43&#43;08:00'/><meta property='article:modified_time' content='2019-09-15T19:08:43&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.58.2" />
 
   <title>Effective Java Notes • Tour de Babel</title>
-  <link rel='canonical' href='http://io.wxa.me/posts/effective-java-notes/'>
+  <link rel='canonical' href='https://io.wxa.me/posts/effective-java-notes/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -84,6 +84,8 @@ import java.util.HashMap; public class ShapeFactory { private static final HashM
         <a href='/tags/sublime/' style='font-size:1em'>Sublime</a>
       </li><li>
         <a href='/tags/vim/' style='font-size:1em'>Vim</a>
+      </li><li>
+        <a href='/tags/zsh/' style='font-size:1em'>Zsh</a>
       </li></ul>
 </div>
 
@@ -1604,7 +1606,17 @@ Access to the variable acts as though it is enclosed in a synchronized block, sy
 </article>
 
 <nav class='entry-nav'>
-  <div class='container'><div class='next-entry sep-before'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/zsh-plugins/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>一些常用的zsh插件</a>
+    </div><div class='next-entry sep-before'>
       <a href='/posts/mutation-test/'>
         <span class='screen-reader-text'>Next post: </span>Mutation Test<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
@@ -1670,7 +1682,7 @@ Access to the variable acts as though it is enclosed in a synchronized block, sy
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2020 wangxinalex </p>
+  <p> &copy; 2017-2021 wangxinalex </p>
 </div>
 
         </div>

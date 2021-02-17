@@ -2,40 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Tour de Babel</title>
-    <link>http://io.wxa.me/posts/</link>
+    <link>https://io.wxa.me/posts/</link>
     <description>Recent content in Posts on Tour de Babel</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 20 Mar 2020 19:20:43 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2020 19:08:43 +0800</lastBuildDate>
     
-	<atom:link href="http://io.wxa.me/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://io.wxa.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Lambda表达式在模板模式中的应用</title>
-      <link>http://io.wxa.me/posts/lambda-template-pattern/</link>
-      <pubDate>Fri, 20 Mar 2020 19:20:43 +0800</pubDate>
-      
-      <guid>http://io.wxa.me/posts/lambda-template-pattern/</guid>
-      <description>模板模式 模板模式在父类（抽象类）中实现算法的框架，将算法中的具体步骤放在子类（具体类）中实现。
-其中算法的各个步骤可能实现为函数接口的形式，可以使用lambda表达式代替。如下例:
-// 父类中的算法步骤抽象为函数接口 package com.chapter.eight.template; @FunctionalInterface public interface Criteria { void check(); } // 父类 package com.chapter.eight.template; public class LoanApplication { private final Criteria identity; private final Criteria creditHistory; private final Criteria incomeHistory; public LoanApplication(Criteria identity, Criteria creditHistory, Criteria incomeHistory) { this.identity = identity; this.creditHistory = creditHistory; this.incomeHistory = incomeHistory; } public void checkLoanApplication() { identity.check(); creditHistory.check(); incomeHistory.check(); reportFindings(); } private void reportFindings() { } } // 子类 package com.</description>
-    </item>
-    
-    <item>
-      <title>Lambda表达式在观察者模式中的应用</title>
-      <link>http://io.wxa.me/posts/lambda-observer-pattern/</link>
-      <pubDate>Fri, 20 Mar 2020 19:10:43 +0800</pubDate>
-      
-      <guid>http://io.wxa.me/posts/lambda-observer-pattern/</guid>
-      <description>观察者模式 // 观察者接口 package com.chapter.eight.observer; public interface LandingObserver { void observerLanding(String name); } // 观察者实现类1 package com.chapter.eight.observer; public class Aliens implements LandingObserver { @Override public void observerLanding(String name) { if (name.contains(&amp;#34;Apollo&amp;#34;)) { System.out.println(&amp;#34;They&amp;#39;redistracted,lets invade earth!&amp;#34;); } } } // 观察者实现类2 package com.chapter.eight.observer; public class Nasa implements LandingObserver { @Override public void observerLanding(String name) { if (name.contains(&amp;#34;Apollo&amp;#34;)) { System.out.println(&amp;#34;We made it!&amp;#34;); } } } // 被观察者  package com.chapter.eight.observer; import java.</description>
-    </item>
     
     <item>
       <title>Lambda表达式在命令者模式中的应用</title>
-      <link>http://io.wxa.me/posts/lambda-command-pattern/</link>
+      <link>https://io.wxa.me/posts/lambda-command-pattern/</link>
       <pubDate>Fri, 20 Mar 2020 19:08:43 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/lambda-command-pattern/</guid>
+      <guid>https://io.wxa.me/posts/lambda-command-pattern/</guid>
       <description>@FunctionalInterface的作用 函数接口: 函数接口是*只有一个抽象方法*的接口，用作Lambda表达式的类型。如下例：
 public interface ActionListener extends EventListener { public void actionPerformed(ActionEvent event); } 其中actionPerformed抽象方法必须用来表示行为
  函数接口中抽象方法的命名不重要，只要方法签名和lambda表达式的*类型*匹配即可。 类型包括：接收参数类型，返回结果类型  @FunctionalInterface会检查某接口是否符合函数接口的定义。
@@ -46,22 +26,11 @@ public interface ActionListener extends EventListener { public void actionPerfor
     </item>
     
     <item>
-      <title>Lambda表达式在策略模式中的应用</title>
-      <link>http://io.wxa.me/posts/lambda-strategy-pattern/</link>
-      <pubDate>Fri, 20 Mar 2020 19:01:43 +0800</pubDate>
-      
-      <guid>http://io.wxa.me/posts/lambda-strategy-pattern/</guid>
-      <description>策略模式 策略模式是一种常见的在运行时改变代码行为的设计模式。
-参见以下例子：
-// 策略类接口 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; public interface CompressionStrategy { OutputStream compress(OutputStream data) throws IOException; } // 实体策略类1 package com.chapter.eight.strategy; import java.io.IOException; import java.io.OutputStream; import java.util.zip.GZIPOutputStream; public class GZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) throws IOException { return new GZIPOutputStream(data); } } // 实体策略类2 package com.chapter.eight.strategy; import java.io.OutputStream; import java.util.zip.ZipOutputStream; public class ZipCompressionStrategy implements CompressionStrategy { @Override public OutputStream compress(OutputStream data) { return new ZipOutputStream(data); } } // 策略使用者 package com.</description>
-    </item>
-    
-    <item>
       <title>Sublime编辑LaTeX的方法总结</title>
-      <link>http://io.wxa.me/posts/sublime-latex/</link>
+      <link>https://io.wxa.me/posts/sublime-latex/</link>
       <pubDate>Tue, 17 Sep 2019 22:59:39 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/sublime-latex/</guid>
+      <guid>https://io.wxa.me/posts/sublime-latex/</guid>
       <description>Sublime编辑LaTeX的方法总结 Windows下sublime+samutraPDF工具链 windows下一般以sublime编辑latex文件，并用sumatrapdf来查看pdf和反向跳转到latex源码。
 windows下一般通过Ctex套件来安装latex相关编译工具，安装Ctex完毕后pdflatex xelatex bibtex等工具应已经全部就绪。
 安装latexTools 安装sublime，通过package control安装LatexTools。
@@ -81,20 +50,20 @@ Mac首先安装MacTex相关套件。安装完毕后，有可能会出现path路�
     
     <item>
       <title>Vim Block Edit</title>
-      <link>http://io.wxa.me/posts/vim-block-edit/</link>
+      <link>https://io.wxa.me/posts/vim-block-edit/</link>
       <pubDate>Tue, 17 Sep 2019 20:34:19 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/vim-block-edit/</guid>
+      <guid>https://io.wxa.me/posts/vim-block-edit/</guid>
       <description> Vim 块编辑方法 末尾添加字符 &amp;lt;a href=&amp;quot;Slides/01Introduction-17.ppt&amp;quot;&amp;gt;Lecture 01&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/02Performance-17.ppt&amp;quot;&amp;gt;Lecture 02&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/03ISA-17.ppt&amp;quot;&amp;gt;Lecture 03&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides/04singlecycle.ppt&amp;quot;&amp;gt;Lecture 04&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;   命令模式按ctrl+v进入纵向编辑模式，将光标移至Slides末尾，向下移动光标，选中4行的Slides末尾的字符。 然后按A进入行尾插入模式，添加2017。 按ESC退出行尾编辑模式，此时4行Slides均变为Slides2017。
 &amp;lt;a href=&amp;quot;Slides2017/01Introduction-17.ppt&amp;quot;&amp;gt;Lecture 01&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/02Performance-17.ppt&amp;quot;&amp;gt;Lecture 02&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/03ISA-17.ppt&amp;quot;&amp;gt;Lecture 03&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt; &amp;lt;a href=&amp;quot;Slides2017/04singlecycle.ppt&amp;quot;&amp;gt;Lecture 04&amp;lt;/a&amp;gt;&amp;lt;br/&amp;gt;   </description>
     </item>
     
     <item>
       <title>Mutation Test</title>
-      <link>http://io.wxa.me/posts/mutation-test/</link>
+      <link>https://io.wxa.me/posts/mutation-test/</link>
       <pubDate>Tue, 17 Sep 2019 20:27:21 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/mutation-test/</guid>
+      <guid>https://io.wxa.me/posts/mutation-test/</guid>
       <description>Mutation Test with PITest 测试用例代码覆盖率的意义 一般的软件测试关注测试用例的代码复杂度，理想的状态是100%的代码覆盖率，即测试用例能将所有业务代码执行一遍，保证所有的函数、方法、模块都被测试过。一些测试工具，如JaCoco等，可以统计测试用例的代码覆盖率。
 代码覆盖率的局限性 举一个简单的例子，判断一个正数是不是自然数：
 package com.example.pitest; public class NaturalNumber { private int num; public NaturalNumber(int num) { this.num = num; } // wrong condition judgement  public boolean isNaturalNumber() { return num &amp;gt; 0; } } 引入JaCoCo gradle插件
@@ -104,14 +73,30 @@ package com.example.pitest; import org.junit.Assert; import org.junit.Test; publ
     
     <item>
       <title>Effective Java Notes</title>
-      <link>http://io.wxa.me/posts/effective-java-notes/</link>
+      <link>https://io.wxa.me/posts/effective-java-notes/</link>
       <pubDate>Sun, 15 Sep 2019 19:08:43 +0800</pubDate>
       
-      <guid>http://io.wxa.me/posts/effective-java-notes/</guid>
+      <guid>https://io.wxa.me/posts/effective-java-notes/</guid>
       <description>Effective Java Creating and Destroying Objects Item 1: Static factory methods instead of constructors Pros:
  have names not required to create a new object each time they’re invoked
  flyweight pattern singleton pattern
 import java.util.HashMap; public class ShapeFactory { private static final HashMap&amp;lt;String, Shape&amp;gt; circleMap = new HashMap&amp;lt;&amp;gt;(); public static Shape getCircle(String color) { Circle circle = (Circle)circleMap.get(color); if(circle == null) { // lazy creation  circle = new Circle(color); circleMap.</description>
+    </item>
+    
+    <item>
+      <title>一些常用的zsh插件</title>
+      <link>https://io.wxa.me/posts/zsh-plugins/</link>
+      <pubDate>Sun, 15 Sep 2019 18:12:58 +0800</pubDate>
+      
+      <guid>https://io.wxa.me/posts/zsh-plugins/</guid>
+      <description>一些常用的zsh插件 安装zsh brew install zsh 安装oh-my-zsh https://github.com/robbyrussell/oh-my-zsh
+sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; zsh插件 auto-suggestions https://github.com/zsh-users/zsh-autosuggestions
+ Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions Add the plugin to the list of plugins for Oh My Zsh to load (inside ~/.zshrc):
+plugins=(zsh-autosuggestions) Start a new terminal session.
+  zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting
+ Clone this repository in oh-my-zsh&amp;rsquo;s plugins directory:
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting Activate the plugin in ~/.</description>
     </item>
     
   </channel>
