@@ -7,14 +7,14 @@
 
 <meta property='og:title' content='Lambda表达式在观察者模式中的应用 • Tour de Babel'>
 <meta property='og:description' content='观察者模式 // 观察者接口 package com.chapter.eight.observer; public interface LandingObserver { void observerLanding(String name); } // 观察者实现类1 package com.chapter.eight.observer; public class Aliens implements LandingObserver { @Override public void observerLanding(String name) { if (name.contains(&#34;Apollo&#34;)) { System.out.println(&#34;They&#39;redistracted,lets invade earth!&#34;); } } } // 观察者实现类2 package com.chapter.eight.observer; public class Nasa implements LandingObserver { @Override public void observerLanding(String name) { if (name.contains(&#34;Apollo&#34;)) { System.out.println(&#34;We made it!&#34;); } } } // 被观察者  package com.chapter.eight.observer; import java.'>
-<meta property='og:url' content='http://io.wxa.me/posts/lambda-observer-pattern/'>
+<meta property='og:url' content='https://io.wxa.me/posts/lambda-observer-pattern/'>
 <meta property='og:site_name' content='Tour de Babel'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2020-03-20T19:10:43&#43;08:00'/><meta property='article:modified_time' content='2020-03-20T19:10:43&#43;08:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2021-02-17T21:34:05&#43;08:00'/><meta property='article:modified_time' content='2021-02-17T21:34:05&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.58.2" />
 
   <title>Lambda表达式在观察者模式中的应用 • Tour de Babel</title>
-  <link rel='canonical' href='http://io.wxa.me/posts/lambda-observer-pattern/'>
+  <link rel='canonical' href='https://io.wxa.me/posts/lambda-observer-pattern/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -78,6 +78,8 @@
         <a href='/tags/sublime/' style='font-size:1em'>Sublime</a>
       </li><li>
         <a href='/tags/vim/' style='font-size:1em'>Vim</a>
+      </li><li>
+        <a href='/tags/zsh/' style='font-size:1em'>Zsh</a>
       </li></ul>
 </div>
 
@@ -151,7 +153,7 @@
   
 </svg>
 <span class='screen-reader-text'>Posted on </span>
-  <time class='entry-date' datetime='2020-03-20T19:10:43&#43;08:00'>2020, Mar 20</time>
+  <time class='entry-date' datetime='2021-02-17T21:34:05&#43;08:00'>2021, Feb 17</time>
 </span>
 
   
@@ -178,7 +180,7 @@ One min read
   <div class='container entry-content'>
   
 
-<h2 id="观察者模式">观察者模式</h2>
+<h1 id="观察者模式">观察者模式</h1>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// 观察者接口
 </span><span style="color:#75715e"></span><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">chapter</span>.<span style="color:#a6e22e">eight</span>.<span style="color:#a6e22e">observer</span>;
 
@@ -248,7 +250,7 @@ One min read
     moon.<span style="color:#a6e22e">land</span>(<span style="color:#e6db74">&#34;Apollo 11&#34;</span>);
   }
 }</code></pre></div>
-<p>在观察者模式中，观察者接口是标准的函数接口，其实现类实际上封装了实现该接口的行为。在上例中，该函数接口的类型为<code>&lt;String&gt;-&gt;&lt;void&gt;</code>，因此我们可以将观察者实现类中的相应方法改写为lambda表达式。不过，与命令者式不同，如果观察者实现类有较高的可能性被复用，则应当独立为类，不应勉强地改写为lambda表达式。</p>
+<p>在观察者模式中，观察者接口是标准的函数接口，其实现类实际上封装了实现该接口的行为。在上例中，该函数接口的类型为<code>&lt;String&gt; -&gt; &lt;void&gt;</code>，因此我们可以将观察者实现类中的相应方法改写为lambda表达式。不过，与命令者式不同，如果观察者实现类有较高的可能性被复用，则应当独立为类，不应勉强地改写为lambda表达式。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">package</span> <span style="color:#a6e22e">com</span>.<span style="color:#a6e22e">chapter</span>.<span style="color:#a6e22e">eight</span>.<span style="color:#a6e22e">observer</span>;
 
 <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">class</span> ObserverDemo {
@@ -297,7 +299,7 @@ One min read
 
 <nav class='entry-nav'>
   <div class='container'><div class='prev-entry sep-before'>
-      <a href='/posts/lambda-command-pattern/'>
+      <a href='/posts/lambda-template-pattern/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -305,10 +307,10 @@ One min read
   
 </svg>
  Previous</span>
-        <span class='screen-reader-text'>Previous post: </span>Lambda表达式在命令者模式中的应用</a>
+        <span class='screen-reader-text'>Previous post: </span>Lambda表达式在模板模式中的应用</a>
     </div><div class='next-entry sep-before'>
-      <a href='/posts/lambda-template-pattern/'>
-        <span class='screen-reader-text'>Next post: </span>Lambda表达式在模板模式中的应用<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+      <a href='/posts/lambda-strategy-pattern/'>
+        <span class='screen-reader-text'>Next post: </span>Lambda表达式在策略模式中的应用<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
   <polyline points="14 6 20 12 14 18"/>
@@ -372,7 +374,7 @@ One min read
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2020 wangxinalex </p>
+  <p> &copy; 2017-2021 wangxinalex </p>
 </div>
 
         </div>

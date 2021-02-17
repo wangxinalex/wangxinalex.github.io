@@ -11,14 +11,14 @@
 <meta property='og:description' content='模板模式 模板模式在父类（抽象类）中实现算法的框架，将算法中的具体步骤放在子类（具体类）中实现。
 其中算法的各个步骤可能实现为函数接口的形式，可以使用lambda表达式代替。如下例:
 // 父类中的算法步骤抽象为函数接口 package com.chapter.eight.template; @FunctionalInterface public interface Criteria { void check(); } // 父类 package com.chapter.eight.template; public class LoanApplication { private final Criteria identity; private final Criteria creditHistory; private final Criteria incomeHistory; public LoanApplication(Criteria identity, Criteria creditHistory, Criteria incomeHistory) { this.identity = identity; this.creditHistory = creditHistory; this.incomeHistory = incomeHistory; } public void checkLoanApplication() { identity.check(); creditHistory.check(); incomeHistory.check(); reportFindings(); } private void reportFindings() { } } // 子类 package com.'>
-<meta property='og:url' content='http://io.wxa.me/posts/lambda-template-pattern/'>
+<meta property='og:url' content='https://io.wxa.me/posts/lambda-template-pattern/'>
 <meta property='og:site_name' content='Tour de Babel'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2020-03-20T19:20:43&#43;08:00'/><meta property='article:modified_time' content='2020-03-20T19:20:43&#43;08:00'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Java'><meta property='article:published_time' content='2021-02-17T21:30:10&#43;08:00'/><meta property='article:modified_time' content='2021-02-17T21:30:10&#43;08:00'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.58.2" />
 
   <title>Lambda表达式在模板模式中的应用 • Tour de Babel</title>
-  <link rel='canonical' href='http://io.wxa.me/posts/lambda-template-pattern/'>
+  <link rel='canonical' href='https://io.wxa.me/posts/lambda-template-pattern/'>
   
   
   <link rel='icon' href='/favicon.ico'>
@@ -82,6 +82,8 @@
         <a href='/tags/sublime/' style='font-size:1em'>Sublime</a>
       </li><li>
         <a href='/tags/vim/' style='font-size:1em'>Vim</a>
+      </li><li>
+        <a href='/tags/zsh/' style='font-size:1em'>Zsh</a>
       </li></ul>
 </div>
 
@@ -155,7 +157,7 @@
   
 </svg>
 <span class='screen-reader-text'>Posted on </span>
-  <time class='entry-date' datetime='2020-03-20T19:20:43&#43;08:00'>2020, Mar 20</time>
+  <time class='entry-date' datetime='2021-02-17T21:30:10&#43;08:00'>2021, Feb 17</time>
 </span>
 
   
@@ -182,7 +184,7 @@ One min read
   <div class='container entry-content'>
   
 
-<h2 id="模板模式">模板模式</h2>
+<h1 id="模板模式">模板模式</h1>
 
 <p>模板模式在父类（抽象类）中实现算法的框架，将算法中的具体步骤放在子类（具体类）中实现。</p>
 
@@ -271,7 +273,7 @@ One min read
 
 <nav class='entry-nav'>
   <div class='container'><div class='prev-entry sep-before'>
-      <a href='/posts/lambda-observer-pattern/'>
+      <a href='/posts/lambda-command-pattern/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -279,7 +281,17 @@ One min read
   
 </svg>
  Previous</span>
-        <span class='screen-reader-text'>Previous post: </span>Lambda表达式在观察者模式中的应用</a>
+        <span class='screen-reader-text'>Previous post: </span>Lambda表达式在命令者模式中的应用</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/posts/lambda-observer-pattern/'>
+        <span class='screen-reader-text'>Next post: </span>Lambda表达式在观察者模式中的应用<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
     </div></div>
 </nav>
 
@@ -336,7 +348,7 @@ One min read
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2020 wangxinalex </p>
+  <p> &copy; 2017-2021 wangxinalex </p>
 </div>
 
         </div>

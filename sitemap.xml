@@ -4,36 +4,51 @@
   
   <url>
     <loc>https://io.wxa.me/categories/</loc>
-    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+    <lastmod>2021-02-17T21:37:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://io.wxa.me/tags/java/</loc>
-    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+    <lastmod>2021-02-17T21:37:49+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://io.wxa.me/posts/lambda-command-pattern/</loc>
-    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+    <loc>https://io.wxa.me/posts/lambda-strategy-pattern/</loc>
+    <lastmod>2021-02-17T21:37:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://io.wxa.me/posts/</loc>
-    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+    <lastmod>2021-02-17T21:37:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://io.wxa.me/categories/programming/</loc>
-    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+    <lastmod>2021-02-17T21:37:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://io.wxa.me/tags/</loc>
-    <lastmod>2020-03-20T19:08:43+08:00</lastmod>
+    <lastmod>2021-02-17T21:37:49+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://io.wxa.me/</loc>
+    <lastmod>2021-02-17T21:37:49+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://io.wxa.me/posts/lambda-observer-pattern/</loc>
+    <lastmod>2021-02-17T21:34:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://io.wxa.me/posts/lambda-template-pattern/</loc>
+    <lastmod>2021-02-17T21:30:10+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://io.wxa.me/posts/lambda-command-pattern/</loc>
     <lastmod>2020-03-20T19:08:43+08:00</lastmod>
   </url>
   
