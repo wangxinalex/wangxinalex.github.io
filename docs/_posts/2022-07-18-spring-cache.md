@@ -102,11 +102,10 @@ public String getAddress(Customer customer) {...}
 
 1. Not working while calling from another method of the **same bean**.
 
-https://stackoverflow.com/questions/12115996/spring-cache-cacheable-method-ignored-when-called-from-within-the-same-class
-https://spring.io/blog/2012/05/23/transactions-caching-and-aop-understanding-proxy-usage-in-spring
-
-https://stackoverflow.com/a/16899739/1501494
-https://stackoverflow.com/a/5251930/1501494
+- https://stackoverflow.com/questions/12115996/spring-cache-cacheable-method-ignored-when-called-from-within-the-same-class
+- https://spring.io/blog/2012/05/23/transactions-caching-and-aop-understanding-proxy-usage-in-spring
+- https://stackoverflow.com/a/16899739/1501494
+- https://stackoverflow.com/a/5251930/1501494
 
 ```java
 @Service

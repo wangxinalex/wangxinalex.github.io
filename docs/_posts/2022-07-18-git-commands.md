@@ -4,7 +4,7 @@ title: "Git commands"
 date: 2022-07-18 09:57:00 +0800
 categories: Git
 ---
-# git commands
+# Git Commands
 
 - delete all merged local branches
 
