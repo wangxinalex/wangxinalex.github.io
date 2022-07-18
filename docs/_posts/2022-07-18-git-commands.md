@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Git commands"
+title: "Git Commands"
 date: 2022-07-18 09:57:00 +0800
 categories: Git
 ---
