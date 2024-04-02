@@ -1,6 +1,6 @@
 ---
 layout: default
-title: My Blog
+title: A Myriad of Stars
 ---
 
 # Welcome to my blog
