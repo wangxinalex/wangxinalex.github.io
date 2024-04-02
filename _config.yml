@@ -28,10 +28,9 @@ twitter_username: wangxinalex
 github_username: wangxinalex
 
 # Build settings
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
 plugins:
 - jekyll-feed
-- jekyll-remote-theme # add this line to the plugins list if you already have one
 
 # Exclude from processing.
 # The following items will not be processed, by default.
