@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Guava Notes"
 date: 2022-07-18 09:57:00 +0800
 categories: Java
