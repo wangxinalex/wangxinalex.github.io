@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Spring Cache"
 date:   2022-07-18 12:28:18 +0800
 categories: Spring Java
