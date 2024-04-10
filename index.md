@@ -1,14 +1,5 @@
 ---
-layout: default
+layout: home
 title: A Myriad of Stars
+author_profile: true
 ---
-
-# Welcome to my blog
-
-<ul>
-{% for post in site.posts %}
-  <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-  </li>
-{% endfor %}
-</ul>
