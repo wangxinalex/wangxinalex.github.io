@@ -28,10 +28,11 @@ twitter_username: wangxinalex
 github_username: wangxinalex
 
 # Build settings
-remote_theme: pages-themes/cayman@v0.2.0
+remote_theme: mmistakes/minimal-mistakes@4.24.0
 plugins:
 - jekyll-remote-theme
 - jekyll-feed
+- jekyll-include-cache
 
 # Exclude from processing.
 # The following items will not be processed, by default.
