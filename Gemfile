@@ -2,5 +2,10 @@
 
 source "https://rubygems.org"
 
-gemspec
+gem "jekyll", ">= 3.9.3"
+gem "jekyll-paginate", "~> 1.1"
+gem "jekyll-sitemap", "~> 1.4"
+gem "kramdown", "~> 2.3"
+gem "kramdown-parser-gfm", "~> 1.1"
+gem "webrick", "~> 1.8"
 
